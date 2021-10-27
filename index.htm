@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Riven World:  Airship Trader</title>
+    <script src="./stuff/jquery.js"></script>
+    <script src="./stuff/rot.js"></script>
+    <script src="./stuff/keys.js"></script>
+    <style>
+        body{
+            padding: 0 0 0 0;
+            margin: 0 0 0 0;
+            overflow: hidden;
+            background-color: rgb(1, 82, 82);
+        }
+    </style>
+  </head>
+  <body>
+    <script>
+        const { ipcRenderer } = require("electron")
+        window.onerror = function(msg, url, line, col, error) {
+          var extra = !col ? '' : '\ncolumn: ' + col;
+          extra += !error ? '' : '\nerror: ' + error;
+
+          var suppressErrorAlert = false;
+          ipcRenderer.invoke("showDev")
+          return suppressErrorAlert;
+        };
+
+        const makeEngine = require("./src/engine.js")
+        const engine = makeEngine(msg => {
+          console.log(msg)
+        })
+        
+        engine.init((step, msg) => {
+          console.log(`Step ${step} done: ${msg}.`)
+        })
+        engine.render()
+    </script>
+  </body>
+</html>

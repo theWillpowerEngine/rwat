@@ -1,0 +1,28 @@
+{
+  "name": "rwat",
+  "version": "0.0.1",
+  "description": "Riven World: Airship Trader",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "npx electron-packager . rwat --platform=win32 --arch=x64"
+  },
+  "build": {
+    "extraResources": [
+      {
+        "from": "./stuff/",
+        "to": "stuff",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ]
+  },
+  "author": "Dan Larsen",
+  "license": "ISC",
+  "dependencies": {
+    "color": "^4.0.1",
+    "electron": "^15.3.0",
+    "rng": "^0.2.2"
+  }
+}
