@@ -10,6 +10,7 @@ const makeTile = (vals) => {
         transparent: false,
         interactive: false,
         noBgLightTint: false,
+        desc: "A tile",
 
         ...vals
     }
@@ -29,7 +30,8 @@ var that = module.exports = {
         char: "@",
         color: "#0000ff",
         bg: color.lantern,  //Color(color.lantern).mix(Color(color.background), 0.5).hex(),
-        isPC: true
+        isPC: true,
+        desc: "You"
     }),
 
     switch: makeTile({
@@ -37,17 +39,21 @@ var that = module.exports = {
         char: "$",
         color: "white",
         interactive: true,
-        transparent: true
+        transparent: true,
+        desc: "A switch"
     }),
 
     shipFloor: makeTile({
         solid: false,
         char: ".",
-        color: color.grey
+        color: color.grey,
+        desc: "Floor"
     }),
     shipWall: makeTile({
         char: "#",
-        color: color.grey
+        color: color.grey,
+        desc: "A wall"
+
     }),
 
 }

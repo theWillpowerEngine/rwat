@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Riven World:  Airship Trader</title>
-    <script src="./stuff/jquery.js"></script>
+    <script>window.$ = window.jQuery = require('./stuff/jquery.js');</script>
     <script src="./stuff/rot.js"></script>
     <script src="./stuff/keys.js"></script>
     <style>
@@ -40,6 +40,14 @@
           height: 25px;
           background-color: red;
         }
+
+        #game {
+          position: absolute;
+          top: 25px;
+          bottom: 25px;
+          left: 0;
+          right: 200px;
+        }
     </style>
   </head>
   <body>
@@ -52,25 +60,41 @@
 
 
     <script>
-        const { ipcRenderer } = require("electron")
-        window.onerror = function(msg, url, line, col, error) {
-          var extra = !col ? '' : '\ncolumn: ' + col;
-          extra += !error ? '' : '\nerror: ' + error;
+      const { ipcRenderer } = require("electron")
+      const makeEngine = require("./src/engine.js")
+      const getCursorPosition = (canvas, event) => {
+        const rect = canvas.getBoundingClientRect()
+        const x = event.clientX - rect.left
+        const y = event.clientY - rect.top
+        return {x, y}
+      }
 
-          var suppressErrorAlert = false;
-          ipcRenderer.invoke("showDev")
-          return suppressErrorAlert;
-        };
+      window.onerror = function(msg, url, line, col, error) {
+        var extra = !col ? '' : '\ncolumn: ' + col;
+        extra += !error ? '' : '\nerror: ' + error;
 
-        const makeEngine = require("./src/engine.js")
-        const engine = makeEngine(msg => {
-          console.log(msg)
-        })
-        
+        var suppressErrorAlert = false;
+        ipcRenderer.invoke("showDev")
+        return suppressErrorAlert;
+      };
+
+      const engine = makeEngine(msg => {
+        console.log(msg)
+      })
+
+      $(() => {
         engine.init((step, msg) => {
           console.log(`Step ${step} done: ${msg}.`)
         })
         engine.render()
+
+        $("canvas").on('mousedown', e => {
+          var coords = getCursorPosition(e.target, e)
+          coords.x = Math.trunc(coords.x /= 20)
+          coords.y = Math.trunc(coords.y /= 20)
+          console.log(engine.renderer.getTileAt(coords.x, coords.y).desc)
+        })
+      })
     </script>
   </body>
 </html>
