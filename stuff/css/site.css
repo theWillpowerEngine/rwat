@@ -1,0 +1,55 @@
+body{
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+    overflow: hidden;
+    background-color: rgb(1, 82, 82);
+    font-family: Consolas, 'Courier New', Courier, monospace;
+    color: #EFF0D1;
+}
+
+#header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 25px;
+  background-color: #0F7173;
+  -webkit-app-region: drag;  
+}
+
+#sidetop {
+  position: absolute;
+  right: 0;
+  top: 25px;
+  height: 67%;
+  width: 200px;
+  background-color: #0F7173;
+}
+
+#sidebottom {
+  position: absolute;
+  right: 0;
+  bottom: 25px;
+  height: 33%;
+  width: 400px;
+  padding-left: 5px;
+  padding-top: 2px;
+  background-color: #0F7173;
+}
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 25px;
+  background-color: #0F7173;
+}
+
+#game {
+  position: absolute;
+  top: 25px;
+  bottom: 25px;
+  left: 0;
+  right: 200px;
+}
