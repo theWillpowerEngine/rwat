@@ -98,7 +98,7 @@ module.exports = (logger, opts) => {
                 bg: colors.background,
                 forceSquareRatio: true
             });
-            document.body.appendChild(that.display.getContainer()); 
+            document.getElementById("game").appendChild(that.display.getContainer()); 
 
             pg(100, "Initialization complete!")
             return conf

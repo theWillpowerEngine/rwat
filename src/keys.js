@@ -61,5 +61,8 @@ module.exports = (eng, kbs) => {
     hotkeys(binds.devTools, async function (event, handler){
         await ipcRenderer.invoke("showDev")
     });
+    hotkeys('alt+enter', async function(e, h){
+        await ipcRenderer.invoke("toggleFullscreen")
+    })
 
 }

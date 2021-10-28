@@ -7,9 +7,9 @@ function createWindow () {
   })
 
   const win = new BrowserWindow({
-    // width: 600,
-    // height: 400,
-    titleBarStyle: "hidden",
+    width: 1024,
+    height: 768,
+    frame: false,
     show: false,
     webPreferences: {
       nodeIntegration: true,
@@ -17,7 +17,6 @@ function createWindow () {
     }
   })
 
-    win.maximize()
     win.setFullScreen(true)
     win.loadFile('index.htm')
     win.show()

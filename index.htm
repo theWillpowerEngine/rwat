@@ -12,9 +12,45 @@
             overflow: hidden;
             background-color: rgb(1, 82, 82);
         }
+
+        #header {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 25px;
+          background-color: red;
+          -webkit-app-region: drag;  
+        }
+
+        #sidebar {
+          position: absolute;
+          right: 0;
+          top: 25px;
+          bottom: 25px;
+          width: 200px;
+          background-color: blueviolet;
+        }
+      
+        #footer {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 25px;
+          background-color: red;
+        }
     </style>
   </head>
   <body>
+    <div id="container">
+      <div id="header"> </div>
+      <div id="game"> </div>
+      <div id="sidebar"> </div>
+      <div id="footer"> </div>
+    </div>
+
+
     <script>
         const { ipcRenderer } = require("electron")
         window.onerror = function(msg, url, line, col, error) {
