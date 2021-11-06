@@ -22,11 +22,11 @@ window.onerror = function(msg, url, line, col, error) {
     return suppressErrorAlert;
 }
 
-const engine = makeEngine(msg => logMsg)
+const engine = makeEngine(logMsg)
 
 $(() => {
     engine.init((step, msg) => {
-        $("#log").append(`Step ${step} done: ${msg}.<br />`)
+        logMsg(`Step ${step} done: ${msg}.<br )/>`)
     })
     engine.render()
 

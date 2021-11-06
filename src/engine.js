@@ -1,6 +1,7 @@
 const colors = require("./map/colors.js")
 const makeRenderer = require("./render/renderer.js")
 const makePlayer = require("./player/player.js")
+const makeShip = require("./ship/ship.js")
 const makeScenes = require("./scenes/scenes.js")
 const registerKeys = require("./keys.js")
 const Color = require('color')
@@ -25,10 +26,12 @@ module.exports = (logger, opts) => {
         
         logText: '',
         log(msg) {
+            console.log(msg)
             that.logText += (msg || '') + "<br />"
         },
 
         player: null,
+        ship: null,
 
         checkLOS(x, y, x1, y1) {
             if(!x1) x1 = that.player.x
@@ -80,6 +83,7 @@ module.exports = (logger, opts) => {
             that.player = makePlayer(that)
             that.renderer = makeRenderer(that)
             that.scenes = makeScenes(that)
+            that.ship = makeShip(that)
             pg(2, "Preinitialization complete")
 
             var sceneCount = that.scenes.loadAll()
@@ -105,6 +109,8 @@ module.exports = (logger, opts) => {
         },
 
         render() {
+            that.ship.tick()
+            
             var map = that.map
             for(var x=0; x<map.width; x++)
                 for(var y=0; y<map.height; y++) {
