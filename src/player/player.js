@@ -4,8 +4,8 @@ module.exports = (eng) => {
     let engine = eng
     var that = {
         name: "Spatula Fitzsimmons",
-        x: 0,
-        y: 0,
+        x: 1,
+        y: 1,
         tile: tiles.player,
         isPC: true,
 

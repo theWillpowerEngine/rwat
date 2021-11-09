@@ -7,7 +7,6 @@ module.exports = (eng) => {
     var that = {
         makeMap() {
             engine.maps["dev"] = map.blank(20, 20)
-            engine.lights.setAmbient(engine.lights.create("pink", 0.3, 0.3))
             engine.maps.dev.fill(tiles.shipFloor)
             engine.maps.dev.draw(tiles.shipWall, 5, 5)
             engine.maps.dev.draw(tiles.shipWall, 5, 15)
@@ -29,6 +28,8 @@ module.exports = (eng) => {
                 }, {state: true})
         },
         applyLights() {
+            engine.lights.setAmbient(engine.lights.create("pink", 0.3, 0.3))
+            
             engine.lights.add(5, 5, "red", 1, 3, -0.2)
             engine.lights.add(15, 5, "green", 1, 3, -0.2)
             engine.lights.add(5, 15, "blue", 1, 3, -0.25)

@@ -8,7 +8,7 @@ const Color = require('color')
 
 module.exports = (logger, opts) => {
     var conf = {
-        defaultScene: "dev",
+        defaultScene: "engineering",
 
         ...opts
     }
