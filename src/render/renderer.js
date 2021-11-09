@@ -8,7 +8,7 @@ module.exports = (eng) => {
     var that = {
         invisibleTileScaleFactor: 0.85,
         ambientLightScaleFactor: 0.5,
-        playerLightSource: engine.lights.create(engine.player.tile.bg, 0.9, 3, -0.21),
+        playerLightSource() { return engine.lights.create(engine.player.tile.bg, 0.9, 3, -0.21) },
 
         getTileAt(x, y) {
             if(x == engine.player.x && y == engine.player.y)
@@ -28,6 +28,7 @@ module.exports = (eng) => {
             } else {
                 //If the tile is visible (or at least, within los), apply lighting
                 var light = engine.lights.getLightAt(x, y)
+
                 if(light.ambient) {
                     let adjustedColor = Color(tile.color).mix(Color(light.color), light.intensity).darken(that.ambientLightScaleFactor - (that.ambientLightScaleFactor * light.range)).hex()
                     tile.color = adjustedColor

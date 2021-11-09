@@ -36,4 +36,12 @@ $(() => {
         coords.y = Math.trunc(coords.y /= 20)
         logMsg(engine.renderer.getTileAt(coords.x, coords.y).desc + "<br />")
     })
+
+    var resizeTimer;
+    $(window).on('resize', function(e) {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function() {
+            engine.render()
+        }, 250);
+    });
 })

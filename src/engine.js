@@ -14,6 +14,8 @@ module.exports = (logger, opts) => {
     }
 
     var that = {
+        tileSize: 20,
+
         maps: {
 
         },
@@ -97,7 +99,7 @@ module.exports = (logger, opts) => {
             that.display = new ROT.Display({
                 width:140,
                 height:60,
-                fontSize: 20,
+                fontSize: that.tileSize,
                 fontStyle: "bold",
                 bg: colors.background,
                 forceSquareRatio: true
@@ -109,12 +111,33 @@ module.exports = (logger, opts) => {
         },
 
         render() {
+            var start = new Date()
+            var $game = $("#game")
             that.ship.tick()
-            
+            var displayWidth = Math.floor($game.width() / that.tileSize),
+                displayHeight = Math.floor($game.height() / that.tileSize)
+
+            var offsetX = 0, offsetY = 0
+            var pX = that.player.x, pY = that.player.y
+
             var map = that.map
-            for(var x=0; x<map.width; x++)
-                for(var y=0; y<map.height; y++) {
-                    let tile = that.renderer.getTileAt(x, y) 
+            if(map.width < displayWidth)
+                displayWidth = map.width
+            else
+                offsetX = pX - Math.floor(displayWidth / 2)
+            if(map.height < displayHeight)  
+                displayHeight = map.height
+            else
+                offsetY = pY - Math.floor(displayHeight / 2)
+
+            if(offsetX < 0) offsetX = 0
+            if(offsetX > map.width - displayWidth) offsetX = map.width - displayWidth
+            if(offsetY < 0) offsetY = 0
+            if(offsetY > map.height - displayHeight) offsetY = map.height - displayHeight
+
+            for(var x=0; x<displayWidth; x++)
+                for(var y=0; y<displayHeight; y++) {
+                    let tile = that.renderer.getTileAt(x + offsetX, y + offsetY) 
                     if(!tile) continue
                     var c = tile.char
                     if(typeof c === 'function')
@@ -124,6 +147,8 @@ module.exports = (logger, opts) => {
 
             logger(that.logText)
             that.logText = ''
+
+            console.log("Tick Duration: " + Math.abs((new Date().getTime() - start.getTime())) + " ms")
         }
     }
 

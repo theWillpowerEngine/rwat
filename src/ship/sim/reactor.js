@@ -47,6 +47,8 @@ module.exports = (eng, sh) => {
                     switch(rod.type) {
                         case 'F':
                             rod.quality -= 1
+                            if(outputs.heat > 10)
+                                rod.quality -= (outputs.heat - 10)
                             var amt = Math.floor(rod.quality/1000)
                             if(amt == 0 && rod.quality > 300) amt += 1
                             outputs.thaums += amt
@@ -144,8 +146,8 @@ module.exports = (eng, sh) => {
             that.internalThaums -= outputs.thaums
 
             //Extract values
-            that.internalPressure = outputs.pressure
-            that.outgoingCoolantTemp = that.internalTemp = outputs.heat
+            that.internalPressure = Math.round(outputs.pressure)
+            that.outgoingCoolantTemp = that.internalTemp = Math.round(outputs.heat)
             
             if(outputs.pressure > that.turbineSetting) {
                 that.turbineForce = that.turbineSetting
@@ -155,7 +157,7 @@ module.exports = (eng, sh) => {
                 outputs.pressure = 0
             }
  
-            that.outgoingCoolantPressure = outputs.pressure
+            that.outgoingCoolantPressure = Math.round(outputs.pressure)
  
             return outputs
         }

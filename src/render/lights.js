@@ -27,7 +27,7 @@ module.exports = (eng) => {
             return [
                 ...that.sources,
                 {
-                    ...engine.renderer.playerLightSource,
+                    ...engine.renderer.playerLightSource(),
                     x: engine.player.x,
                     y: engine.player.y
                 }
