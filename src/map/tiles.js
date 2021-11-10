@@ -43,6 +43,15 @@ var that = module.exports = {
         desc: "A switch"
     }),
 
+    display: makeTile({
+        solid: true,
+        char: "0",
+        color: "grey",
+        interactive: false,
+        transparent: false,
+        desc: "A gauge"
+    }),
+
     shipFloor: makeTile({
         solid: false,
         char: ".",

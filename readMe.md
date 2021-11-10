@@ -3,7 +3,7 @@
 ## Commands ##
 ```
 WASD        Move (normal directions)
-Shift-WASD  Move (Diagonals - shit 45 degrees counterclockwise)
+Shift-WASD  Move (Diagonals - shift 45 degrees counterclockwise)
 
 
 

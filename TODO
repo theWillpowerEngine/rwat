@@ -1,4 +1,8 @@
-create engineering bay and hook it up to the reactor
+create engineering bay and hook it up to the reactor, next up:
+    -displays (0-9 and color indicators)
+    -valves/incremental controllers (for coolant flow and control rods)
+    -water flow tiles
+    -doors
 
 Reactor:
     Test
