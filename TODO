@@ -1,9 +1,17 @@
-create engineering bay and hook it up to the reactor, next up:
-    -displays (0-9 and color indicators)
-    -valves/incremental controllers (for coolant flow and control rods)
-    -water flow tiles
-    -doors
-
 Reactor:
     Test
     Pressure with no incoming pressure just as a function of heat
+    It seems like coolant makes things hotter at a certain point?
+    Scram button
+    More indicators and warnings
+    Light sources for indicators
+
+Water flow tiles
+
+doors
+
+Tab movement between the 3 layers
+
+The 3 layers (or at least the first 2 - ship and immediate)
+
+
