@@ -42,6 +42,37 @@ module.exports = (obj) => {
              })
         },
      
+        addDisplay(x, y, desc, displayer, o) {
+            that.tiles[x][y] = tiles.merge(tiles.display, { 
+                desc,
+                char: displayer,
+
+                ...o
+             })
+        },
+        addValve(x, y, desc, min, max, start, o) {
+            that.tiles[x][y] = tiles.merge(tiles.switch, { 
+                desc,
+                min,
+                max,
+                val: start,
+                char: (eng, tile) => {
+                    return tile.val || '0'
+                },
+                handler: (eng, t) => {
+                    t.val += 1
+                    if(t.val > t.max)
+                        t.val = t.min
+                    if(t.state)
+                        t.on(eng, t)
+                    else
+                        t.off(eng, t)
+                },
+
+                ...o
+             })
+        },
+
         getPointsBetween(x1,y1,x2,y2) {
             var coordinatesArray = new Array();
             var dx = Math.abs(x2 - x1);
