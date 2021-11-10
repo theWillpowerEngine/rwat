@@ -46,6 +46,55 @@ module.exports = (eng) => {
                 return 'X'
             })
 
+            //Coolant Valve
+            theMap.addValve(8, 16, "Coolant Flow Valve", 0, 10, eng.ship.reactor.coolantFlow, (tile) => {
+                eng.ship.reactor.coolantFlow = tile.val
+            }, {
+                color: "green",
+                char: (eng, tile) => {
+                    var val = eng.ship.reactor.coolantFlow
+                    return displayVals[val]
+                }
+            })
+            
+            //Control Rods
+            theMap.addValve(12, 17, "Control Rod #1", 1, 10, eng.ship.reactor.rods[0][1].position, (tile) => {
+                eng.ship.reactor.rods[0][1].position = tile.val
+            }, {
+                color: "green",
+                char: (eng, tile) => {
+                    var val = eng.ship.reactor.rods[0][1].position
+                    return displayVals[val]
+                }
+            })
+            theMap.addValve(11, 17, "Control Rod #2", 1, 10, eng.ship.reactor.rods[1][0].position, (tile) => {
+                eng.ship.reactor.rods[1][0].position = tile.val
+            }, {
+                color: "green",
+                char: (eng, tile) => {
+                    var val = eng.ship.reactor.rods[1][0].position
+                    return displayVals[val]
+                }
+            })
+            theMap.addValve(10, 17, "Control Rod #3", 1, 10, eng.ship.reactor.rods[1][2].position, (tile) => {
+                eng.ship.reactor.rods[1][2].position = tile.val
+            }, {
+                color: "green",
+                char: (eng, tile) => {
+                    var val = eng.ship.reactor.rods[1][2].position
+                    return displayVals[val]
+                }
+            })
+            theMap.addValve(9, 17, "Control Rod #4", 1, 10, eng.ship.reactor.rods[2][1].position, (tile) => {
+                eng.ship.reactor.rods[2][1].position = tile.val
+            }, {
+                color: "green",
+                char: (eng, tile) => {
+                    var val = eng.ship.reactor.rods[2][1].position
+                    return displayVals[val]
+                }
+            })
+
         },
         applyLights() {
             engine.lights.setAmbient(engine.lights.create(colors.lantern, 0.5, 0.5))

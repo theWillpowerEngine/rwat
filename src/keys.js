@@ -10,6 +10,7 @@ window.keyBinds = {
     moveSE: 'shift+s',
     moveSW: 'shift+a',
 
+    toggleValve: "shift+t",
     devTools: 'F12',
     exit: 'escape',
 }
@@ -52,6 +53,12 @@ module.exports = (eng, kbs) => {
     });
     hotkeys(binds.moveUp, function (event, handler){
         engine.player.move(0, -1)
+        engine.render()
+    });
+
+    hotkeys(binds.toggleValve, function (event, handler){
+        engine.player.turnValve = (engine.player.turnValve == -1 ? 1 : -1)
+        engine.log(`You will now turn valves and dials ${(engine.player.turnValve == -1 ? "down" : "up")}.`)
         engine.render()
     });
 

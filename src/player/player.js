@@ -8,6 +8,7 @@ module.exports = (eng) => {
         y: 1,
         tile: tiles.player,
         isPC: true,
+        turnValve: -1,
 
         move(dX, dY) {
             if(Math.abs(dX) > 1 || Math.abs(dY) > 1)

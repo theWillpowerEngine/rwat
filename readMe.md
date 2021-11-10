@@ -5,7 +5,7 @@
 WASD        Move (normal directions)
 Shift-WASD  Move (Diagonals - shift 45 degrees counterclockwise)
 
-
+Shift-T     Change which direction you move valves and dials (up vs down)
 
 
 

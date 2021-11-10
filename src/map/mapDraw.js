@@ -50,7 +50,7 @@ module.exports = (obj) => {
                 ...o
              })
         },
-        addValve(x, y, desc, min, max, start, o) {
+        addValve(x, y, desc, min, max, start, cb, o) {
             that.tiles[x][y] = tiles.merge(tiles.switch, { 
                 desc,
                 min,
@@ -60,13 +60,14 @@ module.exports = (obj) => {
                     return tile.val || '0'
                 },
                 handler: (eng, t) => {
-                    t.val += 1
+                    t.val += eng.player.turnValve
+                    if(t.val < t.min)
+                        t.val = t.max
                     if(t.val > t.max)
                         t.val = t.min
-                    if(t.state)
-                        t.on(eng, t)
-                    else
-                        t.off(eng, t)
+
+                    if(cb)
+                        cb(t)
                 },
 
                 ...o
