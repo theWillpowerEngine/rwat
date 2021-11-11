@@ -94,6 +94,26 @@ module.exports = (eng) => {
                 }
             })
 
+            //Other controls
+            theMap.addValve(13, 16, "Turbine Output Setting", 1, 5, eng.ship.reactor.turbineSetting, (tile) => {
+                eng.ship.reactor.turbineSetting = tile.val
+            }, {
+                color: "cyan",
+                char: (eng, tile) => {
+                    var val = eng.ship.reactor.turbineSetting
+                    return displayVals[val]
+                }
+            })
+            theMap.addValve(13, 15, "Boiler Temperature Setting", 1, 5, eng.ship.reactor.boilerSetting, (tile) => {
+                eng.ship.reactor.boilerSetting = tile.val
+            }, {
+                color: "cyan",
+                char: (eng, tile) => {
+                    var val = eng.ship.reactor.boilerSetting
+                    return displayVals[val]
+                }
+            })
+
         },
         applyLights() {
             engine.lights.setAmbient(engine.lights.create(colors.lantern, 0.5, 0.5))
