@@ -6,10 +6,7 @@ module.exports = (eng) => {
         reactor: null,
 
         tick() {
-            var reactorOutputs = that.reactor.cycle()
-            console.log(reactorOutputs)
-            console.log(that.reactor)
-            console.log("--------------------------------")
+            that.reactor.cycle()
         }
     }
 

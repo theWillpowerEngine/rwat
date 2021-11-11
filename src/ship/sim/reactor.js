@@ -29,14 +29,17 @@ module.exports = (eng, sh) => {
         internalTemp: 0,
         internalPressure: 0,
         internalThaums: 0,
+        internalParadox: 0,
+        internalAntimagic: 0,
 
         breach: 0,
 
         turbineForce: 0,
         turbineSetting: 1,
+        boilerSetting: 1,
+        boilerHeat: 0,
 
         fuel: fuelRodArray,
-        
         control: [
             {a: fuelRodArray[0], b: fuelRodArray[1], position: 10},
             {a: fuelRodArray[1], b: fuelRodArray[2], position: 10},
@@ -44,13 +47,17 @@ module.exports = (eng, sh) => {
             {a: fuelRodArray[3], b: fuelRodArray[0], position: 10},
         ],
 
+        _previousCycleNewThaums: 0,
         cycle() {
             if(that.coolantPressure < 1 && that.coolantGravityPump)
                 that.coolantPressure = 1
+            if(that.coolantPressure < 0 || ! that.coolantPressure)
+                that.coolantPressure = 0
 
             var accCount = 0
 
             //Control rods "gather" thaums by being retracted
+            var newThaums = 0
             for(var rod of that.control) {
                 var amt = 10 - rod.position
                 if(amt) {
@@ -60,19 +67,92 @@ module.exports = (eng, sh) => {
                         rod.a.quality -= (that.internalTemp - 10)
                         rod.b.quality -= (that.internalTemp - 10)
                     } 
-                    that.internalThaums += Math.round(Math.round((rod.a.quality / 1000) - rod.position) + Math.round((rod.b.quality / 1000)- rod.position) / 5)
+                    amt = Math.round(Math.round((rod.a.quality / 1000) - rod.position) + Math.round((rod.b.quality / 1000)- rod.position) / 5)
+
+                    if(that.internalTemp < 4)
+                        amt -= 1 //(4 - that.internalTemp)
+                    else if(that.internalTemp > 7)
+                        amt += (that.internalTemp - 7)
+
+                    if(amt < 0)
+                        amt = 0
+                    newThaums += amt
+                }
+            }
+            that.internalThaums += newThaums
+            
+            //Thaums collide, creating heat and paradox
+            if(newThaums) {    
+                var reactionHeat = Math.round(Math.sqrt(that.internalThaums))
+                that.internalTemp = Math.round((reactionHeat + (that.internalTemp * 4)) / 5)
+                that.internalParadox += newThaums
+            } else {
+                that.internalThaums -= 1
+                that.internalTemp -= 1 + that.coolantPressure
+                that.internalParadox -= 1
+                if(that.internalThaums < 0) that.internalThaums = 0
+                if(that.internalTemp < 0) that.internalTemp = 0
+                if(that.internalParadox < 0) that.internalParadox = 0
+            }
+
+            that._previousCycleNewThaums = newThaums
+
+            //Coolant lowers heat and produces pressure
+            if(that.internalTemp && that.coolantPressure) {
+                that.internalPressure = that.coolantPressure
+                var coolingDelta = that.internalTemp - that.coolantTemp
+                if(coolingDelta > 0)
+                {
+                    that.internalTemp = Math.round(((that.coolantTemp * 2) + (that.internalTemp * 3)) / 5)
+                    if(newThaums) {
+                        that.internalPressure = Math.round(((that.coolantPressure * 2) + (that.internalTemp * 3)) / 5)
+                        that.coolantTemp = Math.round(((that.coolantTemp * 3) + (that.internalTemp * 2)) / 5)
+                    } else {
+                        that.coolantTemp = Math.round(((that.coolantTemp * 9) + (that.internalTemp * 1)) / 10)
+                    }
                 }
             }
 
-            if(that.internalThaums) {
-                //Thaums collide, creating heat
-                var reactionHeat = Math.floor(that.internalThaums / (that.coolantPressure ? 3 : 2))
-                var reactionLoss = Math.floor(that.internalThaums / (that.coolantPressure ? 4 : 3))
-                that.internalThaums -= reactionLoss
-                that.internalTemp = Math.round((reactionHeat + that.internalTemp + that.internalTemp) / 3)
-
-                engine.log(`T: ${that.internalThaums}, Temp: ${that.internalTemp}`)
+            //Pressure + Paradox creates Antimagic
+            if(that.internalPressure && that.internalParadox) {
+                
             }
+
+            //Heat burns off Antimagic
+
+            //Antimagic reduces Thaums
+
+            //Excess Pressure/Paradox/Heat all represent different problems
+            
+            //Pressure is expended to turns the turbines
+            var overPressure = that.internalPressure - 1
+            if(that.turbineSetting && overPressure) {
+                if(overPressure > that.turbineSetting) {
+                    that.turbineForce = that.turbineSetting
+                    that.internalPressure -= that.turbineSetting
+                } else if(overPressure > 0) {
+                    that.turbineForce = overPressure
+                    that.internalPressure = 1
+                }
+            }
+
+            //Coolant Heat is expended to heat the boilers
+            if(that.boilerSetting) {
+                if(that.coolantTemp > that.boilerSetting) {
+                    that.boilerHeat = that.boilerSetting
+                    that.coolantTemp -= that.boilerHeat
+                } else {
+                    that.boilerHeat = that.coolantTemp
+                    that.coolantTemp = 0
+                }
+            }
+
+            that.coolantPressure = that.internalPressure
+            that.coolantTemp -= 1
+            if(that.coolantTemp < 0)
+                that.coolantTemp = 0
+
+            engine.log(`Th: ${that.internalThaums}, Temp: ${that.internalTemp}, P: ${that.internalPressure}, Pd: ${that.internalParadox}, AM: ${that.internalAntimagic}, TF: ${that.turbineForce}, BH: ${that.boilerHeat}`)
 
             // //Apply coolant to internal temperature
             // if(that.coolantFlow) {

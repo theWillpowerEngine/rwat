@@ -48,11 +48,11 @@ module.exports = (eng) => {
 
             //Coolant Valve
             theMap.addSwitch(8, 16, "Coolant Flow Control", (eng, tile) => {    
-                engine.ship.reactor.incomingCoolantOn = true  
+                engine.ship.reactor.coolantGravityPump = true  
                 engine.log("You turn main coolant flow on.")
             }, 
             (eng, tile) => { 
-                engine.ship.reactor.incomingCoolantOn = false
+                engine.ship.reactor.coolantGravityPump = false
                 engine.log("You turn main coolant flow off.")  
             })
             

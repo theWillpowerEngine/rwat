@@ -10,6 +10,8 @@ window.keyBinds = {
     moveSE: 'shift+s',
     moveSW: 'shift+a',
 
+    advanceTick: "shift+space",
+
     toggleValve: "shift+t",
     devTools: 'F12',
     exit: 'escape',
@@ -56,12 +58,19 @@ module.exports = (eng, kbs) => {
         engine.render()
     });
 
+    //Interaction toggles
     hotkeys(binds.toggleValve, function (event, handler){
         engine.player.turnValve = (engine.player.turnValve == -1 ? 1 : -1)
         engine.log(`You will now turn valves and dials ${(engine.player.turnValve == -1 ? "down" : "up")}.`)
         engine.render()
     });
 
+    //Misc. Actions
+    hotkeys(binds.advanceTick, function (event, handler){
+        engine.render()
+    });
+
+    //System Keys
     hotkeys(binds.exit, function (event, handler){
         window.close()
     });

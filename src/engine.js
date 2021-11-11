@@ -28,7 +28,6 @@ module.exports = (logger, opts) => {
         
         logText: '',
         log(msg) {
-            console.log(msg)
             that.logText += (msg || '') + "<br />"
         },
 
