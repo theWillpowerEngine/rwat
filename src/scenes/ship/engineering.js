@@ -2,7 +2,7 @@ const map = require("../../map/map.js")
 const tiles = require("../../map/tiles.js")
 const colors = require("../../map/colors.js")
 
-const displayVals = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'M', 'A', 'B', 'C', 'D', 'E,', 'F']
+const displayVals = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'M', 'A', 'B', 'C', 'D', 'E', 'F']
 function colorForDisplayVal(val) {
     if(val > 13)
         return 'red'
@@ -47,7 +47,7 @@ module.exports = (eng) => {
             })
 
             //Coolant Valve
-            theMap.addValve(8, 16, "Coolant Flow Valve", 0, 10, eng.ship.reactor.coolantFlow, (tile) => {
+            theMap.addValve(8, 16, "Coolant Flow Valve", 0, 5, eng.ship.reactor.coolantFlow, (tile) => {
                 eng.ship.reactor.coolantFlow = tile.val
             }, {
                 color: "green",

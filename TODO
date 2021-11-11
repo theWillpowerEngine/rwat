@@ -1,10 +1,11 @@
 Reactor:
     Test
-    Pressure with no incoming pressure just as a function of heat
     It seems like coolant makes things hotter at a certain point?
+    Figure out the curve and add turbines
     Scram button
     More indicators and warnings
     Light sources for indicators
+    water pipes
 
 Water flow tiles
 

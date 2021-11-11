@@ -76,12 +76,14 @@ module.exports = (eng, sh) => {
                 outputs.heat -= 1
             
             //Calc pressure and modify temperature
-            if(that.coolantFlow > that.internalPressure)
-                outputs.pressure = Math.floor((that.coolantFlow + that.internalPressure) / 2)
-            else if(that.coolantFlow > that.internalPressure)
-                outputs.pressure = Math.floor((that.coolantFlow + that.internalPressure + that.internalPressure) / 3)
-            else
-                outputs.pressure = that.internalPressure
+            if(outputs.heat > 1) {
+                if(that.coolantFlow > that.internalPressure)
+                    outputs.pressure = Math.floor((that.coolantFlow + that.internalPressure) / 2)
+                else if(that.coolantFlow > that.internalPressure)
+                    outputs.pressure = Math.floor((that.coolantFlow + that.internalPressure + that.internalPressure) / 3)
+                else
+                    outputs.pressure = that.internalPressure
+            }
 
             //Apply coolant to internal temperature
             if(that.coolantFlow) {
@@ -95,14 +97,17 @@ module.exports = (eng, sh) => {
             //2.3:  Apply low/high heat/pressure effects
             //Meltdown
             if(outputs.heat > 11) {
+                engine.log("Meltdown!")
                 outputs.heat += 2
                 outputs.thaums += outputs.heat - 10
                 outputs.paradox += outputs.heat - 10
-                outputs.pressure += Math.floor((outputs.heat - 10) / 2)
+                if(outputs.pressure > 0)
+                    outputs.pressure += Math.floor((outputs.heat - 10) / 2)
             }
 
             //Containment Breach
             if(outputs.pressure > 12) {
+                engine.log("Breach!  Amount: " + that.breach)
                 that.breach += 1
                 outputs.pressure -= that.breach
                 outputs.paradox += that.breach
