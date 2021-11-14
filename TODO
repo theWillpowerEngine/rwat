@@ -1,7 +1,9 @@
 Reactor:
-   Finish new cycle (going well so far.  Need to scale back Thaums at low reactions, etc. but decent so far)
+   Increase heat/pressure with excess Thaums (burn them off fast)
+   Create thaumatic capacitor
    Add light sources, indicators and water flow tiles
    Add Scram and Emergency AM dump buttons (after adding buttons, lol)
+   Test various fail conditions
 
 doors
 

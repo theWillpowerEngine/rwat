@@ -115,14 +115,34 @@ module.exports = (eng, sh) => {
 
             //Pressure + Paradox creates Antimagic
             if(that.internalPressure && that.internalParadox) {
-                
+                if(that.internalParadox >= that.internalPressure) {
+                    that.internalAntimagic += that.internalPressure
+                    that.internalParadox -= that.internalPressure
+                } else {
+                    that.internalAntimagic += that.internalParadox
+                    that.internalParadox = 0
+                }
             }
 
             //Heat burns off Antimagic
+            if(that.internalHeat > 5) {
+                that.internalAntimagic -= (that.internalHeat - 5)
+            }
 
             //Antimagic reduces Thaums
+            if(that.internalAntimagic) {
+                if(that.internalThaums >= that.internalAntimagic) {
+                    that.internalThaums -= that.internalAntimagic
+                    that.internalAntimagic = 0
+                } else {
+                    that.internalAntimagic -= that.internalThaums
+                    that.internalThaums = 0
+                }
+            }
 
             //Excess Pressure/Paradox/Heat all represent different problems
+            
+
             
             //Pressure is expended to turns the turbines
             var overPressure = that.internalPressure - 1
