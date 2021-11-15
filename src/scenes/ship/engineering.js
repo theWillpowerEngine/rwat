@@ -33,6 +33,18 @@ module.exports = (eng) => {
             theMap.hline(tiles.shipWall, 0, 0, 20)
             theMap.hline(tiles.shipWall, 0, 19, 20)
 
+            //Misc Map pieces (pipes/etc.)
+            theMap.addDisplay(1, 18, "a coolant pipe", (eng, tile) => {
+                if(eng.ship.reactor.coolantPressure || eng.ship.reactor.coolantGravityPump)
+                    tile.color = 'blue'
+                else
+                    tile.color = 'grey'
+                return 'o'
+            }, {color: 'grey'})
+
+            //Glowing Indicators
+            
+
             //Gauges and Displays
             theMap.addDisplay(0, 18, "the Internal Pressure Gauge", (eng, tile) => {
                 var val = eng.ship.reactor.internalPressure || 0
