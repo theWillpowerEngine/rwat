@@ -34,14 +34,14 @@ module.exports = (eng) => {
             theMap.hline(tiles.shipWall, 0, 19, 20)
 
             //Gauges and Displays
-            theMap.addDisplay(0, 18, "Internal Pressure Gauge", (eng, tile) => {
+            theMap.addDisplay(0, 18, "the Internal Pressure Gauge", (eng, tile) => {
                 var val = eng.ship.reactor.internalPressure || 0
                 tile.color = colorForDisplayVal(val)
                 if(displayVals.length > val)
                     return displayVals[val]
                 return 'X'
             })
-            theMap.addDisplay(1, 19, "Internal Temperature Gauge", (eng, tile) => {
+            theMap.addDisplay(1, 19, "the Internal Temperature Gauge", (eng, tile) => {
                 var val = eng.ship.reactor.internalTemp || 0
                 tile.color = colorForDisplayVal(val)
                 if(displayVals.length > val)
@@ -49,7 +49,7 @@ module.exports = (eng) => {
                 return 'X'
             })
             
-            theMap.addDisplay(3, 19, "Reactivity +/- Indicator", (eng, tile) => {
+            theMap.addDisplay(3, 19, "the Reactivity +/- Indicator", (eng, tile) => {
                 var old = eng.ship.reactor.info.previousThaums,
                     cur = eng.ship.reactor.internalThaums
 
@@ -59,7 +59,7 @@ module.exports = (eng) => {
                     return '-'
                 return '='
             }, {color: colors.white})
-            theMap.addDisplay(4, 19, "Reactivity Amount Indicator", (eng, tile) => {
+            theMap.addDisplay(4, 19, "the Reactivity Amount Indicator", (eng, tile) => {
                 var old = eng.ship.reactor.info.previousThaums,
                     cur = eng.ship.reactor.internalThaums                
                 var val = Math.abs(old - cur)
@@ -72,15 +72,15 @@ module.exports = (eng) => {
             }, {color: colors.white})
 
             //Coolant Valve and SCRAM
-            theMap.addSwitch(1, 17, "Coolant Flow Control", (eng, tile) => {    
+            theMap.addSwitch(1, 17, "the Coolant Boost Pump control switch", (eng, tile) => {    
                 engine.ship.reactor.coolantGravityPump = true  
-                engine.log("You turn main coolant flow on.")
+                engine.log("You turn the coolant gravity pump on.")
             }, 
             (eng, tile) => { 
                 engine.ship.reactor.coolantGravityPump = false
-                engine.log("You turn main coolant flow off.")  
+                engine.log("You turn main coolant boost pump off.")  
             })
-            theMap.addButton(1, 16, "Reactor SCRAM button", (eng, tile) => {
+            theMap.addButton(1, 16, "the Reactor SCRAM button", (eng, tile) => {
                 for(var i in eng.ship.reactor.control)
                     eng.ship.reactor.control[i].position = 10
             }, {
@@ -88,7 +88,7 @@ module.exports = (eng) => {
             })
             
             //Control Rods
-            theMap.addValve(5, 18, "Control Rod #1", 1, 10, eng.ship.reactor.control[0].position, (tile) => {
+            theMap.addValve(5, 18, "the #1 Rod Controller", 1, 10, eng.ship.reactor.control[0].position, (tile) => {
                 eng.ship.reactor.control[0].position = tile.val
             }, {
                 color: "green",
@@ -97,7 +97,7 @@ module.exports = (eng) => {
                     return displayVals[val]
                 }
             })
-            theMap.addValve(4, 18, "Control Rod #2", 1, 10, eng.ship.reactor.control[1].position, (tile) => {
+            theMap.addValve(4, 18, "the #2 Rod Controller", 1, 10, eng.ship.reactor.control[1].position, (tile) => {
                 eng.ship.reactor.control[1].position = tile.val
             }, {
                 color: "green",
@@ -106,7 +106,7 @@ module.exports = (eng) => {
                     return displayVals[val]
                 }
             })
-            theMap.addValve(3, 18, "Control Rod #3", 1, 10, eng.ship.reactor.control[2].position, (tile) => {
+            theMap.addValve(3, 18, "the #3 Rod Controller", 1, 10, eng.ship.reactor.control[2].position, (tile) => {
                 eng.ship.reactor.control[2].position = tile.val
             }, {
                 color: "green",
@@ -115,7 +115,7 @@ module.exports = (eng) => {
                     return displayVals[val]
                 }
             })
-            theMap.addValve(2, 18, "Control Rod #4", 1, 10, eng.ship.reactor.control[3].position, (tile) => {
+            theMap.addValve(2, 18, "the #4 Rod Controller", 1, 10, eng.ship.reactor.control[3].position, (tile) => {
                 eng.ship.reactor.control[3].position = tile.val
             }, {
                 color: "green",
@@ -126,7 +126,7 @@ module.exports = (eng) => {
             })
 
             //Other controls
-            theMap.addValve(6, 17, "Turbine Output Setting", 0, 3, eng.ship.reactor.turbineSetting, (tile) => {
+            theMap.addValve(6, 17, "the Turbine Max setting", 0, 3, eng.ship.reactor.turbineSetting, (tile) => {
                 eng.ship.reactor.turbineSetting = tile.val
             }, {
                 color: "cyan",
@@ -135,7 +135,7 @@ module.exports = (eng) => {
                     return displayVals[val]
                 }
             })
-            theMap.addValve(6, 16, "Boiler Temperature Setting", 0, 3, eng.ship.reactor.boilerSetting, (tile) => {
+            theMap.addValve(6, 16, "the Boiler Temperature setting", 0, 3, eng.ship.reactor.boilerSetting, (tile) => {
                 eng.ship.reactor.boilerSetting = tile.val
             }, {
                 color: "cyan",

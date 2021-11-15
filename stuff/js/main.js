@@ -36,7 +36,7 @@ $(() => {
         coords.y = Math.trunc(coords.y /= 20)
         var tile = engine.renderer.getTileAt(coords.x, coords.y)
         if(tile)
-            logMsg(tile.desc + "<br />")
+            logMsg("That's " + tile.desc + "<br />")
     })
 
     var resizeTimer;

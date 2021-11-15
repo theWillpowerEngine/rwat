@@ -30,7 +30,7 @@ var that = module.exports = {
         color: "#0000ff",
         bg: color.lantern,  //Color(color.lantern).mix(Color(color.background), 0.5).hex(),
         isPC: true,
-        desc: "You"
+        desc: "you (duh)"
     }),
 
     switch: makeTile({
@@ -39,7 +39,7 @@ var that = module.exports = {
         color: "white",
         interactive: true,
         transparent: true,
-        desc: "A switch"
+        desc: "a switch"
     }),
     button: makeTile({
         solid: true,
@@ -47,7 +47,7 @@ var that = module.exports = {
         color: "white",
         interactive: true,
         transparent: true,
-        desc: "A button"
+        desc: "a button"
     }),
 
     display: makeTile({
@@ -56,19 +56,19 @@ var that = module.exports = {
         color: "grey",
         interactive: false,
         transparent: false,
-        desc: "A gauge"
+        desc: "a gauge"
     }),
 
     shipFloor: makeTile({
         solid: false,
         char: ".",
         color: color.grey,
-        desc: "Floor"
+        desc: "just some floor"
     }),
     shipWall: makeTile({
         char: "#",
         color: color.grey,
-        desc: "A wall"
+        desc: "a wall"
 
     }),
 
