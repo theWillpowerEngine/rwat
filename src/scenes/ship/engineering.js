@@ -33,20 +33,43 @@ module.exports = (eng) => {
             theMap.hline(tiles.shipWall, 0, 0, 20)
             theMap.hline(tiles.shipWall, 0, 19, 20)
 
-            theMap.addDisplay(2, 19, "Pressure Gauge", (eng, tile) => {
+            //Gauges and Displays
+            theMap.addDisplay(0, 18, "Internal Pressure Gauge", (eng, tile) => {
                 var val = eng.ship.reactor.internalPressure || 0
                 tile.color = colorForDisplayVal(val)
                 if(displayVals.length > val)
                     return displayVals[val]
                 return 'X'
             })
-            theMap.addDisplay(4, 19, "Temperature Gauge", (eng, tile) => {
+            theMap.addDisplay(1, 19, "Internal Temperature Gauge", (eng, tile) => {
                 var val = eng.ship.reactor.internalTemp || 0
                 tile.color = colorForDisplayVal(val)
                 if(displayVals.length > val)
                     return displayVals[val]
                 return 'X'
             })
+            
+            theMap.addDisplay(3, 19, "Reactivity +/- Indicator", (eng, tile) => {
+                var old = eng.ship.reactor.info.previousThaums,
+                    cur = eng.ship.reactor.internalThaums
+
+                if(old < cur)
+                    return '+'
+                if(old > cur)
+                    return '-'
+                return '='
+            }, {color: colors.white})
+            theMap.addDisplay(4, 19, "Reactivity Amount Indicator", (eng, tile) => {
+                var old = eng.ship.reactor.info.previousThaums,
+                    cur = eng.ship.reactor.internalThaums                
+                var val = Math.abs(old - cur)
+
+                if(val == 0)
+                    return '='
+                if(displayVals.length > val)
+                    return displayVals[val]
+                return 'X'
+            }, {color: colors.white})
 
             //Coolant Valve and SCRAM
             theMap.addSwitch(1, 17, "Coolant Flow Control", (eng, tile) => {    

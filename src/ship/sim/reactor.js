@@ -40,8 +40,8 @@ module.exports = (eng, sh) => {
         breach: 0,
 
         turbineForce: 0,
-        turbineSetting: 1,
-        boilerSetting: 1,
+        turbineSetting: 0,
+        boilerSetting: 0,
         boilerHeat: 0,
 
         fuel: fuelRodArray,
@@ -52,15 +52,20 @@ module.exports = (eng, sh) => {
             {a: fuelRodArray[3], b: fuelRodArray[0], position: 10},
         ],
 
-        _previousCycleNewThaums: 0,
+        info: {
+            previousNewThaums: 0,
+            newThaums: 0,
+            previousThaums: 0
+        },
+
         cycle() {
             if(that.coolantPressure < 1 && that.coolantGravityPump)
                 that.coolantPressure = 1
             if(that.coolantPressure < 0 || ! that.coolantPressure)
                 that.coolantPressure = 0
 
-            var accCount = 0
-
+            that.info.previousThaums = that.internalThaums
+            
             //Control rods "gather" thaums by being retracted
             var newThaums = 0
             for(var rod of that.control) {
@@ -100,7 +105,8 @@ module.exports = (eng, sh) => {
                 if(that.internalParadox < 0) that.internalParadox = 0
             }
 
-            that._previousCycleNewThaums = newThaums
+            that.info.previousNewThaums = that.info.newThaums
+            that.info.newThaums = newThaums
 
             //Coolant lowers heat and produces pressure
             if(that.internalTemp && that.coolantPressure) {
