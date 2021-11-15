@@ -6,9 +6,11 @@ const displayVals = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'M', 'A',
 function colorForDisplayVal(val) {
     if(val > 13)
         return 'red'
-    else if (val > 10)
+    else if (val > 11)
         return 'orange'
-    else if (val > 8)
+    else if (val > 9)
+        return 'yellow'
+    else if (val > 7)
         return 'blue'
     else if (val > 2)
         return 'green'
@@ -46,7 +48,7 @@ module.exports = (eng) => {
                 return 'X'
             })
 
-            //Coolant Valve
+            //Coolant Valve and SCRAM
             theMap.addSwitch(1, 17, "Coolant Flow Control", (eng, tile) => {    
                 engine.ship.reactor.coolantGravityPump = true  
                 engine.log("You turn main coolant flow on.")
@@ -54,6 +56,12 @@ module.exports = (eng) => {
             (eng, tile) => { 
                 engine.ship.reactor.coolantGravityPump = false
                 engine.log("You turn main coolant flow off.")  
+            })
+            theMap.addButton(1, 16, "Reactor SCRAM button", (eng, tile) => {
+                for(var i in eng.ship.reactor.control)
+                    eng.ship.reactor.control[i].position = 10
+            }, {
+                color: 'red'
             })
             
             //Control Rods
@@ -95,7 +103,7 @@ module.exports = (eng) => {
             })
 
             //Other controls
-            theMap.addValve(6, 17, "Turbine Output Setting", 1, 3, eng.ship.reactor.turbineSetting, (tile) => {
+            theMap.addValve(6, 17, "Turbine Output Setting", 0, 3, eng.ship.reactor.turbineSetting, (tile) => {
                 eng.ship.reactor.turbineSetting = tile.val
             }, {
                 color: "cyan",
@@ -104,7 +112,7 @@ module.exports = (eng) => {
                     return displayVals[val]
                 }
             })
-            theMap.addValve(6, 16, "Boiler Temperature Setting", 1, 3, eng.ship.reactor.boilerSetting, (tile) => {
+            theMap.addValve(6, 16, "Boiler Temperature Setting", 0, 3, eng.ship.reactor.boilerSetting, (tile) => {
                 eng.ship.reactor.boilerSetting = tile.val
             }, {
                 color: "cyan",

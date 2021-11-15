@@ -14,6 +14,7 @@ module.exports = (logger, opts) => {
     }
 
     var that = {
+        gameOver: false,
         tileSize: 20,
 
         maps: {
@@ -110,6 +111,9 @@ module.exports = (logger, opts) => {
         },
 
         render() {
+            if(that.gameOver)
+                throw that.gameOver
+                
             var start = new Date()
             var $game = $("#game")
             that.ship.tick()

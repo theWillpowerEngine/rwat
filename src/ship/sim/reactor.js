@@ -15,13 +15,18 @@ module.exports = (eng, sh) => {
     let ship = sh
 
     var fuelRodArray = [
-        {quality: 10000},
-        {quality: 10000},
-        {quality: 10000},
-        {quality: 10000}
+        {quality: 100000},
+        {quality: 100000},
+        {quality: 100000},
+        {quality: 100000}
     ]
 
     var that = {
+        limits: {
+            pressure: 15,
+            heat: 20,
+            paradox: 10000
+        },
         coolantGravityPump: false,
         coolantPressure: 0,
         coolantTemp: 0,
@@ -67,7 +72,7 @@ module.exports = (eng, sh) => {
                         rod.a.quality -= (that.internalTemp - 10)
                         rod.b.quality -= (that.internalTemp - 10)
                     } 
-                    amt = Math.round(Math.round((rod.a.quality / 1000) - rod.position) + Math.round((rod.b.quality / 1000)- rod.position) / 5)
+                    amt = Math.round(Math.round((rod.a.quality / 10000) - rod.position) + Math.round((rod.b.quality / 10000)- rod.position) / 5)
 
                     if(that.internalTemp < 4)
                         amt -= 1
@@ -124,6 +129,12 @@ module.exports = (eng, sh) => {
                 }
             }
 
+            //Heat burns off Antimagic
+            if(that.internalTemp > 5) {
+                that.internalAntimagic -= (that.internalTemp - 5)
+                if(that.internalAntimagic < 0) that.internalAntimagic = 0
+            }
+
             //Antimagic reduces Thaums
             if(that.internalAntimagic) {
                 if(that.internalThaums >= that.internalAntimagic) {
@@ -135,16 +146,25 @@ module.exports = (eng, sh) => {
                 }
             }
 
-            //Heat burns off Antimagic
-            if(that.internalHeat > 5) {
-                that.internalAntimagic -= (that.internalHeat - 5)
-                if(that.internalAntimagic < 0) that.internalAntimagic = 0
+            //Excess Pressure/Paradox/Heat all represent different problems
+            if(that.internalPressure > that.limits.pressure) {
+                that.breach += that.internalPressure - that.limits.pressure
             }
 
-            //Excess Pressure/Paradox/Heat all represent different problems
-            
+            if(that.internalTemp > that.limits.heat) {
+                engine.gameOver = "The reactor melted down"
+            }
 
+            if(that.internalParadox > that.limits.paradox) {
+                engine.gameOver = "The reactor created a paradox event"
+            }
             
+            if(that.breach) {
+                that.internalPressure -= that.breach
+                if(that.breach > 5)
+                    engine.gameOver = "A reactor breach caused the ship to come apart"
+            }
+
             //Pressure is expended to turns the turbines
             var overPressure = that.internalPressure - 1
             if(that.turbineSetting && overPressure) {
@@ -172,105 +192,7 @@ module.exports = (eng, sh) => {
             that.coolantTemp -= 1
             if(that.coolantTemp < 0)
                 that.coolantTemp = 0
-
-            engine.log(`Th: ${that.internalThaums}, Temp: ${that.internalTemp}, P: ${that.internalPressure}, Pd: ${that.internalParadox}, AM: ${that.internalAntimagic}, TF: ${that.turbineForce}, BH: ${that.boilerHeat}`)
-
-            // //Apply coolant to internal temperature
-            // if(that.coolantFlow) {
-            //     outputs.heat -= that.coolantFlow / 3
-            //     outputs.heat = Math.round(outputs.heat)
-            //     if(outputs.heat < 0)
-            //         outputs.heat = 0
-            // }
-
-            // //Finalize heat
-            // outputs.heat = Math.round((outputs.heat + outputs.heat + that.internalTemp) / 3)
-
-            // //Calc pressure
-            // if(outputs.heat > 1 && that.coolantFlow > 0) {                    
-            //     outputs.pressure += outputs.heat / 2
-
-            //     if(that.coolantFlow < outputs.pressure)
-            //         outputs.pressure -= (reactor.internalPressure - that.coolantFlow)
-
-            //     if(outputs.pressure < 0)
-            //         outputs.pressure = 0
-            //     if(outputs.pressure > outputs.heat * 2)
-            //         outputs.pressure = outputs.heat * 2
-            // }
-
-            // //2.3:  Apply low/high heat/pressure effects
-            // //Meltdown
-            // if(outputs.heat > 14) {
-            //     engine.log("Meltdown!")
-            //     outputs.heat += 2
-            //     outputs.thaums += outputs.heat - 10
-            //     outputs.paradox += outputs.heat - 10
-            //     if(outputs.pressure > 0)
-            //         outputs.pressure += Math.floor((outputs.heat - 10) / 2)
-            // }
-
-            // //Containment Breach
-            // if(outputs.pressure > 14) {
-            //     engine.log("Breach!  Amount: " + that.breach)
-            //     that.breach += 1
-            //     outputs.pressure -= that.breach
-            //     outputs.paradox += that.breach
-            // }
-
-            // //Reactor Poisoning
-            // if(outputs.pressure < 3) {
-            //     if(outputs.thaums > 3)
-            //         outputs.antimagic += (outputs.thaums - 3)
-            //     if(outputs.heat > 5)
-            //         outputs.heat += 1 + outputs.antimagic
-            // }
-
-            // //Step 3 - Cancel paradox/antimagic and accumulate thaums
-            // if(outputs.antimagic) {
-            //     outputs.antimagic -= outputs.thaums
-            //     if(outputs.antimagic < 0) {
-            //         outputs.thaums = Math.abs(outputs.antimagic)
-            //         outputs.antimagic = 0
-            //     } else {
-            //         outputs.thaums = 0
-            //     }
-            // }
-
-            // if(outputs.paradox) {
-            //     if(outputs.thaums < 5)
-            //         outputs.paradox -= 1
-            //     if(outputs.thaums < 3)
-            //         outputs.paradox -= 1
-            //     if(outputs.thaums < 2)
-            //         outputs.paradox -= 1
-            //     if(outputs.thaums == 0)
-            //         outputs.paradox -= 1
-            // }
-
-            // //Accumulate
-            // that.internalThaums += outputs.thaums
-            // var fifthThaums = Math.floor(outputs.thaums / 5)
-            // if(fifthThaums == 0)  fifthThaums = 1
-            // outputs.thaums = accRods.length * fifthThaums
-            // that.internalThaums -= outputs.thaums
-
-            // //Extract values
-            // that.internalPressure = Math.round(outputs.pressure)
-            // that.outgoingCoolantTemp = that.internalTemp = Math.round(outputs.heat)
-            
-            // if(outputs.pressure > that.turbineSetting) {
-            //     that.turbineForce = that.turbineSetting
-            //     outputs.pressure -= that.turbineSetting
-            // } else {
-            //     that.turbineForce = outputs.pressure
-            //     outputs.pressure = 0
-            // }
- 
-            // that.outgoingCoolantPressure = Math.round(outputs.pressure)
- 
-            // return outputs
-        }
+       }
     }
     
     return that

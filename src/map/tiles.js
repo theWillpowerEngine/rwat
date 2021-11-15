@@ -24,7 +24,6 @@ var that = module.exports = {
             ...extra,
         }
     },
-
     player: makeTile({
         solid: true,
         char: "@",
@@ -41,6 +40,14 @@ var that = module.exports = {
         interactive: true,
         transparent: true,
         desc: "A switch"
+    }),
+    button: makeTile({
+        solid: true,
+        char: "©",
+        color: "white",
+        interactive: true,
+        transparent: true,
+        desc: "A button"
     }),
 
     display: makeTile({

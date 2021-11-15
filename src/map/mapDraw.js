@@ -41,6 +41,14 @@ module.exports = (obj) => {
                 ...o
              })
         },
+        addButton(x, y, desc, event, o) {
+            that.tiles[x][y] = tiles.merge(tiles.button, { 
+                desc,
+                handler: event,
+
+                ...o
+             })
+        },
      
         addDisplay(x, y, desc, displayer, o) {
             that.tiles[x][y] = tiles.merge(tiles.display, { 
