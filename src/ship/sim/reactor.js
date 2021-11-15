@@ -70,7 +70,7 @@ module.exports = (eng, sh) => {
                     amt = Math.round(Math.round((rod.a.quality / 1000) - rod.position) + Math.round((rod.b.quality / 1000)- rod.position) / 5)
 
                     if(that.internalTemp < 4)
-                        amt -= 1 //(4 - that.internalTemp)
+                        amt -= 1
                     else if(that.internalTemp > 7)
                         amt += (that.internalTemp - 7)
 
@@ -116,17 +116,12 @@ module.exports = (eng, sh) => {
             //Pressure + Paradox creates Antimagic
             if(that.internalPressure && that.internalParadox) {
                 if(that.internalParadox >= that.internalPressure) {
-                    that.internalAntimagic += that.internalPressure
-                    that.internalParadox -= that.internalPressure
+                    that.internalAntimagic += (that.internalPressure)
+                    that.internalParadox -= (that.internalPressure)
                 } else {
                     that.internalAntimagic += that.internalParadox
                     that.internalParadox = 0
                 }
-            }
-
-            //Heat burns off Antimagic
-            if(that.internalHeat > 5) {
-                that.internalAntimagic -= (that.internalHeat - 5)
             }
 
             //Antimagic reduces Thaums
@@ -138,6 +133,12 @@ module.exports = (eng, sh) => {
                     that.internalAntimagic -= that.internalThaums
                     that.internalThaums = 0
                 }
+            }
+
+            //Heat burns off Antimagic
+            if(that.internalHeat > 5) {
+                that.internalAntimagic -= (that.internalHeat - 5)
+                if(that.internalAntimagic < 0) that.internalAntimagic = 0
             }
 
             //Excess Pressure/Paradox/Heat all represent different problems
