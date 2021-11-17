@@ -1,11 +1,11 @@
-var color = require("./colors.js")
+var colors = require("./colors.js")
 var Color = require("color")
 
 const makeTile = (vals) => {
     return {
         solid: true,
         char: ' ',
-        color: color.white,
+        color: colors.white,
         bg: null,
         transparent: false,
         interactive: false,
@@ -27,8 +27,8 @@ var that = module.exports = {
     player: makeTile({
         solid: true,
         char: "@",
-        color: "#0000ff",
-        bg: color.lantern,  //Color(color.lantern).mix(Color(color.background), 0.5).hex(),
+        color: colors.cornwallis,
+        bg: colors.lantern,  //Color(color.lantern).mix(Color(color.background), 0.5).hex(),
         isPC: true,
         desc: "you (duh)"
     }),
@@ -36,7 +36,7 @@ var that = module.exports = {
     switch: makeTile({
         solid: true,
         char: "$",
-        color: "white",
+        color: colors.white,
         interactive: true,
         transparent: true,
         desc: "a switch"
@@ -44,7 +44,7 @@ var that = module.exports = {
     button: makeTile({
         solid: true,
         char: "©",
-        color: "white",
+        color: colors.white,
         interactive: true,
         transparent: true,
         desc: "a button"
@@ -53,7 +53,7 @@ var that = module.exports = {
     display: makeTile({
         solid: true,
         char: "0",
-        color: "grey",
+        color: colors.grey,
         interactive: false,
         transparent: false,
         desc: "a gauge"
@@ -62,14 +62,13 @@ var that = module.exports = {
     shipFloor: makeTile({
         solid: false,
         char: ".",
-        color: color.grey,
+        color: colors.grey,
         desc: "just some floor"
     }),
     shipWall: makeTile({
         char: "#",
-        color: color.grey,
+        color: colors.grey,
         desc: "a wall"
-
     }),
 
 }

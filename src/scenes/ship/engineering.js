@@ -5,17 +5,17 @@ const colors = require("../../map/colors.js")
 const displayVals = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'M', 'A', 'B', 'C', 'D', 'E', 'F']
 function colorForDisplayVal(val) {
     if(val > 13)
-        return 'red'
+        return colors.red
     else if (val > 11)
-        return 'orange'
+        return colors.orange
     else if (val > 9)
-        return 'yellow'
+        return colors.orange
     else if (val > 7)
-        return 'blue'
+        return colors.blue
     else if (val > 2)
-        return 'green'
+        return colors.green
     else
-        return colors.white
+        return colors.grey
 }
 
 module.exports = (eng) => {
@@ -33,17 +33,27 @@ module.exports = (eng) => {
             theMap.hline(tiles.shipWall, 0, 0, 20)
             theMap.hline(tiles.shipWall, 0, 19, 20)
 
+            theMap.vline(tiles.shipWall, 7, 15, 4)
+
             //Misc Map pieces (pipes/etc.)
             theMap.addDisplay(1, 18, "a coolant pipe", (eng, tile) => {
                 if(eng.ship.reactor.coolantPressure || eng.ship.reactor.coolantGravityPump)
-                    tile.color = 'blue'
+                    tile.color = colors.blue
                 else
-                    tile.color = 'grey'
+                    tile.color = colors.grey
                 return 'o'
-            }, {color: 'grey'})
+            }, {color: colors.grey})
 
             //Glowing Indicators
-            
+            // theMap.addDisplay(1, 8, "the Reactor Breach status light", (eng, tile) => {
+            //     var reactor = eng.ship.reactor
+                
+            //     if(reactor.breach) {
+            //         // tile.color = 'red'
+            //         // engine.lights.add(5, 5, "red", 1, 3, -0.2)
+            //     }
+            //     return '='                
+            // })
 
             //Gauges and Displays
             theMap.addDisplay(0, 18, "the Internal Pressure Gauge", (eng, tile) => {
@@ -95,15 +105,16 @@ module.exports = (eng) => {
             theMap.addButton(1, 16, "the Reactor SCRAM button", (eng, tile) => {
                 for(var i in eng.ship.reactor.control)
                     eng.ship.reactor.control[i].position = 10
+                eng.log("You scramble the reactor")
             }, {
-                color: 'red'
+                color: colors.red
             })
             
             //Control Rods
             theMap.addValve(5, 18, "the #1 Rod Controller", 1, 10, eng.ship.reactor.control[0].position, (tile) => {
                 eng.ship.reactor.control[0].position = tile.val
             }, {
-                color: "green",
+                color: colors.gold,
                 char: (eng, tile) => {
                     var val = eng.ship.reactor.control[0].position
                     return displayVals[val]
@@ -112,7 +123,7 @@ module.exports = (eng) => {
             theMap.addValve(4, 18, "the #2 Rod Controller", 1, 10, eng.ship.reactor.control[1].position, (tile) => {
                 eng.ship.reactor.control[1].position = tile.val
             }, {
-                color: "green",
+                color: colors.gold,
                 char: (eng, tile) => {
                     var val = eng.ship.reactor.control[1].position
                     return displayVals[val]
@@ -121,7 +132,7 @@ module.exports = (eng) => {
             theMap.addValve(3, 18, "the #3 Rod Controller", 1, 10, eng.ship.reactor.control[2].position, (tile) => {
                 eng.ship.reactor.control[2].position = tile.val
             }, {
-                color: "green",
+                color: colors.gold,
                 char: (eng, tile) => {
                     var val = eng.ship.reactor.control[2].position
                     return displayVals[val]
@@ -130,7 +141,7 @@ module.exports = (eng) => {
             theMap.addValve(2, 18, "the #4 Rod Controller", 1, 10, eng.ship.reactor.control[3].position, (tile) => {
                 eng.ship.reactor.control[3].position = tile.val
             }, {
-                color: "green",
+                color: colors.gold,
                 char: (eng, tile) => {
                     var val = eng.ship.reactor.control[3].position
                     return displayVals[val]
@@ -141,7 +152,7 @@ module.exports = (eng) => {
             theMap.addValve(6, 17, "the Turbine Max setting", 0, 3, eng.ship.reactor.turbineSetting, (tile) => {
                 eng.ship.reactor.turbineSetting = tile.val
             }, {
-                color: "cyan",
+                color: colors.silver,
                 char: (eng, tile) => {
                     var val = eng.ship.reactor.turbineSetting
                     return displayVals[val]
@@ -150,7 +161,7 @@ module.exports = (eng) => {
             theMap.addValve(6, 16, "the Boiler Temperature setting", 0, 3, eng.ship.reactor.boilerSetting, (tile) => {
                 eng.ship.reactor.boilerSetting = tile.val
             }, {
-                color: "cyan",
+                color: colors.silver,
                 char: (eng, tile) => {
                     var val = eng.ship.reactor.boilerSetting
                     return displayVals[val]
@@ -159,7 +170,7 @@ module.exports = (eng) => {
 
         },
         applyLights() {
-            engine.lights.setAmbient(engine.lights.create(colors.lantern, 0.5, 0.5))
+            engine.lights.setAmbient(engine.lights.create(colors.white, 0.5, 0.5))
          },
     }
 
