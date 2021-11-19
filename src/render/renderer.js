@@ -19,8 +19,7 @@ module.exports = (eng) => {
                         ...engine.player.tile,
                         bg: null
                     }
-            }
-                
+            }   
             
             var tile = null
             try {
@@ -28,6 +27,9 @@ module.exports = (eng) => {
             } catch(e) {
                 return null
             }
+
+            if(typeof tile.char === 'function')
+                tile.char = tile.char(engine, tile)
 
             //Check visibility
             if(!engine.checkLOS(x, y)) {

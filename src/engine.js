@@ -145,8 +145,6 @@ module.exports = (logger, opts) => {
                     let tile = that.renderer.getTileAt(x + offsetX, y + offsetY) 
                     if(!tile) continue
                     var c = tile.char
-                    if(typeof c === 'function')
-                        c = c(that, tile)
 
                     if(tile.isPC && that.player.lightOn) {
                         that.player.lightFuel -= 1
