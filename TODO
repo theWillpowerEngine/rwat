@@ -5,8 +5,6 @@ Reactor:
    Finish light source error indicators (Move breach; add meltdown and paradox event; add warning states)
    Make sure Paradox/AM poisoning can work (I don't think it can now because Thaums and AM are always =)
 
-Shipboard light system
-
 doors
 
 Lift and Shaft/Prop controls

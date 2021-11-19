@@ -28,7 +28,7 @@ var that = module.exports = {
         solid: true,
         char: "@",
         color: colors.cornwallis,
-        bg: colors.lantern,  //Color(color.lantern).mix(Color(color.background), 0.5).hex(),
+        bg: colors.lantern,
         isPC: true,
         desc: "you (duh)"
     }),

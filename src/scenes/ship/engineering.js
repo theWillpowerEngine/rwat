@@ -241,12 +241,12 @@ module.exports = (eng) => {
                 throw "This should never happen"  
             })
 
-            theMap.addValve(0, 2, "the master light setting", 1, 10, eng.ship.reactor.control[0].position, (tile) => {
-                eng.ship.reactor.control[0].position = tile.val
+            theMap.addValve(0, 2, "the master lights setting", 0, 3, eng.ship.masterLights, (tile) => {
+                eng.ship.masterLights = tile.val
             }, {
-                color: colors.gold,
+                color: colors.silver,
                 char: (eng, tile) => {
-                    var val = eng.ship.reactor.control[0].position
+                    var val = eng.ship.masterLights
                     return displayVals[val]
                 }
             })
@@ -256,7 +256,10 @@ module.exports = (eng) => {
             //On Tick handler
             theMap.tickHandler = () => {
                 console.log('Ticking')
+            
                 //Light Sources
+                engine.lights.setAmbient(engine.ship.getMasterAmbientLight())
+            
                 var l = engine.lights.get("breach")
                 if(l) {
                     if(engine.ship.reactor.breach) {
@@ -270,7 +273,8 @@ module.exports = (eng) => {
             }
         },
         applyLights() {
-            //engine.lights.setAmbient(engine.lights.create(colors.white, 0.5, 0.5))
+            //engine.lights.setAmbient(engine.ship.getMasterAmbientLight())
+
             engine.lights.add(5, 5, "red", 0, 0, 0, "breach")
          },
     }
