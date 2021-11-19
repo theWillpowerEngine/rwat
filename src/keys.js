@@ -14,6 +14,9 @@ window.keyBinds = {
 
     toggleLight: "l",
 
+    save: "ctrl+s",
+    load: "ctrl+o",
+
     toggleValve: "shift+t",
     devTools: 'F12',
     exit: 'escape',
@@ -86,6 +89,15 @@ module.exports = (eng, kbs) => {
     });
 
     //System Keys
+    hotkeys(binds.save, async function (event, handler){
+        await engine.save()
+        engine.render()
+    });
+    hotkeys(binds.load, async function (event, handler){
+        await engine.load()
+        engine.render()
+    });
+
     hotkeys(binds.exit, function (event, handler){
         window.close()
     });

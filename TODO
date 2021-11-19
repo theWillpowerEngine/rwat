@@ -9,10 +9,6 @@ doors
 
 Lift and Shaft/Prop controls
 
-Tab movement between layers
-
-The 3 layers (or at least the first 2 - ship and immediate)
-
 AI (start with Engineer) and Command system
 
 
@@ -20,3 +16,20 @@ AI (start with Engineer) and Command system
    Other Work
 
 Zelazny Integration and player modelling / system build out
+
+Model the rest of the ship
+
+Wheelhouse controls and detailed modelling
+
+Tab movement between layers
+
+The 3 layers (or at least the first 2 - ship and immediate)
+
+Undocking:
+   lines
+   commands
+
+Movement in space
+
+Cargo hold management
+

@@ -16,7 +16,7 @@ module.exports = (eng) => {
 
         pilotLights: false, 
         masterLights: 0,
-        lightFuel: 30,
+        lightFuel: 10000,
         getMasterAmbientLight() {
             if(!that.masterLights || !that.lightFuel || !that.pilotLights)
                 return ambientDark

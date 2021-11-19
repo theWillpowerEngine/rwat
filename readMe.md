@@ -10,6 +10,8 @@ L           Toggle personal light
 Shift-T     Change which direction you move valves and dials (up vs down)
 Shift-Space Advance a tick
 
+Ctrl-S      Save Game
+Ctrl-O      Load Game
 
 Escape      Exit Game
 F12         Developer Console

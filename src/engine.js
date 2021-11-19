@@ -5,6 +5,18 @@ const makeShip = require("./ship/ship.js")
 const makeScenes = require("./scenes/scenes.js")
 const registerKeys = require("./keys.js")
 const Color = require('color')
+let { ipcRenderer } = require("electron")
+
+function applyObjectTo(base, toApply) {
+    for(var prop in toApply) {
+        if(typeof toApply[prop] === 'object')
+            base[prop] = applyObjectTo(base[prop], toApply[prop])
+        else    
+            base[prop] = toApply[prop]
+    }
+
+    return base
+}
 
 module.exports = (logger, opts) => {
     var conf = {
@@ -108,6 +120,19 @@ module.exports = (logger, opts) => {
 
             pg(100, "Initialization complete!")
             return conf
+        },
+
+        async save() {
+            await ipcRenderer.invoke("save", JSON.stringify(that))
+            that.log("Game saved.")
+        },
+        async load() {
+            debugger
+            var json = await ipcRenderer.invoke("load", JSON.stringify(that))
+            var loaded = JSON.parse(json)
+            
+            applyObjectTo(that, loaded)
+            that.log("Loaded game.")
         },
 
         render() {
