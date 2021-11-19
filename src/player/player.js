@@ -9,6 +9,9 @@ module.exports = (eng) => {
         tile: tiles.player,
         isPC: true,
         turnValve: -1,
+        
+        lightOn: false,
+        lightFuel: 400,
 
         move(dX, dY) {
             if(Math.abs(dX) > 1 || Math.abs(dY) > 1)

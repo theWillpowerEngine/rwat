@@ -12,6 +12,8 @@ window.keyBinds = {
 
     advanceTick: "shift+space",
 
+    toggleLight: "l",
+
     toggleValve: "shift+t",
     devTools: 'F12',
     exit: 'escape',
@@ -62,6 +64,19 @@ module.exports = (eng, kbs) => {
     hotkeys(binds.toggleValve, function (event, handler){
         engine.player.turnValve = (engine.player.turnValve == -1 ? 1 : -1)
         engine.log(`You will now turn valves and dials ${(engine.player.turnValve == -1 ? "down" : "up")}.`)
+        engine.render()
+    });
+    hotkeys(binds.toggleLight, function (event, handler){
+        engine.player.lightOn = !engine.player.lightOn
+        if(engine.player.lightOn) {
+            if(engine.player.lightFuel > 0)
+                engine.log("You light your personal lantern.")
+            else {
+                engine.log("There is no fuel in your lantern, you can't turn it on.")
+                engine.player.lightOn = false
+            }    
+        } else
+            engine.log("You turn your personal lantern off.")
         engine.render()
     });
 

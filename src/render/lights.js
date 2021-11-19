@@ -24,15 +24,21 @@ module.exports = (eng) => {
         },
         
         getAll() {
-            return [
-                ...that.sources,
-                {
-                    ...engine.renderer.playerLightSource(),
-                    x: engine.player.x,
-                    y: engine.player.y
-                }
+            if(engine.player.lightOn) {
+                return [
+                    ...that.sources,
+                    {
+                        ...engine.renderer.playerLightSource(),
+                        x: engine.player.x,
+                        y: engine.player.y
+                    }
 
-            ]
+                ]
+            } else {
+                return [
+                    ...that.sources,
+                ]
+            }
         },
         create(color, intensity, range, fallOff) {
             return {

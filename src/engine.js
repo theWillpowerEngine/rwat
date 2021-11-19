@@ -145,6 +145,16 @@ module.exports = (logger, opts) => {
                     var c = tile.char
                     if(typeof c === 'function')
                         c = c(that, tile)
+
+                    if(tile.isPC && that.player.lightOn) {
+                        that.player.lightFuel -= 1
+                        if(that.player.lightFuel == 0) {
+                            that.player.lightOn = false
+                            that.log("Your lantern sputters and begins to die as it runs out of fuel.")
+                            tile.bg = null
+                        }
+                    }
+                    
                     that.display.draw(x, y, c, tile.color, tile.bg)
                 }
 

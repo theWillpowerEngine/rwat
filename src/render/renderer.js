@@ -11,8 +11,16 @@ module.exports = (eng) => {
         playerLightSource() { return engine.lights.create(engine.player.tile.bg, 0.9, 3, -0.21) },
 
         getTileAt(x, y) {
-            if(x == engine.player.x && y == engine.player.y)
-                return engine.player.tile
+            if(x == engine.player.x && y == engine.player.y) {
+                if(engine.player.lightOn)
+                    return engine.player.tile
+                else
+                    return {
+                        ...engine.player.tile,
+                        bg: null
+                    }
+            }
+                
             
             var tile = null
             try {
