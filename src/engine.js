@@ -123,7 +123,12 @@ module.exports = (logger, opts) => {
         },
 
         async save() {
-            await ipcRenderer.invoke("save", JSON.stringify(that))
+            var eng = JSON.parse(JSON.stringify(that))
+            delete eng.display
+            delete eng.scenes
+            delete eng.map
+            delete eng.maps     //Maybe?  We might have to persist things here
+            await ipcRenderer.invoke("save", JSON.stringify(eng))
             that.log("Game saved.")
         },
         async load() {
