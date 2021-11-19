@@ -231,7 +231,7 @@ module.exports = (eng) => {
             }
         },
         applyLights() {
-            engine.lights.setAmbient(engine.lights.create(colors.white, 0.5, 0.5))
+            //engine.lights.setAmbient(engine.lights.create(colors.white, 0.5, 0.5))
             engine.lights.add(5, 5, "red", 0, 0, 0, "breach")
          },
     }
