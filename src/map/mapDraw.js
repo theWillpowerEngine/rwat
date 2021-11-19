@@ -12,13 +12,13 @@ module.exports = (obj) => {
             that.tiles[x][y] = { ...tile }
         },
 
-        hline(tile, x, y, length) {
+        hline(tile, x, y, length, o) {
             for(var dX=0; dX < length && that.width > dX + x; dX++)
-                that.tiles[x + dX][y] = { ...tile }
+                that.tiles[x + dX][y] = { ...tile, ...o }
         },
-        vline(tile, x, y, length) {
+        vline(tile, x, y, length, o) {
             for(var dY=0; dY < length && that.height > dY + y; dY++)
-                that.tiles[x][y+dY] = { ...tile }
+                that.tiles[x][y+dY] = { ...tile, ...o }
         },
 
         addSwitch(x, y, desc, on, off, o) {

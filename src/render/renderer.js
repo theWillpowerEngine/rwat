@@ -16,7 +16,7 @@ module.exports = (eng) => {
             
             var tile = null
             try {
-                var tile = { ...engine.map.tiles[x][y] }
+                var tile = { x, y, ...engine.map.tiles[x][y] }
             } catch(e) {
                 return null
             }

@@ -27,6 +27,10 @@ module.exports = (eng) => {
             that.x = nX
             that.y = nY
         },
+
+        distToDirect(x, y) {
+            return engine.rangeBetween(x, y, that.x, that.y)
+        }
     }
 
     return that

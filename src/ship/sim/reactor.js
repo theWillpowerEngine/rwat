@@ -25,9 +25,13 @@ module.exports = (eng, sh) => {
         limits: {
             pressure: 15,
             heat: 20,
-            paradox: 10000
+            paradox: 10000,
+
+            capFlow: 20
         },
         coolantGravityPump: false,
+        capacitorCharge: false,
+
         coolantPressure: 0,
         coolantTemp: 0,
 
@@ -194,6 +198,23 @@ module.exports = (eng, sh) => {
                 }
             }
 
+            //Thaumatic Capacitor Charge
+            if(that.internalThaums && that.capacitorCharge && ship.thaumaticCapacitorThaums < 1000) {
+                var amt = that.limits.capFlow
+                
+                if(amt > that.internalThaums) {
+                    amt = that.internalThaums - 1
+                }
+
+                if(amt > 0) {
+                    if(ship.thaumaticCapacitorThaums + amt <= 1000) {
+                        ship.thaumaticCapacitorThaums += amt
+                    } else {
+                        ship.thaumaticCapacitorThaums = 1000
+                    }
+                }
+            }
+            
             that.coolantPressure = that.internalPressure
             that.coolantTemp -= 1
             if(that.coolantTemp < 0)
