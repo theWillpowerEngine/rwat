@@ -1,15 +1,24 @@
+----------------------
+   Engine Room and Sim
+
 Reactor:
-   Create thaumatic capacitor
-   Add light sources, indicators and water flow tiles
-   Add Emergency AM dump button
+   Add light source error indicators
    Make sure Paradox/AM poisoning can work (I don't think it can now because Thaums and AM are always =)
 
+lights (including player light toggle and fuel burn)
+
 doors
+
+Lift and Shaft/Prop controls
 
 Tab movement between layers
 
 The 3 layers (or at least the first 2 - ship and immediate)
 
-Zelazny Integration
+AI (start with Engineer) and Command system
 
-AI (start with engineer)
+
+-------------
+   Other Work
+
+Zelazny Integration and player modelling / system build out
