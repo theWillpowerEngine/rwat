@@ -2,10 +2,11 @@ const tile = require("./tiles.js")
 const mapDraw = require("./mapDraw.js")
 
 function makeMap(partial) {
-    var that = {
+    let that = {
         width: 0,
         height: 0,
         tiles: null,
+        tickHandler: null,
 
         ...partial
     }

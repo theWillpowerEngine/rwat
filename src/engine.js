@@ -44,7 +44,7 @@ module.exports = (logger, opts) => {
                     return false
 
                 var tile = that.map.tiles[pt[0]][pt[1]] 
-                if(tile.solid && !tile.transparent)
+                if(tile && tile.solid && !tile.transparent)
                     return false
             }
             return true
@@ -124,6 +124,8 @@ module.exports = (logger, opts) => {
             var pX = that.player.x, pY = that.player.y
 
             var map = that.map
+            if(map && map.tickHandler) map.tickHandler()
+
             if(map.width < displayWidth)
                 displayWidth = map.width
             else

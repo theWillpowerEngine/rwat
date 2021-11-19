@@ -30,10 +30,10 @@ module.exports = (eng) => {
         applyLights() {
             engine.lights.setAmbient(engine.lights.create("pink", 0.3, 0.3))
             
-            engine.lights.add(5, 5, "red", 1, 3, -0.2)
-            engine.lights.add(15, 5, "green", 1, 3, -0.2)
-            engine.lights.add(5, 15, "blue", 1, 3, -0.25)
-            engine.lights.add(15, 15, "orange", 1, 3, -0.25)
+            engine.lights.add(5, 5, "red", 1, 3, -0.2, "red")
+            engine.lights.add(15, 5, "green", 1, 3, -0.2, "green")
+            engine.lights.add(5, 15, "blue", 1, 3, -0.25, "blue")
+            engine.lights.add(15, 15, "orange", 1, 3, -0.25, "orange")
         }
     }
 

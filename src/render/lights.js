@@ -50,8 +50,9 @@ module.exports = (eng) => {
                 y: 0
             }
         },
-        add(x, y, color, intensity, range, fallOff) {
+        add(x, y, color, intensity, range, fallOff, name) {
             that.sources.push({
+                name: name || "anon",
                 color,
                 intensity,
                 range,
@@ -62,6 +63,14 @@ module.exports = (eng) => {
         },
         setAmbient(c) {
             that.ambient = { ...c, ambient: true }
+        },
+
+        get(name) {
+            for(var source of that.sources) {
+                if(source.name && source.name.toLowerCase() === name.toLowerCase())
+                    return source
+            }
+            return null
         },
 
         getLightAt(x, y) {

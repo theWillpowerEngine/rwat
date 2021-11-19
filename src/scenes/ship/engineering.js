@@ -214,9 +214,25 @@ module.exports = (eng) => {
                 engine.log("You disable charging to the thaumatic capacitor.")  
             })
 
+            //On Tick handler
+            theMap.tickHandler = () => {
+                console.log('Ticking')
+                //Light Sources
+                var l = engine.lights.get("breach")
+                if(l) {
+                    if(engine.ship.reactor.breach) {
+                        l.intensity = 1.0
+                        l.range = 2
+                        l.fo = -0.4
+                    } else {
+                        l.intensity = l.range = l.fo = 0
+                    }
+                }
+            }
         },
         applyLights() {
             engine.lights.setAmbient(engine.lights.create(colors.white, 0.5, 0.5))
+            engine.lights.add(5, 5, "red", 0, 0, 0, "breach")
          },
     }
 
