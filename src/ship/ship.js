@@ -16,7 +16,7 @@ module.exports = (eng) => {
 
         pilotLights: false, 
         masterLights: 0,
-        lightFuel: 10000,
+        lightFuel: 30,
         getMasterAmbientLight() {
             if(!that.masterLights || !that.lightFuel || !that.pilotLights)
                 return ambientDark
@@ -36,6 +36,11 @@ module.exports = (eng) => {
         },
 
         tick() {
+            if(that.masterLights > 0 && that.pilotLights) {
+                that.lightFuel -= that.masterLights
+                if(that.lightFuel < 0)
+                    that.lightFuel = 0
+            }
             that.reactor.cycle()
         }
     }
