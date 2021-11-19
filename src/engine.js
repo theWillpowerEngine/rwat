@@ -100,9 +100,12 @@ module.exports = (logger, opts) => {
             that.ship = makeShip(that)
             pg(2, "Preinitialization complete")
 
+            that.ship.createDamageModel()
+            pg(5, "Ship damage model initialized")
+
             var sceneCount = that.scenes.loadAll()
             that.scenes.set(conf.defaultScene)
-            pg(5, `Loaded ${sceneCount} scenes`)
+            pg(10, `Loaded ${sceneCount} scenes`)
 
             registerKeys(that)
             pg(50, "Set initial game state")
@@ -132,7 +135,6 @@ module.exports = (logger, opts) => {
             that.log("Game saved.")
         },
         async load() {
-            debugger
             var json = await ipcRenderer.invoke("load", JSON.stringify(that))
             var loaded = JSON.parse(json)
             

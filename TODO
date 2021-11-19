@@ -4,13 +4,25 @@
 Reactor:
    Finish light source error indicators (Move breach; add meltdown and paradox event; add warning states)
    Make sure Paradox/AM poisoning can work (I don't think it can now because Thaums and AM are always =)
+   Add damage model and effects
+
+Shaft/Prop controls:
+   finish cycle() in the drive
+   make damage model do stuff other than throw
 
 doors
 
-Lift and Shaft/Prop controls
+Lift controls:
+   Lift system
+   engine room additions
+   "tie down" functionality for being docked (plumb very beginnings of 3d positioning)
 
 AI (start with Engineer) and Command system
 
+---------------
+   Damage Model
+
+Make parents apply damage randomly to their children
 
 -------------
    Other Work
