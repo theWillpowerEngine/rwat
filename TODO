@@ -5,6 +5,7 @@ Reactor:
    Finish light source error indicators (Move breach; add meltdown and paradox event; add warning states)
    Make sure Paradox/AM poisoning can work (I don't think it can now because Thaums and AM are always =)
    Add damage model and effects
+   Add a way to depressurize (should happen naturally when it cools off)
 
 Shaft/Prop controls:
    finish cycle() in the drive

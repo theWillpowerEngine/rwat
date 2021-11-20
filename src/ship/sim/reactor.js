@@ -185,7 +185,10 @@ module.exports = (eng, sh) => {
                     that.turbineForce = overPressure
                     that.internalPressure = 1
                 }
-            }
+            } else if (that.turbineSetting == 0 && that.turbineForce > 0)
+                that.turbineForce -= 1
+            else if(that.internalPressure < that.turbineForce)
+                that.turbineForce -= 1
 
             //Coolant Heat is expended to heat the boilers
             if(that.boilerSetting) {
