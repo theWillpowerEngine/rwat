@@ -1,7 +1,6 @@
 const makeReactor = require("./sim/reactor.js")
 const colors = require("../map/colors.js")
 const Color = require('color')
-const makeDamageModel = require("./damage.js")
 const makeDrive = require("./sim/drive.js")
 
 module.exports = (eng) => {
@@ -13,7 +12,7 @@ module.exports = (eng) => {
     let ambient3 = engine.lights.create(Color(colors.lantern).mix(Color(colors.white), 0.4).hex(), 0.5, 0.3)
 
     var that = {
-        damageModel: null,
+        damageModel: require("./damage.js"),
         thaumaticCapacitorThaums: 0,
         reactor: null,
         drive: null,
@@ -40,8 +39,6 @@ module.exports = (eng) => {
         },
 
         createDamageModel() {
-            that.damageModel = makeDamageModel(engine, that)
-            
             that.damageModel.makeArea("transmission", 100, {
                 damage: that.drive.onDamage,
                 destroy: that.drive.onDestroy

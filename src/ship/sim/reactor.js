@@ -177,7 +177,7 @@ module.exports = (eng, sh) => {
 
             //Pressure is expended to turns the turbines
             var overPressure = that.internalPressure - 1
-            if(that.turbineSetting && overPressure) {
+            if(that.turbineSetting && overPressure > 0) {
                 if(overPressure > that.turbineSetting) {
                     that.turbineForce = that.turbineSetting
                     that.internalPressure -= that.turbineSetting
