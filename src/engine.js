@@ -41,7 +41,7 @@ module.exports = (logger, opts) => {
         
         logText: '',
         log(msg) {
-            that.logText += (msg || '') + "<br />"
+            that.logText += `<span class='log-item'>${(msg || '')}</span>`
         },
 
         player: null,

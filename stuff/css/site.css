@@ -54,3 +54,8 @@ body{
   left: 0;
   right: 200px;
 }
+
+.log-item {
+  display: block;
+  margin-bottom: 5px;
+}

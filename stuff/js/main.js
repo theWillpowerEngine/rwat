@@ -26,7 +26,7 @@ const engine = makeEngine(logMsg)
 
 $(() => {
     engine.init((step, msg) => {
-        logMsg(`Step ${step} done: ${msg}.<br )/>`)
+        logMsg(`<span class='log-item'>Step ${step} done: ${msg}.</span>`)
     })
     engine.render()
 
@@ -37,9 +37,9 @@ $(() => {
         var tile = engine.renderer.getTileAt(coords.x, coords.y)
         if(tile) {
             if(typeof tile.desc === 'function')
-                logMsg(tile.desc(engine, tile) + "<br />")
+                logMsg(`<span class='log-item'>${tile.desc(engine, tile)}</span>`)
             else
-                logMsg("That's " + tile.desc + "<br />")
+                logMsg(`<span class='log-item'>That's ${tile.desc}.</span>`)
         }
     })
 
