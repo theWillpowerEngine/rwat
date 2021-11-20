@@ -51,6 +51,9 @@ module.exports = (eng) => {
 
             theMap.vline(tiles.shipWall, 7, 4, 5)
 
+            //Clean up some LOS
+            theMap.apply(1, 9, { transparent: true, background: 'white' }, 5)
+
             //Doors
             theMap.vline(tiles.shipFloor, 1, 0, 1)
 
@@ -62,7 +65,7 @@ module.exports = (eng) => {
                     tile.color = colors.grey
                 return 'o'
             }, {color: colors.grey, transparent: true })
-            theMap.vline(tiles.shipWall, 6, 8, 1)
+            theMap.vline(tiles.shipWall, 6, 8, 1, {transparent: true})
             ////////////////////////////////////////
             //#endregion
 

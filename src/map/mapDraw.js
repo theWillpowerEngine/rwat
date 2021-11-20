@@ -8,6 +8,18 @@ module.exports = (obj) => {
                     that.tiles[x][y] = { ...tile }
         },
 
+        apply(iX, iY, change, w, h) {
+            debugger;
+            if(!w) w = 1
+            if(!h) h = 1
+            for(var x=iX; x<iX+w; x++)
+                for(var y=iY; y<iY+h; y++)
+                    that.tiles[x][y] = {
+                        ...that.tiles[x][y],
+                        ...change 
+                    }
+        },
+
         draw(tile, x, y) {
             that.tiles[x][y] = { ...tile }
         },
