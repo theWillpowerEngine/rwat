@@ -20,7 +20,7 @@ function applyObjectTo(base, toApply) {
 
 module.exports = (logger, opts) => {
     var conf = {
-        defaultScene: "engineering",
+        defaultScene: "engineRoom",
 
         ...opts
     }

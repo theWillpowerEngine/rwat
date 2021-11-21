@@ -59,6 +59,28 @@ var that = module.exports = {
         desc: "a gauge"
     }),
 
+    door: makeTile({
+        solid: true,
+        char: "*",
+        color: colors.lemonade,
+        desc: "a door",
+        interactive: true,
+        destMap: null,
+        destX: null,
+        destY: null,
+        emit: null,
+        handler: (eng, tile) => {
+            if(!tile.destMap)
+                throw "Door without destination map: " + JSON.stringify(tile)
+
+            eng.scenes.set(tile.destMap)
+            eng.player.x = tile.destX
+            eng.player.y = tile.destY
+            if(tile.emit)
+                eng.log(tile.emit)
+        }
+    }),
+
     shipFloor: makeTile({
         solid: false,
         char: ".",

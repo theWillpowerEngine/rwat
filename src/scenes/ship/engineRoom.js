@@ -38,8 +38,8 @@ module.exports = (eng) => {
 
     var that = {
         makeMap() {
-            engine.maps["engineering"] = map.blank(20, 10)
-            let theMap = engine.maps.engineering
+            engine.maps["engineRoom"] = map.blank(20, 10)
+            let theMap = engine.maps.engineRoom
             
             //#region Rough-In (walls/floor/doors/etc.)
             theMap.fill(tiles.shipFloor)
@@ -55,7 +55,7 @@ module.exports = (eng) => {
             theMap.apply(1, 9, { transparent: true, background: 'white' }, 5)
 
             //Doors
-            theMap.vline(tiles.shipFloor, 1, 0, 1)
+            theMap.door(1, 0, "the door out of the engine room", "dev", 6, 7, "You go to the other place")
 
             //Misc Map pieces (pipes/etc.)
             theMap.addDisplay(1, 8, "a coolant pipe", (eng, tile) => {

@@ -1,9 +1,9 @@
 module.exports = {
     all: [
         "dev",
-        "engineering",
+        "engineRoom",
     ],
 
     dev:            "./dev/scene.js",
-    engineering:    "./ship/engineering.js",
+    engineRoom:    "./ship/engineRoom.js",
 }

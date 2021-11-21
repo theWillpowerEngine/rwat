@@ -62,6 +62,16 @@ module.exports = (obj) => {
              })
         },
      
+        door(x, y, desc, map, dX, dY, emit) {
+            that.tiles[x][y] = tiles.merge(tiles.door, { 
+                desc: desc || "a door",
+                destMap: map,
+                destX: dX,
+                destY: dY,
+                emit
+             })
+        },
+
         addDisplay(x, y, desc, displayer, o) {
             that.tiles[x][y] = tiles.merge(tiles.display, { 
                 desc,
