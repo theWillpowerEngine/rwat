@@ -7,8 +7,8 @@ Reactor:
    Add damage model and effects
 
 Shaft/Prop controls:
-   finish cycle() in the drive
-   make damage model do stuff other than throw
+   Test
+   Make lubrication eventually wear off (but slowly) -- this might be a good excuse to write an event system
 
 Lift controls:
    Lift system
@@ -27,6 +27,8 @@ Make parents apply damage randomly to their children
 
 Zelazny Integration and player modelling / system build out
 
+Help System Integration / Start Writing
+
 Model the rest of the ship
 
 Wheelhouse controls and detailed modelling
@@ -34,6 +36,8 @@ Wheelhouse controls and detailed modelling
 Tab movement between layers
 
 The 3 layers (or at least the first 2 - ship and immediate)
+
+Add the Rutter system and integrate with Pilot AI
 
 Undocking:
    lines

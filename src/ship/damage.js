@@ -7,8 +7,8 @@ function makeDamageArea(name, health, notifiers, kids) {
         children: kids,
         notify(isDestroyed, args) {
             var name = isDestroyed ? "destroy" : "damage"
-            if(that.notifiers[name])
-                that.notifiers[name](args)
+            if(da.notifiers[name])
+                da.notifiers[name](args)
         }
     }
 
@@ -17,7 +17,10 @@ function makeDamageArea(name, health, notifiers, kids) {
 
 let that = module.exports = {
     areas: {},
-    makeArea: makeDamageArea,
+    make: makeDamageArea,
+    addArea(a) {
+        that.areas[a.name] = a
+    },
     get(name) {
         return that.areas[name]
     },

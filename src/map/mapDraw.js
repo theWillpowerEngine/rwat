@@ -20,8 +20,8 @@ module.exports = (obj) => {
                     }
         },
 
-        draw(tile, x, y) {
-            that.tiles[x][y] = { ...tile }
+        draw(tile, x, y, o) {
+            that.tiles[x][y] = { ...tile, ...o }
         },
 
         hline(tile, x, y, length, o) {

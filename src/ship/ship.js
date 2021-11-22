@@ -39,10 +39,12 @@ module.exports = (eng) => {
         },
 
         createDamageModel() {
-            that.damageModel.makeArea("transmission", 100, {
+            var dmg = that.damageModel
+
+            dmg.addArea(dmg.make("transmission", 100, {
                 damage: that.drive.onDamage,
                 destroy: that.drive.onDestroy
-            });
+            }))
         },
 
         tick() {
@@ -52,6 +54,7 @@ module.exports = (eng) => {
                     that.lightFuel = 0
             }
             that.reactor.cycle()
+            that.drive.cycle()
         }
     }
 

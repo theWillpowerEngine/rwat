@@ -8,7 +8,7 @@ module.exports = (eng) => {
         y: 1,
         tile: tiles.player,
         isPC: true,
-        turnValve: -1,
+        turnValve: 1,
         
         lightOn: false,
         lightFuel: 400,

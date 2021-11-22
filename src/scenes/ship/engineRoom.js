@@ -49,7 +49,7 @@ module.exports = (eng) => {
             theMap.hline(tiles.shipWall, 0, 0, 20)
             theMap.hline(tiles.shipWall, 0, 9, 20)
 
-            theMap.vline(tiles.shipWall, 7, 4, 5)
+            theMap.vline(tiles.shipWall, 7, 5, 4)
 
             //Clean up some LOS
             theMap.apply(1, 9, { transparent: true, background: 'white' }, 5)
@@ -80,7 +80,7 @@ module.exports = (eng) => {
                     return (`The display indicates that the capacitor is ${Math.round(eng.ship.thaumaticCapacitorThaums / 10)}% charged.`)
                 }
             })
-            theMap.addDisplay(7, 6, "", (eng, tile) => {
+            theMap.addDisplay(7, 7, "", (eng, tile) => {
                 return '|'
             }, {
                 transparent: true, 
@@ -90,7 +90,7 @@ module.exports = (eng) => {
                     return (`The heat transfer is set to ${lowMedMax(eng.ship.reactor.boilerSetting)}, the current effectiveness is: ${lowMedMax(eng.ship.reactor.boilerHeat)}.`)
                 }
             })
-            theMap.addDisplay(7, 7, "", (eng, tile) => {
+            theMap.addDisplay(7, 6, "", (eng, tile) => {
                 return '|'
             }, {
                 transparent: true, 
@@ -138,6 +138,32 @@ module.exports = (eng) => {
                     return displayVals[val]
                 return 'X'
             }, {color: colors.white})
+
+            theMap.addDisplay(4, 0, "the input shaft speed indicator", (eng, tile) => {
+                var val = eng.ship.reactor.turbineForce || 0
+                if(displayVals.length > val)
+                    return displayVals[val]
+                return 'X'
+            }, { color: colors.white })
+            theMap.addDisplay(5, 0, "the transmission input speed indicator", (eng, tile) => {
+                var val = eng.ship.drive.transmissionSpeed || 0
+                if(displayVals.length > val)
+                    return displayVals[val]
+                return 'X'
+            }, { color: colors.white })
+            theMap.addDisplay(6, 0, "the prop speed indicator (blue = reverse, green = ahead)", (eng, tile) => {
+                var val = Math.abs(eng.ship.reactor.propSpeed || 0)
+                if(eng.ship.reactor.propSpeed > 0)
+                    tile.color = colors.green
+                else if(eng.ship.reactor.propSpeed < 0)
+                    tile.color = colors.blue
+                else
+                    tile.color = colors.white
+
+                if(displayVals.length > val)
+                    return displayVals[val]
+                return 'X'
+            })
             ////////////////////////////////////////
             //#endregion
 
@@ -199,7 +225,7 @@ module.exports = (eng) => {
             })
 
             //Other controls
-            theMap.addValve(6, 7, "the shaft turbine speed setting", 0, 3, eng.ship.reactor.turbineSetting, (tile) => {
+            theMap.addValve(6, 6, "the shaft turbine speed setting", 0, 3, eng.ship.reactor.turbineSetting, (tile) => {
                 eng.ship.reactor.turbineSetting = tile.val
             }, {
                 color: colors.silver,
@@ -208,7 +234,7 @@ module.exports = (eng) => {
                     return displayVals[val]
                 }
             })
-            theMap.addValve(6, 6, "the boiler temperature setting", 0, 3, eng.ship.reactor.boilerSetting, (tile) => {
+            theMap.addValve(6, 7, "the boiler temperature setting", 0, 3, eng.ship.reactor.boilerSetting, (tile) => {
                 eng.ship.reactor.boilerSetting = tile.val
             }, {
                 color: colors.silver,
@@ -227,6 +253,45 @@ module.exports = (eng) => {
                 engine.log("You disable charging to the thaumatic capacitor.")  
             })
             ////////////////////////////////////////
+            //#endregion
+
+            //#region Drive Controls
+            let didLubricate = false
+            theMap.addValve(4, 1, "the engine transmission manual lubrication spinner", 0, 9, 0, (tile) => {
+                didLubricate = true
+                if(eng.ship.drive.lubrication < 10)
+                    eng.ship.drive.lubrication += 1
+            }, {
+                color: colors.silver
+            })
+            let lubeHandle = theMap.tiles[4][1] 
+
+            theMap.addSwitch(4, 2, "the engine's main clutch switch", (eng, tile) => {    
+                eng.ship.drive.clutch = true
+                eng.log("You engage the engine's main clutch.")
+            }, 
+            (eng, tile) => { 
+                eng.ship.drive.clutch = false
+                eng.log("You disengage the engine's main clutch.")
+            }, { state: true })
+
+            theMap.draw(tiles.shipWall, 6, 1, { transparent: true })
+            theMap.addSwitch(6, 2, "the propeller/shaft connection switch", (eng, tile) => {    
+                eng.ship.drive.propConnect = true
+                eng.log("You connect the propeller to the shaft.")
+            }, 
+            (eng, tile) => { 
+                eng.ship.drive.propConnect = false
+                eng.log("You disconnect the propeller from the shaft.")
+            }, { state: true })
+
+            theMap.addValve(5, 1, "the engine's transmission gear lever", 0, 3, eng.ship.drive.transmission, (tile) => {
+                eng.ship.drive.transmission = tile.val
+            }, {
+                color: colors.gold
+            })
+
+            /////////////////////////////
             //#endregion
 
             //#region Misc Controls (Lights/etc.)
@@ -258,7 +323,9 @@ module.exports = (eng) => {
 
             //On Tick handler
             theMap.tickHandler = () => {
-                console.log('Ticking')
+                if(!didLubricate && lubeHandle.val > 0)
+                    lubeHandle.val -= 1
+                didLubricate = false
             
                 //Light Sources
                 engine.lights.setAmbient(engine.ship.getMasterAmbientLight())
