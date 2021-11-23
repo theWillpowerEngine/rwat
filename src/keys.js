@@ -112,13 +112,13 @@ module.exports = (eng, kbs) => {
         await ipcRenderer.invoke("showDev")
     });
 
-    // hotkeys(binds.helpHome, async function (event, handler){
-    //     await ui.help()
-    // });
-    // hotkeys(binds.help, async function (event, handler){
-    //     var topic = engine?.map?.helpTopic || null
-    //     await ui.help(topic)
-    // });
+    hotkeys(binds.helpHome, async function (event, handler){
+        await ui.help()
+    });
+    hotkeys(binds.help, async function (event, handler){
+        var topic = engine?.map?.helpTopic || null
+        await ui.help(topic)
+    });
 
     hotkeys('alt+enter', async function(e, h){
         await ipcRenderer.invoke("toggleFullscreen")

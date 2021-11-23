@@ -13,6 +13,6 @@ const ui= {
     async help(topic) {
         if(!topic) topic = "index"
         var content = await engine.getHelp(topic)
-        alert(content)
+        engine.log(content)
     }
 }
