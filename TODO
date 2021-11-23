@@ -7,7 +7,6 @@ Reactor:
    Add damage model and effects
 
 Shaft/Prop controls:
-   Test
    Make lubrication eventually wear off (but slowly) -- this might be a good excuse to write an event system
 
 Lift controls:
@@ -21,6 +20,11 @@ AI (start with Engineer) and Command system
    Damage Model
 
 Make parents apply damage randomly to their children
+
+-------
+   Bugs
+
+Saving doesn't save the map (so things like the default values of the controls in the engine room (val, not the display) are wrong)
 
 -------------
    Other Work

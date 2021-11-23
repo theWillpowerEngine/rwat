@@ -23,10 +23,10 @@ module.exports = (eng, sh) => {
             that.lubricant -= args.amt
             if(that.lubricant < 0)
                 that.lubricant = 0
-            throw "The ship shudders slightly in a way that doesn't feel entirely healthy."
+            engine.log("The ship shudders slightly in a way that doesn't feel entirely healthy.")
         },
         onDestroy(args) {
-            throw "For a moment you believe the ship has exploded, but once the shock wears off you realize the sound came from the ship's engines and that they are likely destroyed."
+            engine.log("For a moment you believe the ship has exploded, but once the shock wears off you realize the sound came from the ship's engines and that they are likely destroyed.")
         },
 
         cycle() {
@@ -49,14 +49,15 @@ module.exports = (eng, sh) => {
                     }
                 }
 
-                if(that.transmissionSpeed > ship.reactor.turbineForce) {
+                var desiredTransmissionSpeed = 3
+                if(that.transmissionSpeed > desiredTransmissionSpeed) {
                     that.transmissionSpeed -= 1
-                } else if(that.transmissionSpeed < ship.reactor.turbineForce) {
+                } else if(that.transmissionSpeed < desiredTransmissionSpeed) {
                     that.transmissionSpeed += 1
                 }
             }
 
-            var desiredPropSpeed = that.transmission * that.transmissionSpeed
+            var desiredPropSpeed = that.transmission * ship.reactor.turbineForce
             if(!that.propConnect)
                 desiredPropSpeed = 0
 

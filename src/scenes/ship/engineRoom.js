@@ -145,17 +145,17 @@ module.exports = (eng) => {
                     return displayVals[val]
                 return 'X'
             }, { color: colors.white })
-            theMap.addDisplay(5, 0, "the transmission input speed indicator", (eng, tile) => {
+            theMap.addDisplay(5, 0, "the transmission speed indicator", (eng, tile) => {
                 var val = eng.ship.drive.transmissionSpeed || 0
                 if(displayVals.length > val)
                     return displayVals[val]
                 return 'X'
             }, { color: colors.white })
             theMap.addDisplay(6, 0, "the prop speed indicator (blue = reverse, green = ahead)", (eng, tile) => {
-                var val = Math.abs(eng.ship.reactor.propSpeed || 0)
-                if(eng.ship.reactor.propSpeed > 0)
+                var val = Math.abs(eng.ship.drive.propSpeed || 0)
+                if(eng.ship.drive.propSpeed > 0)
                     tile.color = colors.green
-                else if(eng.ship.reactor.propSpeed < 0)
+                else if(eng.ship.drive.propSpeed < 0)
                     tile.color = colors.blue
                 else
                     tile.color = colors.white
