@@ -31,11 +31,6 @@ module.exports = (eng, kbs) => {
         ...kbs
     }
 
-    //Fixed binds
-    hotkeys("escape", function (event, handler){
-        ui.handleEsc()
-    })
-
     // Movement
     hotkeys(binds.moveNE, function (event, handler){
         engine.player.move(1, -1)
