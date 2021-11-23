@@ -17,7 +17,7 @@ window.keyBinds = {
     save: "ctrl+s",
     load: "ctrl+o",
 
-    toggleValve: "shift+t",
+    toggleValve: "t",
     devTools: 'F12',
     exit: 'escape',
 }

@@ -267,7 +267,8 @@ module.exports = (eng) => {
                 if(eng.ship.drive.lubrication < 10)
                     eng.ship.drive.lubrication += 1
             }, {
-                color: colors.silver
+                color: colors.silver,
+                wrap: true
             })
             let lubeHandle = theMap.tiles[4][1] 
 
@@ -290,7 +291,7 @@ module.exports = (eng) => {
                 eng.log("You disconnect the propeller from the shaft.")
             }, { state: true })
 
-            theMap.addValve(5, 1, "the engine's transmission gear lever", 0, 3, eng.ship.drive.transmission, (tile) => {
+            theMap.addValve(5, 1, "the engine's transmission gear lever", -3, 3, eng.ship.drive.transmission, (tile) => {
                 eng.ship.drive.transmission = tile.val
             }, {
                 color: colors.gold

@@ -7,7 +7,7 @@ Shift-WASD  Move (Diagonals - shift 45 degrees counterclockwise)
 
 L           Toggle personal light
 
-Shift-T     Change which direction you move valves and dials (up vs down)
+T           Change which direction you move valves and dials (up vs down)
 Shift-Space Advance a tick
 
 Ctrl-S      Save Game

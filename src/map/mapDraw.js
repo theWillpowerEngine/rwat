@@ -86,15 +86,16 @@ module.exports = (obj) => {
                 min,
                 max,
                 val: start,
+                wrap: false,
                 char: (eng, tile) => {
                     return tile.val || '0'
                 },
                 handler: (eng, t) => {
                     t.val += eng.player.turnValve
                     if(t.val < t.min)
-                        t.val = t.max
+                        t.val = t.wrap ? t.max : t.min
                     if(t.val > t.max)
-                        t.val = t.min
+                        t.val = t.wrap ? t.min : t.max
 
                     if(cb)
                         cb(t)
