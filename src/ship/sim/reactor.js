@@ -225,6 +225,9 @@ module.exports = (eng, sh) => {
 
             if(that.internalPressure == 1 && that.internalTemp == 0 && !that.coolantGravityPump)
                 that.internalPressure = 0
+
+            if(that.internalPressure < 0)
+                that.internalPressure = 0
        }
     }
     

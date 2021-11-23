@@ -103,11 +103,16 @@ module.exports = (eng) => {
             })
 
             theMap.addDisplay(0, 8, "the reactor's internal pressure gauge", (eng, tile) => {
+                if(eng.ship.reactor.breach) {
+                    tile.color = colors.red
+                    return 'X'
+                }
+                
                 var val = eng.ship.reactor.internalPressure || 0
                 tile.color = colorForDisplayVal(val)
                 if(displayVals.length > val)
                     return displayVals[val]
-                return 'X'
+                return 'U'
             })
             theMap.addDisplay(1, 9, "the reactor's internal temperature gauge", (eng, tile) => {
                 var val = eng.ship.reactor.internalTemp || 0
@@ -345,7 +350,7 @@ module.exports = (eng) => {
         applyLights() {
             //engine.lights.setAmbient(engine.ship.getMasterAmbientLight())
 
-            engine.lights.add(5, 5, "red", 0, 0, 0, "breach")
+            engine.lights.add(0, 8, colors.red, 0, 0, 0, "breach")
          },
     }
 

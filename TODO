@@ -24,7 +24,6 @@ Make parents apply damage randomly to their children
 -------
    Bugs
 
-Saving doesn't save the map (so things like the default values of the controls in the engine room (val, not the display) are wrong)
 
 -------------
    Other Work

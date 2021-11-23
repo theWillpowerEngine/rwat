@@ -17,6 +17,21 @@ function applyObjectTo(base, toApply) {
 
     return base
 }
+function extractDeltaObject(base, changed) {
+    var retVal = {}
+    
+    for(var prop in changed) {
+        if(typeof changed[prop] === 'object')
+            retVal[prop] = extractDeltaObject(base[prop] || {}, changed[prop])
+        else {
+            if(base[prop] != changed[prop])
+                retVal[prop] = changed[prop]
+        }
+    }
+
+    return retVal
+
+}
 
 module.exports = (logger, opts) => {
     var conf = {
@@ -24,6 +39,8 @@ module.exports = (logger, opts) => {
 
         ...opts
     }
+
+    let backupMaps = null
 
     var that = {
         gameOver: false,
@@ -107,6 +124,9 @@ module.exports = (logger, opts) => {
             that.scenes.set(conf.defaultScene)
             pg(10, `Loaded ${sceneCount} scenes`)
 
+            backupMaps = JSON.parse(JSON.stringify(that.maps))
+            pg(15, 'Backed up initial scenes for delta calculations')
+
             registerKeys(that)
             pg(50, "Set initial game state")
 
@@ -130,7 +150,9 @@ module.exports = (logger, opts) => {
             delete eng.display
             delete eng.scenes
             delete eng.map
-            delete eng.maps     //Maybe?  We might have to persist things here
+            delete eng.lights            
+            eng.maps = extractDeltaObject(backupMaps, eng.maps)
+
             await ipcRenderer.invoke("save", JSON.stringify(eng))
             that.log("Game saved.")
         },
