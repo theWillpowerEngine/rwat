@@ -3,6 +3,7 @@ const makeRenderer = require("./render/renderer.js")
 const makePlayer = require("./player/player.js")
 const makeShip = require("./ship/ship.js")
 const makeScenes = require("./scenes/scenes.js")
+const makeZelazny = require("./zelazny/zelazny.js")
 const registerKeys = require("./keys.js")
 const Color = require('color')
 let { ipcRenderer } = require("electron")
@@ -45,6 +46,8 @@ module.exports = (logger, opts) => {
     var that = {
         gameOver: false,
         tileSize: 20,
+
+        zelazny: null,
 
         maps: {
 
@@ -115,6 +118,7 @@ module.exports = (logger, opts) => {
             that.renderer = makeRenderer(that)
             that.scenes = makeScenes(that)
             that.ship = makeShip(that)
+            that.zelazny = makeZelazny()
             pg(2, "Preinitialization complete")
 
             that.ship.createDamageModel()
@@ -150,7 +154,10 @@ module.exports = (logger, opts) => {
             delete eng.display
             delete eng.scenes
             delete eng.map
-            delete eng.lights            
+            delete eng.lights
+            delete eng.zelazny.parser
+            delete eng.zelazny.nodes
+
             eng.maps = extractDeltaObject(backupMaps, eng.maps)
 
             await ipcRenderer.invoke("save", JSON.stringify(eng))

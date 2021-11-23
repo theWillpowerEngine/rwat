@@ -2,7 +2,6 @@
    Engine Room and Sim
 
 Reactor:
-   Make sure Paradox/AM poisoning can work (I don't think it can now because Thaums and AM are always =)
    Add damage model and effects
 
 Shaft/Prop controls:
@@ -27,7 +26,7 @@ Make parents apply damage randomly to their children
 -------------
    Other Work
 
-Zelazny Integration and player modelling / system build out
+Zelazny UI
 
 Help System Integration / Start Writing
 

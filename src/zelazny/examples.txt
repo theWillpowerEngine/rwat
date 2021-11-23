@@ -1,0 +1,138 @@
+It is [?dark *dark [?storm and stormy]* | _light_] here
+
+It is a [&?dark,!clear dark and stormy | bright and clear] day
+
+The value is: [:val -3:low|0:neutral|high]
+
+You are [>height:5 tall enough | not tall enough]
+
+The first thing is [1 [?bob bob][?steve steve]final]
+
+You can make %[square brackets%] 100%%
+
+`test link` => {
+    blah blah
+    blah blah
+}
+
+[v property]
+
+
+    Command Language
+
+{
+    write "hello [?nurse nurse|world]"
+    I am nurse
+    write "hello [?nurse nurse|world]"
+    the player is not nurse
+    write "hello [?nurse nurse|world]"
+}
+
+It is [?light light|dark] here.  _
+    [?light You can see \`the door\` => 
+    { "You made it!" the end } to leave.  _
+    There is a \`light switch\` => 
+    { the node is not light } _
+    here.|  There is a \`light switch\` => { the node is light } here.]    
+
+{
+    it can be: one two or three.
+    the node is one
+}
+The number is: [?one 1][?two 2][?three 3]
+{ the node is two }
+The number is: [?one 1][?two 2][?three 3]
+{ the node is three }
+The number is: [?one 1][?two 2][?three 3]
+
+{
+    the node's trait is 5
+}
+it's [>trait:4 GT|LT]
+{ the node's trait is 3 }
+it's [>trait:4 GT|LT]
+
+{
+    your trait is 1
+}
+it's [>trait:2 GT|[=trait:2 EQ|LT]] ([v trait])
+{ add 1 to trait }
+it's [>trait:2 GT|[=trait:2 EQ|LT]] ([v trait])
+{ add 1 to trait }
+it's [>trait:2 GT|[=trait:2 EQ|LT]] ([v trait])
+{add -3 to trait}
+it's [>trait:2 GT|[=trait:2 EQ|LT]] ([v trait])
+
+{
+    write "this is zero"
+    go to test
+}
+@test
+{
+    write "this is test"
+    go to another
+}
+@another
+{
+    write "this is another"
+    go to demo in new
+}
+@@new
+@demo
+{
+    write "this is demo we win"
+}
+
+{ 
+    your trait is 1
+    go to 1
+}
+@1
+[>trait:5 { "You win!" the end } ]
+value is: [v trait]
+\`add\` => {add 1 to trait}
+\`sub\` => { subtract 1 from trait }
+
+{
+    on after action: 
+        write "something happened"
+    end after action
+    go to 1
+}
+@1
+`action` => { you are black }
+`finish` => { "done" game over }
+
+{
+    you are p
+    node is n
+    story is s
+}
+[?p 1] [?n 2] [?s 3] _
+{go to 2}
+@2
+[?p 4] [!n 5] [?s 6] _
+[!once { node is once
+  go to 1 in a }]
+@@a
+@1
+[?p 7] [!n 8] [!s 9]
+You should see 456 next:
+{go to 2 in base}
+
+
+
+    Notes
+
+If an attr doesn't exist it is not >, < or = anything
+
+: is inclusive
+
+% as the escape char
+
+
+
+
+
+
+
