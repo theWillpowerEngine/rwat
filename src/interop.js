@@ -22,4 +22,14 @@ module.exports = (win) => {
         var data = fs.readFileSync("save.game", 'utf8')
         return data
     })
+
+    ipcMain.handle("help", (event, topic) => {
+        try {
+            var data = fs.readFileSync(`unclesJournal\\${topic}.htm`, 'utf8')
+            return data
+        } catch(ex) {
+            var data = fs.readFileSync(`unclesJournal\\index.htm`, 'utf8')
+            return data
+        }
+    })
 }

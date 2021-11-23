@@ -15,6 +15,13 @@
         "filter": [
           "**/*"
         ]
+      },
+      {
+        "from": "./unclesJournal/",
+        "to": "unclesJournal",
+        "filter": [
+          "**/*"
+        ]
       }
     ]
   },

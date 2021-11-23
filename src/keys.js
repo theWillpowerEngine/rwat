@@ -19,7 +19,9 @@ window.keyBinds = {
 
     toggleValve: "t",
     devTools: 'F12',
-    exit: 'escape',
+    exit: 'shift+escape',
+    help: 'F1',
+    helpHome: 'shift+F1',
 }
 
 module.exports = (eng, kbs) => {
@@ -28,6 +30,11 @@ module.exports = (eng, kbs) => {
         ...window.keyBinds,
         ...kbs
     }
+
+    //Fixed binds
+    hotkeys("escape", function (event, handler){
+        ui.handleEsc()
+    })
 
     // Movement
     hotkeys(binds.moveNE, function (event, handler){
@@ -104,6 +111,15 @@ module.exports = (eng, kbs) => {
     hotkeys(binds.devTools, async function (event, handler){
         await ipcRenderer.invoke("showDev")
     });
+
+    // hotkeys(binds.helpHome, async function (event, handler){
+    //     await ui.help()
+    // });
+    // hotkeys(binds.help, async function (event, handler){
+    //     var topic = engine?.map?.helpTopic || null
+    //     await ui.help(topic)
+    // });
+
     hotkeys('alt+enter', async function(e, h){
         await ipcRenderer.invoke("toggleFullscreen")
     })

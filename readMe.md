@@ -3,18 +3,19 @@
 ## Commands ##
 ```
 WASD        Move (normal directions)
-Shift-WASD  Move (Diagonals - shift 45 degrees counterclockwise)
+Sh-WASD     Move (Diagonals - shift 45 degrees counterclockwise)
 
 L           Toggle personal light
 
 T           Change which direction you move valves and dials (up vs down)
-Shift-Space Advance a tick
+Sh-Space    Advance a tick
 
 Ctrl-S      Save Game
 Ctrl-O      Load Game
 
-Escape      Exit Game
+Sh-Escape   Exit Game
 F12         Developer Console
+Alt-Enter   Toggle Full Screen
 ```
 
 ## Ship Cold Start Procedure ##

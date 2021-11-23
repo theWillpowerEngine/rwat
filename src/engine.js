@@ -170,6 +170,9 @@ module.exports = (logger, opts) => {
             applyObjectTo(that, loaded)
             that.log("Loaded game.")
         },
+        async getHelp(topic) {
+            return await ipcRenderer.invoke("help", topic)
+        },
 
         render() {
             if(that.gameOver)
