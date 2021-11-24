@@ -14,16 +14,17 @@ module.exports = (eng) => {
 
             theMap.fill(tiles.shipFloor)
 
-            theMap.vline(tiles.shipWall, 0, 0, 75)
-            theMap.vline(tiles.shipWall, 22, 0, 75)
-
-            theMap.hline(tiles.shipWall, 0, 0, 23)
-            theMap.hline(tiles.shipWall, 0, 74, 23)
+            theMap.rect(tiles.shipWall, 0, 0, 23, 75)
             
             //engine room
-            theMap.hline(tiles.shipWall, 3, 63, 20)
-            theMap.vline(tiles.shipWall, 3, 63, 10)
-            theMap.door(4, 63, "the engine room door", "engineRoom", 1, 1, "You enter the engine room")
+            theMap.rect(tiles.shipWall, 3, 65, 20, 10)
+            theMap.door(4, 65, "the engine room door", "engineRoom", 1, 1, "You enter the engine room")
+
+            //officer quarters and bathroom
+            theMap.rect(tiles.shipWall, 2, 56, 8, 8)
+            theMap.rect(tiles.shipWall, 13, 56, 8, 8)
+            theMap.hline(tiles.shipWall, 10, 57, 4)
+            theMap.hline(tiles.shipWall, 10, 63, 4)
 
             //On Tick
             theMap.tickHandler = () => {

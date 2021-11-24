@@ -32,6 +32,12 @@ module.exports = (obj) => {
             for(var dY=0; dY < length && that.height > dY + y; dY++)
                 that.tiles[x][y+dY] = { ...tile, ...o }
         },
+        rect(tile, x, y, w, h, o) {
+            that.hline(tile, x, y, w, o)
+            that.hline(tile, x, y+h-1, w, o)
+            that.vline(tile, x, y, h, o)
+            that.vline(tile, x+w-1, y, h, o)
+        },
 
         addSwitch(x, y, desc, on, off, o) {
             that.tiles[x][y] = tiles.merge(tiles.switch, { 

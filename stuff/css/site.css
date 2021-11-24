@@ -38,6 +38,7 @@ body{
   padding-top: 2px;
   background-color: #0F7173;
   opacity: 0.5;
+  min-width: 300px;
 }
 
 #game {
