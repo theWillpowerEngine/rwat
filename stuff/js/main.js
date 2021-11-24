@@ -24,6 +24,23 @@ window.onerror = function(msg, url, line, col, error) {
 
 const engine = makeEngine(logMsg)
 
+window["cheat"] = {
+    backRoom() {
+        engine.scenes.set("dev")
+        engine.render()
+    },
+    tel(place) {
+        engine.scenes.set(place)
+        engine.render()
+    },
+    warp(x, y) {
+        engine.player.x = x
+        engine.player.y = y
+        engine.render()
+    }
+
+}
+
 $(() => {
     engine.init((step, msg) => {
         logMsg(`<span class='log-item'>Step ${step} done: ${msg}.</span>`)

@@ -32,4 +32,13 @@ module.exports = (win) => {
             return data
         }
     })
+
+    ipcMain.handle("zelazny", (event, topic) => {
+        try {
+            var data = fs.readFileSync(`zelazny\\${topic}`, 'utf8')
+            return data
+        } catch(ex) {
+            return "Zelazny '" + topic + "' was not found"
+        }
+    })
 }

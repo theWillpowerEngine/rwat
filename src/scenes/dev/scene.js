@@ -26,6 +26,10 @@ module.exports = (eng) => {
                     }
                     engine.log("You turn the lights off.")  
                 }, {state: true})
+
+            engine.maps.dev.addButton(7, 6, "the zelazny buttono", async (eng, tile) => {
+                await ui.zelazny("test", "0")
+            })
         },
         applyLights() {
             engine.lights.setAmbient(engine.lights.create("pink", 0.3, 0.3))

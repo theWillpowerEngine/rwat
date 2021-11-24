@@ -200,6 +200,9 @@ module.exports = (logger, opts) => {
         async getHelp(topic) {
             return await ipcRenderer.invoke("help", topic)
         },
+        async getZelazny(group, node) {
+            return await ipcRenderer.invoke("zelazny", group + "\\" + node)
+        },
 
         render() {
             if(that.gameOver)

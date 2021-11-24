@@ -9,6 +9,12 @@ const ui= {
         ui.modal(content)
     },
 
+    async zelazny(story, file) {
+        var content = await engine.getZelazny(story, file)
+        if(content)
+            ui.modal(content)
+    },
+
     updateUI() {
         $("#area").html(engine?.map?.name || "Unknown Area")
     }
