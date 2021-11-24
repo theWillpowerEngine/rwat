@@ -10,9 +10,14 @@ let { ipcRenderer } = require("electron")
 
 function applyObjectTo(base, toApply) {
     for(var prop in toApply) {
-        if(typeof toApply[prop] === 'object')
+        if(Array.isArray(toApply[prop])) {
+            var a = toApply[prop]
+            for(var i of a)
+                if(!base[prop].includes(i))
+                    base[prop].push(i)
+        } else if(typeof toApply[prop] === 'object')
             base[prop] = applyObjectTo(base[prop], toApply[prop])
-        else    
+        else 
             base[prop] = toApply[prop]
     }
 
@@ -177,15 +182,18 @@ module.exports = (logger, opts) => {
         },
 
         async save() {
+            var zel = that.zelazny
+            delete that.zelazny
             var eng = JSON.parse(JSON.stringify(that))
+            that["zelazny"] = zel
             currentScene = eng.scenes.current
+            
             delete eng.display
             delete eng.scenes
             delete eng.map
             delete eng.lights
-            delete eng.zelazny.parser
-            delete eng.zelazny.nodes
             eng["curScene"] = currentScene
+            eng["zelState"] = zel.state
 
             eng.maps = extractDeltaObject(backupMaps, eng.maps)
 
@@ -196,11 +204,16 @@ module.exports = (logger, opts) => {
             var json = await ipcRenderer.invoke("load", JSON.stringify(that))
             var loaded = JSON.parse(json)
             
+            var zs = loaded.zelState
+            delete loaded.zelState
+
             applyObjectTo(that, loaded)
 
             var cs = that.curScene
             that.scenes.set(cs)
             delete that.curScene
+
+            applyObjectTo(that.zelazny.state, zs)
             
             that.log("Loaded game.")
         },
