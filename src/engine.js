@@ -98,9 +98,11 @@ module.exports = (logger, opts) => {
             if(y > y1) dY = -1
             if(y < y1) dY = 1
             
-            if(that.checkLOS(x1, y1, x + dX, y))
+            if(that.checkLOS(x1, y1, x + dX, y) && (!that.map.tiles[x+dX][y].solid || that.map.tiles[x+dX][y].transparent))
                 return true
-            if(that.checkLOS(x1, y1, x, y + dY))
+            if(that.checkLOS(x1, y1, x, y + dY) && !that.map.tiles[x][y+dY].solid || that.map.tiles[x][y+dY].transparent)
+                return true
+            if(that.checkLOS(x1, y1, x+dX, y + dY) && !that.map.tiles[x+dX][y+dY].solid || that.map.tiles[x+dX][y+dY].transparent)
                 return true
 
             return false

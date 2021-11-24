@@ -59,7 +59,7 @@ module.exports = (eng) => {
             theMap.apply(1, 9, { transparent: true, background: 'white' }, 5)
 
             //Doors
-            theMap.door(1, 0, "the door out of the engine room", "crewDeck", 4, 64, "You leave the engine room")
+            theMap.door(1, 0, "the door out of the engine room", "crewDeck", 4, 54, "You leave the engine room")
 
             //Misc Map pieces (pipes/etc.)
             theMap.addDisplay(1, 8, "a coolant pipe", (eng, tile) => {
