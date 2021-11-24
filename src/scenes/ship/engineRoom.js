@@ -40,7 +40,10 @@ module.exports = (eng) => {
         makeMap() {
             engine.maps["engineRoom"] = map.blank(20, 10)
             let theMap = engine.maps.engineRoom
+            
             theMap["helpTopic"] = "engineRoom"
+            theMap.name = 'Engine Room'
+            theMap.isShip = true
 
             //#region Rough-In (walls/floor/doors/etc.)
             theMap.fill(tiles.shipFloor)

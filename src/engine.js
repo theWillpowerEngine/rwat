@@ -232,8 +232,10 @@ module.exports = (logger, opts) => {
 
             logger(that.logText)
             that.logText = ''
+            ui.updateUI()
 
             console.log("Tick Duration: " + Math.abs((new Date().getTime() - start.getTime())) + " ms")
+
         }
     }
 

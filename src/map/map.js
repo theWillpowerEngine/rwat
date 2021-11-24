@@ -7,6 +7,7 @@ function makeMap(partial) {
         height: 0,
         tiles: null,
         tickHandler: null,
+        isShip: false,
 
         ...partial
     }

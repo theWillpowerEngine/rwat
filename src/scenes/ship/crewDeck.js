@@ -8,6 +8,10 @@ module.exports = (eng) => {
         makeMap() {
             engine.maps["crewDeck"] = map.blank(23, 75)
             var theMap = engine.maps.crewDeck
+            
+            theMap.name = 'Crew Deck'
+            theMap.isShip = true
+
             theMap.fill(tiles.shipFloor)
 
             theMap.vline(tiles.shipWall, 0, 0, 75)
@@ -21,10 +25,14 @@ module.exports = (eng) => {
             theMap.vline(tiles.shipWall, 3, 63, 10)
             theMap.door(4, 63, "the engine room door", "engineRoom", 1, 1, "You enter the engine room")
 
+            //On Tick
+            theMap.tickHandler = () => {
+                engine.lights.setAmbient(engine.ship.getMasterAmbientLight())
+            }
         },
  
         applyLights() {
-            engine.lights.setAmbient(engine.ship.getMasterAmbientLight())
+
         }
     }
 
