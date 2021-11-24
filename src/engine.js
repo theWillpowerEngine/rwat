@@ -145,7 +145,7 @@ module.exports = (logger, opts) => {
             that.renderer = makeRenderer(that)
             that.scenes = makeScenes(that)
             that.ship = makeShip(that)
-            that.zelazny = makeZelazny()
+            that.zelazny = makeZelazny(that)
             pg(2, "Preinitialization complete")
 
             that.ship.createDamageModel()

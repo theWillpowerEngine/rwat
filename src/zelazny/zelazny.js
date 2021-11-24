@@ -2,9 +2,11 @@ const makeState = require('./state.js')
 const scanner = require("./scanner.js")
 const makeParser = require("./parser.js")
 
-module.exports = (state, game) => {
+module.exports = (eng, state, game) => {
+    let engine = eng
+
     var that = {
-        state: makeState(state),
+        state: makeState(state, engine),
         parser: null,
         nodes: {},
 

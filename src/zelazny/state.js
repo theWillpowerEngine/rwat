@@ -1,4 +1,10 @@
-module.exports = (seed) => {
+const skillList = ["airmanship", "leadership", "negotiation", "manipulation", "strength", "intellect", "luck", "reaction",
+                   "resilience", "cooking", "appraisal", "medicine", "chemistry", "larceny", "barding", "gambling", 
+                   "animals", "mining", "farming", "martialArts", "firearms", "fishing", "engineering", "divination", 
+                   "sorcery", "edge", "flashSteps", "knack"]
+
+module.exports = (seed, eng) => {
+    let engine = eng
     var that = {
         flags: {
             pc: [],
@@ -129,6 +135,8 @@ module.exports = (seed) => {
         },
 
         getAttr(attr) {
+            if(skillList.includes(attr))
+                return engine.player[attr]
             if(that.attrs.pc[attr.toLowerCase()] !== undefined)
                 return that.attrs.pc[attr.toLowerCase()]
             if(that.attrs.story[attr.toLowerCase()] !== undefined)
@@ -139,11 +147,13 @@ module.exports = (seed) => {
             return null
         },
         addToAttr(attr, val) {
-            if(that.attrs.pc[attr.toLowerCase()] !== undefined)
+            if(skillList.includes(attr))
+                engine.player.incrementSkill(attr, val)
+            else if(that.attrs.pc[attr.toLowerCase()] !== undefined)
                 that.setPCAttr(attr, parseInt(that.getAttr(attr)) + val)    
-            if(that.attrs.story[attr.toLowerCase()] !== undefined)
+            else if(that.attrs.story[attr.toLowerCase()] !== undefined)
                 that.setStoryAttr(attr, parseInt(that.getAttr(attr)) + val)
-            if(that.attrs.node[attr.toLowerCase()] !== undefined)
+            else if(that.attrs.node[attr.toLowerCase()] !== undefined)
                 that.setNodeAttr(attr, parseInt(that.getAttr(attr)) + val)
         },
         setPCAttr(attr, val) {
