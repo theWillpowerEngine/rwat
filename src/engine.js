@@ -84,6 +84,29 @@ module.exports = (logger, opts) => {
             }
             return true
         },
+
+        //More permissive LOS: adds expansive walls
+        extendedCheckLOS(x, y, x1, y1) {
+            if(!x1) x1 = that.player.x
+            if(!y1) y1 = that.player.y
+            if(that.checkLOS(x, y, x1, y1))
+                return true
+
+            var dX = 0, dY = 0
+            if(x > x1) dX = -1
+            if(x < x1) dX = 1
+            if(y > y1) dY = -1
+            if(y < y1) dY = 1
+            
+            debugger
+            if(that.checkLOS(x1, y1, x + dX, y))
+                return true
+            if(that.checkLOS(x1, y1, x, y + dY))
+                return true
+
+            return false
+        },
+
         boundsCheck(x, y) {
             if(x < 0 || y < 0)
                 return { ib: false }

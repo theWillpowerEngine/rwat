@@ -32,7 +32,7 @@ module.exports = (eng) => {
                 tile.char = tile.char(engine, tile)
 
             //Check visibility
-            if(!engine.checkLOS(x, y)) {
+            if(!engine.extendedCheckLOS(x, y)) {
                 let adjustedColor = Color(tile.color).darken(that.invisibleTileScaleFactor).hex()
                 tile.color = adjustedColor
             } else {
