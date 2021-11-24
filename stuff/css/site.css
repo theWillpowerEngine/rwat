@@ -51,15 +51,21 @@ body{
 
 #zelazny {
   z-index: 1000;
-  position: absolute;
-  top: 25px;
-  left: 25px;
-  height: 50px;
-  width: 200px;
-  background-color: #7E7F83;
-  color: #211A1D;
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -150px;
+  margin-left: -200px;
+  height: 300px;
+  width: 400px;
+
+  background-color: #211A1D;
+  color: #F8F0FB;
   border: solid 1px #DFF2D8;
   padding: 3px 3px 3px 3px;
+  font-family: Helvetica, Georgia, Cochin, Times, 'Times New Roman', serif;
+  font-size: 12pt;
 }
 
 .log-item {
@@ -72,4 +78,16 @@ body{
 .help-journal {
   font-family: Helvetica, Georgia, Cochin, Times, 'Times New Roman', serif;
   font-size: 12pt;
+}
+
+.action-link {
+  color: #5EF38C;
+  cursor: pointer;
+}
+.action-span {
+  display: none;
+}
+.zelazny-close {
+  cursor: pointer;
+  color: #D0FCB3;
 }

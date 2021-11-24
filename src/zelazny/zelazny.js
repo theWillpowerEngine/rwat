@@ -8,7 +8,6 @@ module.exports = (eng, state, game) => {
     var that = {
         state: makeState(state, engine),
         parser: null,
-        nodes: {},
 
         htmlFormat: true,
         linkFormat: `<a class='action-link' data-action='[v __id]'>[v __text]</a><span class='action-span' data-id='[v __id]'>[v __action]</span>`,
@@ -77,6 +76,15 @@ module.exports = (eng, state, game) => {
             var nodes = scanner.scan(that, code)
             var parsed  = that.parser.eval(nodes.base[0])
             return parsed
+        },
+
+        done() {
+            that.over = false
+            that.area = "base",
+            that.node = "0",
+            that.nodes = {
+                base: {}
+            }
         },
 
         ...game,
