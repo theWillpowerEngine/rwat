@@ -6,6 +6,7 @@ const ui= {
     async help(topic) {
         if(!topic) topic = "index"
         var content = await engine.getHelp(topic)
+        escStack.push(() => {})
         ui.modal(content)
     },
 
@@ -22,7 +23,7 @@ const ui= {
                     
                     var text = engine.zelazny.action(action)
                     if(engine.zelazny.over)
-                        text += `<br /><center>${engine.zelazny.over}</center><br /><center><a class="zelazny-close" onclick='escStack.pop()(1)'>Close</a></center>`
+                        text += `<br /><br /><center>${engine.zelazny.over}</center><br /><center><a class="zelazny-close" onclick='escStack.pop()(1)'>Close</a></center>`
         
                     $("#zelazny").html(text)
                     bind()

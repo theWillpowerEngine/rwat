@@ -1,3 +1,4 @@
+/*  Elements  */
 body{
     padding: 0 0 0 0;
     margin: 0 0 0 0;
@@ -7,6 +8,7 @@ body{
     color: #EFF0D1;
 }
 
+/*  Styles by ID */
 #header {
   position: absolute;
   top: 0;
@@ -51,6 +53,7 @@ body{
 
 #zelazny {
   z-index: 1000;
+  overflow-y: scroll;
 
   position: fixed;
   top: 50%;
@@ -68,6 +71,7 @@ body{
   font-size: 12pt;
 }
 
+/*  Misc CSS classes  */
 .log-item {
   display: block;
   margin-bottom: 5px;
@@ -80,6 +84,7 @@ body{
   font-size: 12pt;
 }
 
+/*  Zelazny styles   */
 .action-link {
   color: #5EF38C;
   cursor: pointer;
@@ -90,4 +95,21 @@ body{
 .zelazny-close {
   cursor: pointer;
   color: #D0FCB3;
+}
+
+ /*   Scroll Bar  */
+ .scroll::-webkit-scrollbar {
+  width: 10px;
+}
+
+.scroll::-webkit-scrollbar-track {
+  background: #7E7F83;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+  background: #B4C5E4;
+}
+
+.scroll::-webkit-scrollbar-thumb:hover {
+  background: #DFF2D8;
 }
