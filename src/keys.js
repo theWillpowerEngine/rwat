@@ -122,9 +122,11 @@ module.exports = (eng, kbs) => {
         await ipcRenderer.invoke("toggleFullscreen")
     })
     hotkeys('escape', async function(e, h){
-        if(escStack.length)
-            escStack.pop()()
-        else
+        if(escStack.length) {
+            var f =escStack.pop()
+            if(f())
+                escStack.push(f) 
+        } else
             if(confirm("Are you sure you want to exit?"))
                 window.close()
     })

@@ -1,3 +1,7 @@
-Your airmanship is [v airmanship]
-
-`Add one` => {  add 1 to airmanship      }
+It is [?light light|dark] here.  _
+    [?light You can see `the door` => 
+    { "You made it!" the end } to leave.  _
+    There is a `light switch` => 
+    { the node is not light } _
+    here.|  There is a `light switch` => 
+    { the node is light } here.]    
