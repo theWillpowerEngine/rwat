@@ -98,7 +98,6 @@ module.exports = (logger, opts) => {
             if(y > y1) dY = -1
             if(y < y1) dY = 1
             
-            debugger
             if(that.checkLOS(x1, y1, x + dX, y))
                 return true
             if(that.checkLOS(x1, y1, x, y + dY))
