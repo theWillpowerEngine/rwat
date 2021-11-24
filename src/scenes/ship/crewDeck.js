@@ -12,6 +12,7 @@ module.exports = (eng) => {
             theMap.name = 'Crew Deck'
             theMap.isShip = true
 
+            //#region basic framing/layout
             theMap.fill(tiles.shipFloor)
 
             theMap.rect(tiles.shipWall, 0, 0, 23, 65)
@@ -29,6 +30,35 @@ module.exports = (eng) => {
             //galley
             theMap.rect(tiles.shipWall, 0, 26, 10, 10)
             
+            //sick bay
+            theMap.rect(tiles.shipWall, 13, 26, 10, 10)
+
+            //simple quarters
+            theMap.rect(tiles.shipWall, 2, 20, 5, 5)
+            theMap.rect(tiles.shipWall, 6, 20, 5, 5)
+            theMap.rect(tiles.shipWall, 2, 16, 5, 5)
+            theMap.rect(tiles.shipWall, 6, 16, 5, 5)
+
+            theMap.rect(tiles.shipWall, 12, 20, 5, 5)
+            theMap.rect(tiles.shipWall, 16, 20, 5, 5)
+            theMap.rect(tiles.shipWall, 12, 16, 5, 5)
+            theMap.rect(tiles.shipWall, 16, 16, 5, 5)
+
+            theMap.rect(tiles.shipWall, 12, 12, 5, 5)
+            theMap.rect(tiles.shipWall, 16, 12, 5, 5)
+            theMap.rect(tiles.shipWall, 12, 8, 5, 5)
+            theMap.rect(tiles.shipWall, 16, 8, 5, 5)
+
+            //bathroom & showers
+            theMap.rect(tiles.shipWall, 0, 11, 4, 6)
+            theMap.rect(tiles.shipWall, 19, 3, 4, 6)
+            /////////////
+            //#endregion
+
+            //#region doors
+
+            ////////////
+            //#endregion
 
 
             //On Tick
