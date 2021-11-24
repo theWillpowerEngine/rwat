@@ -85,6 +85,8 @@ module.exports = (eng, state, game) => {
             that.nodes = {
                 base: {}
             }
+            that.state.flags.story = []
+            that.state.attrs.story = {}
         },
 
         ...game,
