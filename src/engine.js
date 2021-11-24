@@ -12,9 +12,13 @@ function applyObjectTo(base, toApply) {
     for(var prop in toApply) {
         if(Array.isArray(toApply[prop])) {
             var a = toApply[prop]
-            for(var i of a)
-                if(!base[prop].includes(i))
-                    base[prop].push(i)
+            for(var i of a) {
+                try {
+                    if(!base[prop].includes(i)) {
+                        base[prop].push(i)
+                    }
+                } catch(e) {console.warn("Potential problem in applyObjectTo: " + e)}
+            }
         } else if(typeof toApply[prop] === 'object')
             base[prop] = applyObjectTo(base[prop], toApply[prop])
         else 
