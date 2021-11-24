@@ -178,12 +178,14 @@ module.exports = (logger, opts) => {
 
         async save() {
             var eng = JSON.parse(JSON.stringify(that))
+            currentScene = eng.scenes.current
             delete eng.display
             delete eng.scenes
             delete eng.map
             delete eng.lights
             delete eng.zelazny.parser
             delete eng.zelazny.nodes
+            eng["curScene"] = currentScene
 
             eng.maps = extractDeltaObject(backupMaps, eng.maps)
 
@@ -195,6 +197,11 @@ module.exports = (logger, opts) => {
             var loaded = JSON.parse(json)
             
             applyObjectTo(that, loaded)
+
+            var cs = that.curScene
+            that.scenes.set(cs)
+            delete that.curScene
+            
             that.log("Loaded game.")
         },
         async getHelp(topic) {

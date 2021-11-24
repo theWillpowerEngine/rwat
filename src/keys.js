@@ -24,6 +24,8 @@ window.keyBinds = {
     helpHome: 'shift+F1',
 }
 
+window["escStack"] = []
+
 module.exports = (eng, kbs) => {
     let engine = eng
     let binds = {
@@ -115,8 +117,16 @@ module.exports = (eng, kbs) => {
         await ui.help(topic)
     });
 
+    //Hard Binds
     hotkeys('alt+enter', async function(e, h){
         await ipcRenderer.invoke("toggleFullscreen")
+    })
+    hotkeys('escape', async function(e, h){
+        if(escStack.length)
+            escStack.pop()()
+        else
+            if(confirm("Are you sure you want to exit?"))
+                window.close()
     })
 
 }

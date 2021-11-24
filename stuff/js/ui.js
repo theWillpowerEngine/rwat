@@ -11,8 +11,13 @@ const ui= {
 
     async zelazny(story, file) {
         var content = await engine.getZelazny(story, file)
-        if(content)
-            ui.modal(content)
+
+        $("#zelazny").html(engine.zelazny.parse(content))
+        $("#zelazny").fadeIn()
+
+        escStack.push(() => {
+            $("#zelazny").fadeOut()
+        })
     },
 
     updateUI() {

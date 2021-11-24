@@ -49,6 +49,19 @@ body{
   right: 200px;
 }
 
+#zelazny {
+  z-index: 1000;
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  height: 50px;
+  width: 200px;
+  background-color: #7E7F83;
+  color: #211A1D;
+  border: solid 1px #DFF2D8;
+  padding: 3px 3px 3px 3px;
+}
+
 .log-item {
   display: block;
   margin-bottom: 5px;
