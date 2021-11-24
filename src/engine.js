@@ -67,6 +67,9 @@ module.exports = (logger, opts) => {
         player: null,
         ship: null,
 
+        lastOffsetX: 0,
+        lastOffsetY: 0,
+
         checkLOS(x, y, x1, y1) {
             if(!x1) x1 = that.player.x
             if(!y1) y1 = that.player.y
@@ -203,6 +206,11 @@ module.exports = (logger, opts) => {
             if(offsetX > map.width - displayWidth) offsetX = map.width - displayWidth
             if(offsetY < 0) offsetY = 0
             if(offsetY > map.height - displayHeight) offsetY = map.height - displayHeight
+
+            that.lastOffsetX = offsetX
+            that.lastOffsetY = offsetY
+
+            that.display.clear()
 
             for(var x=0; x<displayWidth; x++)
                 for(var y=0; y<displayHeight; y++) {

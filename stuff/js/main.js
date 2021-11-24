@@ -34,7 +34,7 @@ $(() => {
         var coords = getCursorPosition(e.target, e)
         coords.x = Math.trunc(coords.x /= 20)
         coords.y = Math.trunc(coords.y /= 20)
-        var tile = engine.renderer.getTileAt(coords.x, coords.y)
+        var tile = engine.renderer.getTileAt(coords.x + engine.lastOffsetX, coords.y + engine.lastOffsetY)
         if(tile) {
             if(typeof tile.desc === 'function')
                 logMsg(`<span class='log-item'>${tile.desc(engine, tile)}</span>`)
