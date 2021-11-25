@@ -50,12 +50,12 @@ module.exports = (eng, sh) => {
         boilerHeat: 0,
 
         fuel: fuelRodArray,
-        control: [
-            {a: () => that.fuel[0], b: () => that.fuel[1], position: 10},
-            {a: () => that.fuel[1], b: () => that.fuel[2], position: 10},
-            {a: () => that.fuel[2], b: () => that.fuel[3], position: 10},
-            {a: () => that.fuel[3], b: () => that.fuel[0], position: 10},
-        ],
+        control: {
+            "0": {a: () => that.fuel[0], b: () => that.fuel[1], position: 10},
+            "1": {a: () => that.fuel[1], b: () => that.fuel[2], position: 10},
+            "2": {a: () => that.fuel[2], b: () => that.fuel[3], position: 10},
+            "3": {a: () => that.fuel[3], b: () => that.fuel[0], position: 10},
+        },
 
         info: {
             previousNewThaums: 0,
@@ -73,7 +73,8 @@ module.exports = (eng, sh) => {
             
             //Control rods "gather" thaums by being retracted
             var newThaums = 0
-            for(var rod of that.control) {
+            for(var ri in that.control) {
+                var rod = that.control[ri]
                 var amt = 10 - rod.position
                 if(amt) {
                     rod.a().quality -= 1
@@ -181,14 +182,16 @@ module.exports = (eng, sh) => {
             }
 
             //Pressure is expended to turns the turbines
-            var overPressure = that.internalPressure - 1
+            that.coolantPressure = that.internalPressure
+            var overPressure = that.coolantPressure - 1
             if(that.turbineSetting && overPressure > 0) {
                 if(overPressure > that.turbineSetting) {
                     that.turbineForce = that.turbineSetting
-                    that.internalPressure -= that.turbineSetting
+                    that.coolantPressure -= that.turbineSetting
+                    that.internalPressure -= that.turbineSetting == 3 ? 2 : 1
                 } else if(overPressure > 0) {
                     that.turbineForce = overPressure
-                    that.internalPressure = 1
+                    that.coolantPressure = 1
                 }
             } else if (that.turbineSetting == 0 && that.turbineForce > 0)
                 that.turbineForce -= 1
@@ -223,7 +226,6 @@ module.exports = (eng, sh) => {
                 }
             }
             
-            that.coolantPressure = that.internalPressure
             that.coolantTemp -= 1
             if(that.coolantTemp < 0)
                 that.coolantTemp = 0

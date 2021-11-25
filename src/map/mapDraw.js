@@ -9,7 +9,6 @@ module.exports = (obj) => {
         },
 
         apply(iX, iY, change, w, h) {
-            debugger;
             if(!w) w = 1
             if(!h) h = 1
             for(var x=iX; x<iX+w; x++)
