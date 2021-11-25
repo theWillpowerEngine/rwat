@@ -8,6 +8,7 @@ Reactor:
 Shaft/Prop controls:
    Make lubrication eventually wear off (but slowly) -- this might be a good excuse to write an event system
    Slow down the prop a little (propSpeed can be decimal w/o incident)
+   Make damage degrade performance (will be easier with decimals)
 
 Lift controls:
    Lift system

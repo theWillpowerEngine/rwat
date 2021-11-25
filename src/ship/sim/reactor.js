@@ -51,10 +51,10 @@ module.exports = (eng, sh) => {
 
         fuel: fuelRodArray,
         control: [
-            {a: fuelRodArray[0], b: fuelRodArray[1], position: 10},
-            {a: fuelRodArray[1], b: fuelRodArray[2], position: 10},
-            {a: fuelRodArray[2], b: fuelRodArray[3], position: 10},
-            {a: fuelRodArray[3], b: fuelRodArray[0], position: 10},
+            {a: () => that.fuel[0], b: () => that.fuel[1], position: 10},
+            {a: () => that.fuel[1], b: () => that.fuel[2], position: 10},
+            {a: () => that.fuel[2], b: () => that.fuel[3], position: 10},
+            {a: () => that.fuel[3], b: () => that.fuel[0], position: 10},
         ],
 
         info: {
@@ -76,13 +76,13 @@ module.exports = (eng, sh) => {
             for(var rod of that.control) {
                 var amt = 10 - rod.position
                 if(amt) {
-                    rod.a.quality -= 1
-                    rod.b.quality -= 1
+                    rod.a().quality -= 1
+                    rod.b().quality -= 1
                     if(that.internalTemp > 10) {
-                        rod.a.quality -= (that.internalTemp - 10)
-                        rod.b.quality -= (that.internalTemp - 10)
+                        rod.a().quality -= (that.internalTemp - 10)
+                        rod.b().quality -= (that.internalTemp - 10)
                     } 
-                    amt = Math.round(Math.round((rod.a.quality / 10000) - rod.position) + Math.round((rod.b.quality / 10000)- rod.position) / 5)
+                    amt = Math.round(Math.round((rod.a().quality / 10000) - rod.position) + Math.round((rod.b().quality / 10000)- rod.position) / 5)
 
                     if(that.internalTemp < 4)
                         amt -= 1

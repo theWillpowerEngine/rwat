@@ -2,20 +2,25 @@
 {
     
 }
-You were born in Saltrice, the realm's main source of agriculture, and you were just about set to live an ordinary farmer's life.  This never sat well with you, who felt the call to adventure, but the opportunity to make your way out into the world never came, and as you aged into early adulthood you started to give up on the idea that you would ever be anything more.
+You were born in Saltrice, the realm's main source of farmed goods, and despite your dreams it seemed inevitable that you too would live your life as a farmer.  Then, one day, a package arrived by special courier from Uncle Jack, and all that changed.
 
-That is until the day you received a package from your Uncle Jack, a strange fellow who owned his own little airship and who made his way in the world under his own terms.  Included with the package was a leatherbound journal, an a letter.
+The package contained his leatherbound journal -- which was as much a manual of how to live a profitable life as a personal recollection -- and a letter, and it was the letter which changed the course of your life.
+
+It said that Uncle Jack had died, which became sadder when you read on.  He'd spent the last two decades of his life saving up a gift for you.  A way out.
 
 `Continue` => {
     go to 1
 }
 @1
-The journal is full of information on airmanship and living a life of excitement, the letter carries the best news of your young life...  In it your uncle indicates that he spent most of your life saving up money and has used that money to arrange financing for a brand new trader airship from a shipwright on the outskirts of Traven.  You have but to show up there with his letter, and you will instantly become a captain.  Enough coins to buy yourself passage are included.
+Uncle Jack always was eclectic; an intrepid airship pilot and adventurer who stood as an antonym to his stoic, solid brother.  The two got along only as a politeness, and mostly for your sake, since Jack's visits has been a highlight of your relatively boring childhood.
 
-As you set out for Traven, you contemplate your short, rather uninteresting life and how it's brought you here...
+And his final act was equally quixotic.  He'd spent his entire savings, an amount which would have set you up comfortably for several lifetimes, on a massive down payment on a brand new airship, being built at an upscale shipyard on the outskirts of Traven.  You were meant to assume both the captaincy and the mortgage, and were forbidden from selling it until the latter was fully paid off.
 
-`Continue` => {
+As you contemplated the gift and the burden both, you considered the thirst for something other than harvesting and planting, and how it had always been with you...
+
+`Start Character Creation` => {
     go to earlyMemories
 }
 @earlyMemories
 ...
+{"done" game over}
