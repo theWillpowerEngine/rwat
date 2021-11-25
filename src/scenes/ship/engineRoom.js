@@ -38,8 +38,7 @@ module.exports = (eng) => {
 
     var that = {
         makeMap() {
-            engine.maps["engineRoom"] = map.blank(20, 10)
-            let theMap = engine.maps.engineRoom
+            var theMap = engine.maps["engineRoom"] = map.blank(20, 10)
             
             theMap["helpTopic"] = "engineRoom"
             theMap.name = 'Engine Room'

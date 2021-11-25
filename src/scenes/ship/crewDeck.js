@@ -6,8 +6,7 @@ module.exports = (eng) => {
 
     var that = {
         makeMap() {
-            engine.maps["crewDeck"] = map.blank(23, 65)
-            var theMap = engine.maps.crewDeck
+            var theMap = engine.maps["crewDeck"] = map.blank(23, 65)
             
             theMap.name = 'Crew Deck'
             theMap.isShip = true
@@ -19,7 +18,6 @@ module.exports = (eng) => {
             
             //engine room
             theMap.rect(tiles.shipWall, 3, 55, 20, 10)
-            theMap.door(4, 55, "the engine room door", "engineRoom", 1, 1, "You enter the engine room")
 
             //officer quarters and bathroom
             theMap.rect(tiles.shipWall, 2, 46, 8, 8)
@@ -57,6 +55,9 @@ module.exports = (eng) => {
 
             //#region doors
 
+            theMap.door(4, 55, "the engine room door", "engineRoom", 1, 1, "You enter the engine room")
+            theMap.door(1, 62, "a set of stairs leading down to the cargo deck", "cargoDeck", 1, 57, "You go down the stairs")
+            
             ////////////
             //#endregion
 
