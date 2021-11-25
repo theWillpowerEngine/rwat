@@ -32,7 +32,9 @@ function extractDeltaObject(base, changed) {
     
     for(var prop in changed) {
         if(typeof changed[prop] === 'object') {
-            retVal[prop] = extractDeltaObject(base[prop] || {}, changed[prop])    
+            var val = extractDeltaObject(base[prop] || {}, changed[prop])
+            if(val.length > 0)
+                retVal[prop] = val    
         }
         else {
             if(base[prop] != changed[prop])
