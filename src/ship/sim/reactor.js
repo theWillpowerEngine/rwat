@@ -84,10 +84,10 @@ module.exports = (eng, sh) => {
                     } 
                     amt = Math.round(Math.round((rod.a().quality / 10000) - rod.position) + Math.round((rod.b().quality / 10000)- rod.position) / 5)
 
-                    if(that.internalTemp < 4)
+                    if(that.internalTemp < 3)
                         amt -= 1
-                    else if(that.internalTemp > 7)
-                        amt += (that.internalTemp - 7)
+                    else if(that.internalTemp > 8)
+                        amt += (that.internalTemp - 8)
 
                     if(amt < 0)
                         amt = 0
@@ -119,9 +119,13 @@ module.exports = (eng, sh) => {
                 var coolingDelta = that.internalTemp - that.coolantTemp
                 if(coolingDelta > 0)
                 {
-                    that.internalTemp = Math.round(((that.coolantTemp * 2) + (that.internalTemp * 3)) / 5)
+                    if(that.boilerSetting == 3 && that.coolantTemp > 0)
+                        that.internalTemp = Math.round((((that.coolantTemp-1) * 3) + (that.internalTemp * 2)) / 5)
+                    else
+                        that.internalTemp = Math.round(((that.coolantTemp * 3) + (that.internalTemp * 2)) / 5)
+
                     if(newThaums) {
-                        that.internalPressure = Math.round(((that.coolantPressure * 2) + (that.internalTemp * 3)) / 5)
+                        that.internalPressure = Math.round(((that.coolantPressure * 4) + (that.internalTemp * 6)) / 10)
                         that.coolantTemp = Math.round(((that.coolantTemp * 3) + (that.internalTemp * 2)) / 5)
                     } else {
                         that.coolantTemp = Math.round(((that.coolantTemp * 9) + (that.internalTemp * 1)) / 10)
