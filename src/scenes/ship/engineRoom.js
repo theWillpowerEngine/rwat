@@ -98,7 +98,6 @@ module.exports = (eng) => {
             }, {
                 transparent: true, 
                 desc: (eng, t) => {
-                    debugger
                     if(eng.player.distToDirect(t.x, t.y) > 3)
                         return "That's the turbine shaft status panel."
                     return (`The desired shaft speed is ${lowMedMax(eng.ship.reactor.turbineSetting)}, current speed is: ${lowMedMax(eng.ship.reactor.turbineForce)}.`)
@@ -160,7 +159,10 @@ module.exports = (eng) => {
                 return 'X'
             }, { color: colors.white })
             theMap.addDisplay(6, 0, "the prop speed indicator (blue = reverse, green = ahead)", (eng, tile) => {
-                var val = Math.abs(eng.ship.drive.propSpeed || 0)
+                var val = eng.ship.drive.propConnect ?
+                        Math.abs(Math.round(eng.ship.drive.propSpeed || 0)) :
+                        Math.abs(Math.round(eng.ship.drive.propShaftSpeed || 0))
+
                 if(eng.ship.drive.propSpeed > 0)
                     tile.color = colors.green
                 else if(eng.ship.drive.propSpeed < 0)
@@ -299,7 +301,6 @@ module.exports = (eng) => {
             }, {
                 color: colors.gold,
                 char: (eng, tile) => {
-                    debugger
                     if(tile.val >= 0)
                         return tile.val.toString()
                     

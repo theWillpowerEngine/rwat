@@ -48,7 +48,6 @@ module.exports = (eng) => {
             theMap.rect(tiles.shipWall, 6, 8, 5, 5)
 
             //bathroom & showers
-//            theMap.rect(tiles.shipWall, 0, 11, 4, 6)
             theMap.rect(tiles.shipWall, 19, 3, 4, 6)
             /////////////
             //#endregion

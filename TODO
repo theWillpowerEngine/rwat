@@ -6,6 +6,7 @@ Reactor:
 
 Shaft/Prop controls:
    Make lubrication eventually wear off (but slowly) -- this might be a good excuse to write an event system
+   Slow down the prop a little (propSpeed can be decimal w/o incident)
 
 Lift controls:
    Lift system
@@ -27,9 +28,13 @@ Zelazny dialog is fixed size and could/should be dynamic?
 -----------
    Modeling
 
-Flesh out the top left of the crew deck (bonus rooms).  remember there are doors on the front
+Doors in the front (both decks)
 
-Finish the cargo deck
+Upper deck
+
+Outside/gun room
+
+wheel house
 
 -------------
    Other Work

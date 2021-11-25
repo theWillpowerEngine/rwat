@@ -11,6 +11,7 @@ module.exports = (eng, sh) => {
         transmissionSpeed: 0,
 
         propSpeed: 0,
+        propShaftSpeed: 0,
         clutch: true,
         propConnect: true,
 
@@ -58,8 +59,6 @@ module.exports = (eng, sh) => {
             }
 
             var desiredPropSpeed = that.transmission * ship.reactor.turbineForce
-            if(!that.propConnect)
-                desiredPropSpeed = 0
 
             if(desiredPropSpeed != that.propSpeed) {
                 var positiveDelta = desiredPropSpeed > that.propSpeed
@@ -101,6 +100,14 @@ module.exports = (eng, sh) => {
                 }
                 else if(dmg > 20)
                     engine.log("The normally faint vibration of the ship's engine seems heavier and less rhythmic than usual.")
+            }
+
+            that.propShaftSpeed = that.propSpeed
+            if(!that.propConnect) {
+                if(that.propSpeed > 0) {
+                    that.propSpeed -= 0.5
+                    if(that.propSpeed < 0) that.propSpeed = 0
+                }
             }
         }
     }
