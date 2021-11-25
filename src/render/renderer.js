@@ -8,7 +8,7 @@ module.exports = (eng) => {
     var that = {
         invisibleTileScaleFactor: 0.85,
         ambientLightScaleFactor: 0.5,
-        playerLightSource() { return engine.lights.create(engine.player.tile.bg, 0.9, 3, -0.21) },
+        playerLightSource() { return engine.lights.create(engine.player.tile.bg, 0.9, 5, -0.15) },
 
         getTileAt(x, y) {
             if(x == engine.player.x && y == engine.player.y) {

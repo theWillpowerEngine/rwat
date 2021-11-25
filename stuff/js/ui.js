@@ -16,6 +16,9 @@ const ui= {
     async zelazny(story, file, allowEsc) {
         var content = await engine.getZelazny(story, file)
         content = engine.zelazny.parse(content)
+        if(engine.zelazny.over)
+            content += `<br /><br /><center>${engine.zelazny.over}</center><br /><center><a class="zelazny-close" onclick='escStack.pop()(1)'>Close</a></center>`
+
         $("#zelazny").html(content)
 
         let bind = () => {

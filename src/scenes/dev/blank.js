@@ -26,8 +26,13 @@ module.exports = (eng) => {
                 char: 'L'
             })
 
-            theMap.addButton(0, 1, "the button to click to start a new game (good luck!)", (eng, tile) => {
-                //TODO:  chargen
+            theMap.addButton(0, 1, "the button to click to start a new game (good luck!)", async (eng, tile) => {
+                await ui.zelazny("chargen", "0")
+                engine.scenes.set("cargoDeck")
+                engine.player.x = 1
+                engine.player.y = 25
+                engine.render()
+
             }, {
                 color: colors.green,
                 char: 'N'
