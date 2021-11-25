@@ -12,10 +12,10 @@ module.exports = (eng) => {
             if(name)
                 return that.all[name.toLowerCase()]
             
-            return that.all[that.current]
+            return that.all[that.current.toLowerCase()]
         },
         set(name) {
-            that.current = name.toLowerCase()
+            that.current = name
             engine.map = engine.maps[name]
             engine.lights.clear()
             that.get().applyLights()
