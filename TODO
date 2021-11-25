@@ -3,7 +3,6 @@
 
 Reactor:
    Add damage model and effects
-   Maybe lower the impact of the turbine (esp. if you give it time)
 
 Shaft/Prop controls:
    Make lubrication eventually wear off (but slowly) -- this might be a good excuse to write an event system
@@ -11,9 +10,12 @@ Shaft/Prop controls:
    Make damage degrade performance (will be easier with decimals)
 
 Lift controls:
+   Damage/Destroy implementation
    Lift system
    engine room additions
    "tie down" functionality for being docked (plumb very beginnings of 3d positioning)
+
+Cargo Door and locking mechanism
 
 AI (start with Engineer) and Command system
 
@@ -29,6 +31,8 @@ Make parents apply damage randomly to their children
    Modeling
 
 Doors in the front (both decks)
+
+Bonus rooms in the front of the crew deck
 
 Upper deck
 

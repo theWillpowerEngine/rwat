@@ -16,9 +16,9 @@ module.exports = (eng, sh) => {
         propConnect: true,
 
         damage(amt) {
-            ship.damageModel.damage("transmission", amt)
+            ship.damageModel.damage("engine", amt)
         },
-        getDamage() { return ship.damageModel.get("transmission").damage },
+        getDamage() { return ship.damageModel.get("engine").damage },
 
         onDamage(args) {
             that.lubricant -= args.amt

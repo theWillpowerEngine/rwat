@@ -2,6 +2,7 @@ const makeReactor = require("./sim/reactor.js")
 const colors = require("../map/colors.js")
 const Color = require('color')
 const makeDrive = require("./sim/drive.js")
+const makeLift = require("./sim/lift.js")
 
 module.exports = (eng) => {
     let engine = eng
@@ -16,6 +17,7 @@ module.exports = (eng) => {
         thaumaticCapacitorThaums: 0,
         reactor: null,
         drive: null,
+        lift: null,
 
         pilotLights: false, 
         masterLights: 0,
@@ -38,12 +40,27 @@ module.exports = (eng) => {
             }
         },
 
+        drainThaums(amt) {
+            if(that.thaumaticCapacitorThaums > amt) {
+                that.thaumaticCapacitorThaums -= amt
+                return true
+            }
+
+            that.thaumaticCapacitorThaums = 0
+            return false
+        },
+
         createDamageModel() {
             var dmg = that.damageModel
 
-            dmg.addArea(dmg.make("transmission", 100, {
+            dmg.addArea(dmg.make("engine", 100, {
                 damage: that.drive.onDamage,
                 destroy: that.drive.onDestroy
+            }))
+
+            dmg.addArea(dmg.make("lift", 25, {
+                damage: that.lift.onDamage,
+                destroy: that.lift.onDestroy
             }))
         },
 
@@ -53,12 +70,15 @@ module.exports = (eng) => {
                 if(that.lightFuel < 0)
                     that.lightFuel = 0
             }
+
             that.reactor.cycle()
+            that.lift.cycle()
             that.drive.cycle()
         }
     }
 
     that.reactor = makeReactor(engine, that)
     that.drive = makeDrive(engine, that)
+    that.lift = makeLift(engine, that)
     return that
 }
