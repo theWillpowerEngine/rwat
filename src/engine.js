@@ -48,7 +48,7 @@ function extractDeltaObject(base, changed) {
 
 module.exports = (logger, opts) => {
     var conf = {
-        defaultScene: "engineRoom",
+        defaultScene: "blank",
 
         ...opts
     }

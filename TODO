@@ -3,6 +3,7 @@
 
 Reactor:
    Add damage model and effects
+   Maybe lower the impact of the turbine (esp. if you give it time)
 
 Shaft/Prop controls:
    Make lubrication eventually wear off (but slowly) -- this might be a good excuse to write an event system

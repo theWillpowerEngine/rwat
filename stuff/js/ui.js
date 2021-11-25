@@ -1,12 +1,15 @@
 const ui= {
     modal(content) {
-        $.modal(content)
+        escStack.push(() => {})
+        setTimeout(() => {
+            $.modal(content)
+        }, 0)
+        
     },
 
     async help(topic) {
         if(!topic) topic = "index"
         var content = await engine.getHelp(topic)
-        escStack.push(() => {})
         ui.modal(content)
     },
 

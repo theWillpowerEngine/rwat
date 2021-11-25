@@ -92,5 +92,10 @@ var that = module.exports = {
         color: colors.grey,
         desc: "a wall"
     }),
-
+    space: makeTile({
+        solid: false,
+        char: " ",
+        color: colors.background,
+        desc: "just empty space"
+    }),
 }
