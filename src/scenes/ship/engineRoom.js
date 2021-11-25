@@ -297,7 +297,23 @@ module.exports = (eng) => {
             theMap.addValve(5, 1, "the engine's transmission gear lever", -3, 3, eng.ship.drive.transmission, (tile) => {
                 eng.ship.drive.transmission = tile.val
             }, {
-                color: colors.gold
+                color: colors.gold,
+                char: (eng, tile) => {
+                    debugger
+                    if(tile.val >= 0)
+                        return tile.val.toString()
+                    
+                    switch(tile.val) {
+                        case -1:
+                            return 'a'
+                        case -2:
+                            return 'b'
+                        case -3:
+                            return 'c'
+                        default:
+                            return 'x'
+                    }
+                }
             })
 
             /////////////////////////////

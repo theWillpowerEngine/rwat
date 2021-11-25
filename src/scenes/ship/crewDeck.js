@@ -37,18 +37,18 @@ module.exports = (eng) => {
             theMap.rect(tiles.shipWall, 2, 16, 5, 5)
             theMap.rect(tiles.shipWall, 6, 16, 5, 5)
 
-            theMap.rect(tiles.shipWall, 12, 20, 5, 5)
-            theMap.rect(tiles.shipWall, 16, 20, 5, 5)
-            theMap.rect(tiles.shipWall, 12, 16, 5, 5)
-            theMap.rect(tiles.shipWall, 16, 16, 5, 5)
-
             theMap.rect(tiles.shipWall, 12, 12, 5, 5)
             theMap.rect(tiles.shipWall, 16, 12, 5, 5)
             theMap.rect(tiles.shipWall, 12, 8, 5, 5)
             theMap.rect(tiles.shipWall, 16, 8, 5, 5)
 
+            theMap.rect(tiles.shipWall, 2, 12, 5, 5)
+            theMap.rect(tiles.shipWall, 6, 12, 5, 5)
+            theMap.rect(tiles.shipWall, 2, 8, 5, 5)
+            theMap.rect(tiles.shipWall, 6, 8, 5, 5)
+
             //bathroom & showers
-            theMap.rect(tiles.shipWall, 0, 11, 4, 6)
+//            theMap.rect(tiles.shipWall, 0, 11, 4, 6)
             theMap.rect(tiles.shipWall, 19, 3, 4, 6)
             /////////////
             //#endregion
@@ -57,6 +57,7 @@ module.exports = (eng) => {
 
             theMap.door(4, 55, "the engine room door", "engineRoom", 1, 1, "You enter the engine room")
             theMap.door(1, 62, "a set of stairs leading down to the cargo deck", "cargoDeck", 1, 57, "You go down the stairs")
+            theMap.door(19, 2, "a U-shaped staircase down to the cargo deck", "cargoDeck", 19, 1, "You go down the stairs")
             
             ////////////
             //#endregion

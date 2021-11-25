@@ -14,12 +14,13 @@ module.exports = (eng, sh) => {
     let engine = eng
     let ship = sh
 
-    var fuelRodArray = [
-        {quality: 100000},
-        {quality: 100000},
-        {quality: 100000},
-        {quality: 100000}
-    ]
+    //Save/load dupes this array if it's an array
+    var fuelRodArray = {
+        "0": {quality: 100000},
+        "1": {quality: 100000},
+        "2": {quality: 100000},
+        "3": {quality: 100000}
+    }
 
     var that = {
         limits: {
