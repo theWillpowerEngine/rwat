@@ -60,50 +60,57 @@ module.exports = (eng, sh) => {
 
             var desiredPropSpeed = that.transmission * ship.reactor.turbineForce
 
-            if(desiredPropSpeed != that.propSpeed) {
-                var positiveDelta = desiredPropSpeed > that.propSpeed
-                var wasStill = that.propSpeed == 0
+            if(desiredPropSpeed != that.propShaftSpeed) {
+                var positiveDelta = desiredPropSpeed > that.propShaftSpeed
+                var wasStill = that.propShaftSpeed == 0
 
                 if(Math.abs(positiveDelta) > that.lubrication) {
                     that.damage(Math.abs(positiveDelta))
                 }
 
-                that.propSpeed += 1 * (positiveDelta ? 1 : -1)
-                if(that.propSpeed && wasStill)
+                that.propShaftSpeed += 1 * (positiveDelta ? 1 : -1)
+                if(that.propShaftSpeed && wasStill)
                     engine.log("A gentle vibration can be felt beneath your feet as the ship's engine engages.")
-                else if(!that.propSpeed && !wasStill)
+                else if(!that.propShaftSpeed && !wasStill)
                     engine.log("The seemingly-omnipresent vibration of the ship's engine fades away.")
             }
     
             //Check for dry run damage
-            if(that.propSpeed > 0 && that.lubrication < 10) {
-                that.damage(10 + that.propSpeed - that.lubrication)
+            if(that.propShaftSpeed > 0 && that.lubrication < 10) {
+                that.damage(10 + that.propShaftSpeed - that.lubrication)
             }          
             
             //Emits for damage and other conditions
-            if(that.propSpeed) {
+            if(that.propShaftSpeed) {
                 var dmg = that.getDamage()
                 if(dmg > 100) {
                     engine.log("There is a hideous grinding sound from below and the entire ship seems to be trying to shake itself apart.")
-                    that.propSpeed = 0
+                    that.propShaftSpeed = 0
                 } else if (dmg > 50) {
                     engine.log("The entire ship reverberates with the sound of gears stripping and skipping.  The engines are horribly damaged.")
                     if(that.transmissionSpeed == 3) {
                         that.transmissionSpeed = 2
-                        that.propSpeed -= 3
-                        if(that.propSpeed < 0) that.propSpeed = 0
+                        that.propShaftSpeed -= 3
+                        if(that.propShaftSpeed < 0) that.propShaftSpeed = 0
                     } else if (that.transmissionSpeed == -3) {
                         that.transmissionSpeed = -2
-                        that.propSpeed += 3
-                        if(that.propSpeed > 0) that.propSpeed = 0
+                        that.propShaftSpeed += 3
+                        if(that.propShaftSpeed > 0) that.propShaftSpeed = 0
                     }
                 }
                 else if(dmg > 20)
                     engine.log("The normally faint vibration of the ship's engine seems heavier and less rhythmic than usual.")
             }
 
-            that.propShaftSpeed = that.propSpeed
-            if(!that.propConnect) {
+            if(that.propConnect) {
+                var delta = Math.abs(that.propShaftSpeed - that.propSpeed)
+                if(delta > 3) {
+                    engine.log("The stern shudders back and forth violently and you hear the grinding of gears.")
+                    that.damage(10)
+                }
+
+                that.propSpeed = that.propShaftSpeed
+            } else {
                 if(that.propSpeed > 0) {
                     that.propSpeed -= 0.5
                     if(that.propSpeed < 0) that.propSpeed = 0
