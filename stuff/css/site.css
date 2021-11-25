@@ -56,19 +56,17 @@ body{
   overflow-y: scroll;
 
   position: fixed;
-  top: 50%;
-  left: 50%;
-  margin-top: -150px;
-  margin-left: -200px;
-  height: 300px;
-  width: 400px;
+  top: 25%;
+  left: 25%;
+  width: 50%;
+  height: 50%;
 
   background-color: #211A1D;
   color: #F8F0FB;
   border: solid 1px #DFF2D8;
   padding: 3px 3px 3px 3px;
   font-family: Helvetica, Georgia, Cochin, Times, 'Times New Roman', serif;
-  font-size: 12pt;
+  font-size: 13pt;
 }
 
 /*  Misc CSS classes  */

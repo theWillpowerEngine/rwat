@@ -25,11 +25,13 @@ module.exports = (eng) => {
             theMap.hline(tiles.shipWall, 10, 47, 4)
             theMap.hline(tiles.shipWall, 10, 53, 4)
 
-            //galley
-            theMap.rect(tiles.shipWall, 0, 26, 10, 10)
-            
+            //galley, freezer and pantry
+            theMap.rect(tiles.shipWall, 13, 26, 10, 10)            
+            theMap.rect(tiles.shipWall, 13, 22, 7, 5)       //Pantry
+            theMap.rect(tiles.shipWall, 19, 18, 4, 9)       //Freezer
+
             //sick bay
-            theMap.rect(tiles.shipWall, 13, 26, 10, 10)
+            theMap.rect(tiles.shipWall, 0, 26, 10, 10)
 
             //simple quarters
             theMap.rect(tiles.shipWall, 2, 20, 5, 5)

@@ -1,2 +1,21 @@
-Lets get it started
-{ "that was fun" game over}
+@0
+{
+    
+}
+You were born in Saltrice, the realm's main source of agriculture, and you were just about set to live an ordinary farmer's life.  This never sat well with you, who felt the call to adventure, but the opportunity to make your way out into the world never came, and as you aged into early adulthood you started to give up on the idea that you would ever be anything more.
+
+That is until the day you received a package from your Uncle Jack, a strange fellow who owned his own little airship and who made his way in the world under his own terms.  Included with the package was a leatherbound journal, an a letter.
+
+`Continue` => {
+    go to 1
+}
+@1
+The journal is full of information on airmanship and living a life of excitement, the letter carries the best news of your young life...  In it your uncle indicates that he spent most of your life saving up money and has used that money to arrange financing for a brand new trader airship from a shipwright on the outskirts of Traven.  You have but to show up there with his letter, and you will instantly become a captain.  Enough coins to buy yourself passage are included.
+
+As you set out for Traven, you contemplate your short, rather uninteresting life and how it's brought you here...
+
+`Continue` => {
+    go to earlyMemories
+}
+@earlyMemories
+...
