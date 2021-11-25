@@ -50,7 +50,7 @@ module.exports = (eng, sh) => {
                     }
                 }
 
-                var desiredTransmissionSpeed = ship.turbineForce ? 3 : 0
+                var desiredTransmissionSpeed = ship.reactor.turbineForce ? 3 : 0
                 if(that.transmissionSpeed > desiredTransmissionSpeed) {
                     that.transmissionSpeed -= 1
                 } else if(that.transmissionSpeed < desiredTransmissionSpeed) {
