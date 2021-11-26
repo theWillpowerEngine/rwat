@@ -43,7 +43,7 @@ window["cheat"] = {
 
 $(() => {
     engine.init((step, msg) => {
-        logMsg(`<span class='log-item'>Step ${step} done: ${msg}.</span>`)
+        console.log(`Initialization ${step}% done: ${msg}.</span>`)
     })
     engine.render()
 
