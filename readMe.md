@@ -8,10 +8,13 @@ Sh-WASD     Move (Diagonals - shift 45 degrees counterclockwise)
 L           Toggle personal light
 
 T           Change which direction you move valves and dials (up vs down)
+
 Space       Advance a tick
 Sh-Space    Advance 5 ticks
 Ctrl-Space  Advance 10 ticks
 Sh-C-Space  Advance 25 ticks
+
+Shift-C     Show Character Sheet
 
 Ctrl-S      Save Game
 Ctrl-O      Load Game
