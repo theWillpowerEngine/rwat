@@ -33,5 +33,5 @@ Alt-Enter   Toggle Full Screen
 11. Rotate the engine manual lubrication handle at least 10 times.  The position of the valve is not important and it will slowly rotate back to default position once you stop working it -- this is fine and does not reflect the transmission losing lubrication
 12. Disengage the main clutch, verify that the initial shaft speed rises to match the turbine speed but that the engine speed and prop speeds do not move.
 13. Optionally perform a quick engine test by disconnecting the propeller and then shifting the engine out of neutral and verifying the appropriate shifts in the engine and prop speeds in both forward and reverse.  Be sure to return to neutral and reconnect the propeller when done.
-14. Ensure thaumatic capacitor is fully charged.  Pull the Lift Self-Warming Cycle switch.  The cycle is completed when the switch returns to it's original position.  You can proceed until step ####TODO#### while the cycle completes.
-15. 
+14. Ensure thaumatic capacitor is fully charged.  Pull the Lift Self-Warming Cycle switch.  The cycle is completed when the switch returns to it's original position.  As this step takes some time (and only requires boiler heat and thaums in the capacitor), it can optionally be sequenced earlier.
+15. Once Cycle is complete, ...

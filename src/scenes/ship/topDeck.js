@@ -7,9 +7,9 @@ module.exports = (eng) => {
 
     var that = {
         makeMap() {
-            var theMap = engine.maps["cargoDeck"] = map.blank(23, 65)
+            var theMap = engine.maps["topDeck"] = map.blank(23, 65)
                         
-            theMap.name = 'Cargo Deck'
+            theMap.name = 'Top Deck / Wheelhouse'
             theMap.isShip = true
 
             //#region basic framing/layout

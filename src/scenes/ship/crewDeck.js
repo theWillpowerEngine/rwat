@@ -75,6 +75,14 @@ module.exports = (eng) => {
             }, 2, 2)
             theMap.apply(12, 2, {transparent: true}, 1, 5)
             
+            theMap.door(21, 53, "a set of stairs leading up to the officer's deck", "upperDeck", 21, 17, "You go up the stairs")
+            theMap.apply(21, 50, {
+                bg: colors.stairs,
+                desc: "a staircase",
+                solid: true
+            }, 1, 3)
+            theMap.apply(21, 53, {transparent: true}, 1, 5)
+
             ////////////
             //#endregion
 
