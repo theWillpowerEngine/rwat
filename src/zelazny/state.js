@@ -137,6 +137,8 @@ module.exports = (seed, eng) => {
         getAttr(attr) {
             if(skillList.includes(attr))
                 return engine.player[attr]
+            if(Object.keys(engine.player.zelaznyAttrs).includes(attr))
+                return engine.player.zelaznyAttrs[attr] 
             if(that.attrs.pc[attr.toLowerCase()] !== undefined)
                 return that.attrs.pc[attr.toLowerCase()]
             if(that.attrs.story[attr.toLowerCase()] !== undefined)
@@ -149,6 +151,8 @@ module.exports = (seed, eng) => {
         addToAttr(attr, val) {
             if(skillList.includes(attr))
                 engine.player.incrementSkill(attr, val)
+            if(Object.keys(engine.player.zelaznyAttrs).includes(attr))
+                engine.player.zelaznyAttrs[attr] += val
             else if(that.attrs.pc[attr.toLowerCase()] !== undefined)
                 that.setPCAttr(attr, parseInt(that.getAttr(attr)) + val)    
             else if(that.attrs.story[attr.toLowerCase()] !== undefined)

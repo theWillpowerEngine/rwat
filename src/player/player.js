@@ -15,6 +15,11 @@ module.exports = (eng) => {
         lightOn: false,
         lightFuel: 400,
 
+        zelaznyAttrs: {
+            factionSaltrice: 0,
+            factionTraven: 0,
+        },
+
         //#region Skills and Trades
         
         airmanship: 0,      airmanshipActual: 0,

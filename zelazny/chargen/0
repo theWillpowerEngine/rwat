@@ -19,8 +19,10 @@ And his final act was equally quixotic.  He'd spent his entire savings, an amoun
 As you contemplated the gift and the burden both, you considered the thirst for something other than harvesting and planting, and how it had always been with you...
 
 `Start Character Creation` => {
+    add 5 to factionSaltrice
     go to earlyMemories
 }
 @earlyMemories
 ...
+[>factionSaltrice:2 It worked!  yay]
 {"done" game over}
