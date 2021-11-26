@@ -1,3 +1,4 @@
+const colors = require("../../map/colors.js")
 const map = require("../../map/map.js") 
 const tiles = require("../../map/tiles.js")
 
@@ -57,8 +58,22 @@ module.exports = (eng) => {
             //#region doors
 
             theMap.door(4, 55, "the engine room door", "engineRoom", 1, 1, "You enter the engine room")
+            
             theMap.door(1, 62, "a set of stairs leading down to the cargo deck", "cargoDeck", 1, 57, "You go down the stairs")
+            theMap.apply(1, 58, {
+                bg: colors.stairs,
+                desc: "a staircase",
+                solid: true
+            }, 1, 4)
+            theMap.apply(1, 58, {transparent: true}, 1, 5)
+
             theMap.door(19, 2, "a U-shaped staircase down to the cargo deck", "cargoDeck", 19, 1, "You go down the stairs")
+            theMap.apply(20, 1, {
+                bg: colors.stairs,
+                desc: "a staircase",
+                solid: true
+            }, 2, 2)
+            theMap.apply(12, 2, {transparent: true}, 1, 5)
             
             ////////////
             //#endregion

@@ -27,4 +27,5 @@ module.exports = {
 
     lantern: "#F4B860",
     shipUniform: "#1E555C",
+    stairs: "#222E50"
 }
