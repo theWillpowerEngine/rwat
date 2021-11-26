@@ -6,6 +6,7 @@ const makeScenes = require("./scenes/scenes.js")
 const makeZelazny = require("./zelazny/zelazny.js")
 const registerKeys = require("./keys.js")
 const Color = require('color')
+const rpg = require("./system.js")
 let { ipcRenderer } = require("electron")
 
 function applyObjectTo(base, toApply) {
@@ -54,6 +55,8 @@ module.exports = (logger, opts) => {
     }
 
     let backupMaps = null
+    let cgAll = ["cg1", "cg2", "cg3", "cg4", "cg5", "cg6", "cg7", "cg8", "cg9"]
+    let cgPicks = []
 
     var that = {
         gameOver: false,
@@ -157,7 +160,28 @@ module.exports = (logger, opts) => {
             that.renderer = makeRenderer(that)
             that.scenes = makeScenes(that)
             that.ship = makeShip(that)
-            that.zelazny = makeZelazny(that)
+            //#region Zelazny (lots of options)
+            that.zelazny = makeZelazny(that, {}, {
+                macros: {
+                    cg(pop, expect, tryPop, peek) {
+                        var cmd = pop()
+                        switch(cmd) {
+                            case "start":
+                                cgPicks.push(rpg.pickOne(cgAll))
+                                cgPicks.push(rpg.pickOne(cgAll))
+                                cgPicks.push(rpg.pickOne(cgAll))
+                                break
+                            case "go":
+                                expect('to')
+                                var num = parseInt(pop())
+                                return that.zelazny.action("go to " + cgPicks[num-1])
+                            default:
+                                throw "Unknown cg command: " + cmd
+                        }
+                    }
+                }
+            })
+            //#endregion
             pg(2, "Preinitialization complete")
 
             that.ship.createDamageModel()

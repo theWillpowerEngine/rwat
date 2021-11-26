@@ -19,6 +19,7 @@ And his final act was equally quixotic.  He'd spent his entire savings, an amoun
 As you contemplated the gift and the burden both, you considered the thirst for something other than harvesting and planting, and how it had always been with you...
 
 `Start Character Creation` => {
+    cg start
     go to earlyMemories
 }
 @earlyMemories
@@ -28,21 +29,21 @@ Your first vivid memory is of...
     add 3 to airmanship
     add 1 to luck
     add 1 to farming
-    go to fakeForNow
+    cg go to 1
 }
 
 `A fist fight you saw in town between wagoneers` => {
     add 2 to martialArts
     add 2 to reaction
     add 1 to strength
-    go to fakeForNow
+    cg go to 1
 }
 
 `A heated negotiation during which your father got the better of the other party` => {
     add 2 to negotiation
     add 2 to appraisal
     add 1 to intellect
-    go to fakeForNow
+    cg go to 1
 }
 
 `The glow of the forge while a smith repaired a farming tool` => {
@@ -50,7 +51,7 @@ Your first vivid memory is of...
     add 1 to mining
     add 1 to strength
     add 1 to resilience
-    go to fakeForNow
+    cg go to 1
 }
 
 `A magical show put on for the district after a particularly successful harvest` => {
@@ -58,7 +59,86 @@ Your first vivid memory is of...
     add 1 to barding
     add 2 to intellect
     add 1 to divination
-    go to fakeForNow
+    cg go to 1
 }
-@fakeForNow
-{"done" game over}
+@cg1
+{
+    go to bullies-0
+}
+@cg2
+{
+    go to larceny-0
+}
+@cg3
+{
+    go to sifu-0
+}
+@cg4
+{
+    go to sickness-0
+}
+@cg5
+{
+    go to airship-0
+}
+@cg6
+{
+    go to loans-0
+}
+@cg7
+{
+    go to windfall-0
+}
+@cg8
+{
+    go to job-0
+}
+@cg9
+{
+    go to sorcery-0
+}
+@bullies-0
+There are bullies here
+{
+    "you win" game over
+}
+@larceny-0
+There is larceny here
+{
+    "you win" game over
+}
+@sifu-0
+There is a sifu here
+{
+    "you win" game over
+}
+@sickness-0
+There is sickness here
+{
+    "you win" game over
+}
+@airship-0
+There is an airship here
+{
+    "you win" game over
+}
+@loans-0
+There are loans here
+{
+    "you win" game over
+}
+@windfall-0
+There is a windfall here
+{
+    "you win" game over
+}
+@job-0
+There is a job here
+{
+    "you win" game over
+}
+@sorcery-0
+There is sorcery here
+{
+    "you win" game over
+}
