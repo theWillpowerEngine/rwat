@@ -10,9 +10,14 @@ window.keyBinds = {
     moveSE: 'shift+s',
     moveSW: 'shift+a',
 
-    advanceTick: "shift+space",
+    advanceTick: "space",
+    advance5Ticks: "shift+space",
+    advance10Ticks: "ctrl+space",
+    advance25Ticks: "ctrl+shift+space",
 
     toggleLight: "l",
+
+    characterSheet: "shift+c",
 
     save: "ctrl+s",
     load: "ctrl+o",
@@ -90,6 +95,19 @@ module.exports = (eng, kbs) => {
     //Misc. Actions
     hotkeys(binds.advanceTick, function (event, handler){
         engine.render()
+    });
+    hotkeys(binds.advance5Ticks, function (event, handler){
+        engine.render(5)
+    });
+    hotkeys(binds.advance10Ticks, function (event, handler){
+        engine.render(10)
+    });
+    hotkeys(binds.advance25Ticks, function (event, handler){
+        engine.render(25)
+    });
+
+    hotkeys(binds.characterSheet, function (event, handler){
+        ui.charSheet()
     });
 
     //System Keys

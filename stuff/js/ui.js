@@ -7,6 +7,10 @@ const ui= {
         
     },
 
+    charSheet() {
+        
+    },
+
     async help(topic) {
         if(!topic) topic = "index"
         var content = await engine.getHelp(topic)

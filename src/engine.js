@@ -231,13 +231,20 @@ module.exports = (logger, opts) => {
             return await ipcRenderer.invoke("zelazny", group + "\\" + node)
         },
 
-        render() {
+        render(ticks) {
+            if(!ticks) ticks = 1
             if(that.gameOver)
                 throw that.gameOver
                 
             var start = new Date()
             var $game = $("#game")
-            that.ship.tick()
+            
+            for(var i=0; i<ticks; i++)
+                that.ship.tick()
+
+            if(ticks > 1)
+                that.log(ticks + " ticks pass.")
+            
             var displayWidth = Math.floor($game.width() / that.tileSize),
                 displayHeight = Math.floor($game.height() / that.tileSize)
 

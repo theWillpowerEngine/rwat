@@ -19,10 +19,46 @@ And his final act was equally quixotic.  He'd spent his entire savings, an amoun
 As you contemplated the gift and the burden both, you considered the thirst for something other than harvesting and planting, and how it had always been with you...
 
 `Start Character Creation` => {
-    add 5 to factionSaltrice
     go to earlyMemories
 }
 @earlyMemories
-...
-[>factionSaltrice:2 It worked!  yay]
+Your first vivid memory is of...
+
+`A large airship coming to collect the harvest` => {
+    add 3 to airmanship
+    add 1 to luck
+    add 1 to farming
+    go to fakeForNow
+}
+
+`A fist fight you saw in town between wagoneers` => {
+    add 2 to martialArts
+    add 2 to reaction
+    add 1 to strength
+    go to fakeForNow
+}
+
+`A heated negotiation during which your father got the better of the other party` => {
+    add 2 to negotiation
+    add 2 to appraisal
+    add 1 to intellect
+    go to fakeForNow
+}
+
+`The glow of the forge while a smith repaired a farming tool` => {
+    add 2 to engineering
+    add 1 to mining
+    add 1 to strength
+    add 1 to resilience
+    go to fakeForNow
+}
+
+`A magical show put on for the district after a particularly successful harvest` => {
+    add 1 to sorcery
+    add 1 to barding
+    add 2 to intellect
+    add 1 to divination
+    go to fakeForNow
+}
+@fakeForNow
 {"done" game over}
