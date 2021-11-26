@@ -30,6 +30,10 @@ module.exports = (eng, sh) => {
                 } else {
                     if(ship.drainThaums(this.temperature + 1))
                         this.temperature += 1
+                    else {
+                        this.temperature = 0
+                        this.selfWarmCycle = false
+                    }
                 }
             }
         }

@@ -320,6 +320,20 @@ module.exports = (eng) => {
             /////////////////////////////
             //#endregion
 
+            //#region Lift Controls
+            theMap.addSwitch(8, 1, "the main lift automatic warm cycle switch", (eng, tile) => {    
+                eng.ship.lift.selfWarmCycle = true
+                eng.log("You start the lift's self warming cycle.")
+            }, 
+            (eng, tile) => { 
+                tile.state = true
+                eng.log("The handle does not budge, the cycle is in progress.")
+            })
+            var liftCycleTile = theMap.tiles[8][1]
+
+            /////////////////////////////
+            //#endregion
+
             //#region Misc Controls (Lights/etc.)
 
             theMap.addSwitch(0, 1, "the lever to activate the pilot lights for the shipboard lighting system", (eng, tile) => {    
@@ -352,7 +366,12 @@ module.exports = (eng) => {
                 if(!didLubricate && lubeHandle.val > 0)
                     lubeHandle.val -= 1
                 didLubricate = false
-            
+ 
+                if(liftCycleTile.state && !engine.ship.lift.selfWarmCycle) {
+                    liftCycleTile.state = false
+                    engine.log("The lift self-warming cycle handle resets itself with an audible click.")
+                }
+
                 //Light Sources
                 engine.lights.setAmbient(engine.ship.getMasterAmbientLight())
             
