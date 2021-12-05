@@ -9,7 +9,7 @@ L           Toggle personal light
 
 T           Change which direction you move valves and dials (up vs down)
 
-Space       Advance a tick
+Space       Advance a tick | Choose default Zelazny link
 Sh-Space    Advance 5 ticks
 Ctrl-Space  Advance 10 ticks
 Sh-C-Space  Advance 25 ticks

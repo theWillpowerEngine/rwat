@@ -5,7 +5,7 @@ module.exports = {
         "engineRoom",
         "crewDeck",
         "cargoDeck",
-        "upperDeck",
+        "officerDeck",
         "topDeck",
     ],
 
@@ -14,6 +14,6 @@ module.exports = {
     engineRoom:     "./ship/engineRoom.js",
     crewDeck:       "./ship/crewDeck.js",
     cargoDeck:      "./ship/cargoDeck.js",
-    upperDeck:      "./ship/upperDeck.js",
+    officerDeck:      "./ship/officerDeck.js",
     topDeck:        "./ship/topDeck.js",
 }

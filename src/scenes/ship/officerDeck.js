@@ -7,7 +7,7 @@ module.exports = (eng) => {
 
     var that = {
         makeMap() {
-            var theMap = engine.maps["upperDeck"] = map.blank(23, 23)
+            var theMap = engine.maps["officerDeck"] = map.blank(23, 23)
                         
             theMap.name = "Officer's Deck"
             theMap.isShip = true
@@ -16,6 +16,9 @@ module.exports = (eng) => {
             theMap.fill(tiles.shipFloor)
 
             theMap.rect(tiles.shipWall, 0, 0, 23, 23)            
+
+            //captain's quarters and ready room
+            theMap.rect(tiles.shipWall, 0, 16, 20, 7)
 
             ////////////
             //#endregion

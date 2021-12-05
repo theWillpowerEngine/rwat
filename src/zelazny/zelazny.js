@@ -40,6 +40,7 @@ module.exports = (eng, state, game) => {
         },
 
         macros: {},
+        specialLinks: {},
 
         action(action) {
             let oldA = that.area,

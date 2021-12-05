@@ -189,6 +189,10 @@ module.exports = (logger, opts) => {
                                 throw "Unknown cg command: " + cmd
                         }
                     }
+                },
+                
+                specialLinks: {
+                    '$' : `<a class='action-link default-link' data-action='[v __id]'>[v __text]</a><span class='action-span' data-id='[v __id]'>[v __action]</span>`
                 }
             })
             //#endregion

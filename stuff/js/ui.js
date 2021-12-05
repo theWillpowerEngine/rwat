@@ -1,4 +1,6 @@
 const ui= {
+    inZelazny: false,
+
     modal(content) {
         escStack.push(() => {})
         setTimeout(() => {
@@ -102,6 +104,7 @@ const ui= {
         }
         bind()
 
+        ui.inZelazny = true
         $("#zelazny").fadeIn()
 
         escStack.push((v) => {
@@ -110,6 +113,7 @@ const ui= {
 
             engine.zelazny.done()
             $("#zelazny").fadeOut()
+            ui.inZelazny = false
         })
     },
 

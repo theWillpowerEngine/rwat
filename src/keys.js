@@ -94,6 +94,10 @@ module.exports = (eng, kbs) => {
 
     //Misc. Actions
     hotkeys(binds.advanceTick, function (event, handler){
+        if(ui.inZelazny) {
+            $(".default-link").click()
+        }
+        
         engine.render()
     });
     hotkeys(binds.advance5Ticks, function (event, handler){

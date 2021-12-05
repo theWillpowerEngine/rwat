@@ -316,11 +316,17 @@ module.exports = (zelazny) => {
 
                     case "link":
                         var id = that.linkIndex++
+                        var linkText = node.text
+                        if(zelazny.specialLinks[linkText[0]])
+                            linkText = linkText.substr(1)                           
+
                         that.state.setPCAttr("__action", node.code)
-                        that.state.setPCAttr("__text", node.text)
+                        that.state.setPCAttr("__text", linkText)
                         that.state.setPCAttr("__id", id)
 
-                        var linkText = that.zelazny.internalParse(zelazny.linkFormat)
+                        var linkText = node.text == linkText ? 
+                            zelazny.internalParse(zelazny.linkFormat) :
+                            zelazny.internalParse(zelazny.specialLinks[node.text[0]])
                         retVal += linkText
 
                         that.state.clearAttr("__action")

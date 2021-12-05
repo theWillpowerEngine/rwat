@@ -6,9 +6,9 @@ You were born in Saltrice, the realm's main source of farmed goods, and despite 
 
 The package contained his leatherbound journal -- which was as much a manual of how to live a profitable life as a personal recollection -- and a letter, and it was the letter which changed the course of your life.
 
-It said that Uncle Jack had died, which became sadder when you read on.  He'd spent the last two decades of his life saving up a gift for you.  A way out.
+It said that Uncle Jack was dead, which became sadder as you read on.  He'd spent the last two decades of his life saving up a gift for you.  A way out.
 
-`Continue` => {
+`$Continue` => {
     go to 1
 }
 @1
@@ -18,7 +18,7 @@ And his final act was equally quixotic.  He'd spent his entire savings, an amoun
 
 As you contemplated the gift and the burden both, you considered the thirst for something other than harvesting and planting, and how it had always been with you...
 
-`Start Character Creation` => {
+`$Start Character Creation` => {
     cg start
     go to earlyMemories
 }
