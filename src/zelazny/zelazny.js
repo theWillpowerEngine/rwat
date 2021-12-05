@@ -62,11 +62,20 @@ module.exports = (eng, state, game) => {
             that.layers[stage][trigger].push(handler)
         },
 
-        parse(code) {
+        parse(code, append) {
             if(that.parser == null)
                 that.parser = makeParser(that)
 
-            that.nodes = scanner.scan(that, code)
+            if(!append)
+                that.nodes = scanner.scan(that, code)
+            else {
+                var newNodes = scanner.scan(that, code).base
+                that.nodes.base = {
+                    ...that.nodes.base,
+                    ...newNodes
+                }
+            }
+                
             var baseZeroParsed = that.parser.eval(that.nodes.base[0])
             return baseZeroParsed
         },

@@ -8,6 +8,7 @@ const zaWarudo = require("./world/zawarudo.js")
 const registerKeys = require("./keys.js")
 const Color = require('color')
 const rpg = require("./system.js")
+const fs = require('fs')
 let { ipcRenderer } = require("electron")
 
 function applyObjectTo(base, toApply) {
@@ -169,6 +170,14 @@ module.exports = (logger, opts) => {
             //#region Zelazny (lots of options)
             that.zelazny = makeZelazny(that, {}, {
                 macros: {
+                    load(pop, expect) {
+                        try {
+                            var content = fs.readFileSync(`zelazny\\${pop()}`, 'utf8')
+                            that.zelazny.parse(content, true)
+                        } catch (ex) {
+                            console.log(`Bad attempt to load zelazny: ` + ex)
+                        }
+                    },
                     cg(pop, expect, tryPop, peek) {
                         var cmd = pop()
                         switch(cmd) {

@@ -31,8 +31,6 @@ Make parents apply damage randomly to their children
 ------
    ERs
 
-Make the zelazny loader capable of splitting across files so that the files don't get too unwieldy
-
 -----------
    Modeling
 

@@ -63,9 +63,9 @@ Your first vivid memory is of...
 }
 @uncleJack
 Uncle Jack
-
-`$ok` => {
-    cg go to 2
+{
+    load chargen/uncleJack
+    go to uncleJackIndex
 }
 @winterAway
 Shitty Adventure
