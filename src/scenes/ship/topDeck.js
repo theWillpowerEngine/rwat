@@ -15,7 +15,7 @@ module.exports = (eng) => {
             //#region basic framing/layout
             theMap.fill(tiles.shipFloor)
 
-            theMap.rect(tiles.shipWall, 0, 0, 23, 65)            
+            theMap.rect(tiles.shipWall, 0, 42, 23, 23)            
 
             ////////////
             //#endregion
