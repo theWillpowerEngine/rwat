@@ -62,7 +62,6 @@ Your first vivid memory is of...
     cg go to 1
 }
 @uncleJack
-Uncle Jack
 {
     load chargen/uncleJack
     go to uncleJackIndex
