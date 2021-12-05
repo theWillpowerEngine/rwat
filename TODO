@@ -14,7 +14,7 @@ Lift controls:
    Lift system 
    engine room additionm
 
-3D movement system (lift / prop / wind)
+3D movement system (lift / prop / wind / gravity)
 
 Cargo Door and locking mechanism
 
@@ -49,9 +49,9 @@ gun room
 -------------
    Other Work
 
-Time and Weather
+Weather; Time+Weather ambient light for the outside room
 
-RPG System, Finish Chargen
+Finish Chargen
 
 Write Help
 
@@ -64,7 +64,5 @@ Add the Rutter system and integrate with Pilot AI
 Undocking:
    lines
    commands
-
-Movement in space
 
 Cargo hold management

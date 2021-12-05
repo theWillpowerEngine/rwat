@@ -104,7 +104,7 @@ module.exports = (eng) => {
             else if(dateHour < 12)
                 ret += " Morning"
             else if(dateHour == 12)
-                ret += " Calibration"
+                ret += " Burn"
             else if (dateHour < 16)
                 ret += ` Afternoon`
             else if (dateHour < 20)
