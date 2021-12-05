@@ -96,7 +96,7 @@ const ui= {
                     
                     var text = engine.zelazny.action(action)
                     if(engine.zelazny.over)
-                        text += `<br /><br /><center>${engine.zelazny.over}</center><br /><center><a class="zelazny-close" onclick='escStack.pop()(1)'>Close</a></center>`
+                        text += `<br /><br /><center>${engine.zelazny.over}</center><br /><center><a class="zelazny-close default-link" onclick='escStack.pop()(1)'>Close</a></center>`
         
                     $("#zelazny").html(text)
                     bind()

@@ -64,13 +64,13 @@ Your first vivid memory is of...
 @uncleJack
 Uncle Jack
 
-`ok` => {
+`$ok` => {
     cg go to 2
 }
 @winterAway
 Shitty Adventure
 
-`ok` => {
+`$ok` => {
     cg go to 3
 }
 @leavingHome
@@ -126,54 +126,54 @@ And we're done
 @bullies-0
 There are bullies here
 
-`ok` => {
+`$ok` => {
     cg return
 }
 @larceny-0
 There is larceny here
 
-`ok` => {
+`$ok` => {
     cg return
 }
 @sifu-0
 There is a sifu here
 
-`ok` => {
+`$ok` => {
     cg return
 }
 @sickness-0
 There is sickness here
 
-`ok` => {
+`$ok` => {
     cg return
 }
 @airship-0
 There is an airship here
 
-`ok` => {
+`$ok` => {
     cg return
 }
 @loans-0
 There are loans here
 
-`ok` => {
+`$ok` => {
     cg return
 }
 @windfall-0
 There is a windfall here
 
-`ok` => {
+`$ok` => {
     cg return
 }
 @job-0
 There is a job here
 
-`ok` => {
+`$ok` => {
     cg return
 }
 @sorcery-0
 There is sorcery here
 
-`ok` => {
+`$ok` => {
     cg return
 }
