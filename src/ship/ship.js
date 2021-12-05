@@ -13,6 +13,14 @@ module.exports = (eng) => {
     let ambient3 = engine.lights.create(Color(colors.lantern).mix(Color(colors.white), 0.4).hex(), 0.5, 0.3)
 
     var that = {
+        x: 0,
+        y: 0,
+        z: 0,
+        tied: {
+            x: 0, y: 0, z: 1
+        },
+        tieLength: 1,
+
         damageModel: require("./damage.js"),
         thaumaticCapacitorThaums: 0,
         reactor: null,

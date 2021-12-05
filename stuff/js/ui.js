@@ -115,5 +115,9 @@ const ui= {
 
     updateUI() {
         $("#area").html(engine?.map?.name || "Unknown Area")
+        if(engine?.world?.getDateTime)
+            $("#time").html(engine.world.getDateTime())
+        else
+            $("#time").html("")
     }
 }

@@ -21,6 +21,17 @@ body{
   padding-left: 3px;
 }
 
+#area {
+  float: left;
+  margin-right:10px;
+}
+
+#time {
+  border-left: solid 1px #E9E3B4;
+  padding-left: 9px;
+  float: left;
+}
+
 #sidetop {
   position: absolute;
   right: 0;

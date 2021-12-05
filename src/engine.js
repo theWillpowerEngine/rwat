@@ -4,6 +4,7 @@ const makePlayer = require("./player/player.js")
 const makeShip = require("./ship/ship.js")
 const makeScenes = require("./scenes/scenes.js")
 const makeZelazny = require("./zelazny/zelazny.js")
+const zaWarudo = require("./world/zawarudo.js")
 const registerKeys = require("./keys.js")
 const Color = require('color')
 const rpg = require("./system.js")
@@ -70,6 +71,8 @@ module.exports = (logger, opts) => {
         },
         map: null,
         scenes: null,
+
+        world: null,
 
         display: null,
         lights: null,
@@ -161,6 +164,8 @@ module.exports = (logger, opts) => {
             that.renderer = makeRenderer(that)
             that.scenes = makeScenes(that)
             that.ship = makeShip(that)
+            that.world = zaWarudo(that)
+
             //#region Zelazny (lots of options)
             that.zelazny = makeZelazny(that, {}, {
                 macros: {
@@ -268,8 +273,10 @@ module.exports = (logger, opts) => {
             var start = new Date()
             var $game = $("#game")
             
-            for(var i=0; i<ticks; i++)
+            for(var i=0; i<ticks; i++) {
                 that.ship.tick()
+                that.world.tick()
+            }
 
             if(ticks > 1)
                 that.log(ticks + " ticks pass.")
