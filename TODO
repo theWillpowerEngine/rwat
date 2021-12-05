@@ -12,7 +12,7 @@ Shaft/Prop controls:
 Lift controls:
    Damage/Destroy implementation
    Lift system 
-   engine room additionm
+   engine room addition
 
 3D movement system (lift / prop / wind / gravity)
 
@@ -36,11 +36,11 @@ Make parents apply damage randomly to their children
 
 Doors in the front (both decks)
 
-Bonus rooms in the front of the crew deck
+Bonus rooms in the top left of the crew deck
 
 Finish officer deck
 
-Outside/wheelhouse
+top deck (incl outside/gunroom)
 
 gun room
 
