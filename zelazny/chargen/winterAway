@@ -1,10 +1,15 @@
-@uncleJackIndex
+@waIndex
 {
-    add 1 to leadership
-    add 1 to barding
+    add 1 to farming
+    add 1 to resilience
+    add 1 to strength
     add 1 to airmanship
 }
-One summer Uncle Jack visited the farmstead, the highlight of anotherwise dreadfully-boring year.  After an hour of so of his stories you had finally found a moment of silence to guide the conversation.  You asked...
+Later in adolescence, after a year of miserable work and a bountiful harvest, you father had finally relented to your moping and sighing and arranged for a small adventure during the winter.  A man he knew from the market arranged for you to work as a deck hand aboard a local trade ship.
+
+The captain was a dreary man who spoke frequently of duty and discipline and he worked you ragged and treated you only slightly better than the tabby cat that oft stalked in his shadow.  Doubtless your father hoped the experience would sour your wanderlust.
+
+...
 
 [>airmanship:1 
 `Specific, technical questions about his trade, having gleaned the rudiments of airmanship` => {
@@ -65,26 +70,26 @@ The next day, before departing, he gave you a tour of his little sloop.  You rem
 
 `$Continue` =>
 {
-    cg go to 2
+    cg go to 3
 }
 @uj_wealth
 Without turning it into a lecture, he told a series of stories of his best (and worst) trades, and in so doing taught you the rudiments of finance and the merchantile arts.
 
 `$Continue` =>
 {
-    cg go to 2
+    cg go to 3
 }
 @uj_adventure
 Neither of your parents is very happy with the next round of stories Uncle Jack tells, but he manages to make them amusing enough that no one complains.  You are swept up in his tales, and become somewhat more adept at mischief.
 
 `$Continue` =>
 {
-    cg go to 2
+    cg go to 3
 }
 @uj_ma
 Pretending not to see your father's frantic head-shaking, Uncle Jack readily agrees, and after a delicious meal you spend two hours getting your butt kicked outside and learning some very new and interesting tricks.
 
 `$Continue` =>
 {
-    cg go to 2
+    cg go to 3
 }

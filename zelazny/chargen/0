@@ -67,10 +67,9 @@ Your first vivid memory is of...
     go to uncleJackIndex
 }
 @winterAway
-Shitty Adventure
-
-`$ok` => {
-    cg go to 3
+{
+    load chargen/winterAway
+    go to waIndex
 }
 @leavingHome
 And we're done
