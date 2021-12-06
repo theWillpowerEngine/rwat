@@ -9,85 +9,97 @@ Later in adolescence, after a year of miserable work and a bountiful harvest, yo
 
 The captain was a dreary man who spoke frequently of duty and discipline and he worked you ragged and treated you only slightly better than the tabby cat that oft stalked in his shadow.  Doubtless your father hoped the experience would sour your wanderlust.
 
-...
-
-[>airmanship:1 
-`Specific, technical questions about his trade, having gleaned the rudiments of airmanship` => {
-    add 2 to airmanship
-    add 2 to engineering
-    add 1 to intellect
-    go to uj_airship
-}
-|
-`About life on an airship` => {
-    add 2 to airmanship
-    add 1 to engineering
-    go to uj_airship
-}
-]
-
-`For tips on accumulating wealth` => {
-    add 1 to appraisal
-    add 1 to negotiation
-    add 1 to intellect
-    go to uj_wealth
-}
-
-[>larceny:1 
-`About his oft-hinted semi-legal adventures, a subject near to your heart` => {
-    add 2 to larceny
-    add 1 to reaction
-    add 1 to manipulation
-    add 1 to luck
-    go to uj_adventure
-}
-|
-`About his oft-hinted semi-legal adventures` => {
+`You spent the time shirking work as much as possible and gambling with the crew when the officers weren't looking.` => {
+    add 2 to gambling
     add 1 to larceny
-    add 1 to reaction
     add 1 to manipulation
-    go to uj_adventure
-}
-]
-
-[>martialArts:1 
-`If he's interested in a friendly spar after dinner` => {
-    add 2 to martialArts
     add 1 to luck
+    go to wa_lazy
+}
+
+[>airmanship:3 
+`With your knowledge of airmanship, you were an incredible asset, basically an honorary officer during your time aboard.` => {
+    add 1 to airmanship
+    add 2 to leadership
+    add 2 to engineering
+    add 1 to strength
+    add 1 to intellect
+    go to wa_nerd
+}
+|
+`You pitched in and worked hard, learning as much as you could.` => {
+    add 1 to airmanship
+    add 1 to engineering
+    add 1 to leadership
     add 1 to strength
     add 1 to resilience
-    go to uj_ma
-}
-|
-`For any tips he has in self-defense` => {
-    add 2 to martialArts
-    add 1 to resilience
-    go to uj_ma
+    go to wa_normal
 }
 ]
-@uj_airship
-The next day, before departing, he gave you a tour of his little sloop.  You remember the stained, cramped hallways and the strange engine room in particular.  You'd begged for a quick test flight, intent on convincing him to take you along with him, but your parents forbade it.
+
+[>sorcery:2 
+`The captain had some old scrolls which you were able to manifest, calling up favorable winds.  You ate well and were rather popular with the crew.` => {
+    add 2 to sorcery
+    add 2 to intellect
+    add 2 to luck
+    go to wa_nerd
+}]
+
+[>martialArts:2 
+`It was mostly mundane, save for one evening when a small pirate skiff descended from above and attempted to take the ship.  Your skill at arms helped carry the day, and earned the respect of the men aboard.` => {
+    add 1 to martialArts
+    add 2 to reaction
+    add 2 to leadership
+    add 1 to resilience
+    go to wa_nerd
+}]
+
+[>larceny:3 
+`One night when a technical problem drew the captain away, you broke into his quarters, searching for anything interesting.` => {
+    add 3 to larceny
+    add 3 to luck
+    go to wa_thiefgood
+}
+|
+[>larceny:2 
+`One night when a technical problem drew the captain away, you broke into his quarters, searching for anything interesting.` => {
+    add 2 to larceny
+    add 3 to resilience
+    subtract 1 from luck
+    subtract 5 from factionSaltrice
+    go to wa_thiefbad
+}]]
+@wa_thiefgood
+The break-in goes off without a hitch, but the captain either had better hiding places than you'd expect, or was fairly broke.  You took a small trophy to remember him by a a good luck charm and left before trouble found you.
+{ go to wa_lazy }
+@wa_thiefbad
+Your skills, unfortunately, don't match your ambition.  The captain comes back sooner than expected and catches you.
+
+You are, in order: beaten up (rather gently, all things considered), whipped, and confined to a room too small to lie down in for the rest of the trip.  When you get back the captain makes sure everyone knows of the tale and you're a laughingstock for the spring and most of the summer.
 
 `$Continue` =>
 {
     cg go to 3
 }
-@uj_wealth
-Without turning it into a lecture, he told a series of stories of his best (and worst) trades, and in so doing taught you the rudiments of finance and the merchantile arts.
+@wa_lazy
+No one is terribly sad you see you go, and you arrive back home in Saltrice just in time for planting season having been deprived of a winter's repose.
 
 `$Continue` =>
 {
     cg go to 3
 }
-@uj_adventure
-Neither of your parents is very happy with the next round of stories Uncle Jack tells, but he manages to make them amusing enough that no one complains.  You are swept up in his tales, and become somewhat more adept at mischief.
+@wa_normal
+Though it was almost as hard as work on the farm, your winter aboard the ship cemented your desire to be free of the drudgery.  The moment you step back down onto the familiar soil you feel as if you've gone back to prison.
 
 `$Continue` =>
 {
     cg go to 3
 }
-@uj_ma
-Pretending not to see your father's frantic head-shaking, Uncle Jack readily agrees, and after a delicious meal you spend two hours getting your butt kicked outside and learning some very new and interesting tricks.
+@wa_nerd
+{
+    add 5 to factionSaltrice
+}
+The captain is reluctant to see you go, doubly so when you try your best to convince him to keep you on.  Whatever deal your father made with him (or threat) holds though, and arriving back in Saltrice and stepping off the ship where you'd seemed to belong left you in a malaise that lasted for months.
 
 `$Continue` =>
 {
