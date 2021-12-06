@@ -52,6 +52,7 @@ function extractDeltaObject(base, changed) {
 module.exports = (logger, opts) => {
     var conf = {
         defaultScene: "blank",
+        forceOfGravity: 0.72,
 
         ...opts
     }

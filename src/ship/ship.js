@@ -3,6 +3,7 @@ const colors = require("../map/colors.js")
 const Color = require('color')
 const makeDrive = require("./sim/drive.js")
 const makeLift = require("./sim/lift.js")
+const mover = require("./sim/mover.js")
 
 module.exports = (eng) => {
     let engine = eng
@@ -16,10 +17,17 @@ module.exports = (eng) => {
         x: 0,
         y: 0,
         z: 0,
+        heading: 0,
+
         tied: {
             x: 0, y: 0, z: 1
         },
         tieLength: 1,
+        movementVector: {
+            x: 0, y: 0, z: 0
+        },
+
+        weight: 20,
 
         damageModel: require("./damage.js"),
         thaumaticCapacitorThaums: 0,
@@ -82,6 +90,8 @@ module.exports = (eng) => {
             that.reactor.cycle()
             that.lift.cycle()
             that.drive.cycle()
+
+            mover(engine)
         }
     }
 
