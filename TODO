@@ -18,7 +18,19 @@ Lift controls:
 
 Cargo Door and locking mechanism
 
-AI (start with Engineer) and Command system
+----------
+   Chargen
+
+Implement the random stories:
+   Bullies
+   Larceny
+   Sifu
+   Sickness
+   Airship
+   Loans
+   Windfall
+   Job
+   Sorcery
 
 ---------------
    Damage Model
@@ -49,7 +61,7 @@ gun room
 
 Weather; Time+Weather ambient light for the outside room
 
-Finish Chargen
+AI (start with Engineer) and Command system
 
 Write Help
 
