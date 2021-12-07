@@ -51,8 +51,10 @@ function extractDeltaObject(base, changed) {
 
 module.exports = (logger, opts) => {
     var conf = {
+        debug: false,   //use:  if(engine.conf.debug) debugger
+
         defaultScene: "blank",
-        forceOfGravity: 0.72,
+        forceOfGravity: 0.23,
 
         ...opts
     }
@@ -63,6 +65,7 @@ module.exports = (logger, opts) => {
     let cgReturnTo = 0
 
     var that = {
+        conf,
         gameOver: false,
         tileSize: 20,
 

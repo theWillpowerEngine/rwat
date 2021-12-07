@@ -331,6 +331,40 @@ module.exports = (eng) => {
             })
             var liftCycleTile = theMap.tiles[8][1]
 
+            theMap.addDisplay(9, 1, "the gross lift-direction indicator (up/down/neutral)", (eng, tile) => {
+                if(eng.ship.movementVector.z == 0) {
+                    tile.color = colors.lavender
+                    return '='
+                } else if (eng.ship.movementVector.z > 0) {
+                    tile.color = colors.cyan
+                    return '+'
+                } else {
+                    tile.color = colors.fern
+                    return '-'
+                }
+            }, {color: colors.lavender, transparent: true })
+
+            theMap.addValve(10, 1, "the lift target temperature (tens)", 0, 9, Math.floor(engine.ship.lift.tempSetting / 10), (tile) => {
+                let onesPlace = eng.ship.lift.tempSetting % 10
+                eng.ship.lift.tempSetting = (tile.val * 10) + onesPlace
+            }, {
+                color: colors.steel,
+                char: (eng, tile) => {
+                    var val = Math.floor(eng.ship.lift.tempSetting / 10)
+                    return displayVals[val]
+                }
+            })
+            theMap.addValve(11, 1, "the lift target temperature (ones)", 0, 9, eng.ship.lift.tempSetting % 10, (tile) => {
+                let tensPlace = Math.floor(eng.ship.lift.tempSetting / 10)
+                eng.ship.lift.tempSetting = (tensPlace * 10) + tile.val
+            }, {
+                color: colors.steel,
+                char: (eng, tile) => {
+                    var val = eng.ship.lift.tempSetting % 10
+                    return displayVals[val]
+                }
+            })
+
             /////////////////////////////
             //#endregion
 

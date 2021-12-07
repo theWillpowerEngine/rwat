@@ -11,7 +11,9 @@ Shaft/Prop controls:
 
 Lift controls:
    Damage/Destroy implementation
-   engine room addition
+   engine room -- keep going
+   figure out the tolerances (the lift should apply itself to the vector not just override it, similar to how things 
+                              go down but more granular)
    Do something with Polish?
 
 3D movement system (prop / wind)
@@ -39,6 +41,8 @@ Make parents apply damage randomly to their children
 
 -------
    Bugs
+
+When we skip ticks the log is getting eaten I think?  (verify this but I think I saw it)
 
 ------
    ERs
