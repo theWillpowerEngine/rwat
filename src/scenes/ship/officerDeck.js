@@ -29,13 +29,12 @@ module.exports = (eng) => {
             theMap.rect(tiles.shipWall, 8, 8, 7, 7)
             theMap.rect(tiles.shipWall, 14, 8, 7, 7)
 
-            // theMap.rect(tiles.shipWall, 7, 2, 7, 7)
-            // theMap.rect(tiles.shipWall, 7, 7, 7, 7)
-
             ////////////
             //#endregion
 
             //#region doors
+
+            theMap.door(20, 0, "the door outside", "topDeck", 20, 41, "You head outside")
 
             theMap.door(21, 18, "a set of stairs leading down to the crew deck", "crewDeck", 21, 54, "You go down the stairs")
             theMap.apply(21, 19, {
