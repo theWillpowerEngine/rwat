@@ -20,6 +20,18 @@ module.exports = (eng) => {
             //captain's quarters and ready room
             theMap.rect(tiles.shipWall, 0, 16, 20, 7)
 
+            //officer rooms
+            theMap.rect(tiles.shipWall, 0, 0, 7, 7)
+            theMap.rect(tiles.shipWall, 6, 0, 7, 7)
+            theMap.rect(tiles.shipWall, 12, 0, 7, 7)
+
+            theMap.rect(tiles.shipWall, 2, 8, 7, 7)
+            theMap.rect(tiles.shipWall, 8, 8, 7, 7)
+            theMap.rect(tiles.shipWall, 14, 8, 7, 7)
+
+            // theMap.rect(tiles.shipWall, 7, 2, 7, 7)
+            // theMap.rect(tiles.shipWall, 7, 7, 7, 7)
+
             ////////////
             //#endregion
 

@@ -18,8 +18,6 @@ Lift controls:
 
 3D movement system (prop / wind)
 
-Cargo Door and locking mechanism
-
 ----------
    Chargen
 
@@ -77,4 +75,4 @@ Undocking:
    lines
    commands
 
-Cargo hold management
+Cargo hold management, cargo door + locks
