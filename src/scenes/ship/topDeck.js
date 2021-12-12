@@ -17,6 +17,9 @@ module.exports = (eng) => {
 
             theMap.rect(tiles.shipWall, 0, 42, 23, 23)            
 
+
+            theMap.door(20, 42, "the door to the officer's cabins", "officerDeck", 20, 1, "You enter the officer's cabin")
+
             ////////////
             //#endregion
            

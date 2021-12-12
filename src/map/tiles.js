@@ -11,6 +11,7 @@ const makeTile = (vals) => {
         interactive: false,
         noBgLightTint: false,
         desc: "A tile",
+        useOutdoorAmbience: false,
 
         ...vals
     }
