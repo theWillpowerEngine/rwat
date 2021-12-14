@@ -1,7 +1,7 @@
 const acceleration = {
-    x: 0.02,
-    y: 0.02,
-    z: 0.015
+    x: 0.023,
+    y: 0.023,
+    z: 0.01534
 }
 
 module.exports = (eng) => {
