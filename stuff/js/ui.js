@@ -123,5 +123,11 @@ const ui= {
             $("#time").html(engine.world.getDateTime())
         else
             $("#time").html("")
+
+        var html = `<br /><br />
+<b>X:</b> ${engine.ship.x}<br />
+<b>Y:</b> ${engine.ship.y}<br />
+<b>Z:</b> ${engine.ship.z}<br />`
+        $("#sidetop").html(html)
     }
 }

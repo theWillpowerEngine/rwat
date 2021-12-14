@@ -36,5 +36,9 @@ module.exports = (eng) => {
         vector.z = deltaZ   //Check for jerking around damage
     }
 
-    //TODO:  apply movement, limit based on tie, check for crash landing and gridsplash
+    ship.x += vector.x
+    ship.y += vector.y
+    ship.z += vector.z 
+
+    //TODO:  limit based on tie, check for crash landing and gridsplash
 }
