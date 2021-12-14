@@ -1,7 +1,7 @@
-const previousVector = {
-    x: 0,
-    y: 0,
-    z: 0
+const acceleration = {
+    x: 0.02,
+    y: 0.02,
+    z: 0.015
 }
 
 module.exports = (eng) => {
@@ -10,35 +10,36 @@ module.exports = (eng) => {
     let lift = ship.lift
     let world = engine.world
     let vector = ship.movementVector
-
-    //gravity + lift
-    let targetFall = -1 * (ship.weight / 2.369)
-    let targetLift = (lift.temperature - 11) * 1.239
-    if(targetLift < 0)  targetLift = 0
-    let deltaZ = targetLift + targetFall
-
-    if(engine.conf.debug) debugger
-
-    //going down?
-    if(deltaZ < vector.z) {
-        if(deltaZ < engine.conf.forceOfGravity)
-            vector.z = deltaZ
-        else
-            vector.z -= eng.conf.forceOfGravity 
-    
-    //going up
-    } else if(deltaZ > vector.z) {
-        let maxLiftTolerance = (25 - lift.getDamage()) / 5
-        if(deltaZ > maxLiftTolerance) {
-            lift.damage(Math.round(deltaZ - maxLiftTolerance))
-            deltaZ = deltaZ / 10
-        }
-        vector.z = deltaZ   //Check for jerking around damage
+    let desiredVector = {
+        x: vector.x,
+        y: vector.y,
+        z: engine.ship.secureTied ? 0 : (engine.conf.forceOfGravity * -1)
     }
 
+    const applyToVector = (axis) => {
+        if(Math.abs(desiredVector[axis] - vector[axis]) <= acceleration[axis]) {
+            vector[axis] = desiredVector[axis]
+        } else if(vector[axis] > desiredVector[axis]) {
+            vector[axis] -= acceleration[axis]
+        } else if(vector[axis] < desiredVector[axis]) {
+            vector[axis] += acceleration[axis]
+        }
+    }
+
+
+    //apply lift
+    let targetLift = (lift.temperature - 11) * 0.354
+    targetLift -= (ship.weight * 0.239)
+    if(targetLift < 0) targetLift = 0
+    desiredVector.z += targetLift
+
+    //gradually approach the desiredVector (clip to it when close)
+    applyToVector('x')
+    applyToVector('y')
+    applyToVector('z')
+
+    //apply movement to ship
     ship.x += vector.x
     ship.y += vector.y
     ship.z += vector.z 
-
-    //TODO:  limit based on tie, check for crash landing and gridsplash
 }
