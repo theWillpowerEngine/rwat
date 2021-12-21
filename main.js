@@ -11,6 +11,7 @@ function createWindow () {
     height: 768,
     frame: false,
     show: false,
+    icon: __dirname + '/stuff/icon.ico',
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false

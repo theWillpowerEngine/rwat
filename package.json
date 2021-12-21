@@ -5,7 +5,7 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "build": "npx electron-packager . rwat --platform=win32 --arch=x64"
+    "build": "npx electron-packager . rwat --platform=win32 --arch=x64 --overwrite --icon=./stuff/icon.ico"
   },
   "build": {
     "extraResources": [
