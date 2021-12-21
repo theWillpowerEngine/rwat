@@ -4,7 +4,7 @@ module.exports = (eng, sh) => {
 
     var that = {
         temperature: 0,
-        tempSetting: 0,
+        tempSetting: 10,
 
         holdGridDistance: false,
         selfWarmCycle: false,

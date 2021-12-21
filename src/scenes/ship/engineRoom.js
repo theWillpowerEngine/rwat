@@ -185,10 +185,16 @@ module.exports = (eng) => {
                 return amt.toString()[0]
             }, {color: colors.lavender })
             theMap.addDisplay(10, 0, "the lift temperature (tens)", (eng, tile) => {
-                return Math.floor(engine.ship.lift.temperature / 10) || "0"
+                var amt = Math.floor(engine.ship.lift.temperature / 10) || 0
+                if(amt < 0)
+                    amt = 0
+                return amt || "0"
             }, {color: colors.gold })
             theMap.addDisplay(11, 0, "the lift temperature (ones)", (eng, tile) => {
-                return (eng.ship.lift.temperature % 10) || "0"
+                var amt = (eng.ship.lift.temperature % 10) || 0
+                if(amt < 0)
+                    amt = 0
+                return amt || "0"
             }, {color: colors.gold })
             ////////////////////////////////////////
             //#endregion
