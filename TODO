@@ -12,13 +12,10 @@ Shaft/Prop controls:
 Lift controls:
    Damage/Destroy implementation
    engine room -- keep going
-   figure out the tolerances (the lift should apply itself to the vector not just override it, similar to how things 
-                              go down but more granular)
    Do something with Polish?
+   slow down lift
 
 3D movement system (prop / wind)
-   tweak numbers
-   Test and add some indicators in the engine room
 
 ----------
    Chargen

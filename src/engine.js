@@ -54,7 +54,7 @@ module.exports = (logger, opts) => {
         debug: false,   //use:  if(engine.conf.debug) debugger
 
         defaultScene: "blank",
-        forceOfGravity: 0.23,
+        forceOfGravity: 2.396,
 
         ...opts
     }

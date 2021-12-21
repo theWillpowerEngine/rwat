@@ -23,7 +23,7 @@ module.exports = (eng) => {
             x: 0, y: 0, z: 1
         },
         tieLength: 1,
-        secureTied: false,
+        secureTied: true,
         movementVector: {
             x: 0, y: 0, z: 0
         },
