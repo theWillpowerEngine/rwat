@@ -126,8 +126,11 @@ const ui= {
 
         var html = `<br /><br />
 <b>X:</b> ${engine.ship.x}<br />
+<b>dX:</b> ${engine.ship.movementVector.x}<br />
 <b>Y:</b> ${engine.ship.y}<br />
-<b>Z:</b> ${engine.ship.z}<br />`
+<b>dY:</b> ${engine.ship.movementVector.y}<br />
+<b>Z:</b> ${engine.ship.z}<br />
+<b>dZ:</b> ${engine.ship.movementVector.z}<br />`
         $("#sidetop").html(html)
     }
 }

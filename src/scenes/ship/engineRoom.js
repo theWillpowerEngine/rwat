@@ -174,6 +174,22 @@ module.exports = (eng) => {
                     return displayVals[val]
                 return 'X'
             })
+
+            theMap.addDisplay(9, 0, "the approximate altitude delta", (eng, tile) => {
+                var amt = Math.floor(Math.abs(eng.ship.movementVector.z * 10))
+                if(amt >= 10)
+                    amt = "X"
+                if(amt == 0)
+                    amt = "-"
+                console.log(amt)
+                return amt.toString()[0]
+            }, {color: colors.lavender })
+            theMap.addDisplay(10, 0, "the lift temperature (tens)", (eng, tile) => {
+                return Math.floor(engine.ship.lift.temperature / 10) || "0"
+            }, {color: colors.gold })
+            theMap.addDisplay(11, 0, "the lift temperature (ones)", (eng, tile) => {
+                return (eng.ship.lift.temperature % 10) || "0"
+            }, {color: colors.gold })
             ////////////////////////////////////////
             //#endregion
 
