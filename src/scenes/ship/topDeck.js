@@ -7,28 +7,28 @@ module.exports = (eng) => {
 
     var that = {
         makeMap() {
-            var theMap = engine.maps["topDeck"] = map.blank(23, 65)
-                        
+            var theMap = engine.maps["topDeck"] = map.blank(103, 105)
             theMap.name = 'Top Deck / Wheelhouse'
             theMap.isShip = true
 
             //#region basic framing/layout
-            theMap.fill(tiles.shipFloor)
+            theMap.fill(tiles.spaceBorder)
+            theMap.apply(40, 20, tiles.shipFloor, 23, 65)
 
-            theMap.rect(tiles.shipWall, 0, 42, 23, 23)
-            theMap.rect(tiles.shipWall, 3, 46, 19, 19)
-            theMap.apply(22, 47, tiles.space, 1, 18)
+            theMap.rect(tiles.shipWall, 40, 62, 23, 23)
+            theMap.rect(tiles.shipWall, 43, 66, 19, 19)
+            theMap.apply(62, 67, tiles.space, 1, 18)
             
-            theMap.door(20, 42, "the door to the officer's cabins", "officerDeck", 20, 1, "You enter the officer's cabin")
+            theMap.door(60, 62, "the door to the officer's cabins", "officerDeck", 20, 1, "You enter the officer's cabin")
 
-            theMap.door(20, 62, "a set of stairs leading down to the officer's deck", "officerDeck", 20, 17, "You go down the stairs")
-            theMap.apply(20, 59, {
+            theMap.door(60, 82, "a set of stairs leading down to the officer's deck", "officerDeck", 20, 17, "You go down the stairs")
+            theMap.apply(60, 79, {
                 bg: colors.stairs,
                 desc: "a staircase",
                 solid: true,
                 transparent: true
             }, 1, 3)
-            theMap.apply(20, 18, { transparent: true })
+            theMap.apply(60, 58, { transparent: true })
 
             ////////////
             //#endregion

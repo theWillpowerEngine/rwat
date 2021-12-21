@@ -99,4 +99,10 @@ var that = module.exports = {
         color: colors.background,
         desc: "just empty space"
     }),
+    spaceBorder: makeTile({
+        solid: true,
+        char: " ",
+        color: colors.background,
+        desc: "empty space"
+    }),
 }
