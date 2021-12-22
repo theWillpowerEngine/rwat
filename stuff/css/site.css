@@ -93,6 +93,19 @@ body{
   font-size: 12pt;
 }
 
+.icon-box {
+  height: 40px;
+  width: 40px;
+  padding: 2px 2px 2px 2px;
+  border: 1px solid #F8F0FB;
+  margin: 1px 1px 1px 1px;
+}
+
+.icon {
+  height: 40px;
+  width: 40px;
+}
+
 /*  Zelazny styles   */
 .action-link {
   color: #5EF38C;

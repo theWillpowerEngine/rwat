@@ -5,6 +5,10 @@ module.exports = (win) => {
     let browser = win
     let fullscreen = true
     
+    let cachedIcons = {
+
+    }
+
     ipcMain.handle("showDev", (event, line) => {
         browser.openDevTools()
     })
@@ -44,7 +48,11 @@ module.exports = (win) => {
 
     ipcMain.handle("icon", (event, topic) => {
         try {
+            if(cachedIcons[topic.toLowerCase()])
+                return cachedIcons[topic.toLowerCase()]
+
             var data = fs.readFileSync(`stuff\\icons\\${topic}.svg`, 'utf8')
+            cachedIcons[topic.toLowerCase()] = data
             return data
         } catch(ex) {
             return null

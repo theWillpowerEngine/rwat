@@ -4,7 +4,7 @@ module.exports = (eng, sh) => {
 
     var that = {
         temperature: 0,
-        tempSetting: 10,
+        tempSetting: 0,
 
         holdGridDistance: false,
         selfWarmCycle: false,
@@ -27,6 +27,7 @@ module.exports = (eng, sh) => {
             if(this.selfWarmCycle) {
                 if(this.temperature > 10) {
                     this.selfWarmCycle = false
+                    this.tempSetting = 10
                 } else {
                     if(ship.drainThaums(this.temperature + 1))
                         this.temperature += 1
@@ -44,11 +45,14 @@ module.exports = (eng, sh) => {
                         this.temperature += 1
                     }
                 } else if(this.tempSetting < this.temperature) {
-                    if(delta >= 3)
+                    if(delta >= 3) {
                         if(ship.drainThaums(Math.round(delta / 2) + 15))
                             this.temperature -= 3
                         else
                             this.temperature -= 1
+                    } else {
+                        this.temperature -= 1
+                    }
                 } else {
                     if(!ship.drainThaums(3)) {
                         this.temperature -= 1

@@ -1,16 +1,11 @@
 ----------------------
    Engine Room and Sim
 
-Reactor:
-   Add damage model and effects
-
 Shaft/Prop controls:
    Make lubrication eventually wear off (but slowly) -- this might be a good excuse to write an event system
    Slow down the prop a little (propSpeed can be decimal w/o incident)
-   Make damage degrade performance (will be easier with decimals)
 
 Lift controls:
-   Damage/Destroy implementation
    Do something with Polish?
    Add auto-level system
 
@@ -35,10 +30,13 @@ Implement the random stories:
 
 Make parents apply damage randomly to their children
 
+Add damage model and damage effects to:
+   reactor
+   lift
+   drive
+
 -------
    Bugs
-
-When we skip ticks the log is getting eaten I think?  (verify this but I think I saw it)
 
 ------
    ERs

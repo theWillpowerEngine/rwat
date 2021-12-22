@@ -143,7 +143,7 @@ const ui= {
 <b>Z:</b> ${engine.ship.z}<br />
 <b>dZ:</b> ${engine.ship.movementVector.z}<br />`
 
-        html += await ui.makeIconBox('cog', "red")
+        //html += await ui.makeIconBox('cog', "red")
         $("#sidetop").html(html)
     }
 }
