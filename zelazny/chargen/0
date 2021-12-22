@@ -25,28 +25,29 @@ As you contemplated the gift and the burden both, you considered the thirst for 
 @earlyMemories
 Your first vivid memory is of...
 
-`A large airship coming to collect the harvest` => {
+<ul class="actions">
+`*A large airship coming to collect the harvest` => {
     add 3 to airmanship
     add 1 to luck
     add 1 to farming
     cg go to 1
 }
 
-`A fist fight you saw in town between wagoneers` => {
+`*A fist fight you saw in town between wagoneers` => {
     add 2 to martialArts
     add 2 to reaction
     add 1 to strength
     cg go to 1
 }
 
-`A heated negotiation during which your father got the better of the other party` => {
+`*A heated negotiation during which your father got the better of the other party` => {
     add 2 to negotiation
     add 2 to appraisal
     add 1 to intellect
     cg go to 1
 }
 
-`The glow of the forge while a smith repaired a farming tool` => {
+`*The glow of the forge while a smith repaired a farming tool` => {
     add 2 to engineering
     add 1 to mining
     add 1 to strength
@@ -54,13 +55,14 @@ Your first vivid memory is of...
     cg go to 1
 }
 
-`A magical show put on for the district after a particularly successful harvest` => {
+`*A magical show put on for the district after a particularly successful harvest` => {
     add 1 to sorcery
     add 1 to barding
     add 2 to intellect
     add 1 to divination
     cg go to 1
 }
+</ul>
 @uncleJack
 {
     load chargen/uncleJack

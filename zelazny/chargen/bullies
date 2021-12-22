@@ -1,7 +1,8 @@
 @bullies-0
 [>strength:1 Despite your size, |You weren't very big for your age, and so ]bullies from a sprawling farm closer to the river took an interest in you.  You ignored their jibes and pranks, but eventually they cornered you in a quiet field away from adult eyes and things got violent.
 
-`You remember picking the one who'd seemed in charge and punching him in the nose before he finished telling you about your upcoming beating.` => {
+<ul class="actions">
+`*You remember picking the one who'd seemed in charge and punching him in the nose before he finished telling you about your upcoming beating.` => {
     subtract 1 from factionSaltrice
     add 2 to reaction
     add 2 to martialArts
@@ -9,24 +10,7 @@
     go to bul-punch
 }
 
-`It being the better part of valor and all, you'd waiting for an opening and booked it as fast as you could run.` => {
-    add 2 to reaction
-    add 1 to intellect
-    add 2 to luck
-    go to bul-run
-}
-@bullies-0
-[>strength:1 Despite your size, |You weren't very big for your age, and so ]bullies from a sprawling farm closer to the river took an interest in you.  You ignored their jibes and pranks, but eventually they cornered you in a quiet field away from adult eyes and things got violent.
-
-`You remember picking the one who'd seemed in charge and punching him in the nose before he finished telling you about your upcoming beating.` => {
-    subtract 1 from factionSaltrice
-    add 2 to reaction
-    add 2 to martialArts
-    add 1 to resilience
-    go to bul-punch
-}
-
-`It being the better part of valor and all, you'd waiting for an opening and booked it as fast as you could run.` => {
+`*It being the better part of valor and all, you'd waiting for an opening and booked it as fast as you could run.` => {
     add 2 to reaction
     add 1 to intellect
     add 2 to luck
@@ -34,14 +18,14 @@
 }
 
 [>sorcery:1 
-`It wasn't looking like a very fair fight, but a touch of sorcery could even the odds.` => {
+`*It wasn't looking like a very fair fight, but a touch of sorcery could even the odds.` => {
     add 2 to sorcery
     add 1 to reaction
     add 2 to intellect
     go to bul-sorc
 }
 |
-`They thought it was a six versus one fight, but they forgot about the horse and the dog.` => {
+`*They thought it was a six versus one fight, but they forgot about the horse and the dog.` => {
     add 2 to animals
     add 1 to leadership
     add 2 to strength
@@ -50,7 +34,7 @@
 }
 ]
 
-`Once one of them hit you it was game on, and despite the odds you threw hands and did your best to put at least a couple of them down.` => {
+`*Once one of them hit you it was game on, and despite the odds you threw hands and did your best to put at least a couple of them down.` => {
     add 2 to martialArts
     add 1 to strength
     add 2 to leadership
@@ -58,7 +42,7 @@
     go to bul-brawl
 }
 
-`You had no weapons but your mouth, and you started running it immediately...` => {
+`*You had no weapons but your mouth, and you started running it immediately...` => {
     add 2 to manipulation
     add 1 to resilience
     add 1 to leadership

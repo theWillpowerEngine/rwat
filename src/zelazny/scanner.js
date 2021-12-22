@@ -413,12 +413,7 @@ var that = module.exports = {
                 if(!zelazny.htmlFormat)
                     work += "\n"
                 else {
-                    try {    
-                        if(code[i+1] == '\n' || code[i+1] == '\r')   {
-                            i += 1
-                            work += "<br /><br />"
-                        }
-                    } catch(e){}
+                    work += "<br />"
                 }
                 break
 

@@ -6,22 +6,23 @@
 }
 One summer Uncle Jack visited the farmstead, the highlight of anotherwise dreadfully-boring year.  After an hour of so of his stories you had finally found a moment of silence to guide the conversation.  You asked...
 
+<ul class="actions">
 [>airmanship:1 
-`Specific, technical questions about his trade, having gleaned the rudiments of airmanship` => {
+`*Specific, technical questions about his trade, having gleaned the rudiments of airmanship` => {
     add 2 to airmanship
     add 2 to engineering
     add 1 to intellect
     go to uj_airship
 }
 |
-`About life on an airship` => {
+`*About life on an airship` => {
     add 2 to airmanship
     add 1 to engineering
     go to uj_airship
 }
 ]
 
-`For tips on accumulating wealth` => {
+`*For tips on accumulating wealth` => {
     add 1 to appraisal
     add 1 to negotiation
     add 1 to intellect
@@ -29,7 +30,7 @@ One summer Uncle Jack visited the farmstead, the highlight of anotherwise dreadf
 }
 
 [>larceny:1 
-`About his oft-hinted semi-legal adventures, a subject near to your heart` => {
+`*About his oft-hinted semi-legal adventures, a subject near to your heart` => {
     add 2 to larceny
     add 1 to reaction
     add 1 to manipulation
@@ -37,7 +38,7 @@ One summer Uncle Jack visited the farmstead, the highlight of anotherwise dreadf
     go to uj_adventure
 }
 |
-`About his oft-hinted semi-legal adventures` => {
+`*About his oft-hinted semi-legal adventures` => {
     add 1 to larceny
     add 1 to reaction
     add 1 to manipulation
@@ -46,7 +47,7 @@ One summer Uncle Jack visited the farmstead, the highlight of anotherwise dreadf
 ]
 
 [>martialArts:1 
-`If he's interested in a friendly spar after dinner` => {
+`*If he's interested in a friendly spar after dinner` => {
     add 2 to martialArts
     add 1 to luck
     add 1 to strength
@@ -54,12 +55,13 @@ One summer Uncle Jack visited the farmstead, the highlight of anotherwise dreadf
     go to uj_ma
 }
 |
-`For any tips he has in self-defense` => {
+`*For any tips he has in self-defense` => {
     add 2 to martialArts
     add 1 to resilience
     go to uj_ma
 }
 ]
+</ul>
 @uj_airship
 The next day, before departing, he gave you a tour of his little sloop.  You remember the stained, cramped hallways and the strange engine room in particular.  You'd begged for a quick test flight, intent on convincing him to take you along with him, but your parents forbade it.
 

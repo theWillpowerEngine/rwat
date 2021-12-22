@@ -4,41 +4,38 @@
     add 1 to resilience
     add 1 to strength
     add 1 to airmanship
-}
-Later in adolescence, after a year of miserable work and a bountiful harvest, you father had finally relented to your moping and sighing and arranged for a small adventure during the winter.  A man he knew from the market arranged for you to work as a deck hand aboard a local trade ship.
+}Later in adolescence, after a year of miserable work and a bountiful harvest, you father had finally relented to your moping and sighing and arranged for a small adventure during the winter.  A man he knew from the market arranged for you to work as a deck hand aboard a local trade ship.
 
 The captain was a dreary man who spoke frequently of duty and discipline and he worked you ragged and treated you only slightly better than the tabby cat that oft stalked in his shadow.  Doubtless your father hoped the experience would sour your wanderlust.
 
-`You spent the time shirking work as much as possible and gambling with the crew when the officers weren't looking.` => {
+<ul class="actions">
+`*You spent the time shirking work as much as possible and gambling with the crew when the officers weren't looking.` => {
     add 2 to gambling
     add 1 to larceny
     add 1 to manipulation
     add 1 to luck
     go to wa_lazy
 }
-
 [>airmanship:3 
-`With your knowledge of airmanship, you were an incredible asset, basically an honorary officer during your time aboard.` => {
+`*With your knowledge of airmanship, you were an incredible asset, basically an honorary officer during your time aboard.` => {
     add 1 to airmanship
     add 2 to leadership
     add 2 to engineering
     add 1 to strength
     add 1 to intellect
     go to wa_nerd
-}
-|
-`You pitched in and worked hard, learning as much as you could.` => {
+}|
+`*You pitched in and worked hard, learning as much as you could.` => {
     add 1 to airmanship
     add 1 to engineering
     add 1 to leadership
     add 1 to strength
     add 1 to resilience
     go to wa_normal
-}
-]
+}]
 
 [>sorcery:2 
-`The captain had some old scrolls which you were able to manifest, calling up favorable winds.  You ate well and were rather popular with the crew.` => {
+`*The captain had some old scrolls which you were able to manifest, calling up favorable winds.  You ate well and were rather popular with the crew.` => {
     add 2 to sorcery
     add 2 to intellect
     add 2 to luck
@@ -46,7 +43,7 @@ The captain was a dreary man who spoke frequently of duty and discipline and he 
 }]
 
 [>martialArts:2 
-`It was mostly mundane, save for one evening when a small pirate skiff descended from above and attempted to take the ship.  Your skill at arms helped carry the day, and earned the respect of the men aboard.` => {
+`*It was mostly mundane, save for one evening when a small pirate skiff descended from above and attempted to take the ship.  Your skill at arms helped carry the day, and earned the respect of the men aboard.` => {
     add 1 to martialArts
     add 2 to reaction
     add 2 to leadership
@@ -55,20 +52,19 @@ The captain was a dreary man who spoke frequently of duty and discipline and he 
 }]
 
 [>larceny:3 
-`One night when a technical problem drew the captain away, you broke into his quarters, searching for anything interesting.` => {
+`*One night when a technical problem drew the captain away, you broke into his quarters, searching for anything interesting.` => {
     add 3 to larceny
     add 3 to luck
     go to wa_thiefgood
-}
-|
-[>larceny:2 
-`One night when a technical problem drew the captain away, you broke into his quarters, searching for anything interesting.` => {
+}|[>larceny:2 
+`*One night when a technical problem drew the captain away, you broke into his quarters, searching for anything interesting.` => {
     add 2 to larceny
     add 3 to resilience
     subtract 1 from luck
     subtract 5 from factionSaltrice
     go to wa_thiefbad
 }]]
+</ul>
 @wa_thiefgood
 The break-in goes off without a hitch, but the captain either had better hiding places than you'd expect, or was fairly broke.  You took a small trophy to remember him by a a good luck charm and left before trouble found you.
 { go to wa_lazy }

@@ -8,6 +8,26 @@ body{
     color: #EFF0D1;
 }
 
+.actions br {
+  display: none;
+}
+.actions {
+  list-style: none; /* Remove default bullets */
+}
+
+.action-link-li {
+  margin-top: 8px;
+}
+
+.action-link-li::before {
+  content: "\2022";  
+  color: #5EF38C; 
+  font-weight: bold;
+  display: inline-block; 
+  width: 1em; 
+  margin-left: -1em;
+}
+
 /*  Styles by ID */
 #header {
   position: absolute;
