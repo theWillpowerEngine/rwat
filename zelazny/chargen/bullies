@@ -58,7 +58,7 @@
     go to bul-brawl
 }
 
-`You had no weapons but your mouth, and you'd started running it immediately...` => {
+`You had no weapons but your mouth, and you started running it immediately...` => {
     add 2 to manipulation
     add 1 to resilience
     add 1 to leadership
@@ -66,31 +66,53 @@
     go to bul-talk
 }
 @bul-punch
+[>martialArts:2 
+{
+    add 1 to luck
+    add 1 to martialArts
+}
+It was a really good punch.  You followed it up with two more attacks to his closest two friends, and the rest scattered.  You ended up getting the blame for the incident since you swung first and your father whipped you something fierce.
+|
+You clocked the leader, but not hard enough, he recovered and the sheer weight of bodies carried the day.  You ended up not only getting knocked around something fierce, but also getting blamed for the whole incident since you swung first.
+]
 
 `$Continue` => {
     cg return
 }
 @bul-run
+It was a close thing, but you were faster and more clever than anyone in their group, and you eventually got away.
 
 `$Continue` => {
     cg return
 }
 @bul-sorc
+[>sorcery:2 
+{
+    add 1 to luck
+    add 1 to intellect
+}
+You wanted to set one of them on fire, but all you managed was a sputtering little hummingbird of fire that lit a shirt briefly.  Still, they were scared, and they left you alone after that.
+|
+Unfortunately it didn't go so well, and while you were still concentrating on shaping your intention in your mind several fists and boots imposed themselves on your meditation.  You were in bed with injuries (both physical and to your pride) for the better part of a week.
+]
 
 `$Continue` => {
     cg return
 }
 @bul-animals
+It pays to spend a little extra time and attention taking care of one's hooved and fanged friends.  By the time they realized what'd happened the horse had laid one out with a vicious kick and the dog had clamped onto the biggest one's arm.  The horse chased the little brother halfway across the county.
 
 `$Continue` => {
     cg return
 }
 @bul-brawl
+You put up a good fight -- all the folks talking about you getting your ass kicked agreed firmly on that point -- but in the end there were six of them and one of you and you got knocked around something fierce.
 
 `$Continue` => {
     cg return
 }
 @bul-talk
+Several hours later you stumbled out of a tavern three-quarters drunk having made six new friends.  Not very good friends mind you (they were a little dull and had tried to beat you after all), but friends nonetheless.
 
 `$Continue` => {
     cg return

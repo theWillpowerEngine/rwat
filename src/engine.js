@@ -186,7 +186,8 @@ module.exports = (logger, opts) => {
                         var cmd = pop()
                         switch(cmd) {
                             case "start":
-                                cgPicks.push("cg1")  //rpg.pickOne(cgAll))      TODO
+                                cgPicks.push("cg1")
+                                //cgPicks.push(rpg.pickOne(cgAll))
                                 cgPicks.push(rpg.pickOne(cgAll))
                                 cgPicks.push(rpg.pickOne(cgAll))
                                 break
