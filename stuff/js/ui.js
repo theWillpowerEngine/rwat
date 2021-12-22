@@ -9,6 +9,17 @@ const ui= {
         
     },
 
+    async makeIconBox(icon, color) {
+        var svg = await engine.getIcon(icon)
+        svg = svg.replace('fill="#000"', `fill="${color}"`)
+        svg = Buffer.from(svg).toString('base64')
+        var html = `
+<div class="icon-box"><img src="data:image/svg+xml;base64,${svg}" class="icon" /></div>
+        `
+
+        return html.trim()
+    },
+
     charSheet() {
         var skills = `
         <table width="100%" style="border: 0 0 0 0">
@@ -117,7 +128,7 @@ const ui= {
         })
     },
 
-    updateUI() {
+    async updateUI() {
         $("#area").html(engine?.map?.name || "Unknown Area")
         if(engine?.world?.getDateTime)
             $("#time").html(engine.world.getDateTime())
@@ -131,6 +142,8 @@ const ui= {
 <b>dY:</b> ${engine.ship.movementVector.y}<br />
 <b>Z:</b> ${engine.ship.z}<br />
 <b>dZ:</b> ${engine.ship.movementVector.z}<br />`
+
+        html += await ui.makeIconBox('cog', "red")
         $("#sidetop").html(html)
     }
 }

@@ -39,46 +39,46 @@ module.exports = (eng, kbs) => {
     }
 
     // Movement
-    hotkeys(binds.moveNE, function (event, handler){
+    hotkeys(binds.moveNE, async function (event, handler){
         engine.player.move(1, -1)
-        engine.render()
+        await engine.render()
     });
-    hotkeys(binds.moveSE, function (event, handler){
+    hotkeys(binds.moveSE, async function (event, handler){
         engine.player.move(1, 1)
-        engine.render()
+        await engine.render()
     });
-    hotkeys(binds.moveSW, function (event, handler){
+    hotkeys(binds.moveSW, async function (event, handler){
         engine.player.move(-1, 1)
-        engine.render()
+        await engine.render()
     });
-    hotkeys(binds.moveNW, function (event, handler){
+    hotkeys(binds.moveNW, async function (event, handler){
         engine.player.move(-1, -1)
-        engine.render()
+        await engine.render()
     });
-    hotkeys(binds.moveDown, function (event, handler){
+    hotkeys(binds.moveDown, async function (event, handler){
         engine.player.move(0, 1)
-        engine.render()
+        await engine.render()
     });
-    hotkeys(binds.moveLeft, function (event, handler){
+    hotkeys(binds.moveLeft, async function (event, handler){
         engine.player.move(-1, 0)
-        engine.render()
+        await engine.render()
     });
-    hotkeys(binds.moveRight, function (event, handler){
+    hotkeys(binds.moveRight, async function (event, handler){
         engine.player.move(1, 0)
-        engine.render()
+        await engine.render()
     });
-    hotkeys(binds.moveUp, function (event, handler){
+    hotkeys(binds.moveUp, async function (event, handler){
         engine.player.move(0, -1)
-        engine.render()
+        await engine.render()
     });
 
     //Interaction toggles
-    hotkeys(binds.toggleValve, function (event, handler){
+    hotkeys(binds.toggleValve, async function (event, handler){
         engine.player.turnValve = (engine.player.turnValve == -1 ? 1 : -1)
         engine.log(`You will now turn valves and dials ${(engine.player.turnValve == -1 ? "down" : "up")}.`)
-        engine.render()
+        await engine.render()
     });
-    hotkeys(binds.toggleLight, function (event, handler){
+    hotkeys(binds.toggleLight, async function (event, handler){
         engine.player.lightOn = !engine.player.lightOn
         if(engine.player.lightOn) {
             if(engine.player.lightFuel > 0)
@@ -89,43 +89,43 @@ module.exports = (eng, kbs) => {
             }    
         } else
             engine.log("You turn your personal lantern off.")
-        engine.render()
+        await engine.render()
     });
 
     //Misc. Actions
-    hotkeys(binds.advanceTick, function (event, handler){
+    hotkeys(binds.advanceTick, async function (event, handler){
         if(ui.inZelazny) {
             $(".default-link").click()
         } else {
             engine.log("You wait a moment.")
-            engine.render()
+            await engine.render()
         }
     });
-    hotkeys(binds.advance5Ticks, function (event, handler){
+    hotkeys(binds.advance5Ticks, async function (event, handler){
         engine.render(5)
     });
-    hotkeys(binds.advance10Ticks, function (event, handler){
+    hotkeys(binds.advance10Ticks, async function (event, handler){
         engine.render(10)
     });
-    hotkeys(binds.advance25Ticks, function (event, handler){
+    hotkeys(binds.advance25Ticks, async function (event, handler){
         engine.render(25)
     });
 
-    hotkeys(binds.characterSheet, function (event, handler){
+    hotkeys(binds.characterSheet, async function (event, handler){
         ui.charSheet()
     });
 
     //System Keys
     hotkeys(binds.save, async function (event, handler){
         await engine.save()
-        engine.render()
+        await engine.render()
     });
     hotkeys(binds.load, async function (event, handler){
         await engine.load()
-        engine.render()
+        await engine.render()
     });
 
-    hotkeys(binds.exit, function (event, handler){
+    hotkeys(binds.exit, async function (event, handler){
         window.close()
     });
     hotkeys(binds.devTools, async function (event, handler){

@@ -41,4 +41,13 @@ module.exports = (win) => {
             return "Zelazny '" + topic + "' was not found"
         }
     })
+
+    ipcMain.handle("icon", (event, topic) => {
+        try {
+            var data = fs.readFileSync(`stuff\\icons\\${topic}.svg`, 'utf8')
+            return data
+        } catch(ex) {
+            return null
+        }
+    })
 }

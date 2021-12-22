@@ -281,8 +281,11 @@ module.exports = (logger, opts) => {
         async getZelazny(group, node) {
             return await ipcRenderer.invoke("zelazny", group + "\\" + node)
         },
+        async getIcon(icon) {
+            return await ipcRenderer.invoke("icon", icon)
+        },
 
-        render(ticks) {
+        async render(ticks) {
             if(!ticks) ticks = 1
             if(that.gameOver)
                 throw that.gameOver
@@ -346,7 +349,7 @@ module.exports = (logger, opts) => {
 
             logger(that.logText)
             that.logText = ''
-            ui.updateUI()
+            await ui.updateUI()
 
             console.log("Tick Duration: " + Math.abs((new Date().getTime() - start.getTime())) + " ms")
 

@@ -20,7 +20,7 @@ module.exports = (eng) => {
             
             theMap.addButton(4, 1, "the button to click to load your game (you could also press Ctrl-O)", async (eng, tile) => {
                 await engine.load()
-                engine.render()
+                await engine.render()
             }, {
                 color: colors.gold,
                 char: 'L'
@@ -31,7 +31,7 @@ module.exports = (eng) => {
                 engine.scenes.set("cargoDeck")
                 engine.player.x = 1
                 engine.player.y = 25
-                engine.render()
+                await engine.render()
 
             }, {
                 color: colors.green,

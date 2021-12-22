@@ -41,11 +41,11 @@ window["cheat"] = {
 
 }
 
-$(() => {
+$(async () => {
     engine.init((step, msg) => {
         console.log(`Initialization ${step}% done: ${msg}.</span>`)
     })
-    engine.render()
+    await engine.render()
 
     $("canvas").on('mousedown', e => {
         var coords = getCursorPosition(e.target, e)
@@ -63,8 +63,8 @@ $(() => {
     var resizeTimer;
     $(window).on('resize', function(e) {
         clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(function() {
-            engine.render()
+        resizeTimer = setTimeout(async function() {
+            await engine.render()
         }, 250);
     });
 
