@@ -79,6 +79,7 @@ And we're done
 @cg1
 {
     add 1 to resilience
+    load chargen/bullies
     go to bullies-0
 }
 @cg2
@@ -120,12 +121,6 @@ And we're done
 {
     add 1 to sorcery
     go to sorcery-0
-}
-@bullies-0
-There are bullies here
-
-`$ok` => {
-    cg return
 }
 @larceny-0
 There is larceny here
