@@ -28,7 +28,19 @@ module.exports = (eng) => {
             x: 0, y: 0, z: 0
         },
 
-        weight: 20,
+        getWeight() {
+            return Math.round(
+                that.shipWeight +
+                that.cargoWeight +
+                (that.lightFuel / 3000) +
+                (that.waterTank / 3000)
+            ) 
+        },
+        cargoWeight: 0,
+        shipWeight: 15,
+        
+        lightFuel: 10000,
+        waterTank: 10000,
 
         damageModel: require("./damage.js"),
         thaumaticCapacitorThaums: 0,
@@ -38,7 +50,6 @@ module.exports = (eng) => {
 
         pilotLights: false, 
         masterLights: 0,
-        lightFuel: 10000,
         getMasterAmbientLight() {
             if(!that.masterLights || !that.lightFuel || !that.pilotLights)
                 return ambientDark

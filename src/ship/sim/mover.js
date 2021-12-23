@@ -29,7 +29,7 @@ module.exports = (eng) => {
 
     //apply lift
     let targetLift = (lift.temperature - 11) * 0.354
-    targetLift -= (ship.weight * 0.239)
+    targetLift -= (ship.getWeight() * 0.239)
     if(targetLift < 0) targetLift = 0
     desiredVector.z += targetLift
 
