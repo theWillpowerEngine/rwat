@@ -34,6 +34,14 @@ var that = module.exports = {
         desc: "you (duh)"
     }),
 
+    crew: (crew) => makeTile({
+        solid: true,
+        char: crew.char,
+        color: crew.color,
+        bg: crew.bg || null,
+        desc: `${crew.name}`
+    }),
+
     switch: makeTile({
         solid: true,
         char: "$",

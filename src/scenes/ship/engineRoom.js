@@ -42,6 +42,7 @@ module.exports = (eng) => {
             
             theMap["helpTopic"] = "engineRoom"
             theMap.name = 'Engine Room'
+            theMap.deckName = 'engineRoom'
             theMap.isShip = true
 
             //#region Rough-In (walls/floor/doors/etc.)

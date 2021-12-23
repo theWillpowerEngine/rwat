@@ -90,6 +90,7 @@ module.exports = (logger, opts) => {
 
         player: null,
         ship: null,
+        crew: [],
 
         lastOffsetX: 0,
         lastOffsetY: 0,
@@ -137,8 +138,10 @@ module.exports = (logger, opts) => {
                 return { ib: false }
             if(x >= that.map.width || y >= that.map.height)
                 return { ib: false } 
-            if(that.map.tiles[x][y].solid)
-                return { ib: false, tile: that.map.tiles[x][y] }
+            
+            var tile = that.renderer.getTileAt(x, y)
+            if(tile.solid)
+                return { ib: false, tile: tile }
     
             return {ib: true}
         },
@@ -186,8 +189,8 @@ module.exports = (logger, opts) => {
                         var cmd = pop()
                         switch(cmd) {
                             case "start":
-                                cgPicks.push("cg1")
-                                //cgPicks.push(rpg.pickOne(cgAll))
+                                //cgPicks.push("cg1")
+                                cgPicks.push(rpg.pickOne(cgAll))
                                 cgPicks.push(rpg.pickOne(cgAll))
                                 cgPicks.push(rpg.pickOne(cgAll))
                                 break
@@ -198,6 +201,9 @@ module.exports = (logger, opts) => {
                             case "return":
                                 const returnTo = ["", "uncleJack", "winterAway", "leavingHome"]
                                 return that.zelazny.action("go to " + returnTo[cgReturnTo])
+                            case "debug":
+                                require("./debugState.js")(that)
+                                return that.zelazny.action('go to cgDebug')
 
                             default:
                                 throw "Unknown cg command: " + cmd

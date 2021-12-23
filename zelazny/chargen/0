@@ -22,6 +22,10 @@ As you contemplated the gift and the burden both, you considered the thirst for 
     cg start
     go to earlyMemories
 }
+`$DEBUG:  Set Test state` => {
+    cg debug
+}
+
 @earlyMemories
 Your first vivid memory is of...
 
@@ -171,4 +175,9 @@ There is sorcery here
 
 `$ok` => {
     cg return
+}
+@cgDebug
+Set initial state for testing
+{
+    "Good luck!" game over
 }

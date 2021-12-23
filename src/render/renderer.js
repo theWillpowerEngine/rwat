@@ -1,6 +1,7 @@
 const Color = require('color')
 const makeLights = require('./lights.js')
 const colors = require("../map/colors.js")
+const tiles = require('../map/tiles.js')
 
 module.exports = (eng) => {
     let engine = eng
@@ -11,6 +12,7 @@ module.exports = (eng) => {
         playerLightSource() { return engine.lights.create(engine.player.tile.bg, 0.9, 5, -0.15) },
 
         getTileAt(x, y) {
+            //PC?
             if(x == engine.player.x && y == engine.player.y) {
                 if(engine.player.lightOn)
                     return engine.player.tile
@@ -20,6 +22,21 @@ module.exports = (eng) => {
                         bg: null
                     }
             }   
+
+            //NPC?
+            if(engine.map.isShip) {
+                var crew = engine.crew.find(c => 
+                    c.deck == engine.map.deckName &&
+                    c.x == x &&
+                    c.y == y)
+
+                if(crew) {
+                    let crewTile = tiles.crew(crew)
+                    crewTile.x = crew.x
+                    crewTile.y = crew.y
+                    return crewTile
+                }
+            }
             
             var tile = null
             try {
