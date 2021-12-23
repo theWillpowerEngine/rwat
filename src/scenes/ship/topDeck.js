@@ -19,7 +19,11 @@ module.exports = (eng) => {
             theMap.rect(tiles.shipWall, 40, 62, 23, 23)
             theMap.rect(tiles.shipWall, 43, 66, 19, 19)
             theMap.apply(62, 67, tiles.space, 1, 18)
-            
+            theMap.apply(44, 66, tiles.horizontalWindow, 17, 1)
+
+            theMap.apply(60, 66, tiles.localDoor)
+            theMap.apply(43, 67, tiles.localDoor)
+
             theMap.door(60, 62, "the door to the officer's cabins", "officerDeck", 20, 1, "You enter the officer's cabin")
 
             theMap.door(60, 82, "a set of stairs leading down to the officer's deck", "officerDeck", 20, 17, "You go down the stairs")
@@ -29,7 +33,7 @@ module.exports = (eng) => {
                 solid: true,
                 transparent: true
             }, 1, 3)
-            theMap.apply(60, 58, { transparent: true })
+            theMap.apply(60, 82, { transparent: true })
 
             ////////////
             //#endregion

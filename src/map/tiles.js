@@ -7,7 +7,8 @@ const makeTile = (vals) => {
         char: ' ',
         color: colors.white,
         bg: null,
-        transparent: false,
+        transparent: false,      //for solids
+        notTransparent: false,   //For non solids
         interactive: false,
         noBgLightTint: false,
         desc: "A tile",
@@ -88,6 +89,31 @@ var that = module.exports = {
             if(tile.emit)
                 eng.log(tile.emit)
         }
+    }),
+
+    localDoor: makeTile({
+        solid: false,
+        char: "*",
+        color: colors.aqua,
+        desc: "a door",
+        notTransparent: true
+    }), 
+
+    horizontalWindow: makeTile({
+        solid: true,
+        char: "-",
+        color: colors.grey,
+        interactive: false,
+        transparent: true,
+        desc: "a window pane"
+    }),
+    verticalWindow: makeTile({
+        solid: true,
+        char: "|",
+        color: colors.grey,
+        interactive: false,
+        transparent: true,
+        desc: "a window pane"
     }),
 
     shipFloor: makeTile({
