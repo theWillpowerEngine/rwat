@@ -1,19 +1,20 @@
 const rpg = require("../../system.js")
 
 const firstNames = [
-    "Alex", "Alvin", "Anomander", "Arnold", "Baggy", "Benedict", "Blaise", "Bob", "Brand", "Brandon", "Connor", "Corwin", 
-    "Dan", "Daniel", "David", "Delwyn", "Dolph", "Duncan", "Dworkin", "Gerard", "Hank", "Harrison", "Harry", "Henry", "Ian", 
-    "Iain", "Jack", "James", "Kevin", "Leland", "Luke", "Mat", "Maddox", "Matt", "Oberon", "Perrin", "Phillip", 
-    "Philodendron", "Rand", "Random", "Rob", "Robert", "Sam", "Samuel", "Shep", "Shen", "Stephen", "Steven", "Terry", 
-    "Terrence", "Tom", "Tomas", "Wyndham"
+    "Alex", "Alvin", "Anomander", "Arnold", "Baggy", "Ben", "Benedict", "Blaise", "Bob", "Brand", "Brandon", "C. J.", "Cheradenine", "Connor", "Corwin", 
+    "Dan", "Daniel", "David", "Delwyn", "Dolph", "Duncan", "Dworkin", "Gerard", "Gideon", "Hank", "Harrison", "Harry", "Henry", "Ian", 
+    "Iain", "Jack", "James", "Jaroslav", "Kevin", "Leland", "Liam", "Luke", "Mat", "Maddox", "Matt", "Oberon", "Patrick", "Perrin", "Phillip", 
+    "Philodendron", "R. C.","Rand", "Random", "Rob", "Robert", "Sam", "Samuel", "Shep", "Shen", "Stefan", "Stephen", "Steven", "Terry", 
+    "Terrence", "Tom", "Tomas", "Wyndham", "Xavier", "Zap", "Zip"
 ]
 
 const lastNames = [
-    "Abnett", "Adler", "Amnell", "Aubrey", "Babbington", "Banks", "Barimen", "Bennett", "Black", "Butler", "Case", "Clavell", 
-    "Cooper", "Damodred", "Dumas", "Goodkind", "Hayward", "Haywood", "Heyward", "Holmes", "Jordan", "Li", "Lien", "Lovecraft", 
-    "Lynch", "Martell", "Maturin", "Meredith", "Mishima", "Moappit", "Montgomery", "Moriarty", "Mulder", "Mulgrew", 
-    "Palmer", "Park", "Patel", "Picard", "Picardo", "Pullings", "Rake", "Ravenscroft", "Rearden", "Reynold", "Roddenberry", 
-    "Sanderson", "Senjak", "Stevens", "Stevenson", "Taggart", "van Damme", "van Diem", "Trakand", "Verne", "Wells", "Woods"
+    "Abnett", "Adler", "Amnell", "Aubrey", "Babbington", "Banks", "Baskerville", "Barimen", "Bennett", "Black", "Butler", 
+    "Case", "Cavill", "Clavell", "Cooper", "Damodred", "Dumas", "Flaherty", "Flanagan", "Goodkind", "Hayward", "Haywood", "Hemsworth", "Heyward", "Holmes", 
+    "Irenicus", "Jordan", "Li", "Lien", "Lovecraft", "Lynch", "Martell", "Maturin", "Meredith", "Mishima", "Moappit", "Montgomery", 
+    "Moriarty", "Mulder", "Mulgrew", "Palmer", "Park", "Patel", "Picard", "Picardo", "Pullings", "Rake", "Ravenscroft", 
+    "Rearden", "Reynold", "Roddenberry", "Sanderson", "Senjak", "Stapleton", "Stevens", "Stevenson", "Taggart", "Templeton", 
+    "van Damme", "van Diem", "Trakand", "Verne", "Wells", "Woods"
 ]
 
 module.exports = {
