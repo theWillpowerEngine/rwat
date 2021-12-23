@@ -1,0 +1,136 @@
+@larceny-0
+You met a magistrate once and got to see Saltrice's justice first hand.  You were...
+
+`... the key witness who helped to bring down a local gang` => {
+    add 3 to factionSaltrice
+    add 1 to negotiation
+    add 1 to leadership
+    go to larc-lawful
+}
+
+`... caught stealing (through absolutely no fault of your own, of course)` => {
+    subtract 5 from factionSaltrice
+    add 3 to larceny
+    add 1 to manipulation
+    go to larc-chaotic
+}
+@larc-lawful
+The incident stood out vividly amidst the months and years of boredom you associate with Saltrice.  It was during harvest when everyone was busy and by all rights you should've been sweating in the fields, but your father had needed a part urgently and had blessed you with a reprieve from work to go and fetch it from the smith.
+
+<ul class="actions">
+`*Along the way you'd come upon a crime in progress, and you watched it unfold, ignored the threats of the perpetrators and saw justice done` => {
+    add 2 to resilience
+    add 2 to luck
+    add 2 to reaction
+    go to larc-testified
+}
+
+</ul>
+
+
+@larc-chaotic
+blah blah
+
+@larc-testified
+...
+
+<ul class="actions">
+`*You remember picking the one who'd seemed in charge and punching him in the nose before he finished telling you about your upcoming beating.` => {
+    subtract 1 from factionSaltrice
+    add 2 to reaction
+    add 2 to martialArts
+    add 1 to resilience
+    go to bul-punch
+}
+
+`*It being the better part of valor and all, you'd waiting for an opening and booked it as fast as you could run.` => {
+    add 2 to reaction
+    add 1 to intellect
+    add 2 to luck
+    go to bul-run
+}
+
+[>sorcery:1 
+`*It wasn't looking like a very fair fight, but a touch of sorcery could even the odds.` => {
+    add 2 to sorcery
+    add 1 to reaction
+    add 2 to intellect
+    go to bul-sorc
+}
+|
+`*They thought it was a six versus one fight, but they forgot about the horse and the dog.` => {
+    add 2 to animals
+    add 1 to leadership
+    add 2 to strength
+    add 1 to medicine
+    go to bul-animals
+}
+]
+
+`*Once one of them hit you it was game on, and despite the odds you threw hands and did your best to put at least a couple of them down.` => {
+    add 2 to martialArts
+    add 1 to strength
+    add 2 to leadership
+    add 1 to factionSaltrice
+    go to bul-brawl
+}
+
+`*You had no weapons but your mouth, and you started running it immediately...` => {
+    add 2 to manipulation
+    add 1 to resilience
+    add 1 to leadership
+    add 1 to negotiation
+    go to bul-talk
+}
+@bul-punch
+[>martialArts:2 
+{
+    add 1 to luck
+    add 1 to martialArts
+}
+It was a really good punch.  You followed it up with two more attacks to his closest two friends, and the rest scattered.  You ended up getting the blame for the incident since you swung first and your father whipped you something fierce.
+|
+You clocked the leader, but not hard enough, he recovered and the sheer weight of bodies carried the day.  You ended up not only getting knocked around something fierce, but also getting blamed for the whole incident since you swung first.
+]
+
+`$Continue` => {
+    cg return
+}
+@bul-run
+It was a close thing, but you were faster and more clever than anyone in their group, and you eventually got away.
+
+`$Continue` => {
+    cg return
+}
+@bul-sorc
+[>sorcery:2 
+{
+    add 1 to luck
+    add 1 to intellect
+}
+You wanted to set one of them on fire, but all you managed was a sputtering little hummingbird of fire that lit a shirt briefly.  Still, they were scared, and they left you alone after that.
+|
+Unfortunately it didn't go so well, and while you were still concentrating on shaping your intention in your mind several fists and boots imposed themselves on your meditation.  You were in bed with injuries (both physical and to your pride) for the better part of a week.
+]
+
+`$Continue` => {
+    cg return
+}
+@bul-animals
+It pays to spend a little extra time and attention taking care of one's hooved and fanged friends.  By the time they realized what'd happened the horse had laid one out with a vicious kick and the dog had clamped onto the biggest one's arm.  The horse chased the little brother halfway across the county.
+
+`$Continue` => {
+    cg return
+}
+@bul-brawl
+You put up a good fight -- all the folks talking about you getting your ass kicked agreed firmly on that point -- but in the end there were six of them and one of you and you got knocked around something fierce.
+
+`$Continue` => {
+    cg return
+}
+@bul-talk
+Several hours later you stumbled out of a tavern three-quarters drunk having made six new friends.  Not very good friends mind you (they were a little dull and had tried to beat you after all), but friends nonetheless.
+
+`$Continue` => {
+    cg return
+}

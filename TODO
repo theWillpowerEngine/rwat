@@ -17,9 +17,9 @@ Thaumatic Battery (fake electric system)
    Chargen
 
 Finish:
-
-Implement the random stories:
    Larceny
+
+Implement random stories:
    Sifu
    Sickness
    Airship
@@ -27,6 +27,30 @@ Implement the random stories:
    Windfall
    Job
    Sorcery
+
+------------------------------------
+   Crew (AI / Command System / etc.)
+
+Command UI and functionality
+
+Basic Crew AI / Pathfinding / Simulation / Inventory (do PC inventory at the same time)
+
+Roles:
+   Engineer
+   Pilot
+   Cargomaster
+   Boatswain
+   Watch Officer (general operations)
+   Cook
+   Medic
+   Sorceror
+   Sergeant of the Marines
+   Bard
+   Mast Officer (puller master)
+   Gunnery Officer (forward gun)
+   Commissar (Morale Officer)
+   Champion
+   Mate
 
 ---------------
    Damage Model
@@ -59,8 +83,6 @@ top deck + gunroom
    Other Work
 
 Weather; Time+Weather ambient light for the outside room
-
-AI (start with Engineer) and Command system
 
 Write Help
 

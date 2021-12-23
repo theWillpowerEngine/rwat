@@ -22,7 +22,8 @@ As you contemplated the gift and the burden both, you considered the thirst for 
     cg start
     go to earlyMemories
 }
-`$DEBUG:  Set Test state` => {
+
+`DEBUG:  Set Test state` => {
     cg debug
 }
 
@@ -91,6 +92,7 @@ And we're done
 @cg2
 {
     add 1 to larceny
+    load chargen/larceny
     go to larceny-0
 }
 @cg3
