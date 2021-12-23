@@ -18,7 +18,7 @@ You met a magistrate once and got to see Saltrice's justice first hand.  You wer
 The incident stood out vividly amidst the months and years of boredom you associate with Saltrice.  It was during harvest when everyone was busy and by all rights you should've been sweating in the fields, but your father had needed a part urgently and had blessed you with a reprieve from work to go and fetch it from the smith.
 
 <ul class="actions">
-`*Along the way you'd come upon a crime in progress, and you watched it unfold, ignored the threats of the perpetrators and saw justice done` => {
+`*Along the way you came upon a crime in progress, and then watched it unfold, ignored the threats of the perpetrators and saw justice done` => {
     add 2 to resilience
     add 2 to luck
     add 2 to reaction
