@@ -81,8 +81,41 @@ The incident was still fresh in your memory, a contrast to years of plodding bor
 }
 </ul>
 @larc-chaotic
+You don't really remember when you developed your disdain for the law and its petty enforcers, but the ultimate effect of it was that you spent half a harvest in jail and lost most of the respect your family had for you.  As such things tend to, it started quickly and simply and before you had time to think about it you were already in the deep end...
 
+<ul class="actions">
 
+`*A verbal confrontation escalated to the point where you responded with fists instead of words` => {
+    add 2 to strength
+    add 1 to martialArts
+    add 1 to resilience
+    subtract 2 from factionSaltrice
+    go to larc-criminal
+}
+
+[>larceny:2 
+`*You'd been stealing things off and on for most your independent life, and it never occured to you that you might get caught...  until you did` => {
+    add 4 to larceny
+    subtract 1 from factionSaltrice
+    go to larc-criminal
+}
+|
+`*You stole an item you wanted from a shop.  You thought you'd gotten away with it right up until the shopkeep's hand fell heavily on your shoulder` => {
+    add 2 to larceny
+    add 1 to resilience
+    subtract 1 from factionSaltrice
+    go to larc-criminal
+}]
+
+[>appraisal:2 
+`*All you did was to 'exaggerate' a few qualities of the goods you were selling.  Really it shouldn't even have been a crime, but the magistrate didn't agree` => {
+    add 2 to appraisal
+    add 2 to negotiation
+    add 2 to manipulation
+    go to larc-badboy
+}]
+
+</ul>
 
 @larc-gun
 Saltrice is made up of a federation of allied villages, an arrangement which has worked well to keep things peaceful in the bread basket of the Realm.  It could create diffculties, however, such as a few villages creating their own laws and policies and leaving their unfortunate visitors to sort things out.  It was somewhat unusual, but not illegal, to carry a gun in your part of town, but not so in the village you were caught in.
@@ -154,6 +187,22 @@ The epic beating you caught from your father, however, definitely put a fear of 
 }
 @larc-gunfine
 Your family was not rich, but you were hard working and so your parents were able to cover the fine for you.  You were something of a pariah for the next six months though, and your dad worked you three times as hard as usual to make up for the lost coins.
+
+Even years later you get reminded of this incident whenever the old man wants to score a point on you.
+
+`$Continue` => {
+    cg return
+}
+@larc-criminal
+Compared to how stories describe dungeons, the village jail you found yourself in wasn't even that bad, at first.  As days wore into weeks and weeks became months you slowly came to understand a new and more horrible kind of boredom.  You were nostalgic for toiling in the fields by the time you were released.
+
+Things never fully recovered between you and your family.  Your mother forgave you, but never seemed to forget, and the rest of the family was never as close to you as they had been.
+
+`$Continue` => {
+    cg return
+}
+@larc-badboy
+You ended up being humiliated before the magistrate and having to pay a fine, which your family had to come up with for you.  You were something of a pariah for the next six months though, and your dad worked you three times as hard as usual to make up for the lost coins.
 
 Even years later you get reminded of this incident whenever the old man wants to score a point on you.
 
