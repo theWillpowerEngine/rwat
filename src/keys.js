@@ -42,42 +42,42 @@ module.exports = (eng, kbs) => {
     hotkeys(binds.moveNE, async function (event, handler){
         engine.player.move(1, -1)
         await engine.render()
-    });
+    })
     hotkeys(binds.moveSE, async function (event, handler){
         engine.player.move(1, 1)
         await engine.render()
-    });
+    })
     hotkeys(binds.moveSW, async function (event, handler){
         engine.player.move(-1, 1)
         await engine.render()
-    });
+    })
     hotkeys(binds.moveNW, async function (event, handler){
         engine.player.move(-1, -1)
         await engine.render()
-    });
+    })
     hotkeys(binds.moveDown, async function (event, handler){
         engine.player.move(0, 1)
         await engine.render()
-    });
+    })
     hotkeys(binds.moveLeft, async function (event, handler){
         engine.player.move(-1, 0)
         await engine.render()
-    });
+    })
     hotkeys(binds.moveRight, async function (event, handler){
         engine.player.move(1, 0)
         await engine.render()
-    });
+    })
     hotkeys(binds.moveUp, async function (event, handler){
         engine.player.move(0, -1)
         await engine.render()
-    });
+    })
 
     //Interaction toggles
     hotkeys(binds.toggleValve, async function (event, handler){
         engine.player.turnValve = (engine.player.turnValve == -1 ? 1 : -1)
         engine.log(`You will now turn valves and dials ${(engine.player.turnValve == -1 ? "down" : "up")}.`)
         await engine.render()
-    });
+    })
     hotkeys(binds.toggleLight, async function (event, handler){
         engine.player.lightOn = !engine.player.lightOn
         if(engine.player.lightOn) {
@@ -90,7 +90,7 @@ module.exports = (eng, kbs) => {
         } else
             engine.log("You turn your personal lantern off.")
         await engine.render()
-    });
+    })
 
     //Misc. Actions
     hotkeys(binds.advanceTick, async function (event, handler){
@@ -100,45 +100,45 @@ module.exports = (eng, kbs) => {
             engine.log("You wait a moment.")
             await engine.render()
         }
-    });
+    })
     hotkeys(binds.advance5Ticks, async function (event, handler){
         engine.render(5)
-    });
+    })
     hotkeys(binds.advance10Ticks, async function (event, handler){
         engine.render(10)
-    });
+    })
     hotkeys(binds.advance25Ticks, async function (event, handler){
         engine.render(25)
-    });
+    })
 
     hotkeys(binds.characterSheet, async function (event, handler){
         ui.charSheet()
-    });
+    })
 
     //System Keys
     hotkeys(binds.save, async function (event, handler){
         await engine.save()
         await engine.render()
-    });
+    })
     hotkeys(binds.load, async function (event, handler){
         await engine.load()
         await engine.render()
-    });
+    })
 
     hotkeys(binds.exit, async function (event, handler){
         window.close()
-    });
+    })
     hotkeys(binds.devTools, async function (event, handler){
         await ipcRenderer.invoke("showDev")
-    });
+    })
 
     hotkeys(binds.helpHome, async function (event, handler){
         await ui.help()
-    });
+    })
     hotkeys(binds.help, async function (event, handler){
         var topic = engine?.map?.helpTopic || null
         await ui.help(topic)
-    });
+    })
 
     //Hard Binds
     hotkeys('alt+enter', async function(e, h){
