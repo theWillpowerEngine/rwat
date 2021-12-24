@@ -111,27 +111,27 @@ module.exports = (obj) => {
         },
 
         getPointsBetween(x1,y1,x2,y2) {
-            var coordinatesArray = new Array();
-            var dx = Math.abs(x2 - x1);
-            var dy = Math.abs(y2 - y1);
-            var sx = (x1 < x2) ? 1 : -1;
-            var sy = (y1 < y2) ? 1 : -1;
-            var err = dx - dy;
+            var coordinatesArray = new Array()
+            var dx = Math.abs(x2 - x1)
+            var dy = Math.abs(y2 - y1)
+            var sx = (x1 < x2) ? 1 : -1
+            var sy = (y1 < y2) ? 1 : -1
+            var err = dx - dy
 
             while (!((x1 == x2) && (y1 == y2))) {
-                var e2 = err << 1;
+                var e2 = err << 1
                 if (e2 > -dy) {
-                    err -= dy;
-                    x1 += sx;
+                    err -= dy
+                    x1 += sx
                 }
                 if (e2 < dx) {
-                    err += dx;
-                    y1 += sy;
+                    err += dx
+                    y1 += sy
                 }
-                coordinatesArray.push([x1, y1]);
+                coordinatesArray.push([x1, y1])
             }
             coordinatesArray.splice(coordinatesArray.length-1, 1)
-            return coordinatesArray;
+            return coordinatesArray
         },
 
         ...obj

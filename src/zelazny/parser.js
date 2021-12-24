@@ -94,13 +94,13 @@ module.exports = (zelazny) => {
                         switch(getScopeName(kw)) {
                             case 'pc':
                                 that.zelazny.state.setPCFlag(val, not)
-                                break;
+                                break
                             case 'node':
                                 that.zelazny.state.setNodeFlag(val, not)
-                                break;
+                                break
                             case 'story':
                                 that.zelazny.state.setStoryFlag(val, not)
-                                break;
+                                break
                         }
                         break
 

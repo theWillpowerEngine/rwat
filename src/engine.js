@@ -243,8 +243,8 @@ module.exports = (logger, opts) => {
                 fontStyle: "bold",
                 bg: colors.background,
                 forceSquareRatio: true
-            });
-            document.getElementById("game").appendChild(that.display.getContainer()); 
+            })
+            document.getElementById("game").appendChild(that.display.getContainer())
 
             pg(100, "Initialization complete!")
             return conf

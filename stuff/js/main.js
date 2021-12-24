@@ -10,16 +10,16 @@ const getCursorPosition = (canvas, event) => {
 const logMsg = msg => {
     var $log = $("#log")
     $log.append(msg)
-    $log[0].scrollTop = $log[0].scrollHeight;
+    $log[0].scrollTop = $log[0].scrollHeight
 }
 
 window.onerror = function(msg, url, line, col, error) {
-    var extra = !col ? '' : '\ncolumn: ' + col;
-    extra += !error ? '' : '\nerror: ' + error;
+    var extra = !col ? '' : '\ncolumn: ' + col
+    extra += !error ? '' : '\nerror: ' + error
 
-    var suppressErrorAlert = false;
+    var suppressErrorAlert = false
     ipcRenderer.invoke("showDev")
-    return suppressErrorAlert;
+    return suppressErrorAlert
 }
 
 const engine = makeEngine(logMsg)
@@ -60,12 +60,12 @@ $(async () => {
         }
     })
 
-    var resizeTimer;
+    var resizeTimer
     $(window).on('resize', function(e) {
-        clearTimeout(resizeTimer);
+        clearTimeout(resizeTimer)
         resizeTimer = setTimeout(async function() {
             await engine.render()
-        }, 250);
-    });
+        }, 250)
+    })
 
 })

@@ -21,14 +21,14 @@ var that = module.exports = {
     scanMerge(zelazny, tag, existsAtRoot) {
         var eles = []
         var cmd = tag[0], sub = ''
-        var rest = tag.substr(1).trimLeft();
-        var yes = '', no = '';
+        var rest = tag.substr(1).trimLeft()
+        var yes = '', no = ''
 
         switch(cmd) {
             //<cmd> <param>[|<param>]
             case '?':
             case '!':
-                sub = rest.split(' ')[0];
+                sub = rest.split(' ')[0]
                 rest = rest.substr(sub.length).trimLeft()
 
                 var pos = existsAtRoot(rest, '[', ']', '|')
@@ -49,7 +49,7 @@ var that = module.exports = {
             //<compound-op><cmd>:<cmd>... <text>
             case '&':
             case '|':
-                sub = rest.split(' ')[0];   //sub is condition-block
+                sub = rest.split(' ')[0]   //sub is condition-block
                 rest = rest.substr(sub.length).trimLeft()
                 
                 var condTexts = sub.split(',')
@@ -76,7 +76,7 @@ var that = module.exports = {
 
             //:<trait> <val>:<text>[|...][|<text>]
             case ':':
-                sub = rest.split(' ')[0];   //sub is trait
+                sub = rest.split(' ')[0]   //sub is trait
                 rest = rest.substr(sub.length).trimLeft()
                 var rangeLines = rest.split('|')
                 var range = []
@@ -119,7 +119,7 @@ var that = module.exports = {
             case '>':
             case '<':
             case '=':
-                sub = rest.split(' ')[0];
+                sub = rest.split(' ')[0]
                 rest = rest.substr(sub.length).trimLeft()
 
                 var pos = existsAtRoot(rest, '[', ']', '|')
@@ -133,7 +133,7 @@ var that = module.exports = {
 
                 var split = sub.split(':')
                 if(split.length != 2)
-                    throw "Invalid value for GT/LT";
+                    throw "Invalid value for GT/LT"
 
                 eles.push(createScanNode(cmd, split[0], {
                     check: parseInt(split[1]),
@@ -244,8 +244,8 @@ var that = module.exports = {
         var node = 0
 
         var scanTo = (start, end) => {
-            var skip = 1;
-            var ret = '';
+            var skip = 1
+            var ret = ''
             while(code[i] != end || skip > 0) {
                 if(++i == code.length)
                     throw "Missing " + end + " before end of code"
@@ -262,8 +262,8 @@ var that = module.exports = {
         }
 
         var existsAtRoot = (check, start, end, c) => {
-            var skip = 0;
-            var ii = 0;
+            var skip = 0
+            var ii = 0
             while(check[ii] != c || skip > 0) {
                 if(check[ii] == start)
                     skip += 1
@@ -271,13 +271,13 @@ var that = module.exports = {
                     skip -= 1
 
                 if(++ii == check.length)
-                    return -1;
+                    return -1
             }
 
-            return ii;
+            return ii
         }
         var expected = (str, dec) => {
-            idx = 0;
+            idx = 0
             while(true) {
                 if(++i == code.length)
                     throw "Expected " + str + " before end of code"
@@ -307,7 +307,7 @@ var that = module.exports = {
         }
 
         for(i=0; i<code.length; i++) {
-            var c = code[i];
+            var c = code[i]
             switch(c) {
 
             //Merge Tags
