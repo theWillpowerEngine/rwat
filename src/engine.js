@@ -4,11 +4,12 @@ const makePlayer = require("./player/player")
 const makeShip = require("./ship/ship")
 const makeScenes = require("./scenes/scenes")
 const makeZelazny = require("./zelazny/zelazny")
+const makeDirector = require("./crew/director")
 const makeCrew = require("./crew/baseCrew")
 const zaWarudo = require("./world/zawarudo")
 const registerKeys = require("./keys")
-const Color = require('color')
 const rpg = require("./system")
+const Color = require('color')
 const fs = require('fs')
 let { ipcRenderer } = require("electron")
 
@@ -92,7 +93,8 @@ module.exports = (logger, opts) => {
         player: null,
         ship: null,
         crew: [],
-
+        director: null,
+        
         lastOffsetX: 0,
         lastOffsetY: 0,
 
@@ -191,6 +193,7 @@ module.exports = (logger, opts) => {
             that.scenes = makeScenes(that)
             that.ship = makeShip(that)
             that.world = zaWarudo(that)
+            that.director = makeDirector(that)
 
             //#region Zelazny (lots of options)
             that.zelazny = makeZelazny(that, {}, {
@@ -276,6 +279,7 @@ module.exports = (logger, opts) => {
             delete eng.scenes
             delete eng.map
             delete eng.lights
+            delete eng.director
             eng["curScene"] = currentScene
             eng["zelState"] = zel.state
 
@@ -325,6 +329,7 @@ module.exports = (logger, opts) => {
             for(var i=0; i<ticks; i++) {
                 that.ship.tick()
                 that.world.tick()
+                that.director.tick()
             }
 
             if(ticks > 1)

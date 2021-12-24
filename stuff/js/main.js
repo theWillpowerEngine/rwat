@@ -41,12 +41,12 @@ window["cheat"] = {
 
 }
 
-$(async () => {
-    engine.init((step, msg) => {
+$(() => {
+    engine.init(async (step, msg) => {
         console.log(`Initialization ${step}% done: ${msg}.</span>`)
+        await engine.render()
     })
-    await engine.render()
-
+    
     $("canvas").on('mousedown', e => {
         var coords = getCursorPosition(e.target, e)
         coords.x = Math.trunc(coords.x /= 20)

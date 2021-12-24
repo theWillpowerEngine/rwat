@@ -6,7 +6,7 @@ const baseCrew = {
     char: "B",
     color: colors.shipUniform,
     deck: "cargoDeck",
-    type: "Student", 
+    type: null, 
     x: 15,
     y: 15
 }
@@ -23,7 +23,20 @@ module.exports = (eng, o) => {
 
         ...o,
 
-        
+        move(dX, dY, map) {
+            if(Math.abs(dX) > 1 || Math.abs(dY) > 1)
+                return
+            
+            var nX = that.x + dX,
+                nY = that.y + dY
+
+            var bc = engine.boundsCheck(nX, nY, map) 
+            if(!bc.ib)
+                return
+
+            that.x = nX
+            that.y = nY
+        },
     }
 
     if(eng.crew.find(c => c.char == name.last[0]))
