@@ -80,15 +80,82 @@ The incident was still fresh in your memory, a contrast to years of plodding bor
     go to larc-testified
 }
 </ul>
-
 @larc-chaotic
 
+
+
 @larc-gun
+Saltrice is made up of a federation of allied villages, an arrangement which has worked well to keep things peaceful in the bread basket of the Realm.  It could create diffculties, however, such as a few villages creating their own laws and policies and leaving their unfortunate visitors to sort things out.  It was somewhat unusual, but not illegal, to carry a gun in your part of town, but not so in the village you were caught in.
+
+<ul class="actions">
+
+`*You ended up spending a few days in the town's jail and paying a fine, which your family was not happy about` => {
+    add 1 to resilience
+    add 1 to negotiation
+    add 1 to appraisal
+    go to larc-gunjail
+}
+
+[>intellect:2 
+`*You were able to navigate the proceedings fairly well, and ended up only having to pay a fine` => {
+    add 2 to negotiation
+    add 1 to luck
+    add 1 to intellect
+    go to larc-gunfine
+}]
+
+[>negotiation:3 
+`*You were able to talk your way out of serious trouble.  You ended up paying a small fine and going on your way` => {
+    add 2 to negotiation
+    add 2 to manipulation
+    add 1 to luck
+    go to larc-gunfine
+}]
+
+[|>farming:3,>mining:3,>animals:3,>fishing:3,>engineering:3,>medicine:3 
+`*Known as a productive and hard-working citizen of Saltrice, you ended up only paying a token fine and getting yelled at by the magistrate` => {
+    add 3 to luck
+    add 1 to farming
+    add 1 to firearms
+    go to larc-gunfine
+}]
+
+[|>larceny:2,<factionSaltrice:0 
+`*You had a bit of a reputation as a blackguard, and the magistrate not only fined you but also sent you to jail.  His speech about your youthful excesses was quite unkind` => {
+    add 2 to larceny
+    add 2 to firearms
+    go to larc-gunjail
+}]
+
+[>firearms:3 
+`*Your skill with guns and their safety rules, as well as your generally clean record, got you off with just a small fine and a token, "Don't do that again, son"` => {
+    add 2 to firearms
+    add 1 to negotiation
+    add 2 to luck
+    go to larc-gunfine
+}]
+</ul>
 
 @larc-testified
 [?larc-unwilling-testimony Your abrupt answers didn't win you any friends with the victims, but you doubted they made you any enemies either.  You managed not to lie (too much), and didn't even stick around to hear the verdict|The whole experience seemed rather dingy, it didn't match your youthful expectations of what such a trial should be like.  Still in the end the bad guys were found guilty and sent off to work in the quarries to the north, so you suppose the process worked].  It was briefly the talk of not only your own village but the neighboring ones as well[?larc-commended , with your own little part featured prominently].
 
 As they will, folks eventually got bored of it, and moved on to more pressing things, like farming corn.  
+
+`$Continue` => {
+    cg return
+}
+@larc-gunjail
+Compared to how stories describe dungeons, the village jail you found yourself in wasn't even that bad.  Two warm(ish) meals a day, only a little bit of abuse from the guards.  It wasn't something you wanted to experience again, but when you got out a week later you felt that it wasn't so bad.
+
+The epic beating you caught from your father, however, definitely put a fear of getting caught into you.
+
+`$Continue` => {
+    cg return
+}
+@larc-gunfine
+Your family was not rich, but you were hard working and so your parents were able to cover the fine for you.  You were something of a pariah for the next six months though, and your dad worked you three times as hard as usual to make up for the lost coins.
+
+Even years later you get reminded of this incident whenever the old man wants to score a point on you.
 
 `$Continue` => {
     cg return
