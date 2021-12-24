@@ -4,6 +4,7 @@ const makePlayer = require("./player/player.js")
 const makeShip = require("./ship/ship.js")
 const makeScenes = require("./scenes/scenes.js")
 const makeZelazny = require("./zelazny/zelazny.js")
+const makeCrew = require("./crew/baseCrew")
 const zaWarudo = require("./world/zawarudo.js")
 const registerKeys = require("./keys.js")
 const Color = require('color')
@@ -282,6 +283,9 @@ module.exports = (logger, opts) => {
             delete that.curScene
 
             applyObjectTo(that.zelazny.state, zs)
+
+            for(var i=0; i<that.crew.length; i++)
+                that.crew[i] = makeCrew(that, that.crew[i])
             
             that.log("Loaded game.")
         },

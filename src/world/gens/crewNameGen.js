@@ -10,7 +10,7 @@ const firstNames = [
 
 const lastNames = [
     "Abnett", "Adler", "Amnell", "Aubrey", "Babbington", "Banks", "Baskerville", "Barimen", "Bennett", "Black", "Butler", 
-    "Case", "Cavill", "Clavell", "Cooper", "Damodred", "Dumas", "Flaherty", "Flanagan", "Goodkind", "Hayward", "Haywood", "Hemsworth", "Heyward", "Holmes", 
+    "Case", "Cavill", "Clavell", "Cooper", "Damodred", "Dumas", "Flaherty", "Flanagan", "Garnett", "Goodkind", "Hayward", "Haywood", "Hemsworth", "Heyward", "Holmes", 
     "Irenicus", "Jordan", "Li", "Lien", "Lovecraft", "Lynch", "Martell", "Maturin", "Meredith", "Mishima", "Moappit", "Montgomery", 
     "Moriarty", "Mulder", "Mulgrew", "Palmer", "Park", "Patel", "Picard", "Picardo", "Pullings", "Rake", "Ravenscroft", 
     "Rearden", "Reynold", "Roddenberry", "Sanderson", "Senjak", "Stapleton", "Stevens", "Stevenson", "Taggart", "Templeton", 

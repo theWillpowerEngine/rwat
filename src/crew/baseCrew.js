@@ -1,7 +1,7 @@
 const colors = require("../map/colors")
 const nameGen = require("../world/gens/crewNameGen.js")
 
-const baseOfficer = {
+const baseCrew = {
     name: "Placeholder McGee",
     char: "B",
     color: colors.shipUniform,
@@ -17,7 +17,7 @@ module.exports = (eng, o) => {
 
     let name = nameGen.getName(engine) 
     var that = {
-        ...baseOfficer,
+        ...baseCrew,
         name: name.name,
         ...o
     }
