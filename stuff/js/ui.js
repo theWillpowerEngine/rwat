@@ -88,7 +88,18 @@ const ui= {
     async help(topic) {
         if(!topic) topic = "index"
         var content = await engine.getHelp(topic)
-        ui.modal(content)
+        ui.modal('<div id="help-container">' + content + "<div>")
+
+        let bindHelpLinks = () => {
+            setTimeout(() => {
+                $(".help-link").off('click').on('click', async e => {
+                    let linkTopic = $(e.target).attr("data-help")
+                    $("#help-container").html(await engine.getHelp(linkTopic))
+                    bindHelpLinks()
+                })    
+            }, 250)
+        }
+        bindHelpLinks()
     },
 
     async zelazny(story, file, allowEsc) {

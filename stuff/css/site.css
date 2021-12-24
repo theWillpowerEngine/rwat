@@ -113,6 +113,12 @@ body{
   font-size: 12pt;
 }
 
+.help-link {
+  cursor: pointer;
+  color: #5EF38C !important;
+  font-weight: bold;
+}
+
 .icon-box {
   height: 40px;
   width: 40px;
