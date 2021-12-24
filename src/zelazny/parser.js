@@ -286,6 +286,12 @@ module.exports = (zelazny) => {
                             retVal += that.eval(node.no)
                         }
                         break
+
+                    case "|":
+                        console.log(node)
+                        break
+                    case "&":
+                        break
                     
                     case "value":
                         var val = that.state.getAttr(node.text)

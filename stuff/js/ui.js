@@ -81,7 +81,7 @@ const ui= {
         <br />
         ${skills}
         `
-        debugger
+
         ui.modal(html)
     },
 

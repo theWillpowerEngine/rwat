@@ -46,7 +46,7 @@ var that = module.exports = {
                 }))
                 break
 
-            //<compound-op><cmd>:<cmd>... <text>
+            //<compound-op><cmd>,<cmd>... <text>
             case '&':
             case '|':
                 sub = rest.split(' ')[0]   //sub is condition-block

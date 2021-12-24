@@ -1,21 +1,21 @@
 @larceny-0
 You met a magistrate once and got to see Saltrice's justice first hand.  You were...
 
-`... the key witness who helped to bring down a local gang` => {
+`The key witness who helped to bring down a local gang` => {
     add 3 to factionSaltrice
     add 1 to negotiation
     add 1 to leadership
     go to larc-lawful
 }
 
-`... caught stealing (through absolutely no fault of your own, of course)` => {
+`Found guilty of a crime (through absolutely no fault of your own, of course)` => {
     subtract 5 from factionSaltrice
     add 3 to larceny
     add 1 to manipulation
     go to larc-chaotic
 }
 
-`... caught with a gun in one of the villages with prohibitions against them` => {
+`Caught with a gun in one of the villages with prohibitions against them` => {
     add 2 to firearms
     add 1 to larceny
     add 1 to reaction
