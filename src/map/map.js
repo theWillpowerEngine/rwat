@@ -1,5 +1,5 @@
-const tile = require("./tiles.js")
-const mapDraw = require("./mapDraw.js")
+const tile = require("./tiles")
+const mapDraw = require("./mapDraw")
 
 function makeMap(partial) {
     let that = {

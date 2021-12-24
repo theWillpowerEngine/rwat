@@ -1,4 +1,4 @@
-var tiles = require("./tiles.js")
+var tiles = require("./tiles")
 
 module.exports = (obj) => {
     var that = {

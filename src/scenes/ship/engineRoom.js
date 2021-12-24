@@ -1,6 +1,6 @@
-const map = require("../../map/map.js") 
-const tiles = require("../../map/tiles.js")
-const colors = require("../../map/colors.js")
+const map = require("../../map/map") 
+const tiles = require("../../map/tiles")
+const colors = require("../../map/colors")
 
 const displayVals = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'M', 'A', 'B', 'C', 'D', 'E', 'F']
 function colorForDisplayVal(val) {

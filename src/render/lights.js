@@ -1,5 +1,5 @@
 const Color = require('color')
-const colors = require("../map/colors.js")
+const colors = require("../map/colors")
 
 function applyLightFallOff(light, intens, x, y) {
     if(light.fo) {

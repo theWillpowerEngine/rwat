@@ -1,9 +1,9 @@
-const makeReactor = require("./sim/reactor.js")
-const colors = require("../map/colors.js")
+const makeReactor = require("./sim/reactor")
+const colors = require("../map/colors")
 const Color = require('color')
-const makeDrive = require("./sim/drive.js")
-const makeLift = require("./sim/lift.js")
-const mover = require("./sim/mover.js")
+const makeDrive = require("./sim/drive")
+const makeLift = require("./sim/lift")
+const mover = require("./sim/mover")
 
 module.exports = (eng) => {
     let engine = eng
@@ -42,7 +42,7 @@ module.exports = (eng) => {
         lightFuel: 10000,
         waterTank: 10000,
 
-        damageModel: require("./damage.js"),
+        damageModel: require("./damage"),
         thaumaticCapacitorThaums: 0,
         reactor: null,
         drive: null,

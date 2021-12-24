@@ -1,5 +1,5 @@
 const { ipcRenderer } = require("electron")
-const makeEngine = require("./src/engine.js")
+const makeEngine = require("./src/engine")
 
 const getCursorPosition = (canvas, event) => {
     const rect = canvas.getBoundingClientRect()

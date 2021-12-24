@@ -1,4 +1,4 @@
-const rpg = require("../../system.js")
+const rpg = require("../../system")
 
 const firstNames = [
     "Alex", "Alvin", "Anomander", "Arnold", "Baggy", "Ben", "Benedict", "Blaise", "Bob", "Brand", "Brandon", "C. J.", "Cheradenine", "Connor", "Corwin", 

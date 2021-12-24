@@ -1,6 +1,6 @@
-const makeState = require('./state.js')
-const scanner = require("./scanner.js")
-const makeParser = require("./parser.js")
+const makeState = require('./state')
+const scanner = require("./scanner")
+const makeParser = require("./parser")
 
 module.exports = (eng, state, game) => {
     let engine = eng

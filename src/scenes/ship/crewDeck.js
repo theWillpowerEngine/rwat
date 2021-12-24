@@ -1,6 +1,6 @@
-const colors = require("../../map/colors.js")
-const map = require("../../map/map.js") 
-const tiles = require("../../map/tiles.js")
+const colors = require("../../map/colors")
+const map = require("../../map/map") 
+const tiles = require("../../map/tiles")
 
 module.exports = (eng) => {
     let engine = eng

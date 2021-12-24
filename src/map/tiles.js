@@ -1,4 +1,4 @@
-var colors = require("./colors.js")
+var colors = require("./colors")
 var Color = require("color")
 
 const makeTile = (vals) => {

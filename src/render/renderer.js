@@ -1,7 +1,7 @@
 const Color = require('color')
-const makeLights = require('./lights.js')
-const colors = require("../map/colors.js")
-const tiles = require('../map/tiles.js')
+const makeLights = require('./lights')
+const colors = require("../map/colors")
+const tiles = require('../map/tiles')
 
 module.exports = (eng) => {
     let engine = eng

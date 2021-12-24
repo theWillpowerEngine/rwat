@@ -1,4 +1,4 @@
-const sceneMasterList = require("./masterList.js")
+const sceneMasterList = require("./masterList")
 
 module.exports = (eng) => {
     let engine = eng

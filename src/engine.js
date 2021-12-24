@@ -1,14 +1,14 @@
-const colors = require("./map/colors.js")
-const makeRenderer = require("./render/renderer.js")
-const makePlayer = require("./player/player.js")
-const makeShip = require("./ship/ship.js")
-const makeScenes = require("./scenes/scenes.js")
-const makeZelazny = require("./zelazny/zelazny.js")
+const colors = require("./map/colors")
+const makeRenderer = require("./render/renderer")
+const makePlayer = require("./player/player")
+const makeShip = require("./ship/ship")
+const makeScenes = require("./scenes/scenes")
+const makeZelazny = require("./zelazny/zelazny")
 const makeCrew = require("./crew/baseCrew")
-const zaWarudo = require("./world/zawarudo.js")
-const registerKeys = require("./keys.js")
+const zaWarudo = require("./world/zawarudo")
+const registerKeys = require("./keys")
 const Color = require('color')
-const rpg = require("./system.js")
+const rpg = require("./system")
 const fs = require('fs')
 let { ipcRenderer } = require("electron")
 
@@ -205,7 +205,7 @@ module.exports = (logger, opts) => {
                                 const returnTo = ["", "uncleJack", "winterAway", "leavingHome"]
                                 return that.zelazny.action("go to " + returnTo[cgReturnTo])
                             case "debug":
-                                require("./debugState.js")(that)
+                                require("./debugState")(that)
                                 return that.zelazny.action('go to cgDebug')
 
                             default:

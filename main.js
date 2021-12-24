@@ -1,5 +1,5 @@
 const { app, BrowserWindow } = require('electron')
-const registerInterop = require("./src/interop.js")
+const registerInterop = require("./src/interop")
 
 function createWindow () {
   app.on('window-all-closed', () => {

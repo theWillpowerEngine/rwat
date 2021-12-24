@@ -9,11 +9,11 @@ module.exports = {
         "topDeck",
     ],
 
-    dev:            "./dev/scene.js",
-    blank:          "./dev/blank.js",
-    engineRoom:     "./ship/engineRoom.js",
-    crewDeck:       "./ship/crewDeck.js",
-    cargoDeck:      "./ship/cargoDeck.js",
-    officerDeck:      "./ship/officerDeck.js",
-    topDeck:        "./ship/topDeck.js",
+    dev:            "./dev/scene",
+    blank:          "./dev/blank",
+    engineRoom:     "./ship/engineRoom",
+    crewDeck:       "./ship/crewDeck",
+    cargoDeck:      "./ship/cargoDeck",
+    officerDeck:      "./ship/officerDeck",
+    topDeck:        "./ship/topDeck",
 }

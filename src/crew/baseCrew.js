@@ -1,5 +1,5 @@
 const colors = require("../map/colors")
-const nameGen = require("../world/gens/crewNameGen.js")
+const nameGen = require("../world/gens/crewNameGen")
 
 const baseCrew = {
     name: "Placeholder McGee",
