@@ -1,0 +1,24 @@
+.help-journal h2 {
+    font-family: Helvetica, Georgia, Cochin, Times, 'Times New Roman', serif;
+    font-size: 16pt;
+    font-weight: bold;
+    color: #A5C882;
+}
+
+.help-journal {
+    font-family: Helvetica, Georgia, Cochin, Times, 'Times New Roman', serif;
+    font-size: 12pt;
+}
+
+.help-link {
+cursor: pointer;
+color: #5EF38C !important;
+font-weight: bold;
+}
+
+.uncles-writing {
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+font-size: 12pt;
+font-style: italic;
+}
+  
