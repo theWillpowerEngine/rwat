@@ -96,15 +96,16 @@ module.exports = (logger, opts) => {
         lastOffsetX: 0,
         lastOffsetY: 0,
 
-        checkLOS(x, y, x1, y1) {
+        checkLOS(x, y, x1, y1, map) {
+            if(!map) map = that.map
             if(!x1) x1 = that.player.x
             if(!y1) y1 = that.player.y
-            var pts = that.map.getPointsBetween(x, y, x1, y1)
+            var pts = map.getPointsBetween(x, y, x1, y1)
             for(var pt of pts) {
                 if(pt[0] == that.player.x && pt[1] == that.player.y)
                     return false
 
-                var tile = that.map.tiles[pt[0]][pt[1]] 
+                var tile = map.tiles[pt[0]][pt[1]] 
                 if(tile && tile.solid && !tile.transparent)
                     return false
                 else if (tile && !tile.solid && tile.notTransparent)
@@ -114,7 +115,8 @@ module.exports = (logger, opts) => {
         },
 
         //More permissive LOS: adds expansive walls
-        extendedCheckLOS(x, y, x1, y1) {
+        extendedCheckLOS(x, y, x1, y1, map) {
+            if(!map) map = that.map
             if(!x1) x1 = that.player.x
             if(!y1) y1 = that.player.y
             if(that.checkLOS(x, y, x1, y1))
@@ -126,29 +128,42 @@ module.exports = (logger, opts) => {
             if(y > y1) dY = -1
             if(y < y1) dY = 1
             
-            if(that.checkLOS(x1, y1, x + dX, y) && ((!that.map.tiles[x+dX][y].solid && !that.map.tiles[x+dX][y].notTransparent) || that.map.tiles[x+dX][y].transparent))
+            if(that.checkLOS(x1, y1, x + dX, y) && ((!map.tiles[x+dX][y].solid && !map.tiles[x+dX][y].notTransparent) || map.tiles[x+dX][y].transparent))
                 return true
-            if(that.checkLOS(x1, y1, x, y + dY) && ((!that.map.tiles[x][y+dY].solid && !that.map.tiles[x][y+dY].notTransparent) || that.map.tiles[x][y+dY].transparent))
+            if(that.checkLOS(x1, y1, x, y + dY) && ((!map.tiles[x][y+dY].solid && !map.tiles[x][y+dY].notTransparent) || map.tiles[x][y+dY].transparent))
                 return true
-            if(that.checkLOS(x1, y1, x+dX, y + dY) && ((!that.map.tiles[x+dX][y+dY].solid && !that.map.tiles[x+dX][y+dY].notTransparent) || that.map.tiles[x+dX][y+dY].transparent))
+            if(that.checkLOS(x1, y1, x+dX, y + dY) && ((!map.tiles[x+dX][y+dY].solid && !map.tiles[x+dX][y+dY].notTransparent) || map.tiles[x+dX][y+dY].transparent))
                 return true
 
             return false
         },
 
-        boundsCheck(x, y) {
+        boundsCheck(x, y, map) {
+            var hadMap = true
+            if(!map) {
+                hadMap = false
+                map = that.map
+            }
+
             if(x < 0 || y < 0)
                 return { ib: false }
             if(x >= that.map.width || y >= that.map.height)
                 return { ib: false } 
             
-            var tile = that.renderer.getTileAt(x, y)
-            if(tile.solid)
-                return { ib: false, tile: tile }
-    
+            if(!hadMap) {
+                var tile = that.renderer.getTileAt(x, y)
+                if(tile.solid)
+                    return { ib: false, tile: tile }
+            } else {
+                var tile = map.tiles[x][y]
+                if(tile.solid)
+                    return { ib: false, tile: tile }
+            }
+
             return {ib: true}
         },
-        rangeBetween(x, y, x1, y1) {
+        rangeBetween(x, y, x1, y1, map) {
+            if(!map) map = that.map
             return that.map.getPointsBetween(x, y, x1, y1).length + 1
         },
 

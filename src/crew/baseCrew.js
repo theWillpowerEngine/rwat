@@ -18,8 +18,12 @@ module.exports = (eng, o) => {
     let name = nameGen.getName(engine) 
     var that = {
         ...baseCrew,
+        
         name: name.name,
-        ...o
+
+        ...o,
+
+        
     }
 
     if(eng.crew.find(c => c.char == name.last[0]))
