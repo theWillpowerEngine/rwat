@@ -39,10 +39,12 @@ module.exports = (eng, o) => {
         },
     }
 
-    if(eng.crew.find(c => c.char == name.last[0]))
-        that.char = name.first[0]
-    else
-        that.char = name.last[0]
-
+    if(!o || !o.char) {
+        if(eng.crew.find(c => c.char == name.last[0]))
+            that.char = name.first[0]
+        else
+            that.char = name.last[0]
+    }
+    
     return that
 }

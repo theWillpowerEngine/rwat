@@ -41,10 +41,22 @@ window["cheat"] = {
 
 }
 
-$(() => {
+$(async () => {
     engine.init(async (step, msg) => {
         console.log(`Initialization ${step}% done: ${msg}.</span>`)
-        await engine.render()
+
+        if(step == 100) 
+        {
+            await engine.render()
+
+            var resizeTimer
+            $(window).on('resize', function(e) {
+                clearTimeout(resizeTimer)
+                resizeTimer = setTimeout(async function() {
+                    await engine.render()
+                }, 250)
+            })
+        }
     })
     
     $("canvas").on('mousedown', e => {
@@ -58,14 +70,6 @@ $(() => {
             else
                 logMsg(`<span class='log-item'>That's ${tile.desc}.</span>`)
         }
-    })
-
-    var resizeTimer
-    $(window).on('resize', function(e) {
-        clearTimeout(resizeTimer)
-        resizeTimer = setTimeout(async function() {
-            await engine.render()
-        }, 250)
     })
 
 })

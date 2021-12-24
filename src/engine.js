@@ -152,7 +152,7 @@ module.exports = (logger, opts) => {
             if(x >= that.map.width || y >= that.map.height)
                 return { ib: false } 
             
-            if(!hadMap) {
+            if(!hadMap || map.name == that.map.name) {
                 var tile = that.renderer.getTileAt(x, y)
                 if(tile.solid)
                     return { ib: false, tile: tile }
