@@ -65,8 +65,8 @@ module.exports = (eng, kbs) => {
         commandKeys[x-1] = keyBinds["command" + x]
         let closureX = x
         hotkeys(binds["command" + x], async function (event, handler){
-            await engine.commands.doCommand(closureX-1)
-            await engine.render()
+            if(await engine.commands.doCommand(closureX-1))
+                await engine.render()
         })
     
     }

@@ -143,6 +143,7 @@ const ui = {
         var html = commandMenu.tick(engine)
         ui.modal(html, () => {
             engine.commands.clearOverride()
+            commandMenuState = 0
         })
     }, 
 

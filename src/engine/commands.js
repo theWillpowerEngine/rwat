@@ -13,9 +13,15 @@ module.exports = (eng) => {
         
         async doCommand(index) {
             var cmd = that.overrideCommands[index]
+            if(cmd) {
+                return cmd(engine)
+            }
             if(!cmd) cmd = that.playerCommands[index]
-            if(cmd)
-                cmd(engine)
+            if(cmd) {
+                var ret = cmd(engine)
+                if(ret === undefined || ret === null) return true
+                return ret
+            }
         }
     }
 
