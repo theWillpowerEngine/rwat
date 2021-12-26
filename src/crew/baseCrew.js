@@ -1,5 +1,6 @@
 const colors = require("../map/colors")
 const nameGen = require("../world/gens/crewNameGen")
+const PF = require('pathfinding')
 
 const baseCrew = {
     name: "Placeholder McGee",
@@ -22,6 +23,17 @@ module.exports = (eng, o) => {
         name: name.name,
 
         ...o,
+
+        path: null,
+        pathfind(x, y) {
+            var matrix = engine.getPathfindingMap(engine.maps[that.deck])
+            var grid = new PF.Grid(matrix)
+            var finder = new PF.AStarFinder({
+                diagonalMovement: PF.DiagonalMovement.Always
+            })
+            var path = finder.findPath(that.x, that.y, x, y, grid)
+            return path
+        },
 
         move(dX, dY, map) {
             if(Math.abs(dX) > 1 || Math.abs(dY) > 1)

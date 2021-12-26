@@ -48,7 +48,6 @@ function extractDeltaObject(base, changed) {
     }
 
     return retVal
-
 }
 
 module.exports = (logger, opts) => {
@@ -138,6 +137,30 @@ module.exports = (logger, opts) => {
                 return true
 
             return false
+        },
+
+        getPathfindingMap(map) {
+            var hadMap = true
+            if(!map) {
+                hadMap = false
+                map = that.map
+            }
+
+            var ret = []
+            for(var x=0; x<map.width; x++) {
+                ret[x] = []
+                for(var y=0; y<map.height; y++) {
+                    if(!hadMap || map.name == that.map.name) {
+                        var tile = that.renderer.getTileAt(x, y)
+                        ret[x][y] = tile.solid ? 1 : 0
+                    } else {
+                        var tile = map.tiles[x][y]
+                        ret[x][y] = tile.solid ? 1 : 0
+                    } 
+                }
+            }
+
+            return ret
         },
 
         boundsCheck(x, y, map) {
