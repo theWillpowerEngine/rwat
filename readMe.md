@@ -15,6 +15,10 @@ Ctrl-Space  Advance 10 ticks
 Sh-C-Space  Advance 25 ticks
 
 Shift-C     Show Character Sheet
+C           Issue Commands to Crew
+
+1-5QERFG    Both of these are your 'command' buttons,
+Shift+^     you generally assign them, some things override them
 
 Ctrl-S      Save Game
 Ctrl-O      Load Game

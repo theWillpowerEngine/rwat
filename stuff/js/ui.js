@@ -139,6 +139,13 @@ const ui= {
         })
     },
 
+    async commandMenu() {
+        var html = `Command menu`
+
+        ui.modal(html)
+
+    }, 
+
     async updateUI() {
         $("#area").html(engine?.map?.name || "Unknown Area")
         if(engine?.world?.getDateTime)

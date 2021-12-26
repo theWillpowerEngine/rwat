@@ -15,6 +15,28 @@ window.keyBinds = {
     advance10Ticks: "ctrl+space",
     advance25Ticks: "ctrl+shift+space",
 
+    commandMenu: "c",
+    command1: "1",
+    command2: "2",
+    command3: "3",
+    command4: "4",
+    command5: "5",
+    command6: "q",
+    command7: "e",
+    command8: "r",
+    command9: "f",
+    command10: "g",
+    command11: "shift+1",
+    command12: "shift+2",
+    command13: "shift+3",
+    command14: "shift+4",
+    command15: "shift+5",
+    command16: "shift+q",
+    command17: "shift+e",
+    command18: "shift+r",
+    command19: "shift+f",
+    command20: "shift+g",
+
     toggleLight: "l",
 
     characterSheet: "shift+c",
@@ -30,12 +52,23 @@ window.keyBinds = {
 }
 
 window["escStack"] = []
+window["commandKeys"] = []
 
 module.exports = (eng, kbs) => {
     let engine = eng
     let binds = {
         ...window.keyBinds,
         ...kbs
+    }
+
+    for(var x=1; x<21; x++) {
+        commandKeys[x-1] = keyBinds["command" + x]
+        let closureX = x
+        hotkeys(binds["command" + x], async function (event, handler){
+            await engine.commands.doCommand(closureX-1)
+            await engine.render()
+        })
+    
     }
 
     // Movement
@@ -89,6 +122,12 @@ module.exports = (eng, kbs) => {
             }    
         } else
             engine.log("You turn your personal lantern off.")
+        await engine.render()
+    })
+
+    //"Social" Interactions
+    hotkeys(binds.commandMenu, async function (event, handler){
+        await ui.commandMenu()
         await engine.render()
     })
 

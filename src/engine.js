@@ -9,6 +9,7 @@ const makeCrew = require("./crew/baseCrew")
 const zaWarudo = require("./world/zawarudo")
 const registerKeys = require("./keys")
 const rpg = require("./system")
+const commands = require("./commands")
 const Color = require('color')
 const fs = require('fs')
 let { ipcRenderer } = require("electron")
@@ -88,6 +89,8 @@ module.exports = (logger, opts) => {
         log(msg) {
             that.logText += `<span class='log-item'>${(msg || '')}</span>`
         },
+
+        commands: null,
 
         player: null,
         ship: null,
@@ -218,6 +221,7 @@ module.exports = (logger, opts) => {
             that.ship = makeShip(that)
             that.world = zaWarudo(that)
             that.director = makeDirector(that)
+            that.commands = commands(that)
 
             //#region Zelazny (lots of options)
             that.zelazny = makeZelazny(that, {}, {
