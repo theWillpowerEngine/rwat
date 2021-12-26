@@ -1,6 +1,7 @@
 const colors = require("../map/colors")
 const nameGen = require("../world/gens/crewNameGen")
 const PF = require('pathfinding')
+const states = require("./enums/state")
 
 const baseCrew = {
     name: "Placeholder McGee",
@@ -8,6 +9,7 @@ const baseCrew = {
     color: colors.shipUniform,
     deck: "cargoDeck",
     type: null, 
+    state: states.idle,
     x: 15,
     y: 15
 }
@@ -25,7 +27,7 @@ module.exports = (eng, o) => {
         ...o,
 
         path: null,
-        pathfind(x, y) {
+        getPath(x, y) {
             var matrix = engine.getPathfindingMap(engine.maps[that.deck])
             var grid = new PF.Grid(matrix)
             var finder = new PF.AStarFinder({
@@ -33,6 +35,14 @@ module.exports = (eng, o) => {
             })
             var path = finder.findPath(that.x, that.y, x, y, grid)
             return path
+        },
+        pathfind(x, y) {
+            that.path = that.getPath(x, y)
+            if(that.path && that.path.length) {
+                that.state = states.pathing
+                return true
+            }
+            return false
         },
 
         move(dX, dY, map) {

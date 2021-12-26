@@ -1,3 +1,4 @@
 module.exports= {
-    idle: 'Idle'    
+    idle: 'Idle',
+    pathing: 'Pathing'
 }

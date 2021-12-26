@@ -139,6 +139,7 @@ module.exports = (logger, opts) => {
             return false
         },
 
+        //Optimization todo:  cache these per tick
         getPathfindingMap(map) {
             var hadMap = true
             if(!map) {

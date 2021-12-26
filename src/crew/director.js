@@ -22,6 +22,15 @@ module.exports = (eng) => {
                         crew.move(dX, dY, map)                 
                         break
 
+                    case state.pathing:
+                        if(!crew.path || !crew.path.length) {
+                            crew.state = state.idle
+                        } else {
+                            var nextPt = crew.path.shift()
+                            crew.move(nextPt[0] - crew.x, nextPt[1] - crew.y)
+                        }
+                        break
+
                     default:
                         throw "Unknown crew state: " + crew.state
                 }
