@@ -1,4 +1,4 @@
-const state = require("./enums/state")
+const state = require("../crew/enums/state")
 const rpg = require("../system")
 
 module.exports = (eng) => {

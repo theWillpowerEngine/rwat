@@ -5,6 +5,12 @@ module.exports = (eng) => {
         playerCommands: [],
         overrideCommands: [],
 
+        clearOverride() {
+            for(var i=0; i<20; i++) {
+                that.overrideCommands[i] = null
+            }        
+        },
+        
         async doCommand(index) {
             var cmd = that.overrideCommands[index]
             if(!cmd) cmd = that.playerCommands[index]

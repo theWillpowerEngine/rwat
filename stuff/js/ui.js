@@ -1,8 +1,8 @@
-const ui= {
+const ui = {
     inZelazny: false,
 
-    modal(content) {
-        escStack.push(() => {})
+    modal(content, cb) {
+        escStack.push(() => { if(cb) cb() })
         setTimeout(() => {
             $.modal(content)
         }, 0)
@@ -140,10 +140,10 @@ const ui= {
     },
 
     async commandMenu() {
-        var html = `Command menu`
-
-        ui.modal(html)
-
+        var html = commandMenu.tick(engine)
+        ui.modal(html, () => {
+            engine.commands.clearOverride()
+        })
     }, 
 
     async updateUI() {

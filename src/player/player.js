@@ -1,6 +1,6 @@
 const tiles = require("../map/tiles")
 
-const xpCumulativeCosts= [1, 2, 4, 7, 12, 17, 25, 33, 43, 56]
+const xpCumulativeCosts= [1, 2, 5, 10, 15, 20, 27, 35, 45, 56]
 
 module.exports = (eng) => {
     let engine = eng
@@ -18,6 +18,10 @@ module.exports = (eng) => {
         zelaznyAttrs: {
             factionSaltrice: 0,
             factionTraven: 0,
+        },
+
+        commandRange() {
+            return 5 + (that.leadership * 4)
         },
 
         //#region Skills and Trades

@@ -4,12 +4,13 @@ const makePlayer = require("./player/player")
 const makeShip = require("./ship/ship")
 const makeScenes = require("./scenes/scenes")
 const makeZelazny = require("./zelazny/zelazny")
-const makeDirector = require("./crew/director")
+const makeDirector = require("./engine/director")
 const makeCrew = require("./crew/baseCrew")
 const zaWarudo = require("./world/zawarudo")
 const registerKeys = require("./keys")
 const rpg = require("./system")
-const commands = require("./commands")
+const commands = require("./engine/commands")
+const detector = require("./engine/detector")
 const Color = require('color')
 const fs = require('fs')
 let { ipcRenderer } = require("electron")
@@ -95,8 +96,10 @@ module.exports = (logger, opts) => {
         player: null,
         ship: null,
         crew: [],
+
         director: null,
-        
+        detector: null,
+
         lastOffsetX: 0,
         lastOffsetY: 0,
 
@@ -222,6 +225,7 @@ module.exports = (logger, opts) => {
             that.world = zaWarudo(that)
             that.director = makeDirector(that)
             that.commands = commands(that)
+            that.detector = detector(that)
 
             //#region Zelazny (lots of options)
             that.zelazny = makeZelazny(that, {}, {
