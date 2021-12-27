@@ -61,6 +61,9 @@ $(async () => {
     })
     
     $("canvas").on('mousedown', e => {
+        if(engine.renderer.mode == "world")
+            return
+            
         var coords = getCursorPosition(e.target, e)
         coords.x = Math.trunc(coords.x /= 20)
         coords.y = Math.trunc(coords.y /= 20)
