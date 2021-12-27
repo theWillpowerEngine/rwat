@@ -7,6 +7,29 @@ module.exports = (eng) => {
     let player = engine.player
 
     var that = {
+        pathingMap: {
+            cargoDeck: {
+                crewDeck: [{x: 1, y: 58}, {x: 18, y:2}]
+            },
+            crewDeck: {
+                engineRoom: [{x: 4, y: 55}],
+                cargoDeck: [{x: 1, y: 62}, {x: 19, y: 2}],
+                officerDeck: [{x: 21, y: 53}]
+            },
+            engineRoom: {
+                crewDeck: [{x: 1, y: 0}]
+            },
+            officerDeck: {
+                topDeck: [{x: 20, y: 0, toWheelhouse: false, toTopDeck: true},
+                          {x: 20, y: 18, toWheelhouse: true, toTopDeck: false}],
+                crewDeck: [{x: 21, y: 18}]
+            },
+            topDeck: {
+                officerDeck: [{x: 60, y: 62, fromWheelhouse: false, fromTopDeck: true},
+                              {x: 60, y: 82, fromWheelhouse: true, fromTopDeck: false}]
+            }
+        },
+
         tick() {
             for(var crew of engine.crew) {
                 let map = engine.maps[crew.deck]

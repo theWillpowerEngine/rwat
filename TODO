@@ -13,6 +13,8 @@ Lift controls:
 
 Thaumatic Battery (fake electric system)
 
+Radio and Intercom (integrate intercom with Command system)
+
 ----------
    Chargen
 
@@ -30,7 +32,12 @@ Implement random stories:
 ------------------------------------
    Crew (AI / Command System / etc.)
 
-Command UI and functionality
+Command Menu:
+   Additional commands:
+      ...
+   Other selectors (deckhand / any available crew, etc.)
+
+Cross-Deck pathfinding system
 
 Basic Crew AI / Simulation / Inventory (do PC inventory at the same time)
 
