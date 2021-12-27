@@ -6,8 +6,8 @@ const Color = require("color")
 const terrainTiles = [
     tiles.makeTile({        
         char: "~",
-        color: colors.background,
-        bg: colors.cornwallis,
+        color: colors.blue,
+        bg: colors.background,
         noBgLightTint: true,
         desc: "Very Deep Water"
     }),
@@ -16,32 +16,39 @@ const terrainTiles = [
         color: colors.cornwallis,
         bg: colors.background,
         noBgLightTint: true,
+        desc: "Very Deep Water"
+    }),
+    tiles.makeTile({        
+        char: "~",
+        color: colors.byakuya,
+        bg: colors.blue,
+        noBgLightTint: true,
         desc: "Deep Water"
     }),
     tiles.makeTile({        
         char: "~",
-        color: colors.blue,
+        color: colors.byakuya,
         bg: colors.cornwallis,
         noBgLightTint: true,
         desc: "Water"
     }),
     tiles.makeTile({        
         char: "~",
-        color: colors.cyan,
+        color: colors.byakuya,
         bg: colors.aqua,
         noBgLightTint: true,
         desc: "Shallow Water"
     }),
     tiles.makeTile({        
         char: ".",
-        color: colors.sand,
+        color: colors.khaki,
         bg: colors.background,
         noBgLightTint: true,
-        desc: "Coast"
+        desc: "Low Land"
     }),
     tiles.makeTile({        
-        char: "=",
-        color: colors.brown,
+        char: "-",
+        color: colors.green,
         bg: colors.background,
         isPC: true,
         desc: "Land"
@@ -51,30 +58,38 @@ const terrainTiles = [
         color: colors.green,
         bg: colors.background,
         noBgLightTint: true,
-        desc: "Forest / Grasslands"
+        desc: "Highlands"
     }),
     tiles.makeTile({        
         char: "=",
-        color: colors.yellow,
-        bg: colors.green,
+        color: colors.khaki,
+        bg: colors.grey,
         noBgLightTint: true,
-        desc: "Rising Elevation"
+        desc: "Cliff"
     }),
     tiles.makeTile({        
         char: "^",
-        color: colors.orange,
-        bg: colors.background,
+        color: colors.puke,
+        bg: colors.khaki,
         noBgLightTint: true,
         desc: "Low Mountain"
     }),
     tiles.makeTile({        
         char: "^",
         color: colors.maroon,
-        bg: colors.orange,
+        bg: colors.steel,
         noBgLightTint: true,
         desc: "High Mountain"
     })
 ]
+
+const cityTile = tiles.makeTile({
+    char: "*",
+    color: colors.purple,
+    bg: colors.lantern,
+    noBgLightTint: true,
+    desc: "City"
+})
 //#endregion
 
 module.exports = (eng) => {
@@ -92,27 +107,30 @@ module.exports = (eng) => {
             let midX = tlX + Math.floor(dW / 2)
             let midY = tlY + Math.floor(dH / 2)
 
-            let xOffMid = (x - midX) * that.zoom 
+            let xOffMid = (x - midX) * that.zoom
             let yOffMid = (y - midY) * that.zoom
 
             x += xOffMid
             y += yOffMid
 
-            var count = that.zoom * that.zoom
+            var count = 0
             var total = 0
 
-            for(var i=0; i<that.zoom; i++)
-                for(var j=0; j<that.zoom; j++) {
-                    if(x+i < 0 || x+i >= engine.world.width || y+j < 0 || y+j >= engine.world.height) {
-                        count -= 1
-                        continue
+            for(var i=0; i<=that.zoom; i++)
+                for(var j=0; j<=that.zoom; j++) {
+                    if(x+i < 0 || x+i >= engine.world.width || y+j < 0 || y+j >= engine.world.height) continue
+                    else count += 1
+
+                    var city = engine.world.cities.find(c => c.x == x+i && c.y == y+j) 
+                    if(city) {
+                        return {
+                            ...cityTile,
+                            char: city.index.toString(),
+                            desc: "City of " + city.name
+                        }
                     }
 
-                    try {
-                        total += map[x+i][y+j]
-                    } catch(e) {
-                        console.log(x+i)
-                    }
+                    total += map[x+i][y+j]
                 }    
             
             if(count == 0)

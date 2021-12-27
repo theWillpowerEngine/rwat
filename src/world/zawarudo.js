@@ -34,12 +34,14 @@ module.exports = (eng) => {
 
     var that = {
         terrainMap: [],
+        cities: [],
         width: 0,
         height: 0,
 
         generateNewWorld() {
             var newWorld = wm(engine)
             that.terrainMap = newWorld.map
+            that.cities = newWorld.cities
             that.width = that.height = newWorld.map.length
         },
 
