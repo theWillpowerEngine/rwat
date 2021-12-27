@@ -26,6 +26,38 @@ module.exports = (eng, o) => {
 
         ...o,
 
+        allOrders() {
+            return {
+                ...that.globalOrders(),
+                ...that.specialOrders()
+            }
+        },
+        globalOrders() {
+            return {
+                atEase: {
+                    description: "At ease",
+                    preferredKey: 19,
+                    act(engine, cr) { 
+                        engine.log("At Ease, " + cr.name)
+                        return true
+                     }
+                },
+                attention: {
+                    description: "Attention",
+                    preferredKey: 9,
+                    act(engine, cr) { 
+                        engine.log("Attention, " + cr.name) 
+                        return true
+                    }
+                }
+            }
+        },
+        specialOrders() {
+            return {
+                
+            }
+        },
+
         path: null,
         getPath(x, y) {
             var matrix = engine.getPathfindingMap(engine.maps[that.deck])

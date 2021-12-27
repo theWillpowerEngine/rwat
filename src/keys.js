@@ -65,8 +65,13 @@ module.exports = (eng, kbs) => {
         commandKeys[x-1] = keyBinds["command" + x]
         let closureX = x
         hotkeys(binds["command" + x], async function (event, handler){
-            if(await engine.commands.doCommand(closureX-1))
+            if(await engine.commands.doCommand(closureX-1)) {
+                $.modal.close()
+                engine.commands.clearOverride()
+                commandMenuState = 0
+                escStack.pop()
                 await engine.render()
+            }
         })
     
     }
@@ -128,7 +133,6 @@ module.exports = (eng, kbs) => {
     //"Social" Interactions
     hotkeys(binds.commandMenu, async function (event, handler){
         await ui.commandMenu()
-        await engine.render()
     })
 
     //Misc. Actions

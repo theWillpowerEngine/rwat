@@ -29,12 +29,20 @@ const commandMenu = {
                break
 
             case cmStates.singleTargetCommand:
-                html = "1) Go to 5,5"
                 var crew = commandMenu.subjectCrew
-                engine.commands.overrideCommands[0] = () => {
-                    crew.pathfind(5, 5)
-                    $.modal.close()
-                    escStack.pop()()
+                html = ""
+                var orders = crew.allOrders()
+                var keys = Object.keys(orders)
+                keys.sort((a, b) => {
+                    return orders[a].preferredKey - orders[b].preferredKey
+                })
+                for(var o of keys) {
+                    var order = orders[o]
+                    html += `${commandKeys[order.preferredKey]})  ${order.description}<br />`
+                    let closureOrder = order
+                    engine.commands.overrideCommands[closureOrder.preferredKey] = () => {
+                        return closureOrder.act(engine, crew)
+                    }    
                 }
                 break
         }
