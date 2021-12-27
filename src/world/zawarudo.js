@@ -1,3 +1,5 @@
+const wm = require("./gens/worldmaker")
+
 module.exports = (eng) => {
     let engine = eng
 
@@ -31,6 +33,12 @@ module.exports = (eng) => {
     }
 
     var that = {
+        terrainMap: [],
+        generateNewWorld() {
+            var newWorld = wm(engine)
+            that.terrainMap = newWorld.map
+        },
+
         addTime (m, h, d) {
             if(!m) m = 0
             if(!h) h = 0

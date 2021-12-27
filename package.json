@@ -36,6 +36,7 @@
   "license": "ISC",
   "dependencies": {
     "color": "^4.0.1",
+    "ds-heightmap": "^0.2.3",
     "electron": "^15.3.0",
     "pathfinding": "^0.4.18",
     "rng": "^0.2.2"

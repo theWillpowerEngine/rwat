@@ -9,7 +9,7 @@ Lift controls:
    Do something with Polish?
    Add auto-level system
 
-3D movement system (prop / wind)
+3D movement system (prop / wind / collision detection)
 
 Thaumatic Battery (fake electric system)
 
@@ -59,6 +59,23 @@ Add damage model and damage effects to:
 
 Add P, + and - key implementations
 
+-------
+   Help
+
+Finish:
+   Newbie Guide
+
+Write:
+   Engine Room
+   Keys
+
+------------
+   World Gen
+
+Civilization Generation
+
+Add Map layer
+
 -----------
    Modeling
 
@@ -75,13 +92,9 @@ top deck + gunroom
 
 Weather; Time+Weather ambient light for the outside room
 
-Write Help
-
 Tab movement between layers
 
 The 3 layers (or at least the first 2 - ship and immediate)
-
-Terrain / World Generation
 
 Add the Rutter system and integrate with Pilot AI
 

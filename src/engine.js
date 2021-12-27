@@ -282,6 +282,13 @@ module.exports = (logger, opts) => {
             backupMaps = JSON.parse(JSON.stringify(that.maps))
             pg(15, 'Backed up initial scenes for delta calculations')
 
+            that.world.generateNewWorld()
+            pg(20, "Terrain generation completed")
+
+            that.ship.x = that.ship.y = Math.floor(that.world.terrainMap.length / 2)
+            that.ship.z = that.world.terrainMap[that.ship.x][that.ship.y] + 2
+            pg(23, "Set ship initial position")
+
             registerKeys(that)
             pg(50, "Set initial game state")
 
