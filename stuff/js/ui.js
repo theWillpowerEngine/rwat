@@ -4,9 +4,16 @@ const ui = {
     modal(content, cb) {
         escStack.push(() => { if(cb) cb() })
         setTimeout(() => {
-            $.modal(content)
+            $.modal(content, {
+                position: ["20%","20%"],
+                containerCss:{
+                    height:"60%", 
+                    width:"60%"
+                },
+                autoResize:true,
+                autoPosition: true
+            })
         }, 0)
-        
     },
 
     async makeIconBox(icon, color) {

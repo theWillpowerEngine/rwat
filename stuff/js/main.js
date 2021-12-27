@@ -53,6 +53,7 @@ $(async () => {
             $(window).on('resize', function(e) {
                 clearTimeout(resizeTimer)
                 resizeTimer = setTimeout(async function() {
+                    $.modal.update("60%", "60%")
                     await engine.render()
                 }, 250)
             })
