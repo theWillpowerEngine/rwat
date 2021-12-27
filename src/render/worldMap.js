@@ -81,12 +81,45 @@ module.exports = (eng) => {
     let engine = eng
 
     var that = {
-        getTile(x, y) {
+        zoom: 1,
+        x: 0,
+        y: 0,
+
+        getTile(x, y, dW, dH, tlX, tlY) {
             let world = engine.world
             let map = world.terrainMap
 
-            var terrainHeight = map[x][y]
-            return terrainTiles[terrainHeight + 5]
+            let midX = tlX + Math.floor(dW / 2)
+            let midY = tlY + Math.floor(dH / 2)
+
+            let xOffMid = (x - midX) * that.zoom 
+            let yOffMid = (y - midY) * that.zoom
+
+            x += xOffMid
+            y += yOffMid
+
+            var count = that.zoom * that.zoom
+            var total = 0
+
+            for(var i=0; i<that.zoom; i++)
+                for(var j=0; j<that.zoom; j++) {
+                    if(x+i < 0 || x+i >= engine.world.width || y+j < 0 || y+j >= engine.world.height) {
+                        count -= 1
+                        continue
+                    }
+
+                    try {
+                        total += map[x+i][y+j]
+                    } catch(e) {
+                        console.log(x+i)
+                    }
+                }    
+            
+            if(count == 0)
+                return tiles.space
+
+            total = Math.round(total / count)
+            return terrainTiles[total]
 
         }
     }

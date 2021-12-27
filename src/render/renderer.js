@@ -17,19 +17,19 @@ module.exports = (eng) => {
         ambientLightScaleFactor: 0.5,
         playerLightSource() { return engine.lights.create(engine.player.tile.bg, 0.9, 5, -0.15) },
 
-        getTileAt(x, y) {
+        getTileAt(x, y, dW, dH, oX, oY) {
             switch(that.mode) {
                 case renderModes.localMap:
                     return that._.getLocalMapTile(x, y)
 
                 case renderModes.worldMap:
-                    return that._.getWorldMapTile(x, y)
+                    return that._.getWorldMapTile(x, y, dW, dH, oX, oY)
             }            
         },
 
         _: {
-            getWorldMapTile(x, y) {
-                return that.worldMap.getTile(x, y)
+            getWorldMapTile(x, y, dW, dH, oX, oY) {
+                return that.worldMap.getTile(x, y, dW, dH, oX, oY)
             },
         
             getLocalMapTile(x, y) {

@@ -44,6 +44,9 @@ window.keyBinds = {
 
     characterSheet: "shift+c",
 
+    plus: "=",
+    minus: "-",
+
     save: "ctrl+s",
     load: "ctrl+o",
 
@@ -92,37 +95,109 @@ module.exports = (eng, kbs) => {
         await engine.render()
     })
 
+    hotkeys(binds.plus, async function (event, handler){
+        if(engine.renderer.worldMap.zoom > 1)
+           engine.renderer.worldMap.zoom -= 1
+        
+        await engine.render()
+    })
+    hotkeys(binds.minus, async function (event, handler){
+        if(engine.renderer.worldMap.zoom < 40)
+            engine.renderer.worldMap.zoom += 1
+        await engine.render()
+    })
+
     // Movement
     hotkeys(binds.moveNE, async function (event, handler){
-        engine.player.move(1, -1)
+        switch(engine.renderer.mode) {
+            case renderModes.localMap:
+                engine.player.move(1, -1)
+                break
+            case renderModes.worldMap:
+                engine.renderer.worldMap.x += 2 * engine.renderer.worldMap.zoom
+                engine.renderer.worldMap.y -= 2 * engine.renderer.worldMap.zoom
+                break
+        }
         await engine.render()
     })
     hotkeys(binds.moveSE, async function (event, handler){
-        engine.player.move(1, 1)
+        switch(engine.renderer.mode) {
+            case renderModes.localMap:
+                engine.player.move(1, 1)
+                break
+            case renderModes.worldMap:
+                engine.renderer.worldMap.x += 2 * engine.renderer.worldMap.zoom
+                engine.renderer.worldMap.y += 2 * engine.renderer.worldMap.zoom
+                break
+        }
         await engine.render()
     })
     hotkeys(binds.moveSW, async function (event, handler){
-        engine.player.move(-1, 1)
+        switch(engine.renderer.mode) {
+            case renderModes.localMap:
+                engine.player.move(-1, 1)
+                break
+            case renderModes.worldMap:
+                engine.renderer.worldMap.x -= 2 * engine.renderer.worldMap.zoom
+                engine.renderer.worldMap.y += 2 * engine.renderer.worldMap.zoom
+                break
+        }
         await engine.render()
     })
     hotkeys(binds.moveNW, async function (event, handler){
-        engine.player.move(-1, -1)
+        switch(engine.renderer.mode) {
+            case renderModes.localMap:
+                engine.player.move(-1, -1)
+                break
+            case renderModes.worldMap:
+                engine.renderer.worldMap.x -= 2 * engine.renderer.worldMap.zoom
+                engine.renderer.worldMap.y -= 2 * engine.renderer.worldMap.zoom
+                break
+        }
         await engine.render()
     })
     hotkeys(binds.moveDown, async function (event, handler){
-        engine.player.move(0, 1)
+        switch(engine.renderer.mode) {
+            case renderModes.localMap:
+                engine.player.move(0, 1)
+                break
+            case renderModes.worldMap:
+                engine.renderer.worldMap.y += 2 * engine.renderer.worldMap.zoom
+                break
+        }
         await engine.render()
     })
     hotkeys(binds.moveLeft, async function (event, handler){
-        engine.player.move(-1, 0)
+        switch(engine.renderer.mode) {
+            case renderModes.localMap:
+                engine.player.move(-1, 0)
+                break
+            case renderModes.worldMap:
+                engine.renderer.worldMap.x -= 2 * engine.renderer.worldMap.zoom
+                break
+        }
         await engine.render()
     })
     hotkeys(binds.moveRight, async function (event, handler){
-        engine.player.move(1, 0)
+        switch(engine.renderer.mode) {
+            case renderModes.localMap:
+                engine.player.move(1, 0)
+                break
+            case renderModes.worldMap:
+                engine.renderer.worldMap.x += 2 * engine.renderer.worldMap.zoom
+                break
+        }
         await engine.render()
     })
     hotkeys(binds.moveUp, async function (event, handler){
-        engine.player.move(0, -1)
+        switch(engine.renderer.mode) {
+            case renderModes.localMap:
+                engine.player.move(0, -1)
+                break
+            case renderModes.worldMap:
+                engine.renderer.worldMap.y -= 2 * engine.renderer.worldMap.zoom
+                break
+        }
         await engine.render()
     })
 

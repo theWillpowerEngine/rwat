@@ -284,6 +284,7 @@ module.exports = (logger, opts) => {
             pg(15, 'Backed up initial scenes for delta calculations')
 
             that.world.generateNewWorld()
+            that.renderer.worldMap.x = that.renderer.worldMap.y = Math.floor(that.world.terrainMap.length / 2)
             pg(20, "Terrain generation completed")
 
             that.ship.x = that.ship.y = Math.floor(that.world.terrainMap.length / 2)
@@ -401,8 +402,8 @@ module.exports = (logger, opts) => {
                     break
                 
                 case renderModes.worldMap:
-                    pX = Math.round(that.ship.x)
-                    pY = Math.round(that.ship.y)
+                    pX = Math.round(that.renderer.worldMap.x)
+                    pY = Math.round(that.renderer.worldMap.y)
                     map = that.world.terrainMap
                     break
             }
@@ -428,7 +429,7 @@ module.exports = (logger, opts) => {
 
             for(var x=0; x<displayWidth; x++)
                 for(var y=0; y<displayHeight; y++) {
-                    let tile = that.renderer.getTileAt(x + offsetX, y + offsetY) 
+                    let tile = that.renderer.getTileAt(x + offsetX, y + offsetY, displayWidth, displayHeight, offsetX, offsetY) 
                     if(!tile) continue
                     var c = tile.char
                 
