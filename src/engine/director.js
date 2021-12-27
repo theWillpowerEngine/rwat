@@ -54,6 +54,12 @@ module.exports = (eng) => {
                         }
                         break
 
+                    case state.holdPosition:
+                        crew.stateDuration -= 1
+                        if(crew.stateDuration == 0)
+                            crew.state = state.idle
+                        break
+
                     default:
                         throw "Unknown crew state: " + crew.state
                 }

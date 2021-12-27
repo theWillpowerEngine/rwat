@@ -1,4 +1,5 @@
 module.exports= {
     idle: 'Idle',
-    pathing: 'Pathing'
+    pathing: 'Pathing',
+    holdPosition: "Holding Position",
 }

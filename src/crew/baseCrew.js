@@ -5,11 +5,14 @@ const states = require("./enums/state")
 
 const baseCrew = {
     name: "Placeholder McGee",
+    firstName: "Placeholder",
+    lastName: "McGee",
     char: "B",
     color: colors.shipUniform,
     deck: "cargoDeck",
     type: null, 
     state: states.idle,
+    stateDuration: 0,
     x: 15,
     y: 15
 }
@@ -17,12 +20,15 @@ const baseCrew = {
 module.exports = (eng, o) => {
     let engine = eng
     let ship = engine.ship
+    let player = engine.player
 
     let name = nameGen.getName(engine) 
     var that = {
         ...baseCrew,
         
         name: name.name,
+        firstName: name.first,
+        lastName: name.last,
 
         ...o,
 
@@ -38,7 +44,8 @@ module.exports = (eng, o) => {
                     description: "At ease",
                     preferredKey: 19,
                     act(engine, cr) { 
-                        engine.log("At Ease, " + cr.name)
+                        cr.state = states.idle
+                        engine.log(`You say, "At ease, mister ${cr.lastName}."`)
                         return true
                      }
                 },
@@ -46,7 +53,9 @@ module.exports = (eng, o) => {
                     description: "Attention",
                     preferredKey: 9,
                     act(engine, cr) { 
-                        engine.log("Attention, " + cr.name) 
+                        cr.state = states.holdPosition
+                        cr.stateDuration = 20 + (player.leadership * 10)
+                        engine.log(`You say, "Hold there, mister ${cr.lastName}."`)
                         return true
                     }
                 }
