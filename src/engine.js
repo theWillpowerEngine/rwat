@@ -14,6 +14,7 @@ const detector = require("./engine/detector")
 const Color = require('color')
 const fs = require('fs')
 let { ipcRenderer } = require("electron")
+const renderModes = require("./render/renderModes")
 
 function applyObjectTo(base, toApply) {
     for(var prop in toApply) {
@@ -378,10 +379,33 @@ module.exports = (logger, opts) => {
                 displayHeight = Math.floor($game.height() / that.tileSize)
 
             var offsetX = 0, offsetY = 0
-            var pX = that.player.x, pY = that.player.y
+            var pX, pY
 
-            var map = that.map
-            if(map && map.tickHandler) map.tickHandler()
+            var map = null
+
+            switch(that.renderer.mode) {
+                case renderModes.localMap:
+                    pX = that.player.x
+                    pY = that.player.y
+                    map = that.map
+
+                    if(map && map.tickHandler) map.tickHandler()
+                    
+                    if(that.player.lightOn) {
+                        that.player.lightFuel -= 1
+                        if(that.player.lightFuel == 0) {
+                            that.player.lightOn = false
+                            that.log("Your lantern sputters and begins to die as it runs out of fuel.")
+                        }
+                    }
+                    break
+                
+                case renderModes.worldMap:
+                    pX = Math.round(that.ship.x)
+                    pY = Math.round(that.ship.y)
+                    map = that.world.terrainMap
+                    break
+            }
 
             if(map.width < displayWidth)
                 displayWidth = map.width
@@ -407,16 +431,7 @@ module.exports = (logger, opts) => {
                     let tile = that.renderer.getTileAt(x + offsetX, y + offsetY) 
                     if(!tile) continue
                     var c = tile.char
-
-                    if(tile.isPC && that.player.lightOn) {
-                        that.player.lightFuel -= 1
-                        if(that.player.lightFuel == 0) {
-                            that.player.lightOn = false
-                            that.log("Your lantern sputters and begins to die as it runs out of fuel.")
-                            tile.bg = null
-                        }
-                    }
-                    
+                
                     that.display.draw(x, y, c, tile.color, tile.bg)
                 }
 

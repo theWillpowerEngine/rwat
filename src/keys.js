@@ -1,4 +1,5 @@
 let { ipcRenderer } = require("electron")
+const renderModes = require("./render/renderModes")
 
 window.keyBinds = {
     moveUp: 'w',
@@ -9,6 +10,8 @@ window.keyBinds = {
     moveNE: 'shift+d',
     moveSE: 'shift+s',
     moveSW: 'shift+a',
+
+    viewLayers: "tab",
 
     advanceTick: "space",
     advance5Ticks: "shift+space",
@@ -75,6 +78,19 @@ module.exports = (eng, kbs) => {
         })
     
     }
+
+    hotkeys(binds.viewLayers, async function (event, handler){
+        switch(engine.renderer.mode) {
+            case renderModes.localMap:
+                engine.renderer.mode = renderModes.worldMap
+                break
+            
+            default:
+                engine.renderer.mode = renderModes.localMap
+
+        }
+        await engine.render()
+    })
 
     // Movement
     hotkeys(binds.moveNE, async function (event, handler){
