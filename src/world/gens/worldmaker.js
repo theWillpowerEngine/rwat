@@ -4,6 +4,33 @@ const rpg = require("../../system")
 const cityNames = ["Saltrice", "Straylight", "Traven", "Pelial", "Shosan"]
 const bonusCities = ["Gharinport", "Valesburg", "Tiendang"] 
 
+function getLongestFrom(pts, current) {
+    var lpt = null
+    var ldist = 0
+
+    for(var pt2 of pts) {
+        if(current.find(p => p.x == pt2.x && p.y == pt2.y))
+            continue
+
+        var sdist = 999999
+        for(var pt3 of current) {
+            if(pt3.x == pt2.x && pt3.y == pt2.y) 
+                continue
+            
+            var dist = engine.detector.dist2D(pt3.x, pt3.y, pt2.x, pt2.y)
+            if(dist < sdist)
+                sdist = dist
+        }
+
+        if(sdist > ldist) {
+            ldist = sdist
+            lpt = pt2
+        }
+    }
+
+    return lpt
+}
+
 function pickSettlementPoints(map, borderSize) {
     if(!borderSize)
         borderSize = 60
@@ -37,33 +64,6 @@ function placeCities(map, pts, count) {
                 longest = {pt, pt2, dist}
         }
     }
-
-    var getLongestFrom = (pts, current) => {
-        var lpt = null
-        var ldist = 0
-
-        for(var pt2 of pts) {
-            if(current.find(p => p.x == pt2.x && p.y == pt2.y))
-                continue
-
-            var sdist = 999999
-            for(var pt3 of current) {
-                if(pt3.x == pt2.x && pt3.y == pt2.y) 
-                    continue
-                
-                var dist = engine.detector.dist2D(pt3.x, pt3.y, pt2.x, pt2.y)
-                if(dist < sdist)
-                    sdist = dist
-            }
-
-            if(sdist > ldist) {
-                ldist = sdist
-                lpt = pt2
-            }
-        }
-
-        return lpt
-    } 
 
     var cities = [ longest.pt, longest.pt2 ]
     while(cities.length < count) {

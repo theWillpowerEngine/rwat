@@ -57,7 +57,7 @@ Add damage model and damage effects to:
 ------
    ERs
 
-Add P, + and - key implementations
+Add P, + and - key implementations for game speed
 
 -------
    Help
@@ -92,11 +92,9 @@ top deck + gunroom
 
 Weather; Time+Weather ambient light for the outside room
 
-Tab movement between layers
+Add the Immediate Map Layer
 
-The 3 layers (or at least the first 2 - ship and immediate)
-
-Add the Rutter system and integrate with Pilot AI
+Add the Rutter system to the World Map and integrate with Pilot AI
 
 Undocking:
    lines
