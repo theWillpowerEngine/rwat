@@ -155,7 +155,7 @@ const ui = {
     }, 
 
     async updateUI() {
-        $("#area").html(engine?.map?.name || "Unknown Area")
+        $("#area").html(engine?.map?.name || (engine.renderer.mode == "world" ? "World Map" : null) || "Unknown Area")
         if(engine?.world?.getDateTime)
             $("#time").html(engine.world.getDateTime())
         else
@@ -163,11 +163,11 @@ const ui = {
 
         var html = `<br /><br />
 <b>Hdg:</b> ${engine.ship.heading}<br />
-<b>Loc:</b> ${engine.ship.x}, ${engine.ship.y}<br />
 <b>Speed:</b> ${engine.ship.movementVector.speed}<br />
 <b>Alt:</b> ${engine.ship.z - engine.world.terrainMap[Math.floor(engine.ship.x)][Math.floor(engine.ship.y)]}<br />
+<b>dAlt:</b> ${engine.ship.movementVector.z}<br />
 <b>Grid Gap:</b> ${14 - engine.ship.z}<br />
-<b>dAlt:</b> ${engine.ship.movementVector.z}<br />`
+<b>Loc:</b> ${engine.ship.x}, ${engine.ship.y}<br />`
 
         //html += await ui.makeIconBox('cog', "red")
         $("#sidetop").html(html)
