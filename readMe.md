@@ -1,50 +1,62 @@
 # Riven World: Airship Trader #
 
-## Commands ##
+## Getting Started ##
 ```
-WASD        Move (normal directions)
-Sh-WASD     Move (Diagonals - shift 45 degrees counterclockwise)
-
-L           Toggle personal light
-
-T           Change which direction you move valves and dials (up vs down)
-
-Space       Advance a tick | Choose default Zelazny link
-Sh-Space    Advance 5 ticks
-Ctrl-Space  Advance 10 ticks
-Sh-C-Space  Advance 25 ticks
-
-Shift-C     Show Character Sheet
-C           Issue Commands to Crew
-
-P           Unpause Game
-+/-         Speed up and slow down unpaused game.  Zoom in / out world map
-
-1-5QERFG    Both of these are your 'command' buttons,
-Shift+^     you generally assign them, some things override them
-
-Ctrl-S      Save Game
-Ctrl-O      Load Game
-
-Sh-Escape   Exit Game
-F12         Developer Console
-Alt-Enter   Toggle Full Screen
+npm install
+npm start
+press F1 to access help 
 ```
 
-## Ship Cold Start Procedure ##
+## Credits ##
+```
+Libraries (non npm):
+    hotkeys-js v3.8.7 | MIT (c) 2021 kenny wong <wowohoo@qq.com> | http://jaywcjlove.github.io/hotkeys
+    jQuery v3.6.0 | (c) OpenJS Foundation and other contributors | jquery.org/license
+    ROT.js | Copyright (c) 2012-now() Ondrej Zara | https://github.com/ondras/rot.js
+    SimpleModal 1.4.4 | MIT and GPL 2013 Eric Martin | http://simplemodal.com/
 
-1.  Turn on ship lights:  Turn on pilot lights;  Set desired master light default setting
-2.  Ensure that the engine is is neutral; for safety the desired speed should be set to 1
-3.  Start coolant pump, ensure cap charge, turbine and boiler settings are all 0/off
-4.  Slowly pull control rods until desired rate of reaction change is obtained.  At ALL TIMES keep the internal temperature and pressure within tolerances.  Should the reaction start to run away, in almost all cases pressing the red SCRAM button will fully reintroduce control rods and should halt the reaction (heat and pressure will fade over time once the reaction is stopped)
-5.  Once initial reaction is obtained, introduce boiler heat setting.  Target is max setting for the boiler heat transfer (3).
-6.  Up the turbine setting to 1
-7.  Set the thaumatic capacitor to charge
-8.  Verify appropriate values for Thaumatic Capacitor, Boiler and Turbine Shaft in their appropriate displays and stabilize reaction
-9.  Turn off the coolant pump.  Verify coolant is still visibly flowing through the pipe in the corner of the engine room and that the reaction remains stable.
-10. Set the turbine setting to the desired level (likely 3)
-11. Rotate the engine manual lubrication handle at least 10 times.  The position of the valve is not important and it will slowly rotate back to default position once you stop working it -- this is fine and does not reflect the transmission losing lubrication
-12. Disengage the main clutch, verify that the initial shaft speed rises to match the turbine speed but that the engine speed and prop speeds do not move.
-13. Optionally perform a quick engine test by disconnecting the propeller and then shifting the engine out of neutral and verifying the appropriate shifts in the engine and prop speeds in both forward and reverse.  Be sure to return to neutral and reconnect the propeller when done.
-14. Ensure thaumatic capacitor is fully charged.  Pull the Lift Self-Warming Cycle switch.  The cycle is completed when the switch returns to it's original position.  As this step takes some time (and only requires boiler heat and thaums in the capacitor), it can optionally be sequenced earlier.
-15. Once Cycle is complete, ...
+Libraries (npm):
+    color
+    ds-heightmap
+    electron
+    pathfinding
+    rng
+
+Icons:
+    https://game-icons.net/
+    Icons provided under the Creative Commons 3.0 BY or CC0 if mentioned below:
+        - Lorc, http://lorcblog.blogspot.com
+        - Delapouite, https://delapouite.com
+        - John Colburn, http://ninmunanmu.com
+        - Felbrigg, http://blackdogofdoom.blogspot.co.uk
+        - John Redman, http://www.uniquedicetowers.com
+        - Carl Olsen, https://twitter.com/unstoppableCarl
+        - Sbed, http://opengameart.org/content/95-game-icons
+        - PriorBlue
+        - Willdabeast, http://wjbstories.blogspot.com
+        - Viscious Speed, http://viscious-speed.deviantart.com - CC0
+        - Lord Berandas, http://berandas.deviantart.com
+        - Irongamer, http://ecesisllc.wix.com/home
+        - HeavenlyDog, http://www.gnomosygoblins.blogspot.com
+        - Lucas
+        - Faithtoken, http://fungustoken.deviantart.com
+        - Skoll
+        - Andy Meneely, http://www.se.rit.edu/~andy/
+        - Cathelineau
+        - Kier Heyl
+        - Aussiesim
+        - Sparker, http://citizenparker.com
+        - Zeromancer - CC0
+        - Rihlsul
+        - Quoting
+        - Guard13007, https://guard13007.com
+        - DarkZaitzev, http://darkzaitzev.deviantart.com
+        - SpencerDub
+        - GeneralAce135
+        - Zajkonur
+        - Catsu
+        - Starseeker
+        - Pepijn Poolman
+        - Pierre Leducq
+        - Caro Asercion
+```

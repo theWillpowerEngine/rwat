@@ -1,3 +1,12 @@
+.help-journal h1 {
+    font-family: Helvetica, Georgia, Cochin, Times, 'Times New Roman', serif;
+    font-size: 16pt;
+    font-weight: bold;
+    text-decoration: underline;
+    text-align: center;
+    color: #DFF2D8;
+}
+
 .help-journal h2 {
     font-family: Helvetica, Georgia, Cochin, Times, 'Times New Roman', serif;
     font-size: 16pt;
