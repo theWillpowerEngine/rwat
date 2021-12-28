@@ -21,9 +21,16 @@ module.exports = (win) => {
     ipcMain.handle("save", (event, json) => {
         fs.writeFileSync("save.game", json, 'utf8')
     })
-
     ipcMain.handle("load", (event, engine) => {
         var data = fs.readFileSync("save.game", 'utf8')
+        return data
+    })
+
+    ipcMain.handle("saveTerrain", (event, json) => {
+        fs.writeFileSync("save.terrain", json, 'utf8')
+    })
+    ipcMain.handle("loadTerrain", (event, engine) => {
+        var data = fs.readFileSync("save.terrain", 'utf8')
         return data
     })
 

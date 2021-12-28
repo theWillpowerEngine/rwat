@@ -27,6 +27,9 @@ function applyObjectTo(base, toApply) {
 }
 function extractDeltaObject(base, changed) {
     var retVal = {}
+
+    if(!base)
+        return base
     
     for(var prop in changed) {
         if(typeof changed[prop] === 'object') {
@@ -212,6 +215,8 @@ module.exports = (logger, opts) => {
             that["zelazny"] = zel
             currentScene = eng.scenes.current
             
+            var terrain = eng.world.terrainMap
+            delete eng.world.terrainMap
             delete eng.display
             delete eng.scenes
             delete eng.map
@@ -223,10 +228,13 @@ module.exports = (logger, opts) => {
             eng.maps = extractDeltaObject(backupMaps, eng.maps)
 
             await ipcRenderer.invoke("save", JSON.stringify(eng))
+            await ipcRenderer.invoke("saveTerrain", JSON.stringify(terrain))
+            
             that.log("Game saved.")
         },
         async load() {
             var json = await ipcRenderer.invoke("load", JSON.stringify(that))
+            var terrainJson = await ipcRenderer.invoke("loadTerrain", JSON.stringify(that))
             var loaded = JSON.parse(json)
             
             var zs = loaded.zelState
@@ -239,6 +247,8 @@ module.exports = (logger, opts) => {
             delete that.curScene
 
             applyObjectTo(that.zelazny.state, zs)
+
+            that.world.terrainMap = JSON.parse(terrainJson)
 
             for(var i=0; i<that.crew.length; i++)
                 that.crew[i] = makeCrew(that, that.crew[i])

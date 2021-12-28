@@ -130,7 +130,11 @@ module.exports = (eng) => {
                         }
                     }
 
-                    total += map[x+i][y+j]
+                    try {
+                        total += map[x+i][y+j]
+                    } catch (e) {
+                        count -= 1
+                    }
                 }    
             
             if(count == 0)
