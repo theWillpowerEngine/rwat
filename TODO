@@ -9,7 +9,9 @@ Lift controls:
    Do something with Polish?
    Add auto-level system
 
-3D movement system (prop / wind / collision detection / max grid gap)
+3D movement system (wind / collision detection / max grid gap)
+
+Slow down the ship (prop).  Apply heading not just Y axis.
 
 Thaumatic Battery (fake electric system)
 

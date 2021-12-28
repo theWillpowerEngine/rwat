@@ -64,6 +64,7 @@ module.exports = (logger, opts) => {
         tileSize: 20,
 
         zelazny: null,
+        headingMaps: [],
 
         maps: {
 

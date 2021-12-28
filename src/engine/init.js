@@ -112,6 +112,35 @@ module.exports = (engine, conf) => {
             engine.commands = commands(engine)
             engine.detector = detector(engine)
         
+            for(var i=0; i<360; i++) {
+                if(i <= 90)
+                {
+                    var ratio = i / 90
+                    engine.headingMaps[i] = {
+                        x: ratio,
+                        y: -1 * (1 - ratio)
+                    }
+                } else if(i <= 180) {
+                    var ratio = (i - 90) / 90
+                    engine.headingMaps[i] = {
+                        x: 1 - ratio,
+                        y: ratio
+                    }
+                } else if(i <= 270) {
+                    var ratio = (i - 180) / 90
+                    engine.headingMaps[i] = {
+                        x: -1 * ratio,
+                        y: -1 * (1 - ratio)
+                    }
+                } else {
+                    var ratio = (i - 270) / 90
+                    engine.headingMaps[i] = {
+                        x: -1 - (1 - ratio),
+                        y: -1 * ratio
+                    }
+                }
+            }                 
+
             return initObject
         },
         next() {
