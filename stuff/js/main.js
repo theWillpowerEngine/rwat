@@ -42,38 +42,62 @@ window["cheat"] = {
 }
 
 $(async () => {
-    engine.init(async (step, msg) => {
-        console.log(`Initialization ${step}% done: ${msg}.</span>`)
+    var initter = engine.getInitObject()
+    ui.modal("Riven World: Airship Trader is Loading...<br /><br /><div id='load-stuff'> </div>")
 
-        if(step == 100) 
-        {
-            await engine.render()
+    setTimeout(() => {
+        initter.start()
+        .andThen(() => {$("#load-stuff").append("-Engine initialization complete<br />")})
 
-            var resizeTimer
-            $(window).on('resize', function(e) {
-                clearTimeout(resizeTimer)
-                resizeTimer = setTimeout(async function() {
-                    $.modal.update("60%", "60%")
-                    await engine.render()
-                }, 250)
-            })
-        }
-    })
-    
-    $("canvas").on('mousedown', e => {
-        if(engine.renderer.mode == "world")
-            return
-            
-        var coords = getCursorPosition(e.target, e)
-        coords.x = Math.trunc(coords.x /= 20)
-        coords.y = Math.trunc(coords.y /= 20)
-        var tile = engine.renderer.getTileAt(coords.x + engine.lastOffsetX, coords.y + engine.lastOffsetY)
-        if(tile) {
-            if(typeof tile.desc === 'function')
-                logMsg(`<span class='log-item'>${tile.desc(engine, tile)}</span>`)
-            else
-                logMsg(`<span class='log-item'>That's ${tile.desc}.</span>`)
-        }
-    })
+        setTimeout(() => {
+            initter.next()
+                .andThen(() => {$("#load-stuff").append("-Zelazny storytelling System initialized<br />")})
+        
+            setTimeout(() => {
+                initter.next()
+                    .andThen(() => {$("#load-stuff").append("-Loaded all maps and saved copies for delta-checks<br />")})
 
+                setTimeout(() => {
+                    initter.next()
+                        .andThen(() => {$("#load-stuff").append("-Generated terrain and finished ship initalization<br />")})
+                
+                    setTimeout(() => {
+                        initter.next()
+                        $("#load-stuff").append("<br /><center><b>Load complete!<b></center>")
+                        setTimeout(async () => {
+                            $.modal.close()
+                            escStack.pop()
+
+                            await engine.render()
+
+                            var resizeTimer
+                            $(window).on('resize', function(e) {
+                                clearTimeout(resizeTimer)
+                                resizeTimer = setTimeout(async function() {
+                                    $.modal.update("60%", "60%")
+                                    await engine.render()
+                                }, 250)
+                            })
+                            
+                            $("canvas").on('mousedown', e => {
+                                if(engine.renderer.mode == "world")
+                                    return
+                                    
+                                var coords = getCursorPosition(e.target, e)
+                                coords.x = Math.trunc(coords.x /= 20)
+                                coords.y = Math.trunc(coords.y /= 20)
+                                var tile = engine.renderer.getTileAt(coords.x + engine.lastOffsetX, coords.y + engine.lastOffsetY)
+                                if(tile) {
+                                    if(typeof tile.desc === 'function')
+                                        logMsg(`<span class='log-item'>${tile.desc(engine, tile)}</span>`)
+                                    else
+                                        logMsg(`<span class='log-item'>That's ${tile.desc}.</span>`)
+                                }
+                            })
+                        }, 1000)
+                    }, 250)
+                }, 250)            
+            }, 250)
+        }, 250)
+    }, 150)
 })

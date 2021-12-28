@@ -2,7 +2,7 @@
   "name": "rwat",
   "version": "0.0.1",
   "description": "Riven World: Airship Trader",
-  "main": "main",
+  "main": "index",
   "scripts": {
     "start": "electron .",
     "build": "npx electron-packager . rwat --platform=win32 --arch=x64 --overwrite --icon=./stuff/icon.ico"

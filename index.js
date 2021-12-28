@@ -19,11 +19,11 @@ function createWindow () {
   })
 
     win.setFullScreen(true)
-    win.loadFile('index.htm')
     win.show()
     //win.openDevTools()
-    
     registerInterop(win)
+    
+    win.loadFile('index.htm')
   }
 
   app.whenReady().then(() => {

@@ -1,20 +1,10 @@
 const colors = require("./map/colors")
-const makeRenderer = require("./render/renderer")
-const makePlayer = require("./player/player")
-const makeShip = require("./ship/ship")
-const makeScenes = require("./scenes/scenes")
-const makeZelazny = require("./zelazny/zelazny")
-const makeDirector = require("./engine/director")
-const makeCrew = require("./crew/baseCrew")
-const zaWarudo = require("./world/zawarudo")
-const registerKeys = require("./keys")
 const rpg = require("./system")
-const commands = require("./engine/commands")
-const detector = require("./engine/detector")
+const makeCrew = require("./crew/baseCrew")
 const Color = require('color')
-const fs = require('fs')
 let { ipcRenderer } = require("electron")
 const renderModes = require("./render/renderModes")
+const initter = require("./engine/init")
 
 function applyObjectTo(base, toApply) {
     for(var prop in toApply) {
@@ -68,7 +58,7 @@ module.exports = (logger, opts) => {
     let cgPicks = []
     let cgReturnTo = 0
 
-    var that = {
+    const that = {
         conf,
         gameOver: false,
         tileSize: 20,
@@ -211,102 +201,8 @@ module.exports = (logger, opts) => {
                 throw "NPCs don't know how to interact yet"
         },
 
-        init(progressCallback) {
-            var pg = (step, data) => {
-                if(progressCallback)
-                    progressCallback(step, data)
-            }
-
-            pg(1, "Starting new game")
-            
-            that.player = makePlayer(that)
-            that.renderer = makeRenderer(that)
-            that.scenes = makeScenes(that)
-            that.ship = makeShip(that)
-            that.world = zaWarudo(that)
-            that.director = makeDirector(that)
-            that.commands = commands(that)
-            that.detector = detector(that)
-
-            //#region Zelazny (lots of options)
-            that.zelazny = makeZelazny(that, {}, {
-                macros: {
-                    load(pop, expect) {
-                        try {
-                            var content = fs.readFileSync(`zelazny\\${pop()}`, 'utf8')
-                            that.zelazny.parse(content, true)
-                        } catch (ex) {
-                            console.log(`Bad attempt to load zelazny: ` + ex)
-                        }
-                    },
-                    cg(pop, expect, tryPop, peek) {
-                        var cmd = pop()
-                        switch(cmd) {
-                            case "start":
-                                //cgPicks.push("cg2")
-                                cgPicks.push(rpg.pickOne(cgAll))
-                                cgPicks.push(rpg.pickOne(cgAll))
-                                cgPicks.push(rpg.pickOne(cgAll))
-                                break
-                            case "go":
-                                expect('to')
-                                cgReturnTo = parseInt(pop())
-                                return that.zelazny.action("go to " + cgPicks[cgReturnTo-1])
-                            case "return":
-                                const returnTo = ["", "uncleJack", "winterAway", "leavingHome"]
-                                return that.zelazny.action("go to " + returnTo[cgReturnTo])
-                            case "debug":
-                                require("./debugState")(that)
-                                return that.zelazny.action('go to cgDebug')
-
-                            default:
-                                throw "Unknown cg command: " + cmd
-                        }
-                    }
-                },
-                
-                specialLinks: {
-                    '$' : `<a class='action-link default-link' data-action='[v __id]'>[v __text]</a><span class='action-span' data-id='[v __id]'>[v __action]</span>`,
-                    '*' : `<li class='action-link-li'><a class='action-link' data-action='[v __id]'>[v __text]</a><span class='action-span' data-id='[v __id]'>[v __action]</span></li>`
-                }
-            })
-            //#endregion
-            pg(2, "Preinitialization complete")
-
-            that.ship.createDamageModel()
-            pg(5, "Ship damage model initialized")
-
-            var sceneCount = that.scenes.loadAll()
-            that.scenes.set(conf.defaultScene)
-            pg(10, `Loaded ${sceneCount} scenes`)
-
-            backupMaps = JSON.parse(JSON.stringify(that.maps))
-            pg(15, 'Backed up initial scenes for delta calculations')
-
-            that.world.generateNewWorld()
-            that.renderer.worldMap.x = that.renderer.worldMap.y = Math.floor(that.world.terrainMap.length / 2)
-            pg(20, "Terrain generation completed")
-
-            that.ship.x = that.ship.y = Math.floor(that.world.terrainMap.length / 2)
-            that.ship.z = that.world.terrainMap[that.ship.x][that.ship.y] + 2
-            pg(23, "Set ship initial position")
-
-            registerKeys(that)
-            pg(50, "Set initial game state")
-
-            pg(99, "Initialization done, installing into UI")
-            that.display = new ROT.Display({
-                width:140,
-                height:60,
-                fontSize: that.tileSize,
-                fontStyle: "bold",
-                bg: colors.background,
-                forceSquareRatio: true
-            })
-            document.getElementById("game").appendChild(that.display.getContainer())
-
-            pg(100, "Initialization complete!")
-            return conf
+        getInitObject() {
+            return initter(that, conf)
         },
 
         async save() {
