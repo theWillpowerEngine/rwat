@@ -18,7 +18,7 @@ Shift-C     Show Character Sheet
 C           Issue Commands to Crew
 
 P           Unpause Game
-+/-         Speed up and slow down unpaused game.  Zoom in / out from maps
++/-         Speed up and slow down unpaused game.  Zoom in / out world map
 
 1-5QERFG    Both of these are your 'command' buttons,
 Shift+^     you generally assign them, some things override them

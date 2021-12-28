@@ -80,13 +80,17 @@ $(async () => {
                             })
                             
                             $("canvas").on('mousedown', e => {
-                                if(engine.renderer.mode == "world")
-                                    return
-                                    
                                 var coords = getCursorPosition(e.target, e)
                                 coords.x = Math.trunc(coords.x /= 20)
                                 coords.y = Math.trunc(coords.y /= 20)
-                                var tile = engine.renderer.getTileAt(coords.x + engine.lastOffsetX, coords.y + engine.lastOffsetY)
+
+                                var tile = null
+                                if(engine.renderer.mode == "world") {
+                                    tile = engine.renderer.getTileAt(coords.x + engine.lastOffsetX, coords.y + engine.lastOffsetY, engine.renderer._.prevs.dW, engine.renderer._.prevs.dH, engine.renderer._.prevs.oX, engine.renderer._.prevs.oY)
+                                } else {
+                                    tile = engine.renderer.getTileAt(coords.x + engine.lastOffsetX, coords.y + engine.lastOffsetY)
+                                }
+                                    
                                 if(tile) {
                                     if(typeof tile.desc === 'function')
                                         logMsg(`<span class='log-item'>${tile.desc(engine, tile)}</span>`)

@@ -23,11 +23,18 @@ module.exports = (eng) => {
                     return that._.getLocalMapTile(x, y)
 
                 case renderModes.worldMap:
+                    that._.prevs = {
+                        dW, dH, oX, oY
+                    }
                     return that._.getWorldMapTile(x, y, dW, dH, oX, oY)
             }            
         },
 
         _: {
+            prevs: {
+                dW: 0, dH: 0, oX: 0, oY: 0
+            },
+            
             getWorldMapTile(x, y, dW, dH, oX, oY) {
                 return that.worldMap.getTile(x, y, dW, dH, oX, oY)
             },

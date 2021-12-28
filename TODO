@@ -15,6 +15,8 @@ Thaumatic Battery (fake electric system)
 
 Radio and Intercom (integrate intercom with Command system)
 
+Better Altitude Calculation (right now different depths of water have different heights for example), include pressure entry in altimeters
+
 ----------
    Chargen
 
@@ -63,7 +65,7 @@ Add P, + and - key implementations for game speed
    Help
 
 Finish:
-   Newbie Guide
+   Newbie Guide (once there is more fleshed out)
 
 Write:
    Engine Room
@@ -72,9 +74,11 @@ Write:
 ------------
    World Gen
 
-Civilization Generation
+Settlement and production generation
 
-Add Map layer
+Generate grid nodes and thus ability to actually calculate grid gap
+
+Place initial shipyard
 
 -----------
    Modeling
@@ -105,3 +109,5 @@ Cargo hold management, cargo door + locks
 Fill Points in the cargo hold (lamp fuel / water / etc.)
 
 Bilge / Sewage system
+
+"Magic Shit" systems (Underlying Stats / Sorcery / Edge / Magic Items)

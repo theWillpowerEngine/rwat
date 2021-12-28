@@ -121,12 +121,28 @@ module.exports = (eng) => {
                     if(x+i < 0 || x+i >= engine.world.width || y+j < 0 || y+j >= engine.world.height) continue
                     else count += 1
 
+                    if(x+i == engine.ship.x && y+j == engine.ship.y)
+                        return {
+                            ...tiles.player,
+                            desc: "your ship"
+
+                        }
+                    
                     var city = engine.world.cities.find(c => c.x == x+i && c.y == y+j) 
                     if(city) {
                         return {
                             ...cityTile,
                             char: city.index.toString(),
-                            desc: "City of " + city.name
+                            desc: "the City of " + city.name
+                        }
+                    }
+                    
+                    var city = engine.world.cities.find(c => c.x == x+i && c.y == y+j) 
+                    if(city) {
+                        return {
+                            ...cityTile,
+                            char: city.index.toString(),
+                            desc: "the City of " + city.name
                         }
                     }
 

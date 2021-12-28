@@ -65,6 +65,9 @@ function placeCities(map, pts, count) {
         }
     }
 
+    if(longest.dist <= 4)
+        return null
+
     var cities = [ longest.pt, longest.pt2 ]
     while(cities.length < count) {
         var city = getLongestFrom(pts, cities)
@@ -102,8 +105,12 @@ var worldmaker = module.exports = (eng) => {
     if(extraCities == 0) extraCities = 1
 
     var cities = placeCities(map, spts, 5+extraCities)
+    if(cities == null) {
+        console.log("Cities too close, rerolling map")
+        return worldmaker(eng)
+    }
     for(var i=0; i<5; i++) {
-        cities[i]["name"] = cityNames[i]
+        cities[i]["name"] = rpg.pickOne(cityNames)
         cities[i]["index"] = i+1
     }
     
