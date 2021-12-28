@@ -23,6 +23,11 @@ module.exports = (eng) => {
             vector[axis] -= acceleration[axis]
         }
     }
+    const applyToVectorOnHeading = (heading, cappedAmount) => {
+        var ratio = engine.headingMaps[heading]
+        ship.x += cappedAmount * ratio.x
+        ship.y += cappedAmount * ratio.y
+    }
 
     //apply lift
     let targetLift = (lift.temperature - 11) * 0.354
@@ -46,6 +51,7 @@ module.exports = (eng) => {
     ship.z += vector.z
     
     //Apply extra movement vectors
-    ship.y += lastPropForce
+    debugger
+    applyToVectorOnHeading(ship.heading, lastPropForce)
     vector.speed = lastPropForce
 }

@@ -162,9 +162,10 @@ const ui = {
             $("#time").html("")
 
         var html = `<br /><br />
+<b>Hdg:</b> ${engine.ship.heading}<br />
 <b>Loc:</b> ${engine.ship.x}, ${engine.ship.y}<br />
 <b>Speed:</b> ${engine.ship.movementVector.speed}<br />
-<b>Alt:</b> ${engine.ship.z - engine.world.terrainMap[engine.ship.x][engine.ship.y]}<br />
+<b>Alt:</b> ${engine.ship.z - engine.world.terrainMap[Math.floor(engine.ship.x)][Math.floor(engine.ship.y)]}<br />
 <b>Grid Gap:</b> ${14 - engine.ship.z}<br />
 <b>dAlt:</b> ${engine.ship.movementVector.z}<br />`
 
