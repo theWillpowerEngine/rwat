@@ -1,45 +1,51 @@
 const acceleration = {
     x: 0.023,
     y: 0.023,
-    z: 0.153
+    z: 0.153,
+    prop: 0.017,
 }
+
+let lastPropForce = 0
 
 module.exports = (eng) => {
     let engine = eng
     let ship = engine.ship
     let lift = ship.lift
-    let world = engine.world
+    let drive = ship.drive
     let vector = ship.movementVector
-    let desiredVector = {
-        x: vector.x,
-        y: vector.y,
-        z: engine.ship.secureTied ? 0 : (engine.conf.forceOfGravity * -1)
-    }
 
-    const applyToVector = (axis) => {
-        if(Math.abs(desiredVector[axis] - vector[axis]) <= acceleration[axis]) {
-            vector[axis] = desiredVector[axis]
-        } else if(vector[axis] > desiredVector[axis]) {
-            vector[axis] -= acceleration[axis]
-        } else if(vector[axis] < desiredVector[axis]) {
+    const applyToVector = (axis, amt) => {
+        if(Math.abs(amt) <= acceleration[axis]) {
+            vector[axis] += amt
+        } else if(amt > 0) {
             vector[axis] += acceleration[axis]
+        } else {
+            vector[axis] -= acceleration[axis]
         }
     }
-
 
     //apply lift
     let targetLift = (lift.temperature - 11) * 0.354
     targetLift -= (ship.getWeight() * 0.239)
     if(targetLift < 0) targetLift = 0
-    desiredVector.z += targetLift
+    applyToVector('z', targetLift)
 
-    //gradually approach the desiredVector (clip to it when close)
-    applyToVector('x')
-    applyToVector('y')
-    applyToVector('z')
+    //prop
+    let targetPropForce = (drive.propSpeed * 0.01639)
+    if(Math.abs(lastPropForce - targetPropForce) <= acceleration.prop) {
+        lastPropForce = targetPropForce
+    } else if(targetPropForce > lastPropForce) {
+        lastPropForce = (lastPropForce += acceleration.prop)
+    } else {
+        lastPropForce = (lastPropForce -= acceleration.prop)
+    }
 
     //apply movement to ship
     ship.x += vector.x
     ship.y += vector.y
-    ship.z += vector.z 
+    ship.z += vector.z
+    
+    //Apply extra movement vectors
+    ship.y += lastPropForce
+    vector.speed = lastPropForce
 }

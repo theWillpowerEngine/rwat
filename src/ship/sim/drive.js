@@ -58,7 +58,8 @@ module.exports = (eng, sh) => {
                 }
             }
 
-            var desiredPropSpeed = that.transmission * ship.reactor.turbineForce
+            var t = that.transmission > that.transmissionSpeed ? that.transmissionSpeed : that.transmission
+            var desiredPropSpeed =  t * ship.reactor.turbineForce
 
             if(desiredPropSpeed != that.propShaftSpeed) {
                 var positiveDelta = desiredPropSpeed > that.propShaftSpeed

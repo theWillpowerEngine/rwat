@@ -69,7 +69,6 @@ module.exports = (eng) => {
                     tile.color = colors.grey
                 return 'o'
             }, {color: colors.grey, transparent: true })
-            theMap.vline(tiles.shipWall, 6, 8, 1, {transparent: true})
             ////////////////////////////////////////
             //#endregion
 
@@ -160,9 +159,7 @@ module.exports = (eng) => {
                 return 'X'
             }, { color: colors.white })
             theMap.addDisplay(6, 0, "the prop speed indicator (blue = reverse, green = ahead)", (eng, tile) => {
-                var val = eng.ship.drive.propConnect ?
-                        Math.abs(Math.round(eng.ship.drive.propSpeed || 0)) :
-                        Math.abs(Math.round(eng.ship.drive.propShaftSpeed || 0))
+                var val = Math.abs(Math.round(eng.ship.drive.propSpeed || 0))
 
                 if(eng.ship.drive.propSpeed > 0)
                     tile.color = colors.green
@@ -182,7 +179,6 @@ module.exports = (eng) => {
                     amt = "X"
                 if(amt == 0)
                     amt = "-"
-                console.log(amt)
                 return amt.toString()[0]
             }, {color: colors.lavender })
             theMap.addDisplay(10, 0, "the lift temperature (tens)", (eng, tile) => {
@@ -417,6 +413,8 @@ module.exports = (eng) => {
             })
             ////////////////////////////////////////
             //#endregion
+
+            theMap.hline(tiles.shipWall, 6, 8, 2, {transparent: true})
 
             //On Tick handler
             theMap.tickHandler = () => {

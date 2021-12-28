@@ -25,7 +25,8 @@ module.exports = (eng) => {
         tieLength: 1,
         secureTied: true,
         movementVector: {
-            x: 0, y: 0, z: 0
+            x: 0, y: 0, z: 0,
+            speed: 0
         },
 
         getWeight() {

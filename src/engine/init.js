@@ -12,6 +12,10 @@ const commands = require("./commands")
 const detector = require("./detector")
 const fs = require('fs')
 
+let cgAll = ["cg1", "cg2", "cg3", "cg4", "cg5", "cg6", "cg7", "cg8", "cg9"]
+let cgPicks = []
+let cgReturnTo = 0
+
 module.exports = (engine, conf) => {
     var initObject = {
         idx: -1,

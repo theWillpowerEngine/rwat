@@ -57,9 +57,6 @@ module.exports = (logger, opts) => {
     }
 
     let backupMaps = null
-    let cgAll = ["cg1", "cg2", "cg3", "cg4", "cg5", "cg6", "cg7", "cg8", "cg9"]
-    let cgPicks = []
-    let cgReturnTo = 0
 
     const that = {
         conf,
@@ -240,6 +237,7 @@ module.exports = (logger, opts) => {
             var zs = loaded.zelState
             delete loaded.zelState
 
+            that.world.cities = []
             applyObjectTo(that, loaded)
 
             var cs = that.curScene

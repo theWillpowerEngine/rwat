@@ -121,7 +121,7 @@ module.exports = (eng) => {
                     if(x+i < 0 || x+i >= engine.world.width || y+j < 0 || y+j >= engine.world.height) continue
                     else count += 1
 
-                    if(x+i == engine.ship.x && y+j == engine.ship.y)
+                    if(x+i == Math.floor(engine.ship.x) && y+j == Math.floor(engine.ship.y))
                         return {
                             ...tiles.player,
                             desc: "your ship"

@@ -163,7 +163,7 @@ const ui = {
 
         var html = `<br /><br />
 <b>Loc:</b> ${engine.ship.x}, ${engine.ship.y}<br />
-<b>delta:</b> ${engine.ship.movementVector.x}, ${engine.ship.movementVector.y}<br />
+<b>Speed:</b> ${engine.ship.movementVector.speed}<br />
 <b>Alt:</b> ${engine.ship.z - engine.world.terrainMap[engine.ship.x][engine.ship.y]}<br />
 <b>Grid Gap:</b> ${14 - engine.ship.z}<br />
 <b>dAlt:</b> ${engine.ship.movementVector.z}<br />`
