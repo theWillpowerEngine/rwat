@@ -1,13 +1,14 @@
 ----------------------
    Engine Room and Sim
 
-Shaft/Prop controls:
+Shaft/Prop:
    Make lubrication eventually wear off (but slowly) -- this might be a good excuse to write an event system
-   Slow down the prop a little (propSpeed can be decimal w/o incident)
+   Slow down the prop a little? (propSpeed can be decimal w/o incident)
 
-Lift controls:
+Lift:
    Do something with Polish?
-   Add auto-level system
+
+Rudder
 
 3D movement system (wind / collision detection / max grid gap)
 
@@ -18,6 +19,8 @@ Thaumatic Battery (fake electric system)
 Radio and Intercom (integrate intercom with Command system)
 
 Better Altitude Calculation (right now different depths of water have different heights for example), include pressure entry in altimeters
+
+Autopilot/AutoLevel/hdg hold
 
 ----------
    Chargen

@@ -166,10 +166,15 @@ const ui = {
 <b>Speed:</b> ${engine.ship.movementVector.speed}<br />
 <b>Alt:</b> ${engine.ship.z - engine.world.terrainMap[Math.floor(engine.ship.x)][Math.floor(engine.ship.y)]}<br />
 <b>dAlt:</b> ${engine.ship.movementVector.z}<br />
-<b>Grid Gap:</b> ${14 - engine.ship.z}<br />
-<b>Loc:</b> ${engine.ship.x}, ${engine.ship.y}<br />`
+<b>Grid Gap:</b> ${engine.world.gridHeightFor(Math.floor(engine.ship.x), Math.floor(engine.ship.y)) - engine.ship.z}<br />`
 
         //html += await ui.makeIconBox('cog', "red")
         $("#sidetop").html(html)
+
+        if(engine?.gameOver) {
+            ui.modal("<b>Game Over: </b> " + engine.gameOver)
+            $("#area").html("Game Over")
+            $("#time").html("")
+        }
     }
 }

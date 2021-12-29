@@ -38,6 +38,10 @@ module.exports = (eng) => {
         width: 0,
         height: 0,
 
+        gridHeightFor(x, y) {
+            return 15
+        },
+
         generateNewWorld() {
             var newWorld = wm(engine)
             that.terrainMap = newWorld.map

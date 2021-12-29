@@ -346,7 +346,6 @@ module.exports = (logger, opts) => {
             await ui.updateUI()
 
             console.log("Tick Duration: " + Math.abs((new Date().getTime() - start.getTime())) + " ms")
-
         }
     }
 

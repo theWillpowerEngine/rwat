@@ -29,6 +29,12 @@ module.exports = (eng) => {
         ship.y += cappedAmount * ratio.y
     }
 
+    //apply gravity
+    if(!ship.secureTied && vector.z > -1 * engine.conf.forceOfGravity) {
+        var dG = (-1 * engine.conf.forceOfGravity) - vector.z
+        applyToVector('z', dG)
+    }
+
     //apply lift
     let targetLift = (lift.temperature - 11) * 0.354
     targetLift -= (ship.getWeight() * 0.239)
@@ -36,7 +42,10 @@ module.exports = (eng) => {
     applyToVector('z', targetLift)
 
     //prop
-    let targetPropForce = (drive.propSpeed * 0.01639)
+    let weightScaleFactor = 120 - ship.getWeight()
+    weightScaleFactor *= 0.0154
+    let targetPropForce = ((drive.propSpeed * 0.01639) * weightScaleFactor)
+
     if(Math.abs(lastPropForce - targetPropForce) <= acceleration.prop) {
         lastPropForce = targetPropForce
     } else if(targetPropForce > lastPropForce) {
@@ -51,7 +60,12 @@ module.exports = (eng) => {
     ship.z += vector.z
     
     //Apply extra movement vectors
-    debugger
     applyToVectorOnHeading(ship.heading, lastPropForce)
     vector.speed = lastPropForce
+
+    //Collision detection
+    var alt = engine.world.terrainMap[Math.floor(ship.x)][Math.floor(ship.y)]
+    if(ship.z <= alt) {
+        engine.gameOver = "Your Ship + The Ground = GG"
+    }
 }
