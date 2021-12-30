@@ -58,8 +58,11 @@ Add damage model and damage effects to:
    lift
    drive
 
+Internal Damage (overlift / meltdown / etc.)
 -------
    Bugs
+
+Lift Temp in the engine room is doing the thing where the controls are saved but the actual setting isn't.
 
 ------
    ERs

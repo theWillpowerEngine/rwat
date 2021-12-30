@@ -60,7 +60,7 @@ Your first vivid memory is of...
     cg go to 1
 }
 
-`*A magical show put on for the district after a particularly successful harvest` => {
+`*A sorcerous entertainment show put on for the district after a particularly successful harvest` => {
     add 1 to sorcery
     add 1 to barding
     add 2 to intellect

@@ -34,11 +34,12 @@ The captain was a dreary man who spoke frequently of duty and discipline and he 
     go to wa_normal
 }]
 
-[>sorcery:2 
-`*The captain had some old scrolls which you were able to manifest, calling up favorable winds.  You ate well and were rather popular with the crew.` => {
-    add 2 to sorcery
-    add 2 to intellect
+[>luck:3 
+`*The captain and crew quickly noticed your almost supernatural good luck.  You were something of a talisman to them during your stay, and you had a pleasant time.` => {
     add 2 to luck
+    add 2 to leadership
+    add 1 to airmanship
+    add 1 to manipulation
     go to wa_nerd
 }]
 

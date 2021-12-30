@@ -17,12 +17,13 @@
     go to bul-run
 }
 
-[>sorcery:1 
-`*It wasn't looking like a very fair fight, but a touch of sorcery could even the odds.` => {
-    add 2 to sorcery
+[>luck:2 
+`*They should have cleaned your clock, but luck was on your side and they mostly got in each others way.  For all of two punches and tripping a guy you were a local legend for beating up such a large group, even though they did all the work.` => {
+    add 3 to luck
     add 1 to reaction
-    add 2 to intellect
-    go to bul-sorc
+    add 1 to resilience
+    add 1 to factionSaltrice
+    go to bul-luck
 }
 |
 `*They thought it was a six versus one fight, but they forgot about the horse and the dog.` => {
@@ -69,16 +70,8 @@ It was a close thing, but you were faster and more clever than anyone in their g
 `$Continue` => {
     cg return
 }
-@bul-sorc
-[>sorcery:2 
-{
-    add 1 to luck
-    add 1 to intellect
-}
-You wanted to set one of them on fire, but all you managed was a sputtering little hummingbird of fire that lit a shirt briefly.  Still, they were scared, and they left you alone after that.
-|
-Unfortunately it didn't go so well, and while you were still concentrating on shaping your intention in your mind several fists and boots imposed themselves on your meditation.  You were in bed with injuries (both physical and to your pride) for the better part of a week.
-]
+@bul-luck
+You ended up with something of a reputation after that incident, and you started to wonder when your insane run of good luck would end...
 
 `$Continue` => {
     cg return
