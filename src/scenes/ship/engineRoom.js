@@ -188,7 +188,7 @@ module.exports = (eng) => {
                 return amt || "0"
             }, {color: colors.gold })
             theMap.addDisplay(11, 0, "the lift temperature (ones)", (eng, tile) => {
-                var amt = (eng.ship.lift.temperature % 10) || 0
+                var amt = (engine.ship.lift.temperature % 10) || 0
                 if(amt < 0)
                     amt = 0
                 return amt || "0"
@@ -351,10 +351,14 @@ module.exports = (eng) => {
             var liftCycleTile = theMap.tiles[8][1]
 
             theMap.addDisplay(9, 1, "the gross lift-direction indicator (up/down/neutral)", (eng, tile) => {
-                if(eng.ship.movementVector.z == 0) {
+                var amt = eng.ship.movementVector.z
+                if(!amt)
+                    amt = eng.ship.movementVector.effectiveLift
+
+                if(amt == 0) {
                     tile.color = colors.lavender
                     return '='
-                } else if (eng.ship.movementVector.z > 0) {
+                } else if (amt > 0) {
                     tile.color = colors.cyan
                     return '+'
                 } else {

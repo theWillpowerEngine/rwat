@@ -162,11 +162,16 @@ const ui = {
             $("#time").html("")
 
         var html = `<br /><br />
-<b>Hdg:</b> ${engine.ship.heading}<br />
-<b>Speed:</b> ${engine.ship.movementVector.speed}<br />
-<b>Alt:</b> ${engine.ship.z - engine.world.terrainMap[Math.floor(engine.ship.x)][Math.floor(engine.ship.y)]}<br />
-<b>dAlt:</b> ${engine.ship.movementVector.z}<br />
-<b>Grid Gap:</b> ${engine.world.gridHeightFor(Math.floor(engine.ship.x), Math.floor(engine.ship.y)) - engine.ship.z}<br />`
+<b>Hdg: </b> ${engine.ship.heading}<br />
+<b>Speed: </b> ${engine.ship.movementVector.speed}<br />
+<b>Alt: </b> ${engine.ship.z - engine.world.terrainMap[Math.floor(engine.ship.x)][Math.floor(engine.ship.y)]}<br />
+<b>dAlt: </b> ${engine.ship.movementVector.z}<br />
+<b>gGap: </b> ${engine.world.gridHeightFor(Math.floor(engine.ship.x), Math.floor(engine.ship.y)) - engine.ship.z}<br />
+
+<b>X: </b> ${engine.ship.x}<br />
+<b>Y: </b> ${engine.ship.y}<br />
+<b>dZ: </b> ${engine.ship.movementVector.z}<br />
+<b>EL: </b> ${engine.ship.movementVector.effectiveLift}<br />`
 
         //html += await ui.makeIconBox('cog', "red")
         $("#sidetop").html(html)

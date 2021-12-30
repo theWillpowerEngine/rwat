@@ -14,10 +14,10 @@ module.exports = (eng) => {
     let drive = ship.drive
     let vector = ship.movementVector
 
-    const applyToVector = (axis, amt) => {
-        if(Math.abs(amt) <= acceleration[axis]) {
-            vector[axis] += amt
-        } else if(amt > 0) {
+    const shiftVectorTowards = (axis, amt) => {
+        if(Math.abs(vector[axis] - amt) <= acceleration[axis]) {
+            vector[axis] = amt
+        } else if(amt > vector[axis]) {
             vector[axis] += acceleration[axis]
         } else {
             vector[axis] -= acceleration[axis]
@@ -30,16 +30,20 @@ module.exports = (eng) => {
     }
 
     //apply gravity
-    if(!ship.secureTied && vector.z > -1 * engine.conf.forceOfGravity) {
-        var dG = (-1 * engine.conf.forceOfGravity) - vector.z
-        applyToVector('z', dG)
-    }
+    var forceOfGravity = 0
+    if(vector.z > -1 * engine.conf.forceOfGravity) {
+        if(vector.z > 0)
+            forceOfGravity = (-1 * engine.conf.forceOfGravity)
+        else
+            forceOfGravity = (-1 * engine.conf.forceOfGravity) - vector.z
+    }    
 
     //apply lift
-    let targetLift = (lift.temperature - 11) * 0.354
-    targetLift -= (ship.getWeight() * 0.239)
+    let targetLift = (lift.temperature - (10 + (ship.getWeight() * 0.239))) * 0.0748
     if(targetLift < 0) targetLift = 0
-    applyToVector('z', targetLift)
+    
+    vector.effectiveLift = targetLift + forceOfGravity
+    shiftVectorTowards('z', vector.effectiveLift)
 
     //prop
     let weightScaleFactor = 120 - ship.getWeight()
@@ -55,6 +59,9 @@ module.exports = (eng) => {
     }
 
     //apply movement to ship
+    if(ship.secureTied && vector.z < 0)
+        vector.z = 0
+
     ship.x += vector.x
     ship.y += vector.y
     ship.z += vector.z

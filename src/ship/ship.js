@@ -26,7 +26,9 @@ module.exports = (eng) => {
         secureTied: true,
         movementVector: {
             x: 0, y: 0, z: 0,
-            speed: 0
+            
+            //Instrumentation values
+            speed: 0, effectiveLift: 0
         },
 
         getWeight() {
