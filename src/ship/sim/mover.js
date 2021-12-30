@@ -71,8 +71,14 @@ module.exports = (eng) => {
     vector.speed = lastPropForce
 
     //Collision detection
-    var alt = engine.world.terrainMap[Math.floor(ship.x)][Math.floor(ship.y)]
+    let sX = Math.floor(ship.x),
+        sY = Math.floor(ship.y)
+    var alt = engine.world.terrainMap[sX][sY]
     if(ship.z <= alt) {
         engine.gameOver = "Your Ship + The Ground = GG"
+    }
+
+    if(ship.z >= engine.world.gridHeightFor(sX, sY)) {
+        engine.gameOver = "A piece of your ship touches the Grid.  The result is a catastrophic, multicolored explosion.  You're dead."
     }
 }
