@@ -4,6 +4,7 @@
     add 1 to resilience
     add 1 to strength
     add 1 to airmanship
+    add 1 to navigation
 }Later in adolescence, after a year of miserable work and a bountiful harvest, you father had finally relented to your moping and sighing and arranged for a small adventure during the winter.  A man he knew from the market arranged for you to work as a deck hand aboard a local trade ship.
 
 The captain was a dreary man who spoke frequently of duty and discipline and he worked you ragged and treated you only slightly better than the tabby cat that oft stalked in his shadow.  Doubtless your father hoped the experience would sour your wanderlust.
@@ -20,17 +21,17 @@ The captain was a dreary man who spoke frequently of duty and discipline and he 
 `*With your knowledge of airmanship, you were an incredible asset, basically an honorary officer during your time aboard.` => {
     add 1 to airmanship
     add 2 to leadership
-    add 2 to engineering
+    add 1 to engineering
+    add 2 to navigation
     add 1 to strength
-    add 1 to intellect
     go to wa_nerd
 }|
 `*You pitched in and worked hard, learning as much as you could.` => {
     add 1 to airmanship
-    add 1 to engineering
+    add 1 to navigation
     add 1 to leadership
     add 1 to strength
-    add 1 to resilience
+    add 1 to engineering
     go to wa_normal
 }]
 
@@ -39,7 +40,7 @@ The captain was a dreary man who spoke frequently of duty and discipline and he 
     add 2 to luck
     add 2 to leadership
     add 1 to airmanship
-    add 1 to manipulation
+    add 1 to navigation
     go to wa_nerd
 }]
 

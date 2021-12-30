@@ -10,9 +10,9 @@ Lift:
 
 Rudder
 
-3D movement system (wind / collision detection / max grid gap)
-
-Slow down the ship (prop).  Apply heading not just Y axis.
+3D movement system:
+   wind
+   max grid gap + grid distance effects lift)
 
 Thaumatic Battery (fake electric system)
 
@@ -59,6 +59,7 @@ Add damage model and damage effects to:
    drive
 
 Internal Damage (overlift / meltdown / etc.)
+
 -------
    Bugs
 
@@ -68,6 +69,8 @@ Lift Temp in the engine room is doing the thing where the controls are saved but
    ERs
 
 Add P, + and - key implementations for game speed
+
+Test and tweak ship speed
 
 -------
    Help
@@ -114,7 +117,7 @@ Undocking:
 
 Cargo hold management, cargo door + locks
 
-Fill Points in the cargo hold (lamp fuel / water / etc.)
+Fill Points in the cargo hold (lamp fuel / water / etc.).  Indicators for these tanks
 
 Bilge / Sewage system
 

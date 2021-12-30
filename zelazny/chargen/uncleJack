@@ -1,7 +1,6 @@
 @uncleJackIndex
 {
     add 1 to leadership
-    add 1 to barding
     add 1 to airmanship
 }
 One summer Uncle Jack visited the farmstead, the highlight of anotherwise dreadfully-boring year.  After an hour of so of his stories you had finally found a moment of silence to guide the conversation.  You asked...
@@ -10,14 +9,15 @@ One summer Uncle Jack visited the farmstead, the highlight of anotherwise dreadf
 [>airmanship:1 
 `*Specific, technical questions about his trade, having gleaned the rudiments of airmanship` => {
     add 2 to airmanship
-    add 2 to engineering
+    add 1 to engineering
+    add 1 to navigation
     add 1 to intellect
     go to uj_airship
 }
 |
 `*About life on an airship` => {
     add 2 to airmanship
-    add 1 to engineering
+    add 1 to navigation
     go to uj_airship
 }
 ]

@@ -67,17 +67,17 @@ const ui = {
             </tr>
             <tr>
                 <td>Music/Barding: <b>${engine.player.barding}</b></td>
+                <td>Navigation: <b>${engine.player.navigation}</b></td>
                 <td>Negotiation: <b>${engine.player.negotiation}</b></td>
-                <td>Reaction: <b>${engine.player.reaction}</b></td>
             </tr>
             <tr>
+                <td>Reaction: <b>${engine.player.reaction}</b></td>
                 <td>Resilience: <b>${engine.player.resilience}</b></td>
                 <td>Sorcery: <b>${engine.player.sorcery}</b></td>
-                <td>Soul Edge: <b>${engine.player.edge}</b></td>
             </tr>
             <tr>
+                <td>Soul Edge: <b>${engine.player.edge}</b></td>
                 <td>Strength: <b>${engine.player.strength}</b></td>
-                <td> </td>
                 <td> </td>
             </tr>
         </table>

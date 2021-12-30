@@ -35,6 +35,7 @@ module.exports = (eng) => {
         luck: 0,            luckActual: 0,
         reaction: 0,        reactionActual: 0,
         resilience: 0,      resilienceActual: 0,
+        navigation: 0,      navigationActual: 0,
         
         cooking: 0,         cookingActual: 0,
         appraisal: 0,       appraisalActual: 0,
