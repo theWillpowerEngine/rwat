@@ -55,14 +55,26 @@ module.exports = (eng, o) => {
                 },
                 attention: {
                     description: "Attention",
-                    preferredKey: 9,
+                    preferredKey: 18,
                     act(engine, cr) { 
                         cr.state = states.holdPosition
                         cr.stateDuration = 20 + (player.leadership * 10)
                         engine.log(`You say, "Hold there, mister ${cr.lastName}."`)
                         return true
                     }
-                }
+                },
+                goToDeck: {
+                    description: "Go to Deck...",
+                    preferredKey: 9,
+                    act() { 
+                        commandMenu.choose(["Cargo Deck", "Crew Deck", "Engine Room", "Officer's Deck", "Top Deck"], (e, c, ch) => {
+                            e.log(ch)
+                            return true
+                        })
+                        return false
+                    }
+
+                },
             }
         },
         specialOrders() {
@@ -90,7 +102,7 @@ module.exports = (eng, o) => {
             return false
         },
         crossDeckPathfind(deck, x, y) {
-            
+
         },
 
         move(dX, dY, map) {

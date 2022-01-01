@@ -74,7 +74,7 @@ module.exports = (eng, kbs) => {
             if(await engine.commands.doCommand(closureX-1)) {
                 $.modal.close()
                 engine.commands.clearOverride()
-                commandMenuState = 0
+                commandMenu.reset()
                 escStack.pop()
                 await engine.render()
             }

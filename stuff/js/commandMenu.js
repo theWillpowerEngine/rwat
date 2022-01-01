@@ -1,11 +1,27 @@
 const cmStates = {
     pickTarget: 0,
-    singleTargetCommand: 1
+    singleTargetCommand: 1,
+    choice: 2,
 }
 window["commandMenuState"] = 0
 
 const commandMenu = {
     subjectCrew: null,
+    choices: [],
+    chooser: null,
+
+    reset() {
+        commandMenuState = 0
+        commandMenu.choices = []
+        commandMenu.chooser = null
+    },
+
+    choose(choices, chooser) {
+        commandMenuState = cmStates.choice
+        commandMenu.choices = choices
+        commandMenu.chooser = chooser
+        $("#command-menu").html(commandMenu.tick(engine))
+    },
 
     tick(engine) {
         engine.commands.clearOverride()
@@ -45,6 +61,20 @@ const commandMenu = {
                     }    
                 }
                 break
+
+            case cmStates.choice:
+                var crew = commandMenu.subjectCrew
+                html = ''
+                let curKey = 0
+                for(var o of commandMenu.choices) {
+                    let closureO = o
+                    html += `${commandKeys[curKey++]})  ${closureO}<br />`
+                    engine.commands.overrideCommands[curKey-1] = () => {
+                        return commandMenu.chooser(engine, crew, closureO)
+                    }    
+                }
+                break
+    
         }
 
         return `<div id="command-menu">${html.trim()}</div>`
