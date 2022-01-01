@@ -44,7 +44,7 @@ Command Menu:
       ...
    Other selectors (deckhand / any available crew, etc.)
 
-Finish cross-Deck pathfinding system
+Finish Cross-Deck pathfinding system
 
 Basic Crew AI / Simulation / Inventory (do PC inventory at the same time)
 
@@ -66,6 +66,8 @@ Model crashing as damage instead of insta-gg
    Bugs
 
 Lift Temp in the engine room is doing the thing where the controls are saved but the actual setting isn't.
+
+Crew Paths start on the point they're on (ie: there is a one-tick delay in them moving)
 
 ------
    ERs

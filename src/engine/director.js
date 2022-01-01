@@ -52,7 +52,7 @@ module.exports = (eng) => {
                 
                 cur = that.pathingMap[cur[endDeck]]
             }
-            path.push(cur[endDeck])
+            path.push([...cur[endDeck]])
             return path
         },
 

@@ -68,6 +68,40 @@ module.exports = (eng, o) => {
                     preferredKey: 9,
                     act() { 
                         commandMenu.choose(["Cargo Deck", "Crew Deck", "Engine Room", "Officer's Deck", "Top Deck"], (e, c, ch) => {
+                            let chosenDeck = null
+                            switch(ch) {
+                                case "Cargo Deck":
+                                    chosenDeck = 'cargoDeck'
+                                    break
+                                case "Crew Deck":
+                                    chosenDeck = 'crewDeck'
+                                    break
+                                case "Engine Room":
+                                    chosenDeck = 'engineRoom'
+                                    break
+                                case "Officer's Deck":
+                                    chosenDeck = 'officerDeck'
+                                    break
+                                case "Top Deck":
+                                    chosenDeck = 'topDeck'
+                                    break
+                            }
+
+                            if(that.deck == chosenDeck)
+                                return true
+
+                            var path = engine.director.findDeckPath(that.deck, chosenDeck)
+                            
+                            let pt = path.shift()
+                            that.path = that.getPath(pt[0].x, pt[0].y)  //TODO:  find the closest not just the first
+                            that.state = states.pathing
+
+                            that.actionQueue.push(that.actions.useDoor(that.path[that.path.length-1]))
+                            for(var pathxel of path) {
+                                that.actionQueue.push(that.actions.path(pathxel))
+                                that.actionQueue.push(that.actions.useDoor(pathxel[pathxel.length-1]))    
+                            }
+
                             e.log(ch)
                             return true
                         })
@@ -84,8 +118,8 @@ module.exports = (eng, o) => {
         },
 
         path: null,
-        getPath(x, y) {
-            var matrix = engine.getPathfindingMap(engine.maps[that.deck])
+        getPath(x, y, deck) {
+            var matrix = engine.getPathfindingMap(engine.maps[deck ? deck : that.deck])
             var grid = new PF.Grid(matrix)
             var finder = new PF.AStarFinder({
                 diagonalMovement: PF.DiagonalMovement.Always

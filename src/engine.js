@@ -146,15 +146,15 @@ module.exports = (logger, opts) => {
             }
 
             var ret = []
-            for(var x=0; x<map.width; x++) {
-                ret[x] = []
-                for(var y=0; y<map.height; y++) {
+            for(var y=0; y<map.height; y++) {
+                ret[y] = []
+                for(var x=0; x<map.width; x++) {
                     if(!hadMap || map.name == that.map.name) {
                         var tile = that.renderer.getTileAt(x, y)
-                        ret[x][y] = tile.solid ? 1 : 0
+                        ret[y][x] = (tile && tile.solid) ? 1 : 0
                     } else {
                         var tile = map.tiles[x][y]
-                        ret[x][y] = tile.solid ? 1 : 0
+                        ret[y][x] = (tile && tile.solid) ? 1 : 0
                     } 
                 }
             }
@@ -176,11 +176,11 @@ module.exports = (logger, opts) => {
             
             if(!hadMap || map.name == that.map.name) {
                 var tile = that.renderer.getTileAt(x, y)
-                if(tile.solid)
+                if(tile && tile.solid)
                     return { ib: false, tile: tile }
             } else {
                 var tile = map.tiles[x][y]
-                if(tile.solid)
+                if(tile && tile.solid)
                     return { ib: false, tile: tile }
             }
 
