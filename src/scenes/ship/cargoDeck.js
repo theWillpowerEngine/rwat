@@ -32,12 +32,12 @@ module.exports = (eng) => {
             //#region doors
 
             theMap.door(1, 58, "a set of stairs leading up to the crew deck", "crewDeck", 1, 63, "You go up the stairs")
-            theMap.apply(1, 58, {
+            theMap.apply(1, 59, {
                 bg: colors.stairs,
                 desc: "a staircase",
                 solid: true,
                 transparent: true
-            }, 1, 5)
+            }, 1, 4)
             theMap.apply(1, 58, {transparent: true}, 1, 5)
 
             theMap.door(20, 1, "a U-shaped staircase up to the crew deck", "crewDeck", 18, 2, "You go down the stairs")

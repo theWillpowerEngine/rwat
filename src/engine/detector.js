@@ -19,6 +19,21 @@ module.exports = (eng) => {
             return c
         },
 
+        findAdjacent(mapName, x, y, pred) {
+            let map = engine.maps[mapName]
+            
+            for(var iX = x-1; iX <= x+1; iX++)
+                for(var iY = y-1; iY <= y+1; iY++)
+                {
+                    if(!engine.boundsCheck(iX, iY, map))
+                        continue
+
+                    let tile = map.tiles[iX][iY]
+                    if(pred(tile))
+                        return tile
+                }
+        },
+
         //Pred:  (iX, iY, map.tiles[iX][iY])
         any(mapName, x, y, range, pred) {
             let map = engine.maps[mapName]

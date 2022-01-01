@@ -9,31 +9,31 @@ module.exports = (eng) => {
     var that = {
         pathingMap: {
             cargoDeck: {
-                crewDeck: [{x: 1, y: 58}, {x: 18, y:2}],
+                crewDeck: [{x: 1, y: 57}, {x: 17, y:2}],
                 engineRoom: "crewDeck",
                 officerDeck: "crewDeck",
                 topDeck: "crewDeck"
             },
             crewDeck: {
-                engineRoom: [{x: 4, y: 55}],
-                cargoDeck: [{x: 1, y: 62}, {x: 19, y: 2}],
-                officerDeck: [{x: 21, y: 53}],
+                engineRoom: [{x: 4, y: 54}],
+                cargoDeck: [{x: 1, y: 63}, {x: 19, y: 1}],
+                officerDeck: [{x: 21, y: 54}],
                 topDeck: "officerDeck"
             },
             engineRoom: {
-                crewDeck: [{x: 1, y: 0}],
+                crewDeck: [{x: 1, y: 1}],
                 officerDeck: "crewDeck",
                 topDeck: "crewDeck",
                 cargoDeck: "crewDeck"
             },
             officerDeck: {
-                topDeck: [{x: 20, y: 0}, {x: 20, y: 18}],
-                crewDeck: [{x: 21, y: 18}],
+                topDeck: [{x: 20, y: 1}, {x: 20, y: 17}],
+                crewDeck: [{x: 21, y: 17}],
                 cargoDeck: "crewDeck",
                 engineRoom: "crewDeck"
             },
             topDeck: {
-                officerDeck: [{x: 60, y: 62}, {x: 60, y: 82}],
+                officerDeck: [{x: 60, y: 61}, {x: 60, y: 83}],
                 crewDeck: "officerDeck",
                 cargoDeck: "officerDeck",
                 engineRoom: "officerDeck"
@@ -48,11 +48,11 @@ module.exports = (eng) => {
                 if(!next)
                     throw "Fail on: " + cur
                 else
-                    path.push(next) 
+                    path.push({path: next, deck: cur[endDeck]}) 
                 
                 cur = that.pathingMap[cur[endDeck]]
             }
-            path.push([...cur[endDeck]])
+            path.push({path: [...cur[endDeck]], deck: endDeck})
             return path
         },
 
@@ -73,7 +73,7 @@ module.exports = (eng) => {
 
                     case state.pathing:
                         if(!crew.path || !crew.path.length) {
-                            crew.state = state.idle
+                            crew.actions.next()
                         } else {
                             var nextPt = crew.path.shift()
                             crew.move(nextPt[0] - crew.x, nextPt[1] - crew.y)
@@ -83,7 +83,7 @@ module.exports = (eng) => {
                     case state.holdPosition:
                         crew.stateDuration -= 1
                         if(crew.stateDuration == 0)
-                            crew.state = state.idle
+                            crew.actions.next()
                         break
 
                     default:

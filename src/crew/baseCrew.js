@@ -93,13 +93,28 @@ module.exports = (eng, o) => {
                             var path = engine.director.findDeckPath(that.deck, chosenDeck)
                             
                             let pt = path.shift()
-                            that.path = that.getPath(pt[0].x, pt[0].y)  //TODO:  find the closest not just the first
+                            that.path = that.getPath(pt.path[0].x, pt.path[0].y)  //TODO:  find the closest not just the first
                             that.state = states.pathing
 
-                            that.actionQueue.push(that.actions.useDoor(that.path[that.path.length-1]))
+                            var door = engine.detector.findAdjacent(that.deck, that.path[that.path.length-1][0], that.path[that.path.length-1][1], t => {
+                                return (t.char == '*' && t.destMap == pt.deck)
+                            })
+                            if(!door) throw "Could not find door where expected: " + JSON.stringify(pt)
+
+                            that.actionQueue.push(that.actions.moveToDeck(door.destMap, door.destX, door.destY))
+                            var deck = door.destMap
                             for(var pathxel of path) {
-                                that.actionQueue.push(that.actions.path(pathxel))
-                                that.actionQueue.push(that.actions.useDoor(pathxel[pathxel.length-1]))    
+                                var nextPath = that.getPath(pathxel.path[0].x, pathxel.path[0].y)  //TODO:  find the closest not just the first
+                                if(!nextPath.length) break
+                                that.actionQueue.push(that.actions.path(nextPath))
+
+                                var nextDoor = engine.detector.findAdjacent(deck, nextPath[nextPath.length-1][0], nextPath[nextPath.length-1][1],t => {
+                                    return (t.char == '*' && t.destMap == pathxel.deck)
+                                })
+                                if(!nextDoor) throw "Could not find door where expected (on path): " + JSON.stringify(pathxel)
+
+                                that.actionQueue.push(that.actions.moveToDeck(nextDoor.destMap, nextDoor.destX, nextDoor.destY))
+                                deck = nextDoor.destMap
                             }
 
                             e.log(ch)
