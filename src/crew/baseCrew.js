@@ -2,6 +2,7 @@ const colors = require("../map/colors")
 const nameGen = require("../world/gens/crewNameGen")
 const PF = require('pathfinding')
 const states = require("./enums/state")
+const actions = require("./actions")
 
 const baseCrew = {
     name: "Placeholder McGee",
@@ -10,7 +11,8 @@ const baseCrew = {
     char: "B",
     color: colors.shipUniform,
     deck: "cargoDeck",
-    type: null, 
+    type: null,
+    actionQueue: [],
     state: states.idle,
     stateDuration: 0,
     x: 15,
@@ -31,6 +33,8 @@ module.exports = (eng, o) => {
         lastName: name.last,
 
         ...o,
+
+        actions: null,
 
         allOrders() {
             return {
@@ -85,6 +89,9 @@ module.exports = (eng, o) => {
             }
             return false
         },
+        crossDeckPathfind(deck, x, y) {
+            
+        },
 
         move(dX, dY, map) {
             if(Math.abs(dX) > 1 || Math.abs(dY) > 1)
@@ -108,6 +115,7 @@ module.exports = (eng, o) => {
         else
             that.char = name.last[0]
     }
-    
+ 
+    that.actions = actions(engine, that)
     return that
 }

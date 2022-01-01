@@ -12,7 +12,7 @@ Rudder
 
 3D movement system:
    wind
-   max grid gap + grid distance effects lift)
+   max grid gap + grid distance effects lift
 
 Thaumatic Battery (fake electric system)
 
@@ -44,7 +44,7 @@ Command Menu:
       ...
    Other selectors (deckhand / any available crew, etc.)
 
-Cross-Deck pathfinding system
+Finish cross-Deck pathfinding system
 
 Basic Crew AI / Simulation / Inventory (do PC inventory at the same time)
 
@@ -59,6 +59,8 @@ Add damage model and damage effects to:
    drive
 
 Internal Damage (overlift / meltdown / etc.)
+
+Model crashing as damage instead of insta-gg
 
 -------
    Bugs
@@ -109,7 +111,7 @@ Weather; Time+Weather ambient light for the outside room
 
 Add the Immediate Map Layer
 
-Add the Rutter system to the World Map and integrate with Pilot AI
+Add the Rutter system to the World Map and integrate with Pilot AI.  Make Navigation do stuff
 
 Undocking:
    lines

@@ -9,25 +9,51 @@ module.exports = (eng) => {
     var that = {
         pathingMap: {
             cargoDeck: {
-                crewDeck: [{x: 1, y: 58}, {x: 18, y:2}]
+                crewDeck: [{x: 1, y: 58}, {x: 18, y:2}],
+                engineRoom: "crewDeck",
+                officerDeck: "crewDeck",
+                topDeck: "crewDeck"
             },
             crewDeck: {
                 engineRoom: [{x: 4, y: 55}],
                 cargoDeck: [{x: 1, y: 62}, {x: 19, y: 2}],
-                officerDeck: [{x: 21, y: 53}]
+                officerDeck: [{x: 21, y: 53}],
+                topDeck: "officerDeck"
             },
             engineRoom: {
-                crewDeck: [{x: 1, y: 0}]
+                crewDeck: [{x: 1, y: 0}],
+                officerDeck: "crewDeck",
+                topDeck: "crewDeck",
+                cargoDeck: "crewDeck"
             },
             officerDeck: {
-                topDeck: [{x: 20, y: 0, toWheelhouse: false, toTopDeck: true},
-                          {x: 20, y: 18, toWheelhouse: true, toTopDeck: false}],
-                crewDeck: [{x: 21, y: 18}]
+                topDeck: [{x: 20, y: 0}, {x: 20, y: 18}],
+                crewDeck: [{x: 21, y: 18}],
+                cargoDeck: "crewDeck",
+                engineRoom: "crewDeck"
             },
             topDeck: {
-                officerDeck: [{x: 60, y: 62, fromWheelhouse: false, fromTopDeck: true},
-                              {x: 60, y: 82, fromWheelhouse: true, fromTopDeck: false}]
+                officerDeck: [{x: 60, y: 62}, {x: 60, y: 82}],
+                crewDeck: "officerDeck",
+                cargoDeck: "officerDeck",
+                engineRoom: "officerDeck"
             }
+        },
+
+        findDeckPath(startDeck, endDeck) {
+            var path = []
+            var cur = that.pathingMap[startDeck]
+            while(typeof cur[endDeck] == "string") {
+                var next = cur[cur[endDeck]]
+                if(!next)
+                    throw "Fail on: " + cur
+                else
+                    path.push(next) 
+                
+                cur = that.pathingMap[cur[endDeck]]
+            }
+            path.push(cur[endDeck])
+            return path
         },
 
         tick() {
